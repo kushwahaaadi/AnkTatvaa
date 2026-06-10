@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anktatvaa — Celestial Vedic Numerology</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <canvas id="cosmos"></canvas>
+
+  <div class="page">
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="nav-logo-symbol">✦</span>
+        <span class="nav-logo-text">Anktatvaa</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="#features" class="nav-link">Readings</a>
+        <a href="#compatibility" class="nav-link">Compatibility</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="#features" class="mobile-link" onclick="toggleMobileMenu()">Readings</a>
+      <a href="#compatibility" class="mobile-link" onclick="toggleMobileMenu()">Compatibility</a>
+      <a href="#testimonials" class="mobile-link" onclick="toggleMobileMenu()">Testimonials</a>
+      <a href="#faq" class="mobile-link" onclick="toggleMobileMenu()">FAQ</a>
+      <div class="mobile-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+    </div>
+
+    <!-- ═══════ DAILY COSMIC NUMBER BANNER ═══════ -->
+    <div class="cosmic-banner" id="cosmicBanner">
+      <div class="cosmic-banner-inner">
+        <span class="cosmic-banner-icon">✦</span>
+        <span class="cosmic-banner-label">Today's Universal Day Number</span>
+        <span class="cosmic-banner-num" id="dailyNum">—</span>
+        <span class="cosmic-banner-msg" id="dailyMsg">Loading cosmic alignment...</span>
+        <span class="cosmic-banner-icon">✦</span>
+      </div>
+    </div>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero">
+      <!-- Star-chart orbital rings -->
+      <svg class="sacred-circle" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(300,300)" fill="none">
+          <circle r="280" stroke="#00d4ff" stroke-width="0.5" opacity="0.3" />
+          <circle r="230" stroke="#38bdf8" stroke-width="0.4" opacity="0.25" />
+          <circle r="180" stroke="#00d4ff" stroke-width="0.4" opacity="0.2" />
+          <circle r="130" stroke="#a5f3fc" stroke-width="0.3" opacity="0.2" />
+          <circle r="80" stroke="#38bdf8" stroke-width="0.3" opacity="0.2" />
+          <line x1="0" y1="-280" x2="0" y2="280" stroke="#00d4ff" stroke-width="0.3" opacity="0.15" />
+          <line x1="-280" y1="0" x2="280" y2="0" stroke="#00d4ff" stroke-width="0.3" opacity="0.15" />
+          <line x1="0" y1="-280" x2="0" y2="280" stroke="#38bdf8" stroke-width="0.3" opacity="0.12"
+            transform="rotate(45)" />
+          <line x1="0" y1="-280" x2="0" y2="280" stroke="#38bdf8" stroke-width="0.3" opacity="0.10"
+            transform="rotate(135)" />
+          <circle cx="0" cy="-280" r="5" fill="#f59e0b" opacity="0.7" />
+          <circle cx="230" cy="0" r="4" fill="#00d4ff" opacity="0.7" />
+          <circle cx="0" cy="180" r="3" fill="#a855f7" opacity="0.7" />
+          <circle cx="-130" cy="0" r="3.5" fill="#38bdf8" opacity="0.6" />
+          <circle r="10" fill="rgba(0,212,255,0.5)" />
+          <circle r="4" fill="#fff" opacity="0.9" />
+        </g>
+      </svg>
+      <p class="hero-eyebrow">✦ Celestial Vedic Numerology ✦</p>
+      <h1 class="hero-title">Anktatvaa</h1>
+      <p class="hero-sub">
+        Where ancient cosmic mathematics meets the stars above—<br>
+        the universe has encoded your destiny in numbers and light
+      </p>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <div class="hero-cta-group">
+        <a href="signup.html" class="btn-hero-primary">✶ Chart Your Stellar Path</a>
+        <a href="login.html" class="btn-hero-ghost">Already initiated? Login</a>
+      </div>
+      <p class="scroll-cta" style="margin-top:2.5rem">↓ Reveal Your Cosmic Code ↓</p>
+    </section>
+
+    <!-- ═══════ PLANETS STRIP ═══════ -->
+    <div class="chakra-strip">
+
+      <!-- SUN -->
+      <div class="chakra-item">
+        <div class="chakra-svg-wrap" style="--cc:#f59e0b;--cs:#fbbf24">
+          <svg class="chakra-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pg1">
+                <feGaussianBlur stdDeviation="3" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <g class="petals-outer">
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(45,50,50)" />
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(90,50,50)" />
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(135,50,50)" />
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(180,50,50)" />
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(225,50,50)" />
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(270,50,50)" />
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(315,50,50)" />
+            </g>
+            <circle cx="50" cy="50" r="22" fill="#f59e0b" opacity="0.9" filter="url(#pg1)" />
+            <circle cx="50" cy="50" r="16" fill="#fbbf24" opacity="0.95" />
+            <text x="50" y="55" text-anchor="middle" font-size="13" fill="#050a18" font-family="serif"
+              font-weight="bold">☉</text>
+          </svg>
+        </div>
+        <span class="chakra-name">Sun</span>
+        <span class="chakra-mantra" style="color:#f59e0b">☉</span>
+      </div>
+
+      <!-- MOON -->
+      <div class="chakra-item">
+        <div class="chakra-svg-wrap" style="--cc:#a5f3fc;--cs:#e0f2fe">
+          <svg class="chakra-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pg2">
+                <feGaussianBlur stdDeviation="3" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="28" fill="rgba(0,212,255,0.1)" stroke="#a5f3fc" stroke-width="1"
+              filter="url(#pg2)" />
+            <g class="yantra-spin">
+              <circle cx="50" cy="50" r="20" fill="none" stroke="#a5f3fc" stroke-width="0.8" stroke-dasharray="3 4" />
+            </g>
+            <path d="M58 35 A18 18 0 1 0 58 65 A12 12 0 1 1 58 35Z" fill="#a5f3fc" opacity="0.9" />
+          </svg>
+        </div>
+        <span class="chakra-name">Moon</span>
+        <span class="chakra-mantra" style="color:#a5f3fc">☽</span>
+      </div>
+
+      <!-- MERCURY -->
+      <div class="chakra-item">
+        <div class="chakra-svg-wrap" style="--cc:#6ee7b7;--cs:#a7f3d0">
+          <svg class="chakra-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pg3">
+                <feGaussianBlur stdDeviation="2.5" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="28" fill="rgba(110,231,183,0.08)" stroke="#6ee7b7" stroke-width="1"
+              filter="url(#pg3)" />
+            <g class="petals-outer">
+              <circle cx="50" cy="50" r="14" fill="#6ee7b7" opacity="0.85" />
+              <circle cx="50" cy="50" r="8" fill="#a7f3d0" opacity="0.95" />
+            </g>
+            <text x="50" y="55" text-anchor="middle" font-size="11" fill="#050a18" font-family="serif">☿</text>
+          </svg>
+        </div>
+        <span class="chakra-name">Mercury</span>
+        <span class="chakra-mantra" style="color:#6ee7b7">☿</span>
+      </div>
+
+      <!-- VENUS -->
+      <div class="chakra-item">
+        <div class="chakra-svg-wrap" style="--cc:#f9a8d4;--cs:#fce7f3">
+          <svg class="chakra-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pg4">
+                <feGaussianBlur stdDeviation="2.5" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="28" fill="rgba(249,168,212,0.1)" stroke="#f9a8d4" stroke-width="1"
+              filter="url(#pg4)" />
+            <g class="yantra-spin">
+              <circle cx="50" cy="44" r="13" fill="none" stroke="#f9a8d4" stroke-width="1.2" />
+              <line x1="50" y1="57" x2="50" y2="68" stroke="#f9a8d4" stroke-width="1.2" />
+              <line x1="43" y1="63" x2="57" y2="63" stroke="#f9a8d4" stroke-width="1.2" />
+            </g>
+            <circle cx="50" cy="44" r="9" fill="#f9a8d4" opacity="0.8" />
+          </svg>
+        </div>
+        <span class="chakra-name">Venus</span>
+        <span class="chakra-mantra" style="color:#f9a8d4">♀</span>
+      </div>
+
+      <!-- MARS -->
+      <div class="chakra-item">
+        <div class="chakra-svg-wrap" style="--cc:#f87171;--cs:#fca5a5">
+          <svg class="chakra-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pg5">
+                <feGaussianBlur stdDeviation="2.5" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="28" fill="rgba(248,113,113,0.1)" stroke="#f87171" stroke-width="1"
+              filter="url(#pg5)" />
+            <g class="petals-outer">
+              <circle cx="50" cy="50" r="14" fill="#f87171" opacity="0.85" />
+              <circle cx="50" cy="50" r="8" fill="#fca5a5" opacity="0.95" />
+            </g>
+            <text x="50" y="55" text-anchor="middle" font-size="11" fill="#050a18" font-family="serif">♂</text>
+          </svg>
+        </div>
+        <span class="chakra-name">Mars</span>
+        <span class="chakra-mantra" style="color:#f87171">♂</span>
+      </div>
+
+      <!-- JUPITER -->
+      <div class="chakra-item">
+        <div class="chakra-svg-wrap" style="--cc:#818cf8;--cs:#c7d2fe">
+          <svg class="chakra-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pg6">
+                <feGaussianBlur stdDeviation="2.5" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="28" fill="rgba(129,140,248,0.12)" stroke="#818cf8" stroke-width="1"
+              filter="url(#pg6)" />
+            <g class="yantra-spin">
+              <ellipse cx="50" cy="50" rx="20" ry="7" fill="none" stroke="#818cf8" stroke-width="1" />
+              <ellipse cx="50" cy="50" rx="14" ry="5" fill="none" stroke="#c7d2fe" stroke-width="0.8" />
+            </g>
+            <circle cx="50" cy="50" r="12" fill="#818cf8" opacity="0.75" />
+            <text x="50" y="55" text-anchor="middle" font-size="10" fill="#e0f2fe" font-family="serif">♃</text>
+          </svg>
+        </div>
+        <span class="chakra-name">Jupiter</span>
+        <span class="chakra-mantra" style="color:#818cf8">♃</span>
+      </div>
+
+      <!-- SATURN -->
+      <div class="chakra-item">
+        <div class="chakra-svg-wrap" style="--cc:#00d4ff;--cs:#a5f3fc">
+          <svg class="chakra-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pg7">
+                <feGaussianBlur stdDeviation="2.5" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="28" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1"
+              filter="url(#pg7)" />
+            <g class="yantra-spin">
+              <ellipse cx="50" cy="50" rx="26" ry="8" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.7" />
+              <ellipse cx="50" cy="50" rx="20" ry="6" fill="none" stroke="#a5f3fc" stroke-width="0.8" opacity="0.5" />
+            </g>
+            <circle cx="50" cy="50" r="13" fill="#0d1f3c" stroke="#00d4ff" stroke-width="1.2" />
+            <circle cx="50" cy="50" r="8" fill="#00d4ff" opacity="0.6" />
+          </svg>
+        </div>
+        <span class="chakra-name">Saturn</span>
+        <span class="chakra-mantra" style="color:#00d4ff">♄</span>
+      </div>
+
+    </div>
+
+    <!-- ═══════ FORM SECTION ═══════ -->
+    <section class="form-section">
+      <h2 class="section-title">Decode Your Destiny</h2>
+      <p class="section-sub">The stars encoded your fate in numbers at the moment of your birth</p>
+
+      <div class="form-card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="field-group">
+          <label class="field-label" for="fname">✦ Full Name (as given at birth)</label>
+          <input class="field-input" id="fname" type="text" placeholder="Enter your complete birth name...">
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="fdob">✦ Date of Birth</label>
+            <input class="field-input" id="fdob" type="date">
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="fphone">✦ Mobile Number</label>
+            <input class="field-input" id="fphone" type="tel" placeholder="10-digit number">
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="fchallenge">✦ Current Life Challenge</label>
+          <input class="field-input" id="fchallenge" type="text"
+            placeholder="Career, relationships, health, finances...">
+        </div>
+        <button class="submit-btn float" id="submitBtn" onclick="doReading()">✦ Reveal My Stellar Reading ✦</button>
+        <p class="error-msg" id="errMsg"></p>
+      </div>
+
+      <div class="loading-ritual" id="loadingDiv">
+        <div class="ritual-spinner"></div>
+        <p class="ritual-text" id="loadingText">Aligning the constellations...</p>
+      </div>
+
+      <div id="result-section">
+        <div class="form-card result-card">
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+          <div class="result-header">
+            <p class="result-greeting">Stellar Revelation for</p>
+            <p class="result-name" id="res-name"></p>
+            <div class="result-numbers" id="res-numbers"></div>
+          </div>
+          <div id="res-reading"></div>
+          <div class="result-footer">
+            <p class="result-footer-text">✦ &nbsp; The cosmos speaks — those who listen transform &nbsp; ✦</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ COMPATIBILITY CHECKER ═══════ -->
+    <section class="compat-section" id="compatibility">
+      <h2 class="section-title" style="text-align:center">Cosmic Compatibility</h2>
+      <p class="section-sub" style="text-align:center">Discover if the universe wove your destinies together</p>
+
+      <div class="compat-card form-card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="compat-inputs">
+          <!-- Person 1 -->
+          <div class="compat-person">
+            <p class="compat-person-label">✦ First Soul</p>
+            <div class="field-group">
+              <label class="field-label" for="c1name">✦ Full Name</label>
+              <input class="field-input" id="c1name" type="text" placeholder="Enter first person's name...">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="c1dob">✦ Date of Birth</label>
+              <input class="field-input" id="c1dob" type="date">
+            </div>
+          </div>
+
+          <div class="compat-vs">
+            <div class="compat-vs-ring"></div>
+            <span class="compat-vs-text">VS</span>
+          </div>
+
+          <!-- Person 2 -->
+          <div class="compat-person">
+            <p class="compat-person-label">✦ Second Soul</p>
+            <div class="field-group">
+              <label class="field-label" for="c2name">✦ Full Name</label>
+              <input class="field-input" id="c2name" type="text" placeholder="Enter second person's name...">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="c2dob">✦ Date of Birth</label>
+              <input class="field-input" id="c2dob" type="date">
+            </div>
+          </div>
+        </div>
+
+        <button class="submit-btn" id="compatBtn" onclick="checkCompatibility()">✦ Reveal Cosmic Bond ✦</button>
+        <p class="error-msg" id="compatErr"></p>
+      </div>
+
+      <!-- Result -->
+      <div class="compat-result" id="compatResult">
+        <div class="compat-score-ring">
+          <svg viewBox="0 0 120 120" class="compat-ring-svg">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="8" />
+            <circle cx="60" cy="60" r="52" fill="none" stroke="url(#compatGrad)" stroke-width="8" stroke-linecap="round"
+              stroke-dasharray="327" stroke-dashoffset="327" id="compatArc"
+              style="transition:stroke-dashoffset 1.5s ease" />
+            <defs>
+              <linearGradient id="compatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00d4ff" />
+                <stop offset="100%" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="compat-score-inner">
+            <span class="compat-score-val" id="compatScore">0</span>
+            <span class="compat-score-pct">%</span>
+          </div>
+        </div>
+
+        <div class="compat-details" id="compatDetails"></div>
+      </div>
+    </section>
+
+    <!-- ═══════ FEATURES ═══════ -->
+    <section class="features" id="features">
+      <h2 class="section-title" style="text-align:center">What The Numbers Reveal</h2>
+      <p class="section-sub" style="text-align:center">Ancient celestial sciences decoded for your modern life</p>
+      <div class="features-grid">
+        <div class="feat-card"><span class="feat-icon">🌌</span>
+          <p class="feat-title">Vedic Numerology</p>
+          <p class="feat-text">Ancient Chaldean &amp; Pythagorean systems merged with celestial wisdom for stellar
+            accuracy</p>
+        </div>
+        <div class="feat-card"><span class="feat-icon">📡</span>
+          <p class="feat-title">Phone Vibration</p>
+          <p class="feat-text">Your phone number emits a cosmic frequency that shapes your daily reality like a stellar
+            signal</p>
+        </div>
+        <div class="feat-card"><span class="feat-icon">⚡</span>
+          <p class="feat-title">Present Analysis</p>
+          <p class="feat-text">Know exactly which cosmic cycles are active in your life right now and what the stars say
+            to do</p>
+        </div>
+        <div class="feat-card"><span class="feat-icon">🪐</span>
+          <p class="feat-title">Planetary Alignment</p>
+          <p class="feat-text">Discover how the planets aligned at your birth shape your energy and life's mission</p>
+        </div>
+        <div class="feat-card"><span class="feat-icon">✨</span>
+          <p class="feat-title">Name Vibration</p>
+          <p class="feat-text">Each letter carries a Chaldean frequency — your name is a cosmic signal broadcast into
+            the universe</p>
+        </div>
+        <div class="feat-card"><span class="feat-icon">🌙</span>
+          <p class="feat-title">Celestial Remedies</p>
+          <p class="feat-text">Receive personalised mantras, gemstones, colours and rituals aligned to your specific
+            cosmic numbers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ TESTIMONIALS ═══════ -->
+    <section class="testimonials" id="testimonials">
+      <h2 class="section-title" style="text-align:center">Voices of the Awakened</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <p class="testi-text">"The reading described my career struggles with chilling accuracy. I had never told
+            anyone about the problems I was facing, yet every word felt written for me."</p>
+          <p class="testi-name">— Aditya Kushwaha , Khaga </p>
+          <p class="testi-stars">★★★★★</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-text">"My phone number vibration reading explained why I have felt drained for years. After
+            changing to a recommended number, the shift was immediate."</p>
+          <p class="testi-name">— Maaanvek , Prayagraj </p>
+          <p class="testi-stars">★★★★★</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-text">"I was skeptical, but the planetary blockage section perfectly matched what my doctor
+            said about my anxiety. The celestial remedy has genuinely helped me."</p>
+          <p class="testi-name">— Arunendra Kushwaha , Kanpur </p>
+          <p class="testi-stars">★★★★★</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ FAQ ═══════ -->
+    <section class="faq-section" id="faq">
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.8rem">✦ Celestial Guidance ✦</p>
+      <h2 class="section-title" style="text-align:center">Frequently Asked Questions</h2>
+      <p class="section-sub" style="text-align:center">Ancient wisdom answered for the modern seeker</p>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>What is Vedic Numerology?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>Vedic Numerology is an ancient cosmic science rooted in both Chaldean and Pythagorean traditions. It
+              studies the vibrational frequencies encoded in your birth date and name, revealing the celestial blueprint
+              of your life path, personality, and destiny. Each number from 1–9 is governed by a specific planet,
+              creating a unique stellar signature for every soul.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>How does my name affect my numerology reading?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>Every letter carries a specific Chaldean vibrational frequency. When combined, the letters of your birth
+              name form a cosmic signal that broadcasts your soul's mission into the universe. Your name number
+              (Expression Number) reveals your innate talents, deepest desires, and the energy you project into the
+              world. That is why we ask for the full name given at birth.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>What is a Life Path Number?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>Your Life Path Number is derived by reducing your full date of birth to a single digit (or a master
+              number 11, 22, 33). It is the most significant number in your chart — the cosmic thread woven through
+              every chapter of your life. It indicates your core purpose, the lessons you are destined to learn, and the
+              gifts you carry into this incarnation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Why does my mobile number matter cosmically?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>Your phone number is not random — it emits a continuous vibrational frequency that interacts with your
+              personal energy field daily. A number in harmony with your Life Path and Birth Number amplifies success,
+              clarity, and positive connections. A discordant number can create subtle yet persistent energetic
+              interference, draining your vitality and blocking opportunities.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Which planets govern my numbers?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>In Vedic Numerology each digit is ruled by a celestial body: 1 → Sun ☉, 2 → Moon ☽, 3 → Jupiter ♃, 4 →
+              Rahu (North Node), 5 → Mercury ☿, 6 → Venus ♀, 7 → Ketu (South Node), 8 → Saturn ♄, 9 → Mars ♂.
+              Understanding which planets dominate your chart allows you to align daily actions with planetary energies
+              for maximum cosmic support.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>What are celestial remedies and do they work?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>Celestial remedies are personalised prescriptions drawn from ancient Vedic texts — including specific
+              mantras, gemstones, colours, rituals, and auspicious timings — designed to balance and strengthen weak
+              planetary influences in your numerological chart. Thousands of seekers have reported tangible shifts in
+              energy, focus, relationships, and fortune after consistently following their prescribed remedies.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Is my data safe and kept private?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Your name, date of birth, and mobile number are used solely to generate your personal
+              numerology reading. We do not share, sell, or store your sensitive data on third-party servers. Your
+              cosmic journey is yours alone — we are merely the channel through which the numbers speak.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>How do I book a personal consultation?</span>
+            <span class="faq-icon">✦</span>
+          </button>
+          <div class="faq-answer">
+            <p>Simply tap the WhatsApp button floating at the bottom-right of the page to connect directly with our
+              Vedic Numerologist. Personal consultations dive deeper into your full chart, karmic debts, compatibility,
+              and year-by-year forecasts. Sessions are available in Hindi and English, and can be conducted via call,
+              video, or chat.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+
+    <footer class="footer">
+      <div class="footer-symbol">✦</div>
+      <p class="footer-name">Anktatvaa</p>
+      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
+      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
+  <a href="https://wa.me/919129104931?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+    class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 2C8.268 2 2 8.268 2 16c0 2.466.67 4.775 1.838 6.758L2 30l7.465-1.813A13.933 13.933 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"
+        fill="#25D366" />
+      <path
+        d="M23.5 20.1c-.3-.15-1.77-.873-2.044-.972-.273-.1-.472-.15-.671.15-.199.297-.77.97-.944 1.17-.174.198-.348.223-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.671-1.617-.919-2.213-.242-.581-.487-.502-.671-.511-.174-.008-.372-.01-.57-.01-.198 0-.52.074-.793.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z"
+        fill="#fff" />
+    </svg>
+    <span class="wa-tooltip">Chat with Astrologer</span>
+    <span class="wa-pulse"></span>
+  </a>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('navHamburger').classList.toggle('active');
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+
+      // Close all open items
+      document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        openItem.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      // If this was not already open, open it
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+
+  </script>
+</body>
+
+</html>

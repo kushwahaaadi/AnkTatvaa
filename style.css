@@ -1,0 +1,2704 @@
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Anktatvaa â€” VEDIC NUMEROLOGY WEBSITE
+   style.css  Â·  ASTRONOMY THEME
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+
+/* â”€â”€ Google Fonts imported in HTML â”€â”€ */
+
+/* â”€â”€ CSS Variables â”€â”€ */
+:root {
+  /* Deep Space Astronomy palette */
+  --gold:     #00d4ff;   /* primary accent â€” cyan starlight        */
+  --gold2:    #38bdf8;   /* lighter cyan highlight                 */
+  --gold3:    #a5f3fc;   /* softest ice-blue highlight             */
+  --deep:     #050a18;   /* page background â€” deep space black     */
+  --mid:      #0a1628;   /* section background â€” dark navy         */
+  --surface:  #0d1f3c;   /* card background â€” midnight blue        */
+  --text:     #e0f2fe;   /* primary text â€” starlight white         */
+  --muted:    #7fb3d3;   /* secondary text â€” pale blue             */
+  --border:   rgba(0, 212, 255, 0.18);
+  --border-hover: rgba(0, 212, 255, 0.5);
+
+  /* Accent palette */
+  --rose:     #a855f7;   /* nebula purple                          */
+  --rose2:    #c084fc;   /* soft nebula violet                     */
+  --amber:    #f59e0b;   /* star gold                              */
+  --amber2:   #fbbf24;   /* bright star gold                       */
+}
+
+/* â”€â”€ Reset â”€â”€ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--deep);
+  color: var(--text);
+  font-family: 'Vesper Libre', serif;
+  overflow-x: hidden;
+  width: 100%;
+  scroll-behavior: smooth;
+  /* Prevent white flash before canvas renders */
+  background-color: #050a18;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   COSMOS CANVAS
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+#cosmos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PAGE WRAPPER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.page {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   HERO SECTION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Sacred geometry SVG behind hero text */
+.sacred-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  opacity: 0.12;
+  animation: rotSlow 80s linear infinite;
+}
+
+.hero-eyebrow {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1.2s ease both;
+}
+
+.hero-title {
+  font-family: 'Yatra One', serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  animation: fadeUp 1.2s 0.2s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.9;
+  font-style: italic;
+  animation: fadeUp 1.2s 0.4s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+/* Gold divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  width: 280px;
+  animation: fadeUp 1.2s 0.6s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* Scroll CTA */
+.scroll-cta {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  animation: pulseOpacity 2s 1.8s ease infinite;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   CHAKRA STRIP
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.chakra-strip {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.18);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+  background: rgba(10, 22, 40, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.chakra-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+}
+
+/* SVG mandala wrapper â€” handles glow + hover scale */
+.chakra-svg-wrap {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  border-radius: 50%;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 6px var(--cc, #888)) drop-shadow(0 0 2px var(--cc, #888));
+}
+
+.chakra-svg-wrap:hover {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 14px var(--cc, #888)) drop-shadow(0 0 6px var(--cc, #888));
+}
+
+.chakra-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Petals ring â€” slow continuous rotation */
+.petals-outer {
+  transform-origin: 50px 50px;
+  animation: rotatePetals 18s linear infinite;
+}
+
+/* Inner yantra â€” counter-rotation, slightly faster */
+.yantra-spin {
+  transform-origin: 50px 50px;
+  animation: rotatePetals 28s linear infinite reverse;
+}
+
+/* Stagger rotation speed per chakra */
+.chakra-item:nth-child(1) .petals-outer { animation-duration: 22s; }
+.chakra-item:nth-child(2) .petals-outer { animation-duration: 19s; }
+.chakra-item:nth-child(3) .petals-outer { animation-duration: 16s; }
+.chakra-item:nth-child(4) .petals-outer { animation-duration: 20s; }
+.chakra-item:nth-child(5) .petals-outer { animation-duration: 24s; }
+.chakra-item:nth-child(6) .petals-outer { animation-duration: 15s; }
+.chakra-item:nth-child(7) .petals-outer { animation-duration: 12s; }
+
+.chakra-item:nth-child(1) .yantra-spin { animation-duration: 35s; }
+.chakra-item:nth-child(2) .yantra-spin { animation-duration: 30s; }
+.chakra-item:nth-child(3) .yantra-spin { animation-duration: 25s; }
+.chakra-item:nth-child(4) .yantra-spin { animation-duration: 32s; }
+.chakra-item:nth-child(5) .yantra-spin { animation-duration: 38s; }
+.chakra-item:nth-child(6) .yantra-spin { animation-duration: 22s; }
+.chakra-item:nth-child(7) .yantra-spin { animation-duration: 18s; }
+
+/* Pulse glow on each chakra â€” staggered */
+.chakra-item:nth-child(1) .chakra-svg-wrap { animation: chakraGlow 3.5s 0s ease-in-out infinite; }
+.chakra-item:nth-child(2) .chakra-svg-wrap { animation: chakraGlow 3.5s 0.4s ease-in-out infinite; }
+.chakra-item:nth-child(3) .chakra-svg-wrap { animation: chakraGlow 3.5s 0.8s ease-in-out infinite; }
+.chakra-item:nth-child(4) .chakra-svg-wrap { animation: chakraGlow 3.5s 1.2s ease-in-out infinite; }
+.chakra-item:nth-child(5) .chakra-svg-wrap { animation: chakraGlow 3.5s 1.6s ease-in-out infinite; }
+.chakra-item:nth-child(6) .chakra-svg-wrap { animation: chakraGlow 3.5s 2.0s ease-in-out infinite; }
+.chakra-item:nth-child(7) .chakra-svg-wrap { animation: chakraGlow 3.5s 2.4s ease-in-out infinite; }
+
+/* Override hover transform to work alongside animation */
+.chakra-item:nth-child(1) .chakra-svg-wrap:hover,
+.chakra-item:nth-child(2) .chakra-svg-wrap:hover,
+.chakra-item:nth-child(3) .chakra-svg-wrap:hover,
+.chakra-item:nth-child(4) .chakra-svg-wrap:hover,
+.chakra-item:nth-child(5) .chakra-svg-wrap:hover,
+.chakra-item:nth-child(6) .chakra-svg-wrap:hover,
+.chakra-item:nth-child(7) .chakra-svg-wrap:hover {
+  animation-play-state: paused;
+  transform: scale(1.2);
+}
+
+.chakra-name {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.chakra-mantra {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+@keyframes rotatePetals {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes chakraGlow {
+  0%, 100% { filter: drop-shadow(0 0 5px var(--cc, #00d4ff)) drop-shadow(0 0 2px var(--cc, #00d4ff)); }
+  50%       { filter: drop-shadow(0 0 18px var(--cc, #00d4ff)) drop-shadow(0 0 8px var(--cc, #00d4ff)); }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   FORM SECTION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.form-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.section-title {
+  font-family: 'Yatra One', serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+
+/* â”€â”€ Form Card â”€â”€ */
+.form-card {
+  background: linear-gradient(135deg, rgba(10,22,40,0.97), rgba(13,31,60,0.99));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s;
+}
+
+.form-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Top glow inside card */
+.form-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 255, 0.07), transparent 60%);
+  pointer-events: none;
+}
+
+/* Decorative corner brackets */
+.corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(0, 212, 255, 0.4);
+  border-style: solid;
+}
+.corner-tl { top: 12px;    left: 12px;  border-width: 1px 0 0 1px; }
+.corner-tr { top: 12px;    right: 12px; border-width: 1px 1px 0 0; }
+.corner-bl { bottom: 12px; left: 12px;  border-width: 0 0 1px 1px; }
+.corner-br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+/* â”€â”€ Form Fields â”€â”€ */
+.field-group {
+  margin-bottom: 1.6rem;
+}
+
+.field-label {
+  display: block;
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.field-input {
+  width: 100%;
+  background: rgba(0, 212, 255, 0.04);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 2px;
+  padding: 0.85rem 1rem;
+  font-family: 'Vesper Libre', serif;
+  font-size: 1.05rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field-input:focus {
+  border-color: rgba(0, 212, 255, 0.65);
+  background: rgba(0, 212, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1),
+              inset 0 0 20px rgba(0, 212, 255, 0.03);
+}
+
+.field-input::placeholder {
+  color: rgba(127, 179, 211, 0.45);
+  font-style: italic;
+}
+
+/* Date input calendar icon color fix */
+.field-input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7) sepia(1) hue-rotate(5deg);
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Two-column row */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* â”€â”€ Submit Button â”€â”€ */
+.submit-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #0369a1, #00d4ff, #0369a1);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  font-family: 'Philosopher', serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer sweep on hover */
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.submit-btn:hover::before {
+  left: 120%;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #0284c7, #38bdf8, #0284c7);
+  box-shadow: 0 0 35px rgba(0, 212, 255, 0.4), 0 0 8px rgba(56, 189, 248, 0.3);
+}
+
+.submit-btn:active {
+  transform: scale(0.99);
+}
+
+.submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-msg {
+  color: #e07070;
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 0.8rem;
+  min-height: 1.2rem;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LOADING RITUAL
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.loading-ritual {
+  text-align: center;
+  padding: 3.5rem;
+  display: none;
+}
+
+.ritual-spinner {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-top: 1px solid var(--gold);
+  border-right: 1px solid rgba(0, 212, 255, 0.5);
+  border-radius: 50%;
+  animation: spin 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.ritual-text {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  animation: pulseOpacity 1.8s ease-in-out infinite;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   RESULT SECTION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+#result-section {
+  display: none;
+  margin-top: 2.5rem;
+}
+
+.result-card {
+  margin-top: 0;
+}
+
+.result-header {
+  text-align: center;
+  padding: 1.5rem 0 1.5rem;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  margin-bottom: 2rem;
+}
+
+.result-greeting {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.result-name {
+  font-family: 'Yatra One', serif;
+  font-size: 1.4rem;
+  color: var(--gold2);
+  margin-bottom: 0.3rem;
+}
+
+/* Number badges row */
+.result-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.num-badge {
+  text-align: center;
+}
+
+.num-val {
+  font-family: 'Yatra One', serif;
+  font-size: 2.2rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.num-label {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/* Reading content blocks */
+.reading-block {
+  background: rgba(0, 212, 255, 0.05);
+  border-left: 2px solid rgba(0, 212, 255, 0.4);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0 2px 2px 0;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.reading-block:hover {
+  border-left-color: rgba(0, 212, 255, 0.8);
+  background: rgba(0, 212, 255, 0.09);
+}
+
+.reading-title {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.reading-text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.result-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(155, 89, 182, 0.15);
+}
+
+.result-footer-text {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(201, 168, 76, 0.4);
+  text-transform: uppercase;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   FEATURES SECTION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.features {
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.feat-card {
+  background: rgba(10, 22, 40, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem 1.8rem;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% -20%, rgba(0, 212, 255, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.feat-card:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+.feat-card:hover::before {
+  opacity: 1;
+}
+
+.feat-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.feat-title {
+  font-family: 'Philosopher', serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.feat-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   TESTIMONIALS
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.testimonials {
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.testi-card {
+  background: rgba(10, 22, 40, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem;
+  position: relative;
+}
+
+.testi-card::before {
+  content: '"';
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  font-family: 'Yatra One', serif;
+  font-size: 4rem;
+  color: rgba(0, 212, 255, 0.2);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testi-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+}
+
+.testi-name {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.testi-stars {
+  color: var(--gold2);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   FAQ SECTION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.faq-section {
+  padding: 5rem 2rem 5rem;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.faq-list {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* â”€â”€ FAQ Item â”€â”€ */
+.faq-item {
+  background: linear-gradient(135deg, rgba(10,22,40,0.97), rgba(13,31,60,0.99));
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+.faq-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.05), transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.faq-item.open,
+.faq-item:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.08);
+}
+
+.faq-item.open::before,
+.faq-item:hover::before {
+  opacity: 1;
+}
+
+/* â”€â”€ Question Button â”€â”€ */
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.3rem 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Philosopher', serif;
+  font-size: clamp(0.8rem, 2vw, 0.92rem);
+  letter-spacing: 1.5px;
+  color: var(--text);
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.faq-question:hover {
+  color: var(--gold);
+}
+
+.faq-item.open .faq-question {
+  color: var(--gold);
+}
+
+/* â”€â”€ Rotating âœ¦ icon â”€â”€ */
+.faq-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 0.75rem;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: rgba(0, 212, 255, 0.12);
+  border-color: var(--gold);
+  color: var(--gold3);
+}
+
+/* â”€â”€ Answer Panel â”€â”€ */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer p {
+  padding: 0 1.8rem 1.5rem;
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--muted);
+  font-style: italic;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  padding-top: 1rem;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   FOOTER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.footer {
+
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.15);
+  background: rgba(10, 22, 40, 0.95);
+}
+
+.footer-symbol {
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  opacity: 0.6;
+}
+
+.footer-name {
+  font-family: 'Yatra One', serif;
+  font-size: 1.2rem;
+  color: var(--gold2);
+  margin-bottom: 0.4rem;
+}
+
+.footer-tagline {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.footer-sanskrit {
+  font-size: 1.1rem;
+  color: rgba(155, 142, 110, 0.4);
+  margin-bottom: 1rem;
+}
+
+.footer-copy {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(155, 142, 110, 0.3);
+  text-transform: uppercase;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   UTILITY â€” FLOATING ANIMATION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   KEYFRAME ANIMATIONS
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotSlow {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   RESPONSIVE
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media (max-width: 600px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chakra-strip {
+    gap: 0.8rem;
+  }
+
+  .result-numbers {
+    gap: 1rem;
+  }
+
+  .sacred-circle {
+    width: 320px;
+    height: 320px;
+  }
+
+  .form-card {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .features-grid,
+  .testi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NAVBAR
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 68px;
+  background: rgba(5, 10, 24, 0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  transition: background 0.3s;
+}
+
+.navbar:hover {
+  background: rgba(5, 10, 24, 0.98);
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.nav-logo-symbol {
+  font-size: 1.2rem;
+  color: var(--gold);
+  animation: pulseOpacity 3s ease-in-out infinite;
+}
+
+.nav-logo-text {
+  font-family: 'Yatra One', serif;
+  font-size: 1rem;
+  color: var(--gold2);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-link {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--gold2);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Auth buttons in navbar */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.btn-login {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(155, 89, 182, 0.25);
+  border-radius: 2px;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.btn-login:hover,
+.btn-login.active-nav {
+  color: var(--gold);
+  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(201, 168, 76, 0.06);
+}
+
+.btn-signup {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  background: rgba(201, 168, 76, 0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-signup::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.2), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s;
+}
+
+.btn-signup:hover::before {
+  left: 120%;
+}
+
+.btn-signup:hover,
+.btn-signup.active-nav {
+  background: rgba(201, 168, 76, 0.15);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.18);
+}
+
+/* Hamburger (mobile) */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+  transition: all 0.3s;
+}
+
+.nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* Mobile dropdown menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(5, 10, 24, 0.99);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  padding: 1.5rem 2rem;
+  flex-direction: column;
+  gap: 1.2rem;
+  backdrop-filter: blur(16px);
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-link {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(155, 89, 182, 0.1);
+  transition: color 0.3s;
+}
+
+.mobile-link:hover { color: var(--gold2); }
+
+.mobile-auth {
+  display: flex;
+  gap: 0.8rem;
+  padding-top: 0.5rem;
+}
+
+/* Push page content below fixed navbar */
+.page {
+  padding-top: 68px;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   AUTH PAGES (login & signup)
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.auth-section {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+}
+
+/* Rotating mandala behind auth card */
+.auth-mandala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  opacity: 0.08;
+  pointer-events: none;
+  animation: rotSlow 60s linear infinite;
+}
+
+/* Auth card */
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(145deg, rgba(19, 10, 46, 0.98), rgba(8, 3, 22, 0.99));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2.8rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease both;
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.08), transparent 55%);
+  pointer-events: none;
+}
+
+/* Auth header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.auth-eyebrow {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.auth-title {
+  font-family: 'Yatra One', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold), var(--gold3), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.4rem;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* Divider between header and form */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.6rem 0;
+}
+
+/* Social login buttons */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  border-radius: 2px;
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.social-btn:hover {
+  background: rgba(155, 89, 182, 0.1);
+  border-color: rgba(201, 168, 76, 0.35);
+  color: var(--text);
+}
+
+/* "or" separator */
+.auth-or {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.auth-or-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(201, 168, 76, 0.14);
+}
+
+.auth-or-text {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Password field with show/hide toggle */
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .field-input {
+  padding-right: 2.8rem;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+
+.toggle-pass:hover {
+  opacity: 0.9;
+}
+
+/* Password strength bar */
+.strength-bar {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+.strength-text {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  min-height: 14px;
+}
+
+/* Remember me / forgot password row */
+.auth-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+
+/* Custom checkbox */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"],
+.terms-label input[type="checkbox"] {
+  display: none;
+}
+
+.check-custom {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: 1px;
+  background: rgba(155, 89, 182, 0.04);
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.remember-me input:checked + .check-custom,
+.terms-label input:checked + .check-custom {
+  background: rgba(155, 89, 182, 0.15);
+  border-color: var(--gold);
+}
+
+.remember-me input:checked + .check-custom::after,
+.terms-label input:checked + .check-custom::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 5px;
+  height: 8px;
+  border: 1px solid var(--gold);
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+}
+
+.remember-text {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.forgot-link {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.forgot-link:hover {
+  opacity: 1;
+}
+
+/* Terms checkbox row */
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.terms-text {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+/* Switch link (login â†” signup) */
+.auth-switch {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.auth-switch-link {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.auth-switch-link:hover {
+  color: var(--gold2);
+  text-decoration: underline;
+}
+
+/* â”€â”€ Responsive navbar â”€â”€ */
+@media (max-width: 700px) {
+  .nav-links    { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-auth     { display: none; }
+  .navbar       { padding: 0 1.5rem; }
+}
+
+@media (max-width: 520px) {
+  .auth-card    { padding: 2rem 1.4rem; }
+  .auth-mandala { width: 300px; height: 300px; }
+  .social-login { gap: 0.5rem; }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NAVBAR
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 68px;
+  background: rgba(5, 10, 24, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  transition: background 0.3s;
+}
+
+.navbar:hover {
+  background: rgba(5, 10, 24, 0.98);
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo-symbol {
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+
+.nav-logo-text {
+  font-family: 'Yatra One', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold), var(--gold3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.nav-link {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 2px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.07);
+}
+
+/* Auth buttons in nav */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.btn-nav-login {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: 2px;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.btn-nav-login:hover,
+.btn-nav-login.active-nav {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: var(--gold);
+  color: var(--gold2);
+}
+
+.btn-nav-signup {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  background: linear-gradient(135deg, #0369a1, #00d4ff);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.btn-nav-signup:hover,
+.btn-nav-signup.active-nav {
+  background: linear-gradient(135deg, #00d4ff, #a5f3fc);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(5, 10, 24, 0.99);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  padding: 1.5rem 2rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  backdrop-filter: blur(16px);
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-link {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(155, 89, 182, 0.1);
+  transition: color 0.2s;
+}
+
+.mobile-link:hover { color: var(--gold); }
+
+.mobile-auth {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Offset for fixed navbar */
+.hero {
+  padding-top: 68px;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   HERO CTA BUTTONS
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.btn-hero-primary {
+  font-family: 'Philosopher', serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #050a18;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, #00d4ff, #38bdf8, #00d4ff);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  transition: all 0.3s;
+  animation: float 4s ease-in-out infinite;
+}
+
+.btn-hero-primary:hover {
+  background: linear-gradient(135deg, #38bdf8, #a5f3fc, #38bdf8);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  transform: translateY(-2px);
+  animation: none;
+}
+
+.btn-hero-ghost {
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.btn-hero-ghost:hover {
+  color: var(--gold);
+  border-color: rgba(0, 212, 255, 0.6);
+  background: rgba(0, 212, 255, 0.07);
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   AUTH PAGES (login / signup)
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7rem 1.5rem 4rem;
+  position: relative;
+}
+
+/* Rotating mandala behind the card */
+.auth-mandala {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  pointer-events: none;
+  animation: rotSlow 60s linear infinite;
+  z-index: 0;
+}
+
+/* Auth card */
+.auth-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 460px;
+  background: linear-gradient(145deg, rgba(5,10,24,0.97), rgba(10,22,40,0.99));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2.8rem 2.4rem;
+  animation: fadeUp 0.8s ease both;
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 255, 0.08), transparent 55%);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.signup-card {
+  max-width: 520px;
+}
+
+/* Auth card header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.auth-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--gold);
+  animation: pulseOpacity 3s ease-in-out infinite;
+}
+
+.auth-title {
+  font-family: 'Yatra One', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.auth-subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Remember me / forgot password row */
+.auth-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.remember-me input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark-box {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(155, 89, 182, 0.4);
+  border-radius: 2px;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.remember-me input:checked + .checkmark-box {
+  background: rgba(155, 89, 182, 0.15);
+  border-color: var(--gold);
+}
+
+.remember-me input:checked + .checkmark-box::after {
+  content: 'âœ“';
+  position: absolute;
+  top: -1px;
+  left: 2px;
+  font-size: 11px;
+  color: var(--gold);
+}
+
+.forgot-link {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: var(--gold);
+}
+
+/* Terms checkbox */
+.terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.terms-check input[type="checkbox"] {
+  display: none;
+}
+
+/* Or divider */
+.auth-or {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.8rem 0 1.4rem;
+}
+
+.auth-or-text {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Social login buttons */
+.social-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: rgba(0, 212, 255, 0.04);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 2px;
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-social:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.4);
+  color: var(--gold2);
+}
+
+/* Switch page link */
+.auth-switch {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.auth-switch-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-style: normal;
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.auth-switch-link:hover {
+  color: var(--gold2);
+}
+
+/* Success message */
+.success-msg {
+  color: #7acc7a;
+  font-family: 'Philosopher', serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 0.8rem;
+  min-height: 1.2rem;
+}
+
+/* Password show/hide toggle */
+.pw-wrap {
+  position: relative;
+}
+
+.toggle-pw {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+
+.toggle-pw:hover {
+  opacity: 1;
+}
+
+/* Password strength bar */
+.pw-strength-wrap {
+  display: none;
+  align-items: center;
+  gap: 0.7rem;
+  margin: -1rem 0 1.2rem;
+}
+
+.pw-strength-bar {
+  flex: 1;
+  height: 3px;
+  background: rgba(155, 89, 182, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.pw-strength-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.4s, background 0.4s;
+}
+
+.pw-strength-label {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  min-width: 44px;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   RESPONSIVE â€” NAVBAR & AUTH
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-auth  { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .auth-card,
+  .signup-card {
+    padding: 2rem 1.4rem;
+  }
+
+  .auth-mandala {
+    width: 300px;
+    height: 300px;
+    opacity: 0.15;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-ghost {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   DAILY COSMIC NUMBER BANNER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.cosmic-banner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: linear-gradient(90deg,
+    rgba(0,212,255,0.06) 0%,
+    rgba(168,85,247,0.10) 50%,
+    rgba(0,212,255,0.06) 100%);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  overflow: hidden;
+}
+
+.cosmic-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(0,212,255,0.04) 50%, transparent 100%);
+  animation: bannerShimmer 4s linear infinite;
+}
+
+@keyframes bannerShimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.cosmic-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.75rem 2rem;
+  flex-wrap: wrap;
+}
+
+.cosmic-banner-icon {
+  color: var(--gold);
+  font-size: 0.85rem;
+  animation: pulseOpacity 2.5s ease-in-out infinite;
+}
+
+.cosmic-banner-label {
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.cosmic-banner-num {
+  font-family: 'Yatra One', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00d4ff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.cosmic-banner-msg {
+  font-family: 'Vesper Libre', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text);
+  opacity: 0.85;
+  max-width: 460px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .cosmic-banner-inner {
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
+  .cosmic-banner-msg { font-size: 0.9rem; }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   COMPATIBILITY CHECKER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.compat-section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.compat-card {
+  max-width: 100%;
+}
+
+.compat-inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.compat-person {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.compat-person-label {
+  font-family: 'Yatra One', serif;
+  font-size: 0.95rem;
+  color: var(--gold2);
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+/* VS divider */
+.compat-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2.4rem;
+  position: relative;
+}
+
+.compat-vs-ring {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(168,85,247,0.4);
+  animation: pulseRing 2s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1);   opacity: 0.4; }
+  50%       { transform: scale(1.2); opacity: 0.9; }
+}
+
+.compat-vs-text {
+  font-family: 'Yatra One', serif;
+  font-size: 0.9rem;
+  color: var(--rose2);
+  letter-spacing: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Result area */
+.compat-result {
+  display: none;
+  margin-top: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+.compat-result.visible {
+  display: flex;
+}
+
+/* Score ring */
+.compat-score-ring {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+}
+
+.compat-ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 12px rgba(0,212,255,0.35));
+}
+
+.compat-score-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.compat-score-val {
+  font-family: 'Yatra One', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00d4ff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.compat-score-pct {
+  font-family: 'Philosopher', serif;
+  font-size: 1rem;
+  color: var(--muted);
+  align-self: flex-end;
+  padding-bottom: 0.3rem;
+}
+
+/* Compat details grid */
+.compat-details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.compat-detail-card {
+  background: rgba(0,212,255,0.04);
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 3px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.compat-detail-card:hover {
+  border-color: rgba(168,85,247,0.4);
+  background: rgba(168,85,247,0.06);
+}
+
+.compat-detail-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.compat-detail-title {
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.compat-detail-val {
+  font-family: 'Yatra One', serif;
+  font-size: 1.4rem;
+  color: var(--gold2);
+}
+
+.compat-verdict {
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(0,212,255,0.07), rgba(168,85,247,0.07));
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: 3px;
+}
+
+.compat-verdict-title {
+  font-family: 'Yatra One', serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.compat-verdict-text {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 680px) {
+  .compat-inputs {
+    grid-template-columns: 1fr;
+  }
+  .compat-vs {
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   WHATSAPP FLOATING BUTTON
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.wa-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25D366;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.3);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: visible;
+}
+
+.wa-fab:hover {
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.6), 0 4px 12px rgba(0,0,0,0.35);
+}
+
+.wa-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Pulsing ring */
+.wa-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.5);
+  animation: waPulse 2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes waPulse {
+  0%   { transform: scale(1);    opacity: 0.7; }
+  70%  { transform: scale(1.45); opacity: 0; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+/* Tooltip label */
+.wa-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  background: rgba(5,10,24,0.95);
+  border: 1px solid rgba(37,211,102,0.35);
+  border-radius: 4px;
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #7cfc9e;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.4rem 0.8rem;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+}
+
+.wa-fab:hover .wa-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 480px) {
+  .wa-fab {
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 52px;
+    height: 52px;
+  }
+  .wa-icon { width: 28px; height: 28px; }
+}
+
+
+/* ═══════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE RESPONSIVE OVERHAUL
+   Covers phones from 480px down to 360px
+═══════════════════════════════════════════════════ */
+
+/* ── Prevent any horizontal scroll on all devices ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+* { box-sizing: border-box; }
+
+/* ══════════════════════
+   TABLET  ≤ 768px
+══════════════════════ */
+@media (max-width: 768px) {
+
+  /* --- HERO --- */
+  .hero {
+    padding: 6rem 1.2rem 3rem;
+    min-height: auto;
+  }
+  .sacred-circle {
+    width: 260px;
+    height: 260px;
+    opacity: 0.08;
+  }
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 4px;
+  }
+  .hero-title {
+    font-size: clamp(1.7rem, 8vw, 2.8rem);
+  }
+  .hero-sub {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  .divider { width: 200px; }
+
+  /* --- SECTIONS --- */
+  .form-section,
+  .compat-section,
+  .faq-section,
+  .features,
+  .testimonials {
+    padding: 3rem 1.2rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+  }
+  .section-sub {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  /* --- CHAKRA STRIP --- */
+  .chakra-strip {
+    gap: 0.6rem;
+    padding: 1.5rem 1rem;
+  }
+  .chakra-svg-wrap {
+    width: 54px;
+    height: 54px;
+  }
+  .chakra-name {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .chakra-mantra { font-size: 8px; }
+
+  /* --- FORMS --- */
+  .form-card {
+    padding: 1.6rem 1rem;
+  }
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+  .field-label { font-size: 9px; letter-spacing: 2px; }
+  .field-input {
+    font-size: 0.95rem;
+    padding: 0.75rem 0.85rem;
+  }
+  .submit-btn {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    padding: 0.9rem 1rem;
+  }
+
+  /* --- FEATURES GRID --- */
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .feat-card { padding: 1.4rem 1.2rem; }
+  .feat-icon { font-size: 1.6rem; }
+  .feat-title { font-size: 0.75rem; }
+  .feat-text  { font-size: 0.88rem; }
+
+  /* --- TESTIMONIALS --- */
+  .testi-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .testi-card { padding: 1.5rem 1.2rem; }
+  .testi-text { font-size: 0.93rem; }
+
+  /* --- COMPATIBILITY --- */
+  .compat-inputs {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .compat-vs { padding: 0.2rem 0; }
+
+  /* --- FAQ --- */
+  .faq-section { padding: 3rem 1rem; }
+  .faq-list    { margin-top: 2rem; gap: 0.65rem; }
+  .faq-question {
+    padding: 1.1rem 1.2rem;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+  }
+  .faq-answer p {
+    padding: 0.8rem 1.2rem 1.2rem;
+    font-size: 0.93rem;
+  }
+
+  /* --- FOOTER --- */
+  .footer { padding: 2.5rem 1.2rem; }
+  .footer-name { font-size: 1rem; }
+}
+
+/* ══════════════════════
+   PHONE  ≤ 480px
+══════════════════════ */
+@media (max-width: 480px) {
+
+  /* --- HERO --- */
+  .hero { padding: 5.5rem 1rem 2.5rem; }
+  .hero-title { font-size: clamp(1.5rem, 9vw, 2.2rem); }
+  .hero-sub   { font-size: 0.93rem; line-height: 1.75; }
+  .sacred-circle { width: 200px; height: 200px; }
+
+  .btn-hero-primary,
+  .btn-hero-ghost {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 0.85rem 1rem;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 0.7rem;
+    width: 100%;
+  }
+
+  /* --- NAVBAR --- */
+  .navbar { padding: 0 1rem; height: 58px; }
+  .nav-logo-text { font-size: 0.85rem; letter-spacing: 1px; }
+  .nav-logo-symbol { font-size: 1rem; }
+
+  /* --- CHAKRA STRIP --- */
+  .chakra-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding: 1.2rem 0.8rem;
+  }
+  .chakra-item:nth-child(n+5) { display: none; }   /* show only 4 on very small */
+  .chakra-svg-wrap { width: 46px; height: 46px; }
+
+  /* --- FORMS --- */
+  .form-card { padding: 1.3rem 0.9rem; }
+  .field-input { font-size: 0.9rem; }
+  .num-val { font-size: 1.8rem; }
+
+  /* --- FEATURES --- */
+  .features-grid { grid-template-columns: 1fr; }
+
+  /* --- COMPAT --- */
+  .compat-score-ring { width: 120px; height: 120px; }
+  .compat-score-val  { font-size: 2.2rem; }
+
+  /* --- COSMIC BANNER --- */
+  .cosmic-banner-inner {
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.7rem 1rem;
+  }
+  .cosmic-banner-label { font-size: 8px; letter-spacing: 2px; }
+  .cosmic-banner-num   { font-size: 1.4rem; }
+  .cosmic-banner-msg   { font-size: 0.83rem; }
+
+  /* --- FAQ --- */
+  .faq-question {
+    padding: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+  }
+  .faq-icon { width: 24px; height: 24px; font-size: 0.65rem; }
+  .faq-answer p { font-size: 0.88rem; line-height: 1.75; }
+
+  /* --- FOOTER --- */
+  .footer { padding: 2rem 1rem; }
+  .footer-tagline  { font-size: 8px; letter-spacing: 2px; }
+  .footer-sanskrit { font-size: 0.95rem; }
+  .footer-copy     { font-size: 7.5px; }
+}
+
+/* ══════════════════════
+   SMALL PHONE  ≤ 380px
+══════════════════════ */
+@media (max-width: 380px) {
+  .hero-title { font-size: 1.4rem; }
+  .section-title { font-size: 1rem; }
+  .navbar { height: 54px; }
+  .nav-logo-text { font-size: 0.78rem; }
+  .form-card { padding: 1.1rem 0.75rem; }
+  .submit-btn { font-size: 9px; letter-spacing: 1.5px; }
+  .chakra-strip { grid-template-columns: repeat(3, 1fr); }
+  .chakra-item:nth-child(n+4) { display: none; }
+}
+
+/* ── Touch-friendly tap targets ── */
+@media (max-width: 768px) {
+  .nav-link,
+  .mobile-link,
+  .btn-nav-login,
+  .btn-nav-signup,
+  .faq-question,
+  .submit-btn {
+    min-height: 44px;
+  }
+
+  /* Prevent text from overflowing containers */
+  p, h1, h2, h3, span, label {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Remove hover-only effects that don't work on touch */
+  .feat-card:hover { transform: none; }
+}
+
+
+
+
