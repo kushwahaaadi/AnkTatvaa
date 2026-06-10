@@ -23,30 +23,30 @@ const STAR_COLORS = [
 ];
 const randColor = () => STAR_COLORS[Math.random() < 0.08 ? 5 : rndI(0, 5)];
 
-// ── LAYER 1: 400 tiny distant stars ──
-const starsDeep = Array.from({ length: 400 }, () => {
+// ── LAYER 1: 150 tiny distant stars ──
+const starsDeep = Array.from({ length: 150 }, () => {
   const [r, g, b] = randColor();
   return { x: Math.random(), y: Math.random(), r: rnd(0.3, 0.85),
            t: rnd(0, Math.PI * 2), sp: rnd(0.004, 0.010), r_: r, g_: g, b_: b };
 });
 
-// ── LAYER 2: 180 medium twinkling stars ──
-const starsMid = Array.from({ length: 180 }, () => {
+// ── LAYER 2: 70 medium twinkling stars ──
+const starsMid = Array.from({ length: 70 }, () => {
   const [r, g, b] = randColor();
   return { x: Math.random(), y: Math.random(), r: rnd(0.9, 1.8),
            t: rnd(0, Math.PI * 2), sp: rnd(0.007, 0.018), r_: r, g_: g, b_: b };
 });
 
-// ── LAYER 3: 55 bright stars with glint crosses ──
-const starsBright = Array.from({ length: 55 }, () => {
+// ── LAYER 3: 20 bright stars with glint crosses ──
+const starsBright = Array.from({ length: 20 }, () => {
   const [r, g, b] = randColor();
   return { x: Math.random(), y: Math.random(), r: rnd(1.6, 2.8),
            t: rnd(0, Math.PI * 2), sp: rnd(0.010, 0.022),
            r_: r, g_: g, b_: b, glint: Math.random() < 0.5 };
 });
 
-// ── Milky Way band: 200 micro-stars on a diagonal ──
-const milkyWay = Array.from({ length: 200 }, () => {
+// ── Milky Way band: 80 micro-stars on a diagonal ──
+const milkyWay = Array.from({ length: 80 }, () => {
   const along = Math.random(), off = rnd(-0.07, 0.07);
   return { x: along * 1.3 - 0.1 + off * 0.4, y: along * 0.55 + 0.2 + off,
            r: rnd(0.15, 0.55), a: rnd(0.07, 0.28) };
