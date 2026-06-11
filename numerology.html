@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerology Report — Anktatvaa · Celestial Vedic Numerology</title>
+  <meta name="description"
+    content="Generate your personalized Vedic Numerology Report. Calculate your Birth Number, Destiny Number, and explore your Universal Numerology Grid based on your Date of Birth.">
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════
+       NUMEROLOGY REPORT MODULE — LOCAL STYLES
+    ═══════════════════════════════════════ */
+
+    .numero-section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+    }
+
+    /* ── DOB Input Card ── */
+    .dob-input-card {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .dob-input-card .field-group {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 0;
+    }
+
+    .dob-input-card .submit-btn {
+      flex-shrink: 0;
+      width: auto;
+      min-width: 220px;
+      margin-top: 0;
+    }
+
+    /* ── Report Result Card ── */
+    .report-section {
+      display: none;
+      margin-top: 3rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .report-section.visible {
+      display: block;
+    }
+
+    .report-card {
+      position: relative;
+    }
+
+    /* Report Header */
+    .report-header {
+      text-align: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+      margin-bottom: 2rem;
+    }
+
+    .report-header .hero-eyebrow {
+      animation: none;
+      opacity: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .report-title {
+      font-family: 'Yatra One', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .report-dob-display {
+      font-family: 'Philosopher', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── Number Badges Row ── */
+    .report-numbers {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+
+    .report-num-badge {
+      text-align: center;
+      position: relative;
+    }
+
+    .report-num-ring {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto 0.8rem;
+    }
+
+    .report-num-ring::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      animation: pulseRing 3s ease-in-out infinite;
+    }
+
+    .report-num-ring::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(168, 85, 247, 0.06));
+      border: 1px solid rgba(0, 212, 255, 0.15);
+    }
+
+    .report-num-val {
+      font-family: 'Yatra One', serif;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .report-num-label {
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .report-num-desc {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.3rem;
+      max-width: 160px;
+    }
+
+    /* ── Universal Grid Section ── */
+    .grid-section {
+      margin: 2.5rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(0, 212, 255, 0.12);
+      border-bottom: 1px solid rgba(0, 212, 255, 0.12);
+    }
+
+    .grid-section-title {
+      font-family: 'Philosopher', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .grid-section-sub {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    /* The 3x3 numerology grid */
+    .numero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 380px;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    .grid-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0, 212, 255, 0.18);
+      position: relative;
+      transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+      background: rgba(0, 212, 255, 0.02);
+      overflow: hidden;
+    }
+
+    .grid-cell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.06), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .grid-cell.has-digits {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(168, 85, 247, 0.04));
+      border-color: rgba(0, 212, 255, 0.35);
+    }
+
+    .grid-cell.has-digits::before {
+      opacity: 1;
+    }
+
+    .grid-cell.has-digits:hover {
+      border-color: rgba(0, 212, 255, 0.65);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.12), inset 0 0 20px rgba(0, 212, 255, 0.04);
+    }
+
+    .grid-cell.empty-cell {
+      background: rgba(5, 10, 24, 0.6);
+      border-color: rgba(0, 212, 255, 0.08);
+    }
+
+    /* Corner position number label */
+    .grid-cell-pos {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      color: rgba(0, 212, 255, 0.25);
+      letter-spacing: 1px;
+    }
+
+    .grid-cell-digits {
+      font-family: 'Yatra One', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--gold2);
+      letter-spacing: 4px;
+      text-align: center;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+    }
+
+    .grid-cell.empty-cell .grid-cell-digits {
+      font-size: 1.2rem;
+      color: rgba(127, 179, 211, 0.15);
+    }
+
+    /* Grid cell staggered entry animation */
+    .grid-cell {
+      opacity: 0;
+      transform: scale(0.85);
+      animation: gridCellIn 0.5s ease forwards;
+    }
+
+    .grid-cell:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .grid-cell:nth-child(2) {
+      animation-delay: 0.18s;
+    }
+
+    .grid-cell:nth-child(3) {
+      animation-delay: 0.26s;
+    }
+
+    .grid-cell:nth-child(4) {
+      animation-delay: 0.34s;
+    }
+
+    .grid-cell:nth-child(5) {
+      animation-delay: 0.42s;
+    }
+
+    .grid-cell:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+
+    .grid-cell:nth-child(7) {
+      animation-delay: 0.58s;
+    }
+
+    .grid-cell:nth-child(8) {
+      animation-delay: 0.66s;
+    }
+
+    .grid-cell:nth-child(9) {
+      animation-delay: 0.74s;
+    }
+
+    @keyframes gridCellIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* ── Missing / Present Numbers ── */
+    .numbers-analysis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .numbers-analysis-card {
+      background: rgba(0, 212, 255, 0.03);
+      border: 1px solid rgba(0, 212, 255, 0.15);
+      border-radius: 3px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .numbers-analysis-card:hover {
+      border-color: rgba(0, 212, 255, 0.4);
+      background: rgba(0, 212, 255, 0.06);
+    }
+
+    .analysis-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .analysis-card-icon {
+      font-size: 1.3rem;
+    }
+
+    .analysis-card-title {
+      font-family: 'Philosopher', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .analysis-nums {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .analysis-num-chip {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-family: 'Yatra One', serif;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .analysis-num-chip:hover {
+      transform: scale(1.15);
+    }
+
+    .chip-present {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(168, 85, 247, 0.1));
+      border: 1px solid rgba(0, 212, 255, 0.4);
+      color: var(--gold2);
+    }
+
+    .chip-present:hover {
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    }
+
+    .chip-missing {
+      background: rgba(248, 113, 113, 0.06);
+      border: 1px dashed rgba(248, 113, 113, 0.3);
+      color: rgba(248, 113, 113, 0.5);
+    }
+
+    .chip-missing:hover {
+      box-shadow: 0 0 15px rgba(248, 113, 113, 0.15);
+    }
+
+    .analysis-empty {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    /* ── Calculation Breakdown ── */
+    .calc-breakdown {
+      margin-top: 2rem;
+    }
+
+    .calc-block {
+      background: rgba(0, 212, 255, 0.04);
+      border-left: 2px solid rgba(0, 212, 255, 0.3);
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 0 3px 3px 0;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .calc-block:hover {
+      border-left-color: rgba(0, 212, 255, 0.7);
+      background: rgba(0, 212, 255, 0.07);
+    }
+
+    .calc-block-title {
+      font-family: 'Philosopher', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .calc-block-steps {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.9;
+      letter-spacing: 0.5px;
+    }
+
+    .calc-block-steps .calc-step-arrow {
+      color: var(--gold);
+      margin: 0 0.3rem;
+    }
+
+    .calc-result-highlight {
+      font-family: 'Yatra One', serif;
+      color: var(--gold2);
+      font-size: 1.15rem;
+    }
+
+    /* ── Report Footer ── */
+    .report-footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 212, 255, 0.12);
+    }
+
+    .report-footer-text {
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(0, 212, 255, 0.3);
+      text-transform: uppercase;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .dob-input-card {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .dob-input-card .submit-btn {
+        width: 100%;
+        min-width: unset;
+      }
+
+      .report-numbers {
+        gap: 2rem;
+      }
+
+      .report-num-ring {
+        width: 80px;
+        height: 80px;
+      }
+
+      .report-num-val {
+        font-size: 2.2rem;
+      }
+
+      .numbers-analysis {
+        grid-template-columns: 1fr;
+      }
+
+      .numero-grid {
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .numero-grid {
+        max-width: 260px;
+      }
+
+      .grid-cell-digits {
+        font-size: 1rem !important;
+        letter-spacing: 2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="cosmos"></canvas>
+
+  <div class="page">
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="nav-logo-symbol">✦</span>
+        <span class="nav-logo-text">Anktatvaa</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#features" class="nav-link">Readings</a>
+        <a href="numerology.html" class="nav-link active">Numerology</a>
+        <a href="index.html#compatibility" class="nav-link">Compatibility</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="index.html#features" class="mobile-link">Readings</a>
+      <a href="numerology.html" class="mobile-link">Numerology</a>
+      <a href="index.html#compatibility" class="mobile-link">Compatibility</a>
+      <a href="index.html#faq" class="mobile-link">FAQ</a>
+      <div class="mobile-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+    </div>
+
+    <!-- ═══════ NUMEROLOGY REPORT MODULE ═══════ -->
+    <section class="numero-section">
+
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Vedic Numerology
+        Grid ✦</p>
+      <h1 class="section-title" style="margin-bottom:0.5rem">Decode Your Cosmic Blueprint</h1>
+      <p class="section-sub">Enter your date of birth and unveil the sacred numbers that shape your destiny</p>
+
+      <!-- DOB Input -->
+      <div class="form-card" id="inputCard">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="dob-input-card">
+          <div class="field-group">
+            <label class="field-label" for="numDob">✦ Date of Birth (DD/MM/YYYY)</label>
+            <input class="field-input" id="numDob" type="text" placeholder="e.g. 18/10/1998" maxlength="10"
+              autocomplete="off" inputmode="numeric">
+          </div>
+          <button class="submit-btn float" id="numSubmitBtn" onclick="generateReport()">
+            ✦ Reveal Numerology Report ✦
+          </button>
+        </div>
+        <p class="error-msg" id="numErrMsg"></p>
+      </div>
+
+      <!-- Report Result -->
+      <div class="report-section" id="reportSection">
+        <div class="form-card report-card">
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+
+          <!-- Header -->
+          <div class="report-header">
+            <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Numerology Report ✦</p>
+            <h2 class="report-title">Your Cosmic Numbers</h2>
+            <p class="report-dob-display" id="reportDobDisplay"></p>
+          </div>
+
+          <!-- Birth Number & Destiny Number -->
+          <div class="report-numbers" id="reportNumbers"></div>
+
+          <!-- Calculation Breakdown -->
+          <div class="calc-breakdown" id="calcBreakdown"></div>
+
+          <!-- Universal Grid -->
+          <div class="grid-section">
+            <p class="grid-section-title">✦ Universal Numerology Grid ✦</p>
+            <p class="grid-section-sub">Each digit from your birth date placed in its sacred position</p>
+            <div class="numero-grid" id="numeroGrid"></div>
+          </div>
+
+          <!-- Missing & Present -->
+          <div class="numbers-analysis" id="numbersAnalysis"></div>
+
+          <!-- Footer -->
+          <div class="report-footer">
+            <p class="report-footer-text">✦ &nbsp; The numbers speak — those who decode them transform &nbsp; ✦</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+      <div class="footer-symbol">✦</div>
+      <p class="footer-name">Anktatvaa</p>
+      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
+      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
+  <a href="https://wa.me/919129104931?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+    class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 2C8.268 2 2 8.268 2 16c0 2.466.67 4.775 1.838 6.758L2 30l7.465-1.813A13.933 13.933 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"
+        fill="#25D366" />
+      <path
+        d="M23.5 20.1c-.3-.15-1.77-.873-2.044-.972-.273-.1-.472-.15-.671.15-.199.297-.77.97-.944 1.17-.174.198-.348.223-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.671-1.617-.919-2.213-.242-.581-.487-.502-.671-.511-.174-.008-.372-.01-.57-.01-.198 0-.52.074-.793.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z"
+        fill="#fff" />
+    </svg>
+    <span class="wa-tooltip">Chat with Astrologer</span>
+    <span class="wa-pulse"></span>
+  </a>
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <script src="script.js"></script>
+  <script>
+    /* ══════════════════════════════════════
+       MOBILE MENU TOGGLE
+    ══════════════════════════════════════ */
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('navHamburger').classList.toggle('active');
+    }
+
+    /* ══════════════════════════════════════
+       NUMEROLOGY CALCULATIONS
+    ══════════════════════════════════════ */
+
+    // Reduce any number to a single digit by summing its digits
+    function reduceToSingle(n) {
+      while (n >= 10) {
+        n = String(n).split('').reduce((acc, d) => acc + parseInt(d, 10), 0);
+      }
+      return n;
+    }
+
+    // Auto-format the DOB input with slashes
+    const dobInput = document.getElementById('numDob');
+    dobInput.addEventListener('input', function (e) {
+      let val = this.value.replace(/\D/g, '');
+      if (val.length > 8) val = val.slice(0, 8);
+      let formatted = '';
+      if (val.length > 0) formatted += val.slice(0, 2);
+      if (val.length > 2) formatted += '/' + val.slice(2, 4);
+      if (val.length > 4) formatted += '/' + val.slice(4, 8);
+      this.value = formatted;
+    });
+
+    // Allow Enter key to submit
+    dobInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') generateReport();
+    });
+
+    /* ══════════════════════════════════════
+       GRID POSITION MAP
+       The fixed grid structure:
+       | 3 | 1 | 9 |
+       | 6 | 7 | 5 |
+       | 2 | 8 | 4 |
+    ══════════════════════════════════════ */
+    const GRID_POSITIONS = [3, 1, 9, 6, 7, 5, 2, 8, 4];
+
+    /* ══════════════════════════════════════
+       PLANET RULERS for each number
+    ══════════════════════════════════════ */
+    const PLANET_MAP = {
+      1: { planet: 'Sun', symbol: '☉', color: '#f59e0b' },
+      2: { planet: 'Moon', symbol: '☽', color: '#a5f3fc' },
+      3: { planet: 'Jupiter', symbol: '♃', color: '#818cf8' },
+      4: { planet: 'Rahu', symbol: '☊', color: '#6ee7b7' },
+      5: { planet: 'Mercury', symbol: '☿', color: '#00d4ff' },
+      6: { planet: 'Venus', symbol: '♀', color: '#f9a8d4' },
+      7: { planet: 'Ketu', symbol: '☋', color: '#c084fc' },
+      8: { planet: 'Saturn', symbol: '♄', color: '#38bdf8' },
+      9: { planet: 'Mars', symbol: '♂', color: '#f87171' },
+    };
+
+    /* ══════════════════════════════════════
+       MAIN REPORT GENERATOR
+    ══════════════════════════════════════ */
+    function generateReport() {
+      const raw = document.getElementById('numDob').value.trim();
+      const errEl = document.getElementById('numErrMsg');
+      errEl.textContent = '';
+
+      // ── Validate format DD/MM/YYYY ──
+      const match = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      if (!match) {
+        errEl.textContent = '◈ Please enter a valid date in DD/MM/YYYY format';
+        return;
+      }
+
+      const day = parseInt(match[1], 10);
+      const month = parseInt(match[2], 10);
+      const year = parseInt(match[3], 10);
+
+      // Basic date validation
+      if (month < 1 || month > 12 || day < 1 || day > 31) {
+        errEl.textContent = '◈ Please enter a valid date';
+        return;
+      }
+
+      // Check valid day for month
+      const daysInMonth = new Date(year, month, 0).getDate();
+      if (day > daysInMonth) {
+        errEl.textContent = `◈ ${match[2]}/${match[3]} only has ${daysInMonth} days`;
+        return;
+      }
+
+      // ── 1. Birth Number ──
+      const dayDigits = String(day).split('').map(Number);
+      const daySum = dayDigits.reduce((a, b) => a + b, 0);
+      const birthNumber = reduceToSingle(daySum);
+
+      // ── 2. Destiny Number ──
+      const allDigitsStr = `${match[1]}${match[2]}${match[3]}`;
+      const allDigits = allDigitsStr.split('').map(Number);
+      const totalSum = allDigits.reduce((a, b) => a + b, 0);
+      const destinyNumber = reduceToSingle(totalSum);
+
+      // ── 3. Grid digits (remove zeros) ──
+      const gridDigits = allDigits.filter(d => d !== 0);
+
+      // Count occurrences
+      const digitCounts = {};
+      for (let i = 1; i <= 9; i++) digitCounts[i] = 0;
+      gridDigits.forEach(d => { digitCounts[d]++; });
+
+      // Missing & present
+      const presentNums = [];
+      const missingNums = [];
+      for (let i = 1; i <= 9; i++) {
+        if (digitCounts[i] > 0) presentNums.push(i);
+        else missingNums.push(i);
+      }
+
+      // ── Build BN calculation steps ──
+      const bnSteps = buildBNSteps(day, dayDigits, daySum, birthNumber);
+      const dnSteps = buildDNSteps(allDigits, totalSum, destinyNumber);
+
+      // ── Render Report ──
+      renderReport({
+        dob: raw,
+        day, month, year,
+        birthNumber,
+        destinyNumber,
+        digitCounts,
+        presentNums,
+        missingNums,
+        bnSteps,
+        dnSteps
+      });
+    }
+
+    /* ══════════════════════════════════════
+       BUILD CALCULATION STEP STRINGS
+    ══════════════════════════════════════ */
+    function buildBNSteps(day, digits, sum, result) {
+      let html = `Day = ${day}`;
+      if (digits.length > 1) {
+        html += ` <span class="calc-step-arrow">→</span> ${digits.join(' + ')} = ${sum}`;
+        if (sum >= 10) {
+          // Show intermediate reductions
+          let current = sum;
+          while (current >= 10) {
+            const parts = String(current).split('').map(Number);
+            const next = parts.reduce((a, b) => a + b, 0);
+            html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
+            current = next;
+          }
+        }
+      }
+      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">BN = ${result}</span>`;
+      return html;
+    }
+
+    function buildDNSteps(digits, sum, result) {
+      let html = `${digits.join(' + ')} = ${sum}`;
+      let current = sum;
+      while (current >= 10) {
+        const parts = String(current).split('').map(Number);
+        const next = parts.reduce((a, b) => a + b, 0);
+        html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
+        current = next;
+      }
+      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">DN = ${result}</span>`;
+      return html;
+    }
+
+    /* ══════════════════════════════════════
+       RENDER THE FULL REPORT
+    ══════════════════════════════════════ */
+    function renderReport(data) {
+      const section = document.getElementById('reportSection');
+
+      // DOB display
+      document.getElementById('reportDobDisplay').textContent = `Date of Birth: ${data.dob}`;
+
+      // Number badges
+      const bn = data.birthNumber;
+      const dn = data.destinyNumber;
+      document.getElementById('reportNumbers').innerHTML = `
+        <div class="report-num-badge">
+          <div class="report-num-ring">
+            <span class="report-num-val">${bn}</span>
+          </div>
+          <p class="report-num-label">Birth Number</p>
+          <p class="report-num-desc">${PLANET_MAP[bn].planet} ${PLANET_MAP[bn].symbol}</p>
+        </div>
+        <div class="report-num-badge">
+          <div class="report-num-ring">
+            <span class="report-num-val">${dn}</span>
+          </div>
+          <p class="report-num-label">Destiny Number</p>
+          <p class="report-num-desc">${PLANET_MAP[dn].planet} ${PLANET_MAP[dn].symbol}</p>
+        </div>
+      `;
+
+      // Calculation breakdown
+      document.getElementById('calcBreakdown').innerHTML = `
+        <div class="calc-block">
+          <p class="calc-block-title">✦ Birth Number Calculation</p>
+          <p class="calc-block-steps">${data.bnSteps}</p>
+        </div>
+        <div class="calc-block">
+          <p class="calc-block-title">✦ Destiny Number Calculation</p>
+          <p class="calc-block-steps">${data.dnSteps}</p>
+        </div>
+      `;
+
+      // Universal Grid
+      const gridEl = document.getElementById('numeroGrid');
+      gridEl.innerHTML = '';
+      GRID_POSITIONS.forEach(num => {
+        const count = data.digitCounts[num];
+        const hasDigits = count > 0;
+        const cell = document.createElement('div');
+        cell.className = `grid-cell ${hasDigits ? 'has-digits' : 'empty-cell'}`;
+
+        const posLabel = document.createElement('span');
+        posLabel.className = 'grid-cell-pos';
+        posLabel.textContent = num;
+
+        const digitsEl = document.createElement('span');
+        digitsEl.className = 'grid-cell-digits';
+        if (hasDigits) {
+          digitsEl.textContent = String(num).repeat(count);
+        } else {
+          digitsEl.textContent = '·';
+        }
+
+        cell.appendChild(posLabel);
+        cell.appendChild(digitsEl);
+        gridEl.appendChild(cell);
+      });
+
+      // Missing & Present numbers
+      document.getElementById('numbersAnalysis').innerHTML = `
+        <div class="numbers-analysis-card">
+          <div class="analysis-card-header">
+            <span class="analysis-card-icon">✨</span>
+            <span class="analysis-card-title">Present Numbers</span>
+          </div>
+          <div class="analysis-nums">
+            ${data.presentNums.length > 0
+          ? data.presentNums.map(n =>
+            `<span class="analysis-num-chip chip-present" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n}</span>`
+          ).join('')
+          : '<span class="analysis-empty">None present</span>'
+        }
+          </div>
+        </div>
+        <div class="numbers-analysis-card">
+          <div class="analysis-card-header">
+            <span class="analysis-card-icon">◈</span>
+            <span class="analysis-card-title">Missing Numbers</span>
+          </div>
+          <div class="analysis-nums">
+            ${data.missingNums.length > 0
+          ? data.missingNums.map(n =>
+            `<span class="analysis-num-chip chip-missing" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n}</span>`
+          ).join('')
+          : '<span class="analysis-empty">All numbers present!</span>'
+        }
+          </div>
+        </div>
+      `;
+
+      // Show with animation
+      section.classList.add('visible');
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+  </script>
+
+</body>
+
+</html>
