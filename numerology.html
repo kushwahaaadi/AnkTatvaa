@@ -756,8 +756,11 @@
       const totalSum = allDigits.reduce((a, b) => a + b, 0);
       const destinyNumber = reduceToSingle(totalSum);
 
-      // ── 3. Grid digits (remove zeros) ──
-      const gridDigits = allDigits.filter(d => d !== 0);
+      // ── 3. Grid digits (use only last 2 digits of year, remove zeros, include DN) ──
+      const yearLastTwo = String(year).slice(-2);
+      const gridDigitsStr = `${match[1]}${match[2]}${yearLastTwo}`;
+      const gridDigits = gridDigitsStr.split('').map(Number).filter(d => d !== 0);
+      gridDigits.push(destinyNumber); // DN is also placed in the grid
 
       // Count occurrences
       const digitCounts = {};
