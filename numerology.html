@@ -512,6 +512,545 @@
         letter-spacing: 2px;
       }
     }
+
+    /* ═══════════════════════════════════════
+       COSMIC GRID + MAHADASHA — STYLES
+    ═══════════════════════════════════════ */
+
+    .mahadasha-section {
+      display: none;
+      margin-top: 3rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .mahadasha-section.visible {
+      display: block;
+    }
+
+    /* ── Mahadasha Info Panel ── */
+    .mahadasha-panel {
+      margin-top: 2.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(0, 212, 255, 0.12);
+    }
+
+    .mahadasha-panel-title {
+      font-family: 'Philosopher', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .mahadasha-panel-sub {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    /* Active Mahadasha Number — large ring */
+    .mahadasha-active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .mahadasha-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .mahadasha-ring::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(168, 85, 247, 0.4);
+      animation: pulseRing 2.5s ease-in-out infinite;
+    }
+
+    .mahadasha-ring::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(0, 212, 255, 0.08));
+      border: 1px solid rgba(168, 85, 247, 0.25);
+    }
+
+    .mahadasha-num {
+      font-family: 'Yatra One', serif;
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, #a855f7, #c084fc, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mahadasha-label {
+      font-family: 'Philosopher', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #a855f7;
+      text-transform: uppercase;
+    }
+
+    .mahadasha-planet {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    /* Year range badges */
+    .mahadasha-years {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .mahadasha-year-badge {
+      text-align: center;
+      background: rgba(168, 85, 247, 0.06);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 4px;
+      padding: 1rem 1.8rem;
+      min-width: 130px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .mahadasha-year-badge:hover {
+      border-color: rgba(168, 85, 247, 0.5);
+      background: rgba(168, 85, 247, 0.1);
+    }
+
+    .mahadasha-year-val {
+      font-family: 'Yatra One', serif;
+      font-size: 1.4rem;
+      color: var(--gold2);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .mahadasha-year-label {
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* Mahadasha Duration indicator */
+    .mahadasha-duration {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .mahadasha-duration-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    .mahadasha-duration-text .highlight {
+      color: #c084fc;
+      font-weight: 600;
+    }
+
+    /* Timeline strip */
+    .mahadasha-timeline {
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .timeline-bar {
+      position: relative;
+      height: 6px;
+      background: rgba(0, 212, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+    }
+
+    .timeline-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #a855f7, #c084fc, #00d4ff);
+      border-radius: 3px;
+      transition: width 1.2s ease;
+      position: relative;
+    }
+
+    .timeline-progress::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: #c084fc;
+      border: 2px solid rgba(5, 10, 24, 0.9);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+    }
+
+    .timeline-labels {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .timeline-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .timeline-label.active {
+      color: #c084fc;
+      font-weight: 600;
+    }
+
+    /* ── Mahadasha Responsive ── */
+    @media (max-width: 600px) {
+      .mahadasha-ring {
+        width: 100px;
+        height: 100px;
+      }
+
+      .mahadasha-num {
+        font-size: 2.6rem;
+      }
+
+      .mahadasha-years {
+        gap: 1rem;
+      }
+
+      .mahadasha-year-badge {
+        min-width: 110px;
+        padding: 0.8rem 1.2rem;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       ANTARDASHA — STYLES
+    ═══════════════════════════════════════ */
+
+    .antardasha-panel {
+      margin-top: 2.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(245, 158, 11, 0.15);
+    }
+
+    .antardasha-panel-title {
+      font-family: 'Philosopher', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--amber);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .antardasha-panel-sub {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    /* Active Antardasha Number — ring */
+    .antardasha-active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .antardasha-ring {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .antardasha-ring::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(245, 158, 11, 0.4);
+      animation: pulseRing 2.8s ease-in-out infinite;
+    }
+
+    .antardasha-ring::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.06));
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .antardasha-num {
+      font-family: 'Yatra One', serif;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .antardasha-label {
+      font-family: 'Philosopher', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+
+    .antardasha-planet {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    /* Antardasha date badges */
+    .antardasha-dates {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .antardasha-date-badge {
+      text-align: center;
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 4px;
+      padding: 0.9rem 1.4rem;
+      min-width: 120px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .antardasha-date-badge:hover {
+      border-color: rgba(245, 158, 11, 0.45);
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .antardasha-date-val {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold2);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .antardasha-date-label {
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* Elapsed days chip */
+    .antardasha-elapsed {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .antardasha-elapsed-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    .antardasha-elapsed-text .highlight {
+      color: var(--amber2);
+      font-weight: 600;
+    }
+
+    /* Antardasha timeline progress */
+    .antardasha-timeline {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+    }
+
+    .antardasha-timeline .timeline-bar {
+      margin-bottom: 1.2rem;
+    }
+
+    .antardasha-timeline .timeline-progress {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+    }
+
+    .antardasha-timeline .timeline-progress::after {
+      background: #fbbf24;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+    }
+
+    .antardasha-timeline .timeline-label.active {
+      color: var(--amber2);
+    }
+
+    /* ── Collapsible Timeline Table ── */
+    .ad-timeline-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px solid rgba(245, 158, 11, 0.18);
+      border-radius: 4px;
+      padding: 0.8rem 1.5rem;
+      margin: 0 auto 1rem;
+      max-width: 320px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .ad-timeline-toggle:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .ad-timeline-toggle-text {
+      font-family: 'Philosopher', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+
+    .ad-timeline-toggle-icon {
+      font-size: 0.7rem;
+      color: var(--amber);
+      transition: transform 0.35s ease;
+    }
+
+    .ad-timeline-toggle.open .ad-timeline-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .ad-timeline-table-wrap {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .ad-timeline-table-wrap.open {
+      max-height: 800px;
+    }
+
+    .ad-timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+
+    .ad-timeline-table th {
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--amber);
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0.7rem 0.5rem;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .ad-timeline-table td {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-align: center;
+      padding: 0.65rem 0.5rem;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+      transition: background 0.3s;
+    }
+
+    .ad-timeline-table tr:hover td {
+      background: rgba(245, 158, 11, 0.04);
+    }
+
+    .ad-timeline-table tr.ad-row-active td {
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--amber2);
+      font-weight: 600;
+    }
+
+    .ad-row-active-indicator {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber2);
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* ── Antardasha Responsive ── */
+    @media (max-width: 600px) {
+      .antardasha-ring {
+        width: 90px;
+        height: 90px;
+      }
+
+      .antardasha-num {
+        font-size: 2.2rem;
+      }
+
+      .antardasha-dates {
+        gap: 0.8rem;
+      }
+
+      .antardasha-date-badge {
+        min-width: 100px;
+        padding: 0.7rem 1rem;
+      }
+
+      .ad-timeline-table th,
+      .ad-timeline-table td {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 
@@ -556,7 +1095,7 @@
     </div>
 
     <!-- ═══════ NUMEROLOGY REPORT MODULE ═══════ -->
-    <section class="numero-section">
+    <section class="numero-section reveal">
 
       <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Vedic Numerology
         Grid ✦</p>
@@ -564,7 +1103,7 @@
       <p class="section-sub">Enter your date of birth and unveil the sacred numbers that shape your destiny</p>
 
       <!-- DOB Input -->
-      <div class="form-card" id="inputCard">
+      <div class="form-card reveal stagger-1" id="inputCard">
         <div class="corner corner-tl"></div>
         <div class="corner corner-tr"></div>
         <div class="corner corner-bl"></div>
@@ -621,6 +1160,144 @@
         </div>
       </div>
 
+      <!-- ═══════ COSMIC GRID + MAHADASHA ═══════ -->
+      <div class="mahadasha-section" id="mahadashaSection">
+        <div class="form-card report-card">
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+
+          <!-- Header -->
+          <div class="report-header">
+            <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Cosmic Grid + Mahadasha ✦</p>
+            <h2 class="report-title">Your Cosmic Grid &amp; Current Mahadasha</h2>
+            <p class="report-dob-display" id="mahadashaDobDisplay"></p>
+          </div>
+
+          <!-- Duplicate Grid -->
+          <div class="grid-section">
+            <p class="grid-section-title">✦ Universal Numerology Grid ✦</p>
+            <p class="grid-section-sub">Each digit from your birth date placed in its sacred position</p>
+            <div class="numero-grid" id="mahadashaGrid"></div>
+          </div>
+
+          <!-- Mahadasha Info Panel -->
+          <div class="mahadasha-panel">
+            <p class="mahadasha-panel-title">✦ Current Mahadasha ✦</p>
+            <p class="mahadasha-panel-sub">The planetary period governing your present karmic cycle</p>
+
+            <!-- Active Mahadasha Number -->
+            <div class="mahadasha-active">
+              <div class="mahadasha-ring">
+                <span class="mahadasha-num" id="mahadashaNum"></span>
+              </div>
+              <p class="mahadasha-label">Current Mahadasha</p>
+              <p class="mahadasha-planet" id="mahadashaPlanet"></p>
+            </div>
+
+            <!-- Year Range -->
+            <div class="mahadasha-years">
+              <div class="mahadasha-year-badge">
+                <p class="mahadasha-year-val" id="mahadashaStart"></p>
+                <p class="mahadasha-year-label">Start Year</p>
+              </div>
+              <div class="mahadasha-year-badge">
+                <p class="mahadasha-year-val" id="mahadashaEnd"></p>
+                <p class="mahadasha-year-label">End Year</p>
+              </div>
+            </div>
+
+            <!-- Duration -->
+            <div class="mahadasha-duration">
+              <p class="mahadasha-duration-text" id="mahadashaDuration"></p>
+            </div>
+
+            <!-- Timeline Progress Bar -->
+            <div class="mahadasha-timeline">
+              <div class="timeline-bar">
+                <div class="timeline-progress" id="mahadashaProgress"></div>
+              </div>
+              <div class="timeline-labels">
+                <span class="timeline-label" id="timelineLabelStart"></span>
+                <span class="timeline-label active" id="timelineLabelNow">Now</span>
+                <span class="timeline-label" id="timelineLabelEnd"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ ANTARDASHA PANEL ══════ -->
+          <div class="antardasha-panel" id="antardashaPanel">
+            <p class="antardasha-panel-title">✦ Current Antardasha ✦</p>
+            <p class="antardasha-panel-sub">The sub-period within your Mahadasha shaping your present moments</p>
+
+            <!-- Active Antardasha Number -->
+            <div class="antardasha-active">
+              <div class="antardasha-ring">
+                <span class="antardasha-num" id="antardashaNum"></span>
+              </div>
+              <p class="antardasha-label">Current Antardasha</p>
+              <p class="antardasha-planet" id="antardashaPlanet"></p>
+            </div>
+
+            <!-- Date Range -->
+            <div class="antardasha-dates">
+              <div class="antardasha-date-badge">
+                <p class="antardasha-date-val" id="antardashaStartDate"></p>
+                <p class="antardasha-date-label">Start Date</p>
+              </div>
+              <div class="antardasha-date-badge">
+                <p class="antardasha-date-val" id="antardashaEndDate"></p>
+                <p class="antardasha-date-label">End Date</p>
+              </div>
+            </div>
+
+            <!-- Elapsed days -->
+            <div class="antardasha-elapsed">
+              <p class="antardasha-elapsed-text" id="antardashaElapsed"></p>
+            </div>
+
+            <!-- Antardasha Progress Bar -->
+            <div class="antardasha-timeline">
+              <div class="timeline-bar">
+                <div class="timeline-progress" id="antardashaProgress"></div>
+              </div>
+              <div class="timeline-labels">
+                <span class="timeline-label" id="adTimelineLabelStart"></span>
+                <span class="timeline-label active" id="adTimelineLabelNow">Now</span>
+                <span class="timeline-label" id="adTimelineLabelEnd"></span>
+              </div>
+            </div>
+
+            <!-- Collapsible Full Timeline -->
+            <div class="ad-timeline-toggle" id="adTimelineToggle" onclick="toggleAntardashaTimeline()">
+              <span class="ad-timeline-toggle-text">View Full Antardasha Timeline</span>
+              <span class="ad-timeline-toggle-icon">▼</span>
+            </div>
+            <div class="ad-timeline-table-wrap" id="adTimelineWrap">
+              <table class="ad-timeline-table">
+                <thead>
+                  <tr>
+                    <th>AD #</th>
+                    <th>Planet</th>
+                    <th>Days</th>
+                    <th>Start</th>
+                    <th>End</th>
+                  </tr>
+                </thead>
+                <tbody id="adTimelineBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="report-footer">
+            <p class="report-footer-text">✦ &nbsp; Mahadasha & Antardasha reveal the cosmic rhythm of your karmic
+              journey &nbsp; ✦</p>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ═══════ FOOTER ═══════ -->
@@ -635,7 +1312,7 @@
   </div>
 
   <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
-  <a href="https://wa.me/919129104931?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+  <a href="https://wa.me/919170705450?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
     class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -932,6 +1609,233 @@
       setTimeout(() => {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 150);
+
+      // ── Calculate and render Mahadasha ──
+      renderMahadasha(data);
+    }
+
+    /* ══════════════════════════════════════
+       MAHADASHA CALCULATION & RENDERING
+    ══════════════════════════════════════ */
+    function calculateMahadasha(birthNumber, birthYear) {
+      const today = new Date();
+      // Use exact current date for precise calculation
+      const currentYear = today.getFullYear();
+      const currentMonth = today.getMonth() + 1;
+      const currentDay = today.getDate();
+      // Convert to fractional year for precision
+      const currentFractional = currentYear + (currentMonth - 1) / 12 + (currentDay - 1) / 365;
+
+      let periodStart = birthYear;
+      let currentNum = birthNumber;
+
+      // Walk through Mahadasha periods until we find the one containing today
+      while (true) {
+        const duration = currentNum; // Each number's duration = the number itself
+        const periodEnd = periodStart + duration;
+
+        if (currentFractional < periodEnd) {
+          // Current date falls within this period
+          return {
+            number: currentNum,
+            startYear: periodStart,
+            endYear: periodEnd,
+            duration: duration
+          };
+        }
+
+        // Move to next period
+        periodStart = periodEnd;
+        currentNum = currentNum >= 9 ? 1 : currentNum + 1;
+      }
+    }
+
+    function renderMahadasha(data) {
+      const mahadashaSection = document.getElementById('mahadashaSection');
+
+      // DOB display
+      document.getElementById('mahadashaDobDisplay').textContent = `Date of Birth: ${data.dob}`;
+
+      // ── Calculate Mahadasha first (needed for grid) ──
+      const mahadasha = calculateMahadasha(data.birthNumber, data.year);
+
+      // ── Calculate Antardasha early (needed for grid) ──
+      const mdStartDate = new Date(mahadasha.startYear, data.month - 1, data.day);
+      const adPeriods = calculateAntardasha(mahadasha.number, mdStartDate);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      let currentAD = adPeriods[adPeriods.length - 1];
+      let currentADIndex = adPeriods.length - 1;
+      for (let i = 0; i < adPeriods.length; i++) {
+        if (today >= adPeriods[i].startDate && today < adPeriods[i].endDate) {
+          currentAD = adPeriods[i];
+          currentADIndex = i;
+          break;
+        }
+      }
+
+      // ── Build grid with Mahadasha + Antardasha numbers included ──
+      // Clone digit counts and add both numbers
+      const mahadashaDigitCounts = {};
+      for (let i = 1; i <= 9; i++) mahadashaDigitCounts[i] = data.digitCounts[i];
+      mahadashaDigitCounts[mahadasha.number]++;
+      mahadashaDigitCounts[currentAD.number]++;
+
+      const gridEl = document.getElementById('mahadashaGrid');
+      gridEl.innerHTML = '';
+      GRID_POSITIONS.forEach(num => {
+        const count = mahadashaDigitCounts[num];
+        const hasDigits = count > 0;
+        const cell = document.createElement('div');
+        cell.className = `grid-cell ${hasDigits ? 'has-digits' : 'empty-cell'}`;
+
+        const posLabel = document.createElement('span');
+        posLabel.className = 'grid-cell-pos';
+        posLabel.textContent = num;
+
+        const digitsEl = document.createElement('span');
+        digitsEl.className = 'grid-cell-digits';
+        if (hasDigits) {
+          digitsEl.textContent = String(num).repeat(count);
+        } else {
+          digitsEl.textContent = '·';
+        }
+
+        cell.appendChild(posLabel);
+        cell.appendChild(digitsEl);
+        gridEl.appendChild(cell);
+      });
+
+      // ── Populate Mahadasha info ──
+      document.getElementById('mahadashaNum').textContent = mahadasha.number;
+      document.getElementById('mahadashaPlanet').textContent =
+        `${PLANET_MAP[mahadasha.number].planet} ${PLANET_MAP[mahadasha.number].symbol}`;
+      document.getElementById('mahadashaStart').textContent = mahadasha.startYear;
+      document.getElementById('mahadashaEnd').textContent = mahadasha.endYear;
+      document.getElementById('mahadashaDuration').innerHTML =
+        `Mahadasha Duration: <span class="highlight">${mahadasha.duration} year${mahadasha.duration > 1 ? 's' : ''}</span>`;
+
+      // ── Timeline progress bar ──
+      const now = new Date();
+      const elapsed = (now.getFullYear() + (now.getMonth()) / 12) - mahadasha.startYear;
+      const totalDuration = mahadasha.duration;
+      const progress = Math.min(Math.max((elapsed / totalDuration) * 100, 2), 98);
+
+      document.getElementById('timelineLabelStart').textContent = mahadasha.startYear;
+      document.getElementById('timelineLabelEnd').textContent = mahadasha.endYear;
+
+      // Animate progress bar after a short delay
+      setTimeout(() => {
+        document.getElementById('mahadashaProgress').style.width = progress + '%';
+      }, 300);
+
+      // ── Render Antardasha (using pre-computed values from grid step) ──
+      renderAntardasha(mahadasha, data, mdStartDate, adPeriods, currentAD, currentADIndex);
+
+      // Show the section
+      mahadashaSection.classList.add('visible');
+    }
+
+    /* ══════════════════════════════════════
+       ANTARDASHA CALCULATION & RENDERING
+    ══════════════════════════════════════ */
+
+    function formatDateDMY(date) {
+      const dd = String(date.getDate()).padStart(2, '0');
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const yyyy = date.getFullYear();
+      return `${dd}/${mm}/${yyyy}`;
+    }
+
+    function addDaysToDate(baseDate, days) {
+      const result = new Date(baseDate);
+      result.setDate(result.getDate() + days);
+      return result;
+    }
+
+    function daysBetween(d1, d2) {
+      const msPerDay = 1000 * 60 * 60 * 24;
+      return Math.floor((d2 - d1) / msPerDay);
+    }
+
+    function calculateAntardasha(mahadashaNumber, mahadashaStartDate) {
+      const periods = [];
+      let adNum = mahadashaNumber;
+      let cumulativeStart = new Date(mahadashaStartDate);
+
+      // Build all 9 Antardasha periods
+      for (let i = 0; i < 9; i++) {
+        const durationDays = mahadashaNumber * adNum * 8;
+        const periodEnd = addDaysToDate(cumulativeStart, durationDays);
+
+        periods.push({
+          number: adNum,
+          durationDays: durationDays,
+          startDate: new Date(cumulativeStart),
+          endDate: periodEnd
+        });
+
+        cumulativeStart = new Date(periodEnd);
+        adNum = adNum >= 9 ? 1 : adNum + 1;
+      }
+
+      return periods;
+    }
+
+    function renderAntardasha(mahadasha, data, mdStartDate, adPeriods, currentAD, currentADIndex) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const elapsedFromMDStart = daysBetween(mdStartDate, today);
+
+      // ── Populate Antardasha info ──
+      document.getElementById('antardashaNum').textContent = currentAD.number;
+      document.getElementById('antardashaPlanet').textContent =
+        `${PLANET_MAP[currentAD.number].planet} ${PLANET_MAP[currentAD.number].symbol}`;
+      document.getElementById('antardashaStartDate').textContent = formatDateDMY(currentAD.startDate);
+      document.getElementById('antardashaEndDate').textContent = formatDateDMY(currentAD.endDate);
+
+      // Elapsed days inside Mahadasha
+      const daysInMD = Math.max(0, elapsedFromMDStart);
+      document.getElementById('antardashaElapsed').innerHTML =
+        `Days elapsed in Mahadasha: <span class="highlight">${daysInMD} days</span> · ` +
+        `Antardasha duration: <span class="highlight">${currentAD.durationDays} days</span>`;
+
+      // ── Antardasha progress bar ──
+      const adElapsed = daysBetween(currentAD.startDate, today);
+      const adProgress = Math.min(Math.max((adElapsed / currentAD.durationDays) * 100, 2), 98);
+
+      document.getElementById('adTimelineLabelStart').textContent = formatDateDMY(currentAD.startDate);
+      document.getElementById('adTimelineLabelEnd').textContent = formatDateDMY(currentAD.endDate);
+
+      setTimeout(() => {
+        document.getElementById('antardashaProgress').style.width = adProgress + '%';
+      }, 500);
+
+      // ── Build timeline table ──
+      const tbody = document.getElementById('adTimelineBody');
+      tbody.innerHTML = '';
+
+      adPeriods.forEach((period, idx) => {
+        const isActive = idx === currentADIndex;
+        const row = document.createElement('tr');
+        if (isActive) row.className = 'ad-row-active';
+
+        row.innerHTML = `
+          <td>${isActive ? '<span class="ad-row-active-indicator"></span>' : ''}${period.number}</td>
+          <td>${PLANET_MAP[period.number].planet} ${PLANET_MAP[period.number].symbol}</td>
+          <td>${period.durationDays}</td>
+          <td>${formatDateDMY(period.startDate)}</td>
+          <td>${formatDateDMY(period.endDate)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleAntardashaTimeline() {
+      const toggle = document.getElementById('adTimelineToggle');
+      const wrap = document.getElementById('adTimelineWrap');
+      toggle.classList.toggle('open');
+      wrap.classList.toggle('open');
     }
   </script>
 

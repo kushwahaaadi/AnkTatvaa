@@ -76,6 +76,13 @@ setInterval(() => spawnShoot(), 2500);
 setTimeout(spawnShoot, 600);
 setTimeout(spawnShoot, 2000);
 
+// ── Mouse parallax tracking ──
+let mouseX = 0.5, mouseY = 0.5;
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX / window.innerWidth;
+  mouseY = e.clientY / window.innerHeight;
+});
+
 /* ── Main draw loop ── */
 function drawCosmos() {
   ctx.clearRect(0, 0, W, H);
@@ -88,19 +95,23 @@ function drawCosmos() {
   ctx.fillStyle = grd;
   ctx.fillRect(0, 0, W, H);
 
+  // Parallax offsets
+  const px = (mouseX - 0.5) * 15;
+  const py = (mouseY - 0.5) * 10;
+
   // Milky Way band
   for (const m of milkyWay) {
     ctx.beginPath();
-    ctx.arc(m.x * W, m.y * H, m.r, 0, Math.PI * 2);
+    ctx.arc(m.x * W + px * 0.3, m.y * H + py * 0.3, m.r, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(180,210,255,${m.a})`;
     ctx.fill();
   }
 
-  // Nebula clouds
+  // Nebula clouds (with parallax)
   for (const n of nebulae) {
     n.t += n.sp;
-    const nx = n.x * W + Math.sin(n.t * 1.2) * W * 0.03;
-    const ny = n.y * H + Math.cos(n.t)       * H * 0.025;
+    const nx = n.x * W + Math.sin(n.t * 1.2) * W * 0.03 + px * 0.8;
+    const ny = n.y * H + Math.cos(n.t)       * H * 0.025 + py * 0.6;
     const gr = ctx.createRadialGradient(nx, ny, 0, nx, ny, W * n.r);
     gr.addColorStop(0,   `rgba(${n.c},${n.a})`);
     gr.addColorStop(0.5, `rgba(${n.c},${+(n.a * 0.4).toFixed(3)})`);
@@ -114,7 +125,7 @@ function drawCosmos() {
     s.t += s.sp;
     const a = 0.4 + 0.55 * Math.abs(Math.sin(s.t));
     ctx.beginPath();
-    ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+    ctx.arc(s.x * W + px * 0.15, s.y * H + py * 0.1, s.r, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${s.r_},${s.g_},${s.b_},${a.toFixed(2)})`;
     ctx.fill();
   }
@@ -124,7 +135,7 @@ function drawCosmos() {
     s.t += s.sp;
     const a = 0.55 + 0.45 * Math.abs(Math.sin(s.t));
     ctx.beginPath();
-    ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+    ctx.arc(s.x * W + px * 0.35, s.y * H + py * 0.25, s.r, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${s.r_},${s.g_},${s.b_},${a.toFixed(2)})`;
     ctx.fill();
   }
@@ -133,7 +144,7 @@ function drawCosmos() {
   for (const s of starsBright) {
     s.t += s.sp;
     const a  = 0.8 + 0.2 * Math.abs(Math.sin(s.t));
-    const sx = s.x * W, sy = s.y * H;
+    const sx = s.x * W + px * 0.5, sy = s.y * H + py * 0.35;
 
     // Soft glow halo
     const halo = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 5);
@@ -194,6 +205,65 @@ function drawCosmos() {
 drawCosmos();
 
 /* ══════════════════════════════════════
+   SCROLL REVEAL — IntersectionObserver
+══════════════════════════════════════ */
+(function initScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+})();
+
+/* ══════════════════════════════════════
+   NAVBAR SCROLL SHADOW
+══════════════════════════════════════ */
+(function initNavScroll() {
+  const nav = document.querySelector('.navbar');
+  if (!nav) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY > 40) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+
+/* ══════════════════════════════════════
+   BUTTON RIPPLE EFFECT
+══════════════════════════════════════ */
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.submit-btn, .btn-hero-primary, .btn-nav-signup');
+  if (!btn) return;
+
+  const rect = btn.getBoundingClientRect();
+  const ripple = document.createElement('span');
+  ripple.className = 'btn-ripple';
+  const size = Math.max(rect.width, rect.height) * 2;
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+  ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+  btn.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 700);
+});
+
+/* ══════════════════════════════════════
    NUMEROLOGY CALCULATIONS
 ══════════════════════════════════════ */
 
@@ -238,6 +308,24 @@ function personalYearNumber(dob) {
 }
 
 /* ══════════════════════════════════════
+   NUMBER ESSENCE LOOKUP TABLE
+══════════════════════════════════════ */
+const NUMBER_ESSENCE = {
+  1: { keyword: 'The Leader', planet: 'Sun', symbol: '☉', color: '#f59e0b', desc: 'You are born to lead, innovate, and pioneer. Number 1 carries the energy of the Sun — independence, ambition, and the courage to forge new paths. You are a natural initiator who inspires others through sheer willpower and vision.' },
+  2: { keyword: 'The Diplomat', planet: 'Moon', symbol: '☽', color: '#a5f3fc', desc: 'You are the cosmic peacemaker, guided by the Moon. Number 2 embodies sensitivity, intuition, and the gift of harmony. Your strength lies in collaboration, emotional intelligence, and the ability to see both sides of every situation.' },
+  3: { keyword: 'The Creative', planet: 'Jupiter', symbol: '♃', color: '#818cf8', desc: 'Blessed by Jupiter, you are a vessel of creative expression and joy. Number 3 radiates optimism, artistic talent, and magnetic communication. You inspire and uplift everyone around you with your natural charisma.' },
+  4: { keyword: 'The Builder', planet: 'Rahu', symbol: '☊', color: '#6ee7b7', desc: 'Under the shadow planet Rahu, you are the cosmic architect. Number 4 brings discipline, determination, and the ability to manifest grand visions into reality. Your karmic path demands hard work, but rewards are immense.' },
+  5: { keyword: 'The Explorer', planet: 'Mercury', symbol: '☿', color: '#00d4ff', desc: 'Mercury gifts you with restless intelligence and the spirit of adventure. Number 5 craves freedom, change, and diverse experiences. You are a natural communicator, adaptable and quick-witted, thriving on variety.' },
+  6: { keyword: 'The Nurturer', planet: 'Venus', symbol: '♀', color: '#f9a8d4', desc: 'Venus blesses you with love, beauty, and cosmic responsibility. Number 6 is the caretaker of the zodiac — devoted to family, harmony, and aesthetic perfection. Your heart is your greatest compass.' },
+  7: { keyword: 'The Mystic', planet: 'Ketu', symbol: '☋', color: '#c084fc', desc: 'The shadow planet Ketu guides your path of spiritual depth and inner wisdom. Number 7 is the seeker of truth — introspective, analytical, and drawn to life\'s deeper mysteries. Solitude is where your power regenerates.' },
+  8: { keyword: 'The Powerhouse', planet: 'Saturn', symbol: '♄', color: '#38bdf8', desc: 'Saturn shapes you through karma, discipline, and material mastery. Number 8 carries the energy of authority, abundance, and cosmic justice. Your challenges forge you into an unstoppable force of transformation.' },
+  9: { keyword: 'The Humanitarian', planet: 'Mars', symbol: '♂', color: '#f87171', desc: 'Mars empowers you with courage, passion, and universal compassion. Number 9 is the number of completion and selfless service. You are a warrior of light, destined to leave a lasting impact on the world.' },
+  11: { keyword: 'The Illuminator', planet: 'Moon (Master)', symbol: '☽✦', color: '#a855f7', desc: 'Master Number 11 carries heightened intuition and spiritual illumination. You are a cosmic channel, deeply psychic and sensitive. Your life purpose is to inspire and awaken others through your elevated consciousness.' },
+  22: { keyword: 'The Master Builder', planet: 'Rahu (Master)', symbol: '☊✦', color: '#00d4ff', desc: 'Master Number 22 is the most powerful number in numerology — the Master Builder. You have the vision of the 11 combined with the practical ability of the 4. You can literally reshape reality on a grand scale.' },
+  33: { keyword: 'The Master Teacher', planet: 'Jupiter (Master)', symbol: '♃✦', color: '#818cf8', desc: 'Master Number 33 is the Master Teacher — the rarest and most spiritually evolved number. You embody unconditional love and healing. Your presence alone elevates the consciousness of those around you.' },
+};
+
+/* ══════════════════════════════════════
    LOADING MESSAGE CYCLING
 ══════════════════════════════════════ */
 const LOADING_MSGS = [
@@ -259,7 +347,7 @@ function cycleLoading() {
 }
 
 /* ══════════════════════════════════════
-   MAIN READING FUNCTION
+   MAIN READING FUNCTION (EXPANDED)
 ══════════════════════════════════════ */
 async function doReading() {
   const name      = document.getElementById('fname').value.trim();
@@ -283,6 +371,7 @@ async function doReading() {
   const nn = nameNumber(name);
   const pn = phoneNumber(phone);
   const py = personalYearNumber(dob);
+  const essence = NUMBER_ESSENCE[lp] || NUMBER_ESSENCE[reduceNum(lp, false)];
 
   document.getElementById('submitBtn').disabled = true;
   document.getElementById('loadingDiv').style.display = 'block';
@@ -305,16 +394,20 @@ Calculated Sacred Numbers:
 - Chaldean Name Number: ${nn}
 - Phone Vibration Number: ${pn}
 - Personal Year Number (${currentYear}): ${py}
+- Ruling Planet: ${essence.planet} (${essence.symbol})
 
 Provide a HIGHLY SPECIFIC, deeply personal numerological reading. Focus on what is CURRENTLY going wrong or challenging in their life and WHY, based on the numerological analysis. Reference dharma, karma, yugas, chakras and Vedic concepts naturally.
 
-Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly these five keys:
+Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly these eight keys:
 
 {
   "current_situation": "3-4 sentences. Be very specific about what the combination of their Life Path ${lp} and Personal Year ${py} reveals about their current struggles, obstacles and why this period feels difficult.",
   "phone_influence": "2-3 sentences. Explain how their phone vibration number ${pn} interacts with their name number ${nn} — is it harmonious or discordant? How does this affect their daily energy, decisions and relationships?",
   "present_cycle": "2-3 sentences. Explain the Personal Year ${py} cycle they are in during ${currentYear} — what karmic lessons, transitions or tests this year is bringing, and when the energy will shift.",
+  "planetary_ruler": "3-4 sentences. Explain how their ruling planet ${essence.planet} (${essence.symbol}) shapes their personality, career path, and relationships. What are the gifts and challenges of being ruled by this planet? How should they harness this planetary energy right now?",
   "chakra_block": "2 sentences. Identify the specific chakra most affected by their Life Path ${lp} and current Personal Year ${py}. Name the physical and emotional symptoms this blockage produces in daily life.",
+  "lucky_elements": {"day": "specific day of the week", "color": "specific color", "gemstone": "specific gemstone name", "direction": "compass direction", "metal": "specific metal"},
+  "year_forecast": "3-4 sentences. Give a concise forecast for the remainder of ${currentYear} — what months will be powerful, when to take action vs. retreat, and what the closing energy of the year holds for them.",
   "remedy": "4 sentences. Give precise, actionable Vedic remedies — include: a specific mantra to chant with number of repetitions, a gemstone or crystal, a colour to wear on a specific day, and a simple daily ritual aligned to their numbers."
 }`;
 
@@ -323,7 +416,7 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
+        max_tokens: 1500,
         messages: [{ role: "user", content: prompt }]
       })
     });
@@ -340,7 +433,10 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
         current_situation: "Your Life Path number reveals a powerful confluence of karmic energies demanding your attention this cycle. The universe has positioned specific tests along your path to accelerate your soul's evolution. Current difficulties are not random — they are precisely calibrated to dissolve the old patterns that no longer serve your dharmic purpose.",
         phone_influence:   "Your phone number carries a vibrational dissonance with your name number, subtly draining your mental clarity and decision-making energy each day. This discordant frequency may be contributing to misunderstandings in communication and delayed outcomes in matters you initiate.",
         present_cycle:     "Your current Personal Year places you in a period of deep transformation and inner reckoning. Old structures in your career and relationships must dissolve before new ones aligned with your true dharma can emerge. This cycle demands surrender rather than force.",
+        planetary_ruler:   `Your ruling planet ${essence.planet} shapes your core identity with the energy of ${essence.keyword}. This planetary influence gives you remarkable ${lp <= 5 ? 'drive and mental acuity' : 'depth and resilience'}, but can also create periods of intense internal pressure when its energy is blocked or misdirected. Right now, ${essence.planet}'s transit is asking you to realign your daily habits with your soul's true calling.`,
         chakra_block:      "Your heart chakra shows significant restriction, manifesting as emotional guardedness, difficulty receiving support, and a subtle sense of isolation. This blockage is also suppressing the natural flow of abundance and meaningful connection into your life.",
+        lucky_elements:    { day: "Sunday", color: "Gold", gemstone: "Ruby", direction: "East", metal: "Gold" },
+        year_forecast:     `The remainder of ${currentYear} brings a gradual shift from turbulence to clarity. The months of August and October will be particularly powerful for new beginnings and decisive action. By November, much of the karmic fog will lift, revealing clearer paths forward. Close the year with gratitude rituals to seal the positive energy.`,
         remedy:            "Chant 'Om Namah Shivaya' 108 times each morning before sunrise to clear karmic residue. Wear deep indigo or violet on Saturdays to strengthen your intuitive faculties. Place an amethyst crystal at your workspace to neutralise discordant phone vibrations. Each evening, light a ghee lamp and sit in silence for 9 minutes — this simple ritual will begin to restore your chakra balance within 21 days."
       };
     }
@@ -348,6 +444,8 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
     clearInterval(loadInterval);
     document.getElementById('loadingDiv').style.display = 'none';
     document.getElementById('res-name').textContent = name;
+
+    // Number badges
     document.getElementById('res-numbers').innerHTML = `
       <div class="num-badge"><div class="num-val">${lp}</div><div class="num-label">Life Path</div></div>
       <div class="num-badge"><div class="num-val">${nn}</div><div class="num-label">Name Number</div></div>
@@ -355,20 +453,71 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
       <div class="num-badge"><div class="num-val">${py}</div><div class="num-label">Personal Year</div></div>
     `;
 
+    // Build the rich result HTML
+    let resultHTML = '';
+
+    // Essence card
+    resultHTML += `
+      <div class="essence-card">
+        <div class="essence-number">${lp}</div>
+        <div class="essence-keyword">✦ ${essence.keyword} ✦</div>
+        <p class="essence-desc">${essence.desc}</p>
+      </div>
+    `;
+
+    // Planetary ruler card
+    resultHTML += `
+      <div class="planetary-ruler-card">
+        <span class="planetary-symbol" style="color:${essence.color}">${essence.symbol}</span>
+        <p class="planetary-name">Ruled by ${essence.planet}</p>
+        <p class="planetary-desc">${reading.planetary_ruler || ''}</p>
+      </div>
+    `;
+
+    // Lucky elements grid
+    const lucky = reading.lucky_elements || {};
+    resultHTML += `
+      <div class="reading-divider">
+        <div class="reading-divider-line"></div>
+        <span class="reading-divider-label">✦ Your Lucky Elements ✦</span>
+        <div class="reading-divider-line"></div>
+      </div>
+      <div class="lucky-elements-grid">
+        <div class="lucky-card"><span class="lucky-icon">📅</span><p class="lucky-label">Lucky Day</p><p class="lucky-value">${lucky.day || 'Sunday'}</p></div>
+        <div class="lucky-card"><span class="lucky-icon">🎨</span><p class="lucky-label">Lucky Color</p><p class="lucky-value">${lucky.color || 'Gold'}</p></div>
+        <div class="lucky-card"><span class="lucky-icon">💎</span><p class="lucky-label">Gemstone</p><p class="lucky-value">${lucky.gemstone || 'Ruby'}</p></div>
+        <div class="lucky-card"><span class="lucky-icon">🧭</span><p class="lucky-label">Direction</p><p class="lucky-value">${lucky.direction || 'East'}</p></div>
+        <div class="lucky-card"><span class="lucky-icon">⚙️</span><p class="lucky-label">Metal</p><p class="lucky-value">${lucky.metal || 'Gold'}</p></div>
+      </div>
+    `;
+
+    // Reading blocks divider
+    resultHTML += `
+      <div class="reading-divider">
+        <div class="reading-divider-line"></div>
+        <span class="reading-divider-label">✦ Your Cosmic Reading ✦</span>
+        <div class="reading-divider-line"></div>
+      </div>
+    `;
+
+    // Reading sections
     const sections = [
       { title: "◈ What Is Currently Afflicting You",  key: "current_situation" },
       { title: "✦ Your Phone's Hidden Influence",     key: "phone_influence"   },
       { title: "◉ Your Present Cosmic Cycle",         key: "present_cycle"     },
       { title: "⚡ Chakra Blockage Revealed",         key: "chakra_block"      },
+      { title: "🔮 Year Ahead Forecast",              key: "year_forecast"     },
       { title: "☽ Vedic Remedies Prescribed For You", key: "remedy"            },
     ];
 
-    document.getElementById('res-reading').innerHTML = sections.map(s => `
+    resultHTML += sections.map(s => `
       <div class="reading-block">
         <p class="reading-title">${s.title}</p>
         <p class="reading-text">${reading[s.key] || ''}</p>
       </div>
     `).join('');
+
+    document.getElementById('res-reading').innerHTML = resultHTML;
 
     document.getElementById('result-section').style.display = 'block';
     setTimeout(() => {
@@ -428,7 +577,6 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
    COMPATIBILITY CHECKER
 ══════════════════════════════════════ */
 const COMPAT_TABLE = {
-  // [lp1][lp2] → base score 0-100
   harmonious: new Set([
     '1-5','5-1','1-3','3-1','2-6','6-2','2-4','4-2','3-9','9-3',
     '4-8','8-4','6-9','9-6','7-11','11-7','1-9','9-1','2-8','8-2'
@@ -442,20 +590,17 @@ function compatScore(lp1, lp2, nn1, nn2) {
   const key = `${lp1}-${lp2}`;
   const keyR = `${lp2}-${lp1}`;
 
-  let base = 60; // neutral start
+  let base = 60;
   if (COMPAT_TABLE.harmonious.has(key) || COMPAT_TABLE.harmonious.has(keyR)) base = 82;
   if (COMPAT_TABLE.challenging.has(key) || COMPAT_TABLE.challenging.has(keyR)) base = 44;
 
-  // Same life path — deep resonance
   if (lp1 === lp2) base = Math.min(base + 10, 96);
 
-  // Name number harmony — add ±8
   const nnDiff = Math.abs(nn1 - nn2);
   if (nnDiff === 0) base = Math.min(base + 8, 98);
   else if (nnDiff <= 2) base = Math.min(base + 4, 98);
   else if (nnDiff >= 6) base = Math.max(base - 6, 20);
 
-  // Keep between 20–98 for realism
   return Math.max(20, Math.min(98, base));
 }
 
@@ -528,7 +673,7 @@ function checkCompatibility() {
     if (current >= score) clearInterval(counter);
   }, 20);
 
-  // Animate arc — circumference = 2π × 52 ≈ 327
+  // Animate arc
   const arc = document.getElementById('compatArc');
   setTimeout(() => {
     const offset = 327 - (327 * score / 100);
