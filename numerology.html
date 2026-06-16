@@ -1255,8 +1255,7 @@
             <div class="personal-transits-grid" id="personalTransits"></div>
           </div>
 
-          <!-- Calculation Breakdown -->
-          <div class="calc-breakdown" id="calcBreakdown"></div>
+
 
           <!-- Universal Grid -->
           <div class="grid-section">
@@ -1593,27 +1592,6 @@
       // Personal Day Calculation
       const personalDay = reduceWithMaster(personalMonth + currentDate);
 
-      // ── Build BN calculation steps ──
-      const bnSteps = buildBNSteps(day, dayDigits, daySum, birthNumber);
-      const dnSteps = buildDNSteps(allDigits, totalSum, destinyNumber);
-
-      // ── Build Personal Transit calculation steps ──
-      const MONTH_NAMES = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-      const currentMonthName = MONTH_NAMES[currentMonth - 1];
-
-      const pySteps = buildPersonalYearSteps(
-        day, dayDigits, daySum, redDay,
-        month, redMonth,
-        currentYear, String(currentYear).split('').map(Number), String(currentYear).split('').map(Number).reduce((a, b) => a + b, 0), redYear,
-        redDay + redMonth + redYear, personalYear
-      );
-
-      const pmSteps = buildPersonalMonthSteps(personalYear, currentMonth, currentMonthName, personalYear + currentMonth, personalMonth);
-      const pdSteps = buildPersonalDaySteps(personalMonth, currentDate, personalMonth + currentDate, personalDay);
-
       // ── Render Report ──
       renderReport({
         dob: raw,
@@ -1623,117 +1601,10 @@
         digitCounts,
         presentNums,
         missingNums,
-        bnSteps,
-        dnSteps,
         personalYear,
         personalMonth,
-        personalDay,
-        pySteps,
-        pmSteps,
-        pdSteps
+        personalDay
       });
-    }
-
-    /* ══════════════════════════════════════
-       BUILD CALCULATION STEP STRINGS
-    ══════════════════════════════════════ */
-    function buildBNSteps(day, digits, sum, result) {
-      let html = `Day = ${day}`;
-      if (digits.length > 1) {
-        html += ` <span class="calc-step-arrow">→</span> ${digits.join(' + ')} = ${sum}`;
-        if (sum >= 10) {
-          // Show intermediate reductions
-          let current = sum;
-          while (current >= 10) {
-            const parts = String(current).split('').map(Number);
-            const next = parts.reduce((a, b) => a + b, 0);
-            html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
-            current = next;
-          }
-        }
-      }
-      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">BN = ${result}</span>`;
-      return html;
-    }
-
-    function buildDNSteps(digits, sum, result) {
-      let html = `${digits.join(' + ')} = ${sum}`;
-      let current = sum;
-      while (current >= 10) {
-        const parts = String(current).split('').map(Number);
-        const next = parts.reduce((a, b) => a + b, 0);
-        html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
-        current = next;
-      }
-      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">DN = ${result}</span>`;
-      return html;
-    }
-
-    function buildPersonalYearSteps(day, dayDigits, daySum, dayRed, month, monthRed, currentYear, yearDigits, yearSum, yearRed, finalSum, finalRed) {
-      let html = `Birth Day (${day})`;
-      if (dayDigits.length > 1) {
-        html += ` <span class="calc-step-arrow">→</span> ${dayDigits.join(' + ')} = ${daySum}`;
-        if (daySum !== dayRed) {
-          html += ` <span class="calc-step-arrow">→</span> ${String(daySum).split('').map(Number).join(' + ')} = ${dayRed}`;
-        }
-      } else {
-        html += ` = ${dayRed}`;
-      }
-      
-      html += `<br>Birth Month (${month}) = ${monthRed}`;
-      
-      html += `<br>Current Year (${currentYear})`;
-      if (yearDigits.length > 1) {
-        html += ` <span class="calc-step-arrow">→</span> ${yearDigits.join(' + ')} = ${yearSum}`;
-        if (yearSum !== yearRed) {
-          html += ` <span class="calc-step-arrow">→</span> ${String(yearSum).split('').map(Number).join(' + ')} = ${yearRed}`;
-        }
-      } else {
-        html += ` = ${yearRed}`;
-      }
-      
-      html += `<br>Sum: ${dayRed} (Day) + ${monthRed} (Month) + ${yearRed} (Year) = ${finalSum}`;
-      if (finalSum >= 10 && finalSum !== 11 && finalSum !== 22) {
-        let current = finalSum;
-        while (current >= 10 && current !== 11 && current !== 22) {
-          const parts = String(current).split('').map(Number);
-          const next = parts.reduce((a, b) => a + b, 0);
-          html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
-          current = next;
-        }
-      }
-      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">Personal Year = ${finalRed}</span>`;
-      return html;
-    }
-
-    function buildPersonalMonthSteps(personalYear, currentMonth, currentMonthName, sum, finalRed) {
-      let html = `Personal Year (${personalYear}) + Current Month (${currentMonthName}: ${currentMonth}) = ${sum}`;
-      if (sum >= 10 && sum !== 11 && sum !== 22) {
-        let current = sum;
-        while (current >= 10 && current !== 11 && current !== 22) {
-          const parts = String(current).split('').map(Number);
-          const next = parts.reduce((a, b) => a + b, 0);
-          html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
-          current = next;
-        }
-      }
-      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">Personal Month = ${finalRed}</span>`;
-      return html;
-    }
-
-    function buildPersonalDaySteps(personalMonth, currentDate, sum, finalRed) {
-      let html = `Personal Month (${personalMonth}) + Current Date (${currentDate}) = ${sum}`;
-      if (sum >= 10 && sum !== 11 && sum !== 22) {
-        let current = sum;
-        while (current >= 10 && current !== 11 && current !== 22) {
-          const parts = String(current).split('').map(Number);
-          const next = parts.reduce((a, b) => a + b, 0);
-          html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
-          current = next;
-        }
-      }
-      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">Personal Day = ${finalRed}</span>`;
-      return html;
     }
 
     /* ══════════════════════════════════════
@@ -1818,29 +1689,7 @@
         </div>
       `;
 
-      // Calculation breakdown
-      document.getElementById('calcBreakdown').innerHTML = `
-        <div class="calc-block">
-          <p class="calc-block-title">✦ Birth Number Calculation</p>
-          <p class="calc-block-steps">${data.bnSteps}</p>
-        </div>
-        <div class="calc-block">
-          <p class="calc-block-title">✦ Destiny Number Calculation</p>
-          <p class="calc-block-steps">${data.dnSteps}</p>
-        </div>
-        <div class="calc-block">
-          <p class="calc-block-title">✦ Personal Year Calculation</p>
-          <p class="calc-block-steps">${data.pySteps}</p>
-        </div>
-        <div class="calc-block">
-          <p class="calc-block-title">✦ Personal Month Calculation</p>
-          <p class="calc-block-steps">${data.pmSteps}</p>
-        </div>
-        <div class="calc-block">
-          <p class="calc-block-title">✦ Personal Day Calculation</p>
-          <p class="calc-block-steps">${data.pdSteps}</p>
-        </div>
-      `;
+
 
       // Universal Grid
       const gridEl = document.getElementById('numeroGrid');
