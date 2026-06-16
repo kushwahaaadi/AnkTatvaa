@@ -1051,6 +1051,114 @@
         font-size: 0.85rem;
       }
     }
+
+    /* ── Personal Transits Section ── */
+    .personal-transits-section {
+      margin: 2.5rem 0;
+      padding: 2.5rem 1.5rem;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(0, 212, 255, 0.03));
+      border: 1px solid rgba(168, 85, 247, 0.15);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .personal-transits-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .personal-transits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .transit-badge {
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .transit-badge:hover {
+      transform: translateY(-5px);
+    }
+
+    .transit-ring {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto 0.8rem;
+      background: rgba(168, 85, 247, 0.04);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.05);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .transit-badge:hover .transit-ring {
+      border-color: rgba(0, 212, 255, 0.5);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+
+    .transit-ring::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1px solid rgba(168, 85, 247, 0.15);
+      animation: pulseRing 3.5s ease-in-out infinite;
+    }
+
+    .transit-val {
+      font-family: 'Yatra One', serif;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #c084fc, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .transit-label {
+      font-family: 'Philosopher', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #c084fc;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .transit-desc {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.3rem;
+      max-width: 180px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 600px) {
+      .personal-transits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
   </style>
 </head>
 
@@ -1139,6 +1247,13 @@
 
           <!-- Birth Number & Destiny Number -->
           <div class="report-numbers" id="reportNumbers"></div>
+
+          <!-- Personal Transits Section -->
+          <div class="personal-transits-section">
+            <p class="grid-section-title">✦ Current Personal Transits ✦</p>
+            <p class="grid-section-sub" id="transitDateDisplay"></p>
+            <div class="personal-transits-grid" id="personalTransits"></div>
+          </div>
 
           <!-- Calculation Breakdown -->
           <div class="calc-breakdown" id="calcBreakdown"></div>
@@ -1452,9 +1567,52 @@
         else missingNums.push(i);
       }
 
+      // ── 4. Personal Year, Month, Day Numbers ──
+      const today = new Date();
+      const currentYear = today.getFullYear();
+      const currentMonth = today.getMonth() + 1;
+      const currentDate = today.getDate();
+
+      // Helper to reduce with master numbers 11, 22
+      function reduceWithMaster(n) {
+        while (n >= 10 && n !== 11 && n !== 22) {
+          n = String(n).split('').reduce((acc, d) => acc + parseInt(d, 10), 0);
+        }
+        return n;
+      }
+
+      // Personal Year Calculation
+      const redDay = reduceWithMaster(day);
+      const redMonth = reduceWithMaster(month);
+      const redYear = reduceWithMaster(currentYear);
+      const personalYear = reduceWithMaster(redDay + redMonth + redYear);
+
+      // Personal Month Calculation
+      const personalMonth = reduceWithMaster(personalYear + currentMonth);
+
+      // Personal Day Calculation
+      const personalDay = reduceWithMaster(personalMonth + currentDate);
+
       // ── Build BN calculation steps ──
       const bnSteps = buildBNSteps(day, dayDigits, daySum, birthNumber);
       const dnSteps = buildDNSteps(allDigits, totalSum, destinyNumber);
+
+      // ── Build Personal Transit calculation steps ──
+      const MONTH_NAMES = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const currentMonthName = MONTH_NAMES[currentMonth - 1];
+
+      const pySteps = buildPersonalYearSteps(
+        day, dayDigits, daySum, redDay,
+        month, redMonth,
+        currentYear, String(currentYear).split('').map(Number), String(currentYear).split('').map(Number).reduce((a, b) => a + b, 0), redYear,
+        redDay + redMonth + redYear, personalYear
+      );
+
+      const pmSteps = buildPersonalMonthSteps(personalYear, currentMonth, currentMonthName, personalYear + currentMonth, personalMonth);
+      const pdSteps = buildPersonalDaySteps(personalMonth, currentDate, personalMonth + currentDate, personalDay);
 
       // ── Render Report ──
       renderReport({
@@ -1466,7 +1624,13 @@
         presentNums,
         missingNums,
         bnSteps,
-        dnSteps
+        dnSteps,
+        personalYear,
+        personalMonth,
+        personalDay,
+        pySteps,
+        pmSteps,
+        pdSteps
       });
     }
 
@@ -1505,9 +1669,91 @@
       return html;
     }
 
+    function buildPersonalYearSteps(day, dayDigits, daySum, dayRed, month, monthRed, currentYear, yearDigits, yearSum, yearRed, finalSum, finalRed) {
+      let html = `Birth Day (${day})`;
+      if (dayDigits.length > 1) {
+        html += ` <span class="calc-step-arrow">→</span> ${dayDigits.join(' + ')} = ${daySum}`;
+        if (daySum !== dayRed) {
+          html += ` <span class="calc-step-arrow">→</span> ${String(daySum).split('').map(Number).join(' + ')} = ${dayRed}`;
+        }
+      } else {
+        html += ` = ${dayRed}`;
+      }
+      
+      html += `<br>Birth Month (${month}) = ${monthRed}`;
+      
+      html += `<br>Current Year (${currentYear})`;
+      if (yearDigits.length > 1) {
+        html += ` <span class="calc-step-arrow">→</span> ${yearDigits.join(' + ')} = ${yearSum}`;
+        if (yearSum !== yearRed) {
+          html += ` <span class="calc-step-arrow">→</span> ${String(yearSum).split('').map(Number).join(' + ')} = ${yearRed}`;
+        }
+      } else {
+        html += ` = ${yearRed}`;
+      }
+      
+      html += `<br>Sum: ${dayRed} (Day) + ${monthRed} (Month) + ${yearRed} (Year) = ${finalSum}`;
+      if (finalSum >= 10 && finalSum !== 11 && finalSum !== 22) {
+        let current = finalSum;
+        while (current >= 10 && current !== 11 && current !== 22) {
+          const parts = String(current).split('').map(Number);
+          const next = parts.reduce((a, b) => a + b, 0);
+          html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
+          current = next;
+        }
+      }
+      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">Personal Year = ${finalRed}</span>`;
+      return html;
+    }
+
+    function buildPersonalMonthSteps(personalYear, currentMonth, currentMonthName, sum, finalRed) {
+      let html = `Personal Year (${personalYear}) + Current Month (${currentMonthName}: ${currentMonth}) = ${sum}`;
+      if (sum >= 10 && sum !== 11 && sum !== 22) {
+        let current = sum;
+        while (current >= 10 && current !== 11 && current !== 22) {
+          const parts = String(current).split('').map(Number);
+          const next = parts.reduce((a, b) => a + b, 0);
+          html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
+          current = next;
+        }
+      }
+      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">Personal Month = ${finalRed}</span>`;
+      return html;
+    }
+
+    function buildPersonalDaySteps(personalMonth, currentDate, sum, finalRed) {
+      let html = `Personal Month (${personalMonth}) + Current Date (${currentDate}) = ${sum}`;
+      if (sum >= 10 && sum !== 11 && sum !== 22) {
+        let current = sum;
+        while (current >= 10 && current !== 11 && current !== 22) {
+          const parts = String(current).split('').map(Number);
+          const next = parts.reduce((a, b) => a + b, 0);
+          html += ` <span class="calc-step-arrow">→</span> ${parts.join(' + ')} = ${next}`;
+          current = next;
+        }
+      }
+      html += ` <span class="calc-step-arrow">→</span> <span class="calc-result-highlight">Personal Day = ${finalRed}</span>`;
+      return html;
+    }
+
     /* ══════════════════════════════════════
        RENDER THE FULL REPORT
-    ══════════════════════════════════════ */
+     ══════════════════════════════════════ */
+    const TRANSIT_ESSENCES = {
+      1: { title: "Initiation", desc: "A time for fresh starts, independence, and planting new seeds." },
+      2: { title: "Harmony", desc: "Focus on patience, partnerships, cooperation, and balance." },
+      3: { title: "Expression", desc: "A period of creativity, social joy, and self-expression." },
+      4: { title: "Foundation", desc: "Concentrate on hard work, discipline, and building stability." },
+      5: { title: "Change", desc: "Expect pivots, freedom, adaptability, and new adventures." },
+      6: { title: "Nurturing", desc: "Focus on relationships, family duty, love, and community." },
+      7: { title: "Spirituality", desc: "A time for introspection, meditation, study, and solitude." },
+      8: { title: "Manifestation", desc: "Focus on personal power, career, finance, and karmic rewards." },
+      9: { title: "Completion", desc: "A period for closure, release, and letting go of the old." },
+      11: { title: "Illumination", desc: "A master period of high intuition, spiritual growth, and alignment." },
+      22: { title: "Master Building", desc: "A rare master cycle to build lasting dreams into material reality." },
+      33: { title: "Master Teacher", desc: "A time of great spiritual teaching, healing, and unconditional love." }
+    };
+
     function renderReport(data) {
       const section = document.getElementById('reportSection');
 
@@ -1534,6 +1780,44 @@
         </div>
       `;
 
+      // Transit badges
+      const py = data.personalYear;
+      const pm = data.personalMonth;
+      const pd = data.personalDay;
+
+      const pyEss = TRANSIT_ESSENCES[py] || { title: "Cycle " + py, desc: "A significant numerological period." };
+      const pmEss = TRANSIT_ESSENCES[pm] || { title: "Cycle " + pm, desc: "A significant numerological period." };
+      const pdEss = TRANSIT_ESSENCES[pd] || { title: "Cycle " + pd, desc: "A significant numerological period." };
+
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedToday = today.toLocaleDateString('en-US', options);
+      document.getElementById('transitDateDisplay').textContent = `Calculated for today: ${formattedToday}`;
+
+      document.getElementById('personalTransits').innerHTML = `
+        <div class="transit-badge">
+          <div class="transit-ring">
+            <span class="transit-val">${py}</span>
+          </div>
+          <p class="transit-label">Personal Year</p>
+          <p class="transit-desc"><strong>${pyEss.title}</strong>: ${pyEss.desc}</p>
+        </div>
+        <div class="transit-badge">
+          <div class="transit-ring">
+            <span class="transit-val">${pm}</span>
+          </div>
+          <p class="transit-label">Personal Month</p>
+          <p class="transit-desc"><strong>${pmEss.title}</strong>: ${pmEss.desc}</p>
+        </div>
+        <div class="transit-badge">
+          <div class="transit-ring">
+            <span class="transit-val">${pd}</span>
+          </div>
+          <p class="transit-label">Personal Day</p>
+          <p class="transit-desc"><strong>${pdEss.title}</strong>: ${pdEss.desc}</p>
+        </div>
+      `;
+
       // Calculation breakdown
       document.getElementById('calcBreakdown').innerHTML = `
         <div class="calc-block">
@@ -1543,6 +1827,18 @@
         <div class="calc-block">
           <p class="calc-block-title">✦ Destiny Number Calculation</p>
           <p class="calc-block-steps">${data.dnSteps}</p>
+        </div>
+        <div class="calc-block">
+          <p class="calc-block-title">✦ Personal Year Calculation</p>
+          <p class="calc-block-steps">${data.pySteps}</p>
+        </div>
+        <div class="calc-block">
+          <p class="calc-block-title">✦ Personal Month Calculation</p>
+          <p class="calc-block-steps">${data.pmSteps}</p>
+        </div>
+        <div class="calc-block">
+          <p class="calc-block-title">✦ Personal Day Calculation</p>
+          <p class="calc-block-steps">${data.pdSteps}</p>
         </div>
       `;
 
