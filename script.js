@@ -380,6 +380,17 @@ async function doReading() {
 
   try {
     const currentYear = new Date().getFullYear();
+    let pyData = null;
+    try {
+      const pyResp = await fetch("personal_year_1_9_v2 (1).json");
+      if (pyResp.ok) {
+        const pyJson = await pyResp.json();
+        const pyReduced = reduceNum(py, false);
+        pyData = pyJson[String(pyReduced)];
+      }
+    } catch (e) {
+      console.error("Error fetching personal_year_1_9_v2 (1).json:", e);
+    }
 
     const prompt = `You are an ancient Vedic numerology sage with mastery of Chaldean numerology, Pythagorean methods, Vedic astro-numerology, and Sanskrit sacred texts. A seeker has approached you.
 
@@ -411,22 +422,21 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
   "remedy": "4 sentences. Give precise, actionable Vedic remedies — include: a specific mantra to chant with number of repetitions, a gemstone or crystal, a colour to wear on a specific day, and a simple daily ritual aligned to their numbers."
 }`;
 
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1500,
-        messages: [{ role: "user", content: prompt }]
-      })
-    });
-
-    const data    = await response.json();
-    const rawText = data.content.map(item => item.text || "").join("");
-    const cleaned = rawText.replace(/```json|```/g, "").trim();
-
     let reading;
     try {
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1500,
+          messages: [{ role: "user", content: prompt }]
+        })
+      });
+
+      const data    = await response.json();
+      const rawText = data.content.map(item => item.text || "").join("");
+      const cleaned = rawText.replace(/```json|```/g, "").trim();
       reading = JSON.parse(cleaned);
     } catch (_) {
       reading = {
@@ -473,6 +483,43 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
         <p class="planetary-desc">${reading.planetary_ruler || ''}</p>
       </div>
     `;
+
+    // Personal Year Outcome card
+    if (pyData) {
+      resultHTML += `
+        <div class="reading-divider">
+          <div class="reading-divider-line"></div>
+          <span class="reading-divider-label">✦ Personal Year ${py} Outcome ✦</span>
+          <div class="reading-divider-line"></div>
+        </div>
+        <div class="essence-card" style="border-color: rgba(0, 212, 255, 0.25); background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(168, 85, 247, 0.06)); text-align: center;">
+          <div class="essence-keyword" style="color: var(--gold); font-size: 11px; letter-spacing: 3px; margin-bottom: 0.6rem;">Theme: ${pyData.theme || ''}</div>
+          <p class="essence-desc" style="font-size: 1.05rem; margin-bottom: 1.5rem; text-align: justify; line-height: 1.85;">${pyData.description || ''}</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; text-align: left;">
+            <div style="background: rgba(0, 0, 0, 0.25); padding: 1.2rem; border-radius: 6px; border-left: 3px solid #6ee7b7; border-top: 1px solid rgba(255,255,255,0.03); border-right: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <p style="font-family: 'Philosopher', serif; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; font-weight: bold; color: #6ee7b7;">✨ Positive Highlights</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                ${(pyData.positive_highlights || []).map(eff => `<span style="font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; padding: 0.3rem 0.7rem; border-radius: 4px; background: rgba(110, 231, 183, 0.04); border: 1px solid rgba(110, 231, 183, 0.15); color: var(--text); text-transform: capitalize;">${eff}</span>`).join('')}
+              </div>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.25); padding: 1.2rem; border-radius: 6px; border-left: 3px solid #f87171; border-top: 1px solid rgba(255,255,255,0.03); border-right: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <p style="font-family: 'Philosopher', serif; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; font-weight: bold; color: #f87171;">⚠️ Precautions</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                ${(pyData.precautions || []).map(eff => `<span style="font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; padding: 0.3rem 0.7rem; border-radius: 4px; background: rgba(248, 113, 113, 0.04); border: 1px solid rgba(248, 113, 113, 0.15); color: var(--text); text-transform: capitalize;">${eff}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+          
+          ${pyData.notes ? `
+            <div style="display: flex; gap: 0.8rem; align-items: flex-start; background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.18); border-radius: 6px; padding: 1rem 1.2rem; text-align: left;">
+              <span style="font-size: 1.25rem; line-height: 1;">🔮</span>
+              <p style="font-family: 'Vesper Libre', serif; font-size: 0.9rem; line-height: 1.6; color: #fbbf24; font-style: italic; margin: 0;">${pyData.notes}</p>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
 
     // Lucky elements grid
     const lucky = reading.lucky_elements || {};

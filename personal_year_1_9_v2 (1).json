@@ -1,0 +1,56 @@
+{
+  "1": {
+    "theme": "New Beginnings",
+    "description": "This marks the beginning of a fresh nine-year cycle, making it the perfect time to start new projects, launch ideas, change careers, or take bold steps toward your goals. Your confidence, independence, and determination are naturally stronger, helping you create a solid foundation for the years ahead.",
+    "positive_highlights": ["Fresh opportunities", "increased motivation", "strong willpower", "leadership qualities", "productive ideas", "career growth", "new relationships", "possibility of marriage or relocation", "multiple income sources", "pursuing ambitious goals"],
+    "precautions": ["Avoid acting impulsively or letting impatience control your decisions", "stay away from unnecessary arguments", "avoid reckless behavior", "avoid trusting people too quickly", "practice careful planning and emotional balance"]
+  },
+  "2": {
+    "theme": "Cooperation",
+    "description": "This year encourages patience, harmony, and meaningful partnerships. Instead of forcing results, allow opportunities to develop naturally. It is an excellent period for strengthening relationships, learning new skills, and preparing for future success.",
+    "positive_highlights": ["Stronger relationships", "romance", "cooperation", "diplomacy", "emotional sensitivity", "improved research abilities", "better teamwork", "quiet progress leading to lasting rewards"],
+    "precautions": ["Be mindful of mood swings", "avoid emotional imbalance", "watch for anxiety or unnecessary overthinking", "avoid making decisions based purely on emotions", "pay attention to physical and mental well-being"]
+  },
+  "3": {
+    "theme": "Expansion",
+    "description": "This is a joyful and expressive year filled with creativity, communication, and social growth. It is a wonderful time to connect with people, travel, share your ideas, and enjoy life while completing unfinished work.",
+    "positive_highlights": ["Creativity flourishes", "improved communication", "new friendships", "strengthened old relationships", "increased travel opportunities", "more noticeable natural charm", "ideal for self-expression and personal growth"],
+    "precautions": ["Avoid distractions", "avoid gossip", "watch unnecessary spending", "avoid spreading yourself too thin", "focus on completing existing tasks before taking on new responsibilities"]
+  },
+  "4": {
+    "theme": "Security",
+    "description": "This year is about building stability through discipline, patience, and consistent effort. Hard work performed now creates a strong foundation for future achievements, making it a rewarding period for long-term planning.",
+    "positive_highlights": ["More practical", "dependable", "organized", "goal-oriented", "dedication and systematic approach leading to lasting security and steady progress"],
+    "precautions": ["May occasionally feel pressured, mentally exhausted, or frustrated", "avoid becoming too rigid in thinking", "prioritize health alongside responsibilities"]
+  },
+  "5": {
+    "theme": "Activity",
+    "description": "Life becomes more dynamic and exciting during this year. Change, travel, new experiences, and unexpected opportunities are likely to appear, encouraging you to step outside your comfort zone.",
+    "positive_highlights": ["Personal growth through travel", "promotions", "networking", "adaptability", "freedom", "exciting new opportunities", "flexibility to make the most of changing circumstances"],
+    "precautions": ["Stay focused", "avoid impulsive decisions or unreliable commitments", "handle disagreements calmly, as conflicts started during this period may become long-lasting if left unresolved"]
+  },
+  "6": {
+    "theme": "Communication",
+    "description": "This year places greater importance on family, relationships, responsibilities, and emotional balance. It is a favorable period for strengthening personal bonds, buying a home, marriage, or contributing to your community.",
+    "positive_highlights": ["Love", "harmony", "family happiness", "artistic interests", "stronger relationships", "emotional stability", "meaningful responsibilities bringing fulfillment"],
+    "precautions": ["Avoid becoming stubborn, selfish, or unwilling to compromise", "practice open communication and flexibility to maintain peace in personal and professional relationships"]
+  },
+  "7": {
+    "theme": "Spirituality",
+    "description": "This is a year of self-discovery, learning, and inner growth. Rather than chasing rapid expansion, focus on gaining wisdom, improving your skills, and developing a deeper understanding of yourself.",
+    "positive_highlights": ["Greater intuition", "financial stability through careful planning", "research success", "personal development", "meditation", "stronger analytical abilities", "quiet reflection leading to important breakthroughs"],
+    "precautions": ["Avoid starting major new ventures without careful thought", "control impatience, jealousy, unnecessary doubts, and emotional isolation", "trust the process and focus on long-term growth"]
+  },
+  "8": {
+    "theme": "Inspiration",
+    "description": "This is one of the strongest years for achievement, career growth, and financial success. Your efforts from previous years begin producing visible results, making it an excellent time to pursue ambitious goals.",
+    "positive_highlights": ["Career advancement", "promotions", "investments", "financial growth", "leadership", "business expansion", "property-related gains", "increased respect"],
+    "precautions": ["Avoid greed, arrogance, or unethical decisions", "stay humble", "manage money wisely", "ensure success is achieved with honesty and integrity"]
+  },
+  "9": {
+    "theme": "Changes",
+    "description": "This year represents completion and transformation. It is a time to let go of what no longer serves you, finish unfinished work, forgive the past, and prepare for a fresh cycle ahead.",
+    "positive_highlights": ["Personal growth through compassion", "forgiveness", "new friendships", "spiritual experiences", "broader perspectives", "emotional healing", "releasing the old to create space for new beginnings"],
+    "precautions": ["Avoid careless decisions", "avoid impulsive actions", "resolve conflicts rather than leaving them unresolved", "avoid emotional detachment", "accept endings gracefully and focus on moving forward"]
+  }
+}
