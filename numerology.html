@@ -1153,6 +1153,56 @@
       margin-right: auto;
     }
 
+    /* ── Present Cosmic Grid Transit Chips ── */
+    .personal-transit-chips {
+      margin-bottom: 1.5rem;
+    }
+
+    .present-transit-chips {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .present-chip {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .present-chip:hover {
+      background: rgba(168, 85, 247, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.15);
+    }
+
+    .present-chip strong {
+      font-family: 'Yatra One', serif;
+      font-size: 1.05rem;
+      margin-left: 0.3rem;
+    }
+
+    @media (max-width: 600px) {
+      .present-transit-chips {
+        gap: 0.5rem;
+      }
+
+      .present-chip {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.9rem;
+      }
+
+      .present-chip strong {
+        font-size: 0.95rem;
+      }
+    }
+
     @media (max-width: 600px) {
       .personal-transits-grid {
         grid-template-columns: 1fr;
@@ -1296,6 +1346,14 @@
             <p class="grid-section-title">✦ Universal Numerology Grid ✦</p>
             <p class="grid-section-sub">Each digit from your birth date placed in its sacred position</p>
             <div class="numero-grid" id="mahadashaGrid"></div>
+          </div>
+
+          <!-- Present Cosmic Grid (3rd Grid) -->
+          <div class="grid-section" style="border-top: 1px solid rgba(168, 85, 247, 0.18);">
+            <p class="grid-section-title" style="color: #c084fc;">✦ Present Cosmic Grid ✦</p>
+            <p class="grid-section-sub">Your cosmic grid enhanced with Personal Year, Month &amp; Day transits</p>
+            <div class="personal-transit-chips" id="presentGridTransits"></div>
+            <div class="numero-grid" id="presentCosmicGrid"></div>
           </div>
 
           <!-- Mahadasha Info Panel -->
@@ -1854,6 +1912,54 @@
         cell.appendChild(posLabel);
         cell.appendChild(digitsEl);
         gridEl.appendChild(cell);
+      });
+
+      // ── Build Present Cosmic Grid (3rd Grid) ──
+      // Start with second grid numbers, then add Personal Year, Month & Day
+      const presentDigitCounts = {};
+      for (let i = 1; i <= 9; i++) presentDigitCounts[i] = mahadashaDigitCounts[i];
+
+      // Reduce personal year/month/day to single digit for grid placement
+      const pyGrid = reduceToSingle(data.personalYear);
+      const pmGrid = reduceToSingle(data.personalMonth);
+      const pdGrid = reduceToSingle(data.personalDay);
+
+      presentDigitCounts[pyGrid]++;
+      presentDigitCounts[pmGrid]++;
+      presentDigitCounts[pdGrid]++;
+
+      // Show transit chips above the grid
+      document.getElementById('presentGridTransits').innerHTML = `
+        <div class="present-transit-chips">
+          <span class="present-chip" style="border-color: rgba(168,85,247,0.5); color: #c084fc;">Personal Year: <strong>${data.personalYear}</strong></span>
+          <span class="present-chip" style="border-color: rgba(0,212,255,0.5); color: #00d4ff;">Personal Month: <strong>${data.personalMonth}</strong></span>
+          <span class="present-chip" style="border-color: rgba(245,158,11,0.5); color: #fbbf24;">Personal Day: <strong>${data.personalDay}</strong></span>
+        </div>
+      `;
+
+      const presentGridEl = document.getElementById('presentCosmicGrid');
+      presentGridEl.innerHTML = '';
+      GRID_POSITIONS.forEach(num => {
+        const count = presentDigitCounts[num];
+        const hasDigits = count > 0;
+        const cell = document.createElement('div');
+        cell.className = `grid-cell ${hasDigits ? 'has-digits' : 'empty-cell'}`;
+
+        const posLabel = document.createElement('span');
+        posLabel.className = 'grid-cell-pos';
+        posLabel.textContent = num;
+
+        const digitsEl = document.createElement('span');
+        digitsEl.className = 'grid-cell-digits';
+        if (hasDigits) {
+          digitsEl.textContent = String(num).repeat(count);
+        } else {
+          digitsEl.textContent = '·';
+        }
+
+        cell.appendChild(posLabel);
+        cell.appendChild(digitsEl);
+        presentGridEl.appendChild(cell);
       });
 
       // ── Populate Mahadasha info ──
