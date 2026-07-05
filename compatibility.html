@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Compatibility — Anktatvaa · Vedic Numerology</title>
+  <meta name="description"
+    content="Discover your cosmic compatibility through Vedic Numerology. Compare birth numbers, destiny paths, and name vibrations to unveil the cosmic bond between two souls.">
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════
+       COMPATIBILITY PAGE — LOCAL STYLES
+    ═══════════════════════════════════════ */
+
+    .compat-page-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+    }
+
+    /* ── Hero ── */
+    .compat-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .compat-hero-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .compat-hero-title {
+      font-family: 'Yatra One', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      background: linear-gradient(135deg, #ffd700, #f0c27f, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .compat-hero-sub {
+      font-family: 'Philosopher', serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Input Card ── */
+    .compat-page-card {
+      position: relative;
+      padding: 2.5rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.12);
+      backdrop-filter: blur(12px);
+      margin-bottom: 2.5rem;
+    }
+
+    .compat-page-card .corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: var(--gold);
+      opacity: 0.35;
+    }
+    .compat-page-card .corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; border-radius: 3px 0 0 0; }
+    .compat-page-card .corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; border-radius: 0 3px 0 0; }
+    .compat-page-card .corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; border-radius: 0 0 0 3px; }
+    .compat-page-card .corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; border-radius: 0 0 3px 0; }
+
+    .compat-page-inputs {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .compat-page-person {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .compat-page-person-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+
+    .compat-page-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 2.5rem;
+    }
+
+    .compat-page-vs-ring {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.12), transparent 70%);
+      border: 2px solid rgba(0,212,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: floatBadge 4s ease-in-out infinite;
+    }
+
+    .compat-page-vs-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+
+    /* ── Result Section ── */
+    .compat-result-section {
+      display: none;
+      margin-top: 2.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .compat-result-section.visible {
+      display: block;
+    }
+
+    /* ── Soul Profile Cards ── */
+    .soul-profiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .soul-profile-card {
+      padding: 1.8rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .soul-profile-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+
+    .soul-profile-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .soul-profile-row:last-child {
+      border-bottom: none;
+    }
+
+    .soul-profile-label {
+      font-family: 'Philosopher', serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .soul-profile-value {
+      font-family: 'Vesper Libre', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    /* ── Name Compatibility Card ── */
+    .name-compat-card {
+      padding: 2rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.06), rgba(0, 212, 255, 0.06));
+      border: 1px solid rgba(168, 85, 247, 0.15);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .name-compat-header {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.8rem;
+    }
+
+    .name-compat-numbers {
+      font-family: 'Vesper Libre', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .name-compat-relation {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .name-compat-relation.friendly { color: #4ade80; }
+    .name-compat-relation.neutral  { color: #facc15; }
+    .name-compat-relation.enemy    { color: #f87171; }
+
+    .name-compat-pct {
+      font-family: 'Vesper Libre', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #a855f7, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .name-compat-note {
+      font-family: 'Philosopher', serif;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+
+    /* ── Comparison Table ── */
+    .comparison-section {
+      margin-bottom: 2rem;
+    }
+
+    .comparison-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.4rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 215, 0, 0.06);
+      margin-bottom: 0.6rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .comparison-row:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 212, 255, 0.2);
+    }
+
+    .comparison-nums {
+      font-family: 'Vesper Libre', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .comparison-relation {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      min-width: 80px;
+    }
+
+    .comparison-relation.friendly {
+      color: #4ade80;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+    }
+
+    .comparison-relation.neutral {
+      color: #facc15;
+      background: rgba(250, 204, 21, 0.08);
+      border: 1px solid rgba(250, 204, 21, 0.2);
+    }
+
+    .comparison-relation.enemy {
+      color: #f87171;
+      background: rgba(248, 113, 113, 0.08);
+      border: 1px solid rgba(248, 113, 113, 0.2);
+    }
+
+    .comparison-score {
+      font-family: 'Vesper Libre', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .comparison-score.plus  { color: #4ade80; }
+    .comparison-score.zero  { color: #f87171; }
+
+    /* ── Overall Result ── */
+    .overall-result {
+      text-align: center;
+      padding: 2.5rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(168, 85, 247, 0.05));
+      border: 1px solid rgba(255, 215, 0, 0.12);
+    }
+
+    .overall-result-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── Score Ring ── */
+    .compat-score-ring-wrap {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+    }
+
+    .compat-ring-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .compat-score-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .compat-score-val {
+      font-family: 'Vesper Libre', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00d4ff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .compat-score-pct {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+    }
+
+    .overall-verdict-emoji {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .overall-verdict-text {
+      font-family: 'Yatra One', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .overall-verdict-desc {
+      font-family: 'Philosopher', serif;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .compat-page-inputs {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .compat-page-vs {
+        padding-top: 0;
+      }
+      .compat-page-section {
+        padding: 4rem 1.2rem 3rem;
+      }
+      .soul-profiles {
+        grid-template-columns: 1fr;
+      }
+      .comparison-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .compat-score-ring-wrap {
+        width: 140px;
+        height: 140px;
+      }
+      .compat-score-val {
+        font-size: 2.4rem;
+      }
+      .compat-page-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       SOUL GRIDS + COMMON COMPATIBILITY GRID
+    ═══════════════════════════════════════ */
+
+    /* ── Grids Container ── */
+    .compat-grids-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .compat-grids-section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .compat-grids-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .compat-grid-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .compat-grid-label {
+      font-family: 'Philosopher', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .compat-grid-sublabel {
+      font-family: 'Vesper Libre', serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    /* ── 3×3 Lo Shu Grid (matches numerology.html) ── */
+    .numero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 200px;
+      width: 100%;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    .grid-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0, 212, 255, 0.18);
+      position: relative;
+      transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+      background: rgba(0, 212, 255, 0.02);
+      overflow: hidden;
+    }
+
+    .grid-cell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.06), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .grid-cell.has-digits {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(168, 85, 247, 0.04));
+      border-color: rgba(0, 212, 255, 0.35);
+    }
+
+    .grid-cell.has-digits::before {
+      opacity: 1;
+    }
+
+    .grid-cell.has-digits:hover {
+      border-color: rgba(0, 212, 255, 0.65);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.12), inset 0 0 20px rgba(0, 212, 255, 0.04);
+    }
+
+    .grid-cell.empty-cell {
+      background: rgba(5, 10, 24, 0.6);
+      border-color: rgba(0, 212, 255, 0.08);
+    }
+
+    .grid-cell-pos {
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      font-family: 'Philosopher', serif;
+      font-size: 8px;
+      color: rgba(0, 212, 255, 0.25);
+      letter-spacing: 1px;
+    }
+
+    .grid-cell-digits {
+      font-family: 'Yatra One', serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--gold2);
+      letter-spacing: 2px;
+      text-align: center;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+    }
+
+    .grid-cell.empty-cell .grid-cell-digits {
+      font-size: 1rem;
+      color: rgba(127, 179, 211, 0.15);
+    }
+
+    /* Grid cell staggered entry animation */
+    .grid-cell {
+      opacity: 0;
+      transform: scale(0.85);
+      animation: gridCellIn 0.5s ease forwards;
+    }
+    .grid-cell:nth-child(1) { animation-delay: 0.1s; }
+    .grid-cell:nth-child(2) { animation-delay: 0.18s; }
+    .grid-cell:nth-child(3) { animation-delay: 0.26s; }
+    .grid-cell:nth-child(4) { animation-delay: 0.34s; }
+    .grid-cell:nth-child(5) { animation-delay: 0.42s; }
+    .grid-cell:nth-child(6) { animation-delay: 0.5s; }
+    .grid-cell:nth-child(7) { animation-delay: 0.58s; }
+    .grid-cell:nth-child(8) { animation-delay: 0.66s; }
+    .grid-cell:nth-child(9) { animation-delay: 0.74s; }
+
+    @keyframes gridCellIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* ── Common Grid Color Coding ── */
+    .common-digit-both {
+      color: #ffffff !important;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    .common-digit-soul1 {
+      color: #4ade80 !important;
+      text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+    }
+
+    .common-digit-soul2 {
+      color: #facc15 !important;
+      text-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
+    }
+
+    /* ── Color Legend ── */
+    .common-grid-legend {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .legend-swatch.swatch-both {
+      background: #ffffff;
+    }
+
+    .legend-swatch.swatch-soul1 {
+      background: #4ade80;
+    }
+
+    .legend-swatch.swatch-soul2 {
+      background: #facc15;
+    }
+
+    .legend-text {
+      font-family: 'Philosopher', serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Responsive: Grids ── */
+    @media (max-width: 700px) {
+      .compat-grids-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .numero-grid {
+        max-width: 220px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .numero-grid {
+        max-width: 180px;
+      }
+      .grid-cell-digits {
+        font-size: 0.9rem !important;
+        letter-spacing: 1px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ═══════ COSMIC BG CANVAS ═══════ -->
+  <canvas id="cosmos"></canvas>
+
+  <div class="page">
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="nav-logo-symbol">✦</span>
+        <span class="nav-logo-text">Anktatvaa</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#features" class="nav-link">Readings</a>
+        <a href="numerology.html" class="nav-link">Numerology</a>
+        <a href="name-vibration.html" class="nav-link">Name Vibrations</a>
+        <a href="compatibility.html" class="nav-link active">Compatibility</a>
+        <a href="health-tendencies.html" class="nav-link">Health</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="index.html#features" class="mobile-link">Readings</a>
+      <a href="numerology.html" class="mobile-link">Numerology</a>
+      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
+      <a href="compatibility.html" class="mobile-link">Compatibility</a>
+      <a href="health-tendencies.html" class="mobile-link">Health</a>
+      <a href="index.html#faq" class="mobile-link">FAQ</a>
+      <div class="mobile-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+    </div>
+
+    <!-- ═══════ COMPATIBILITY MODULE ═══════ -->
+    <section class="compat-page-section reveal">
+
+      <!-- Hero -->
+      <div class="compat-hero">
+        <p class="compat-hero-eyebrow">✦ Vedic Compatibility ✦</p>
+        <h1 class="compat-hero-title">Cosmic Compatibility</h1>
+        <p class="compat-hero-sub">Discover if the universe wove your destinies together.
+          Compare birth numbers, destiny paths, and name vibrations to unveil the cosmic bond between two souls.</p>
+      </div>
+
+      <!-- Input Card -->
+      <div class="compat-page-card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="compat-page-inputs">
+          <!-- Person 1 -->
+          <div class="compat-page-person">
+            <p class="compat-page-person-label">✦ First Soul</p>
+            <div class="field-group">
+              <label class="field-label" for="c1name">✦ Full Name</label>
+              <input class="field-input" id="c1name" type="text" placeholder="Enter first person's name...">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="c1dob">✦ Date of Birth (DD/MM/YYYY)</label>
+              <input class="field-input" id="c1dob" type="text" placeholder="e.g. 18/10/1998" maxlength="10">
+            </div>
+          </div>
+
+          <!-- VS Divider -->
+          <div class="compat-page-vs">
+            <div class="compat-page-vs-ring">
+              <span class="compat-page-vs-text">VS</span>
+            </div>
+          </div>
+
+          <!-- Person 2 -->
+          <div class="compat-page-person">
+            <p class="compat-page-person-label">✦ Second Soul</p>
+            <div class="field-group">
+              <label class="field-label" for="c2name">✦ Full Name</label>
+              <input class="field-input" id="c2name" type="text" placeholder="Enter second person's name...">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="c2dob">✦ Date of Birth (DD/MM/YYYY)</label>
+              <input class="field-input" id="c2dob" type="text" placeholder="e.g. 25/04/1995" maxlength="10">
+            </div>
+          </div>
+        </div>
+
+        <button class="submit-btn" id="compatBtn" onclick="checkCompatibility()" style="margin-top:2rem">
+          ✦ Reveal Cosmic Bond ✦
+        </button>
+        <p class="error-msg" id="compatErr"></p>
+      </div>
+
+      <!-- ═══════ RESULT SECTION (hidden until calculated) ═══════ -->
+      <div class="compat-result-section" id="compatResultSection">
+
+        <!-- Soul Profile Cards -->
+        <div class="soul-profiles">
+          <div class="soul-profile-card" id="soul1Profile"></div>
+          <div class="soul-profile-card" id="soul2Profile"></div>
+        </div>
+
+        <!-- Soul Grids + Common Compatibility Grid -->
+        <div class="compat-grids-section">
+          <p class="compat-grids-section-title">✦ Soul Grids & Common Compatibility ✦</p>
+          <div class="compat-grids-row">
+            <div class="compat-grid-wrap">
+              <p class="compat-grid-label">✦ Soul 1 Grid ✦</p>
+              <p class="compat-grid-sublabel">Unique digits from first soul</p>
+              <div class="numero-grid" id="soul1Grid"></div>
+            </div>
+            <div class="compat-grid-wrap">
+              <p class="compat-grid-label" style="color: #c084fc;">✦ Common Grid ✦</p>
+              <p class="compat-grid-sublabel">Shared & exclusive cosmic numbers</p>
+              <div class="numero-grid" id="commonGrid"></div>
+              <div class="common-grid-legend">
+                <div class="legend-item">
+                  <span class="legend-swatch swatch-both"></span>
+                  <span class="legend-text">Both Souls</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-swatch swatch-soul1"></span>
+                  <span class="legend-text">Soul 1 Only</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-swatch swatch-soul2"></span>
+                  <span class="legend-text">Soul 2 Only</span>
+                </div>
+              </div>
+            </div>
+            <div class="compat-grid-wrap">
+              <p class="compat-grid-label">✦ Soul 2 Grid ✦</p>
+              <p class="compat-grid-sublabel">Unique digits from second soul</p>
+              <div class="numero-grid" id="soul2Grid"></div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Name Compatibility -->
+        <div class="name-compat-card" id="nameCompatCard"></div>
+
+        <!-- Four Comparisons Table -->
+        <div class="comparison-section" id="comparisonSection"></div>
+
+        <!-- Overall Result with Score Ring -->
+        <div class="overall-result" id="overallResult"></div>
+
+      </div>
+
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+      <div class="footer-symbol">✦</div>
+      <p class="footer-name">Anktatvaa</p>
+      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
+      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
+  <a href="https://wa.me/919170705450?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+    class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 2C8.268 2 2 8.268 2 16c0 2.466.67 4.775 1.838 6.758L2 30l7.465-1.813A13.933 13.933 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"
+        fill="#25D366" />
+      <path
+        d="M23.5 20.1c-.3-.15-1.77-.873-2.044-.972-.273-.1-.472-.15-.671.15-.199.297-.77.97-.944 1.17-.174.198-.348.223-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.671-1.617-.919-2.213-.242-.581-.487-.502-.671-.511-.174-.008-.372-.01-.57-.01-.198 0-.52.074-.793.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z"
+        fill="#fff" />
+    </svg>
+    <span class="wa-tooltip">Chat with Astrologer</span>
+    <span class="wa-pulse"></span>
+  </a>
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <!-- script.js provides: CHALDEAN map, reduceNum(), nameNumber() -->
+  <script src="script.js"></script>
+  <script>
+    /* ══════════════════════════════════════
+       MOBILE MENU TOGGLE
+    ══════════════════════════════════════ */
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('navHamburger').classList.toggle('active');
+    }
+
+    /* ══════════════════════════════════════
+       AUTO-FORMAT DOB INPUTS (DD/MM/YYYY)
+       Same format used on numerology.html
+    ══════════════════════════════════════ */
+    ['c1dob', 'c2dob'].forEach(id => {
+      const input = document.getElementById(id);
+      input.addEventListener('input', function () {
+        let val = this.value.replace(/\D/g, '');
+        if (val.length > 8) val = val.slice(0, 8);
+        let formatted = '';
+        if (val.length > 0) formatted += val.slice(0, 2);
+        if (val.length > 2) formatted += '/' + val.slice(2, 4);
+        if (val.length > 4) formatted += '/' + val.slice(4, 8);
+        this.value = formatted;
+      });
+      // Allow Enter key to submit
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') checkCompatibility();
+      });
+    });
+
+    // Allow Enter on name fields too
+    ['c1name', 'c2name'].forEach(id => {
+      document.getElementById(id).addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') checkCompatibility();
+      });
+    });
+
+    /* ══════════════════════════════════════
+       REUSED CALCULATION FUNCTIONS
+       ─────────────────────────────────────
+       These replicate the EXACT same formulas
+       used on numerology.html:
+       
+       • reduceToSingle(n)  — identical to
+         reduceNum(n, false) from script.js
+       • Birth Number       — sum day digits,
+         then reduceToSingle
+       • Destiny Number     — sum all DDMMYYYY
+         digits, then reduceToSingle
+       
+       And from script.js (already loaded):
+       • CHALDEAN map       — letter→number
+       • nameNumber(name)   — Chaldean compound
+         sum reduced to single digit
+    ══════════════════════════════════════ */
+
+    /**
+     * Reduce any number to a single digit
+     * by repeatedly summing its digits.
+     * Identical to reduceToSingle() in numerology.html
+     * (lines 1950-1955).
+     */
+    function reduceToSingle(n) {
+      while (n >= 10) {
+        n = String(n).split('').reduce((acc, d) => acc + parseInt(d, 10), 0);
+      }
+      return n;
+    }
+
+    /**
+     * Calculate Birth Number from DD/MM/YYYY string.
+     * Same formula as numerology.html (lines 2043-2045):
+     *   dayDigits sum → reduceToSingle
+     */
+    function calcBirthNumber(day) {
+      const dayDigits = String(day).split('').map(Number);
+      const daySum = dayDigits.reduce((a, b) => a + b, 0);
+      return reduceToSingle(daySum);
+    }
+
+    /**
+     * Calculate Destiny Number from DD/MM/YYYY string.
+     * Same formula as numerology.html (lines 2048-2051):
+     *   all DDMMYYYY digits sum → reduceToSingle
+     */
+    function calcDestinyNumber(dd, mm, yyyy) {
+      const allDigitsStr = `${dd}${mm}${yyyy}`;
+      const allDigits = allDigitsStr.split('').map(Number);
+      const totalSum = allDigits.reduce((a, b) => a + b, 0);
+      return reduceToSingle(totalSum);
+    }
+
+    /**
+     * Calculate Compound Name Number.
+     * Uses CHALDEAN map from script.js (line 270).
+     * Sums all letter values WITHOUT reducing.
+     * Same logic as name-vibration.html (line 1127).
+     */
+    function calcCompoundNameNumber(name) {
+      const cleaned = name.toUpperCase().replace(/[^A-Z]/g, '');
+      return cleaned.split('').reduce((a, c) => a + (CHALDEAN[c] || 0), 0);
+    }
+
+    /**
+     * Calculate Single-Digit Name Number.
+     * Takes compound number and reduces to single digit.
+     * Uses reduceToSingle — same formula as numerology page.
+     * Example: 28 → 2+8=10 → 1+0=1
+     */
+    function calcNameNumber(name) {
+      const compound = calcCompoundNameNumber(name);
+      return reduceToSingle(compound);
+    }
+
+    /* ══════════════════════════════════════
+       COMPATIBILITY TABLE
+       Exact mapping provided by user.
+    ══════════════════════════════════════ */
+    const compatibilityTable = {
+      1: { friendly: [1, 2, 3, 4, 7, 9], enemy: [6, 8], neutral: [5] },
+      2: { friendly: [1, 2, 4, 7], enemy: [5, 8, 9], neutral: [3, 6] },
+      3: { friendly: [1, 2, 3, 4, 7, 9], enemy: [6], neutral: [5, 8] },
+      4: { friendly: [1, 2, 3, 4, 7], enemy: [8, 9], neutral: [5, 6] },
+      5: { friendly: [1, 4, 5, 6], enemy: [2, 7], neutral: [3, 8, 9] },
+      6: { friendly: [5, 6, 8], enemy: [2, 3, 4, 7], neutral: [1, 9] },
+      7: { friendly: [1, 2, 4, 5, 7], enemy: [8, 9], neutral: [3, 6] },
+      8: { friendly: [5, 6], enemy: [1, 2, 4, 7, 8, 9], neutral: [3] },
+      9: { friendly: [1, 3, 9], enemy: [2, 4, 7, 8], neutral: [5, 6] }
+    };
+
+    /**
+     * Look up the relationship between two numbers.
+     * Returns 'friendly', 'neutral', or 'enemy'.
+     */
+    function getRelation(numA, numB) {
+      const entry = compatibilityTable[numA];
+      if (!entry) return 'neutral';
+      if (entry.friendly.includes(numB)) return 'friendly';
+      if (entry.enemy.includes(numB)) return 'enemy';
+      return 'neutral';
+    }
+
+    /* ══════════════════════════════════════
+       MAIN COMPATIBILITY CHECKER
+    ══════════════════════════════════════ */
+    function checkCompatibility() {
+      const name1 = document.getElementById('c1name').value.trim();
+      const dob1  = document.getElementById('c1dob').value.trim();
+      const name2 = document.getElementById('c2name').value.trim();
+      const dob2  = document.getElementById('c2dob').value.trim();
+      const errEl = document.getElementById('compatErr');
+      errEl.textContent = '';
+
+      // ── Validate all fields ──
+      if (!name1 || !dob1 || !name2 || !dob2) {
+        errEl.textContent = '◈ Please fill in all fields for both souls.';
+        return;
+      }
+
+      // ── Parse DOB1 (DD/MM/YYYY) — same validation as numerology.html ──
+      const m1 = dob1.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      if (!m1) {
+        errEl.textContent = '◈ First Soul: Please enter date in DD/MM/YYYY format.';
+        return;
+      }
+      const day1 = parseInt(m1[1], 10), month1 = parseInt(m1[2], 10), year1 = parseInt(m1[3], 10);
+      if (month1 < 1 || month1 > 12 || day1 < 1 || day1 > 31) {
+        errEl.textContent = '◈ First Soul: Invalid date.';
+        return;
+      }
+      const dim1 = new Date(year1, month1, 0).getDate();
+      if (day1 > dim1) {
+        errEl.textContent = `◈ First Soul: ${m1[2]}/${m1[3]} only has ${dim1} days.`;
+        return;
+      }
+
+      // ── Parse DOB2 (DD/MM/YYYY) ──
+      const m2 = dob2.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      if (!m2) {
+        errEl.textContent = '◈ Second Soul: Please enter date in DD/MM/YYYY format.';
+        return;
+      }
+      const day2 = parseInt(m2[1], 10), month2 = parseInt(m2[2], 10), year2 = parseInt(m2[3], 10);
+      if (month2 < 1 || month2 > 12 || day2 < 1 || day2 > 31) {
+        errEl.textContent = '◈ Second Soul: Invalid date.';
+        return;
+      }
+      const dim2 = new Date(year2, month2, 0).getDate();
+      if (day2 > dim2) {
+        errEl.textContent = `◈ Second Soul: ${m2[2]}/${m2[3]} only has ${dim2} days.`;
+        return;
+      }
+
+      // ── Calculate all numbers for both people ──
+      const bn1 = calcBirthNumber(day1);
+      const dn1 = calcDestinyNumber(m1[1], m1[2], m1[3]);
+      const compoundNN1 = calcCompoundNameNumber(name1);
+      const nn1 = calcNameNumber(name1);
+
+      const bn2 = calcBirthNumber(day2);
+      const dn2 = calcDestinyNumber(m2[1], m2[2], m2[3]);
+      const compoundNN2 = calcCompoundNameNumber(name2);
+      const nn2 = calcNameNumber(name2);
+
+      // ── Generate Universal Grid digit counts for both people ──
+      const yearLastTwo1 = String(year1).slice(-2);
+      const gridDigitsStr1 = `${m1[1]}${m1[2]}${yearLastTwo1}`;
+      const gridDigits1 = gridDigitsStr1.split('').map(Number).filter(d => d !== 0);
+      gridDigits1.push(dn1);
+      if (day1 > 10) gridDigits1.push(bn1);
+
+      const digitCounts1 = {};
+      for (let i = 1; i <= 9; i++) digitCounts1[i] = 0;
+      gridDigits1.forEach(d => { digitCounts1[d]++; });
+
+      const yearLastTwo2 = String(year2).slice(-2);
+      const gridDigitsStr2 = `${m2[1]}${m2[2]}${yearLastTwo2}`;
+      const gridDigits2 = gridDigitsStr2.split('').map(Number).filter(d => d !== 0);
+      gridDigits2.push(dn2);
+      if (day2 > 10) gridDigits2.push(bn2);
+
+      const digitCounts2 = {};
+      for (let i = 1; i <= 9; i++) digitCounts2[i] = 0;
+      gridDigits2.forEach(d => { digitCounts2[d]++; });
+
+
+      // ── Step 1: Name Compatibility (separate, does not affect score) ──
+      const nameRelation = getRelation(nn1, nn2);
+      const namePct = nameRelation === 'friendly' ? 100 : nameRelation === 'neutral' ? 50 : 0;
+
+      // ── Step 2: Overall Compatibility (4 comparisons × 25 points) ──
+      const comparisons = [
+        { a: bn1, b: bn2, labelA: 'BN', labelB: 'BN' },
+        { a: bn1, b: dn2, labelA: 'BN', labelB: 'DN' },
+        { a: dn1, b: bn2, labelA: 'DN', labelB: 'BN' },
+        { a: dn1, b: dn2, labelA: 'DN', labelB: 'DN' }
+      ];
+
+      let totalScore = 0;
+      comparisons.forEach(c => {
+        c.relation = getRelation(c.a, c.b);
+        // Friendly = 25, Neutral = 25, Enemy = 0
+        c.points = c.relation === 'enemy' ? 0 : 25;
+        totalScore += c.points;
+      });
+
+      // ── Determine verdict ──
+      let verdictEmoji, verdictLabel, verdictDesc;
+      if (totalScore === 100) {
+        verdictEmoji = '⭐';
+        verdictLabel = 'Best Compatibility';
+        verdictDesc = 'The cosmos has aligned your paths in perfect harmony. This is a bond that resonates across every vibrational plane — a celestial union.';
+      } else if (totalScore === 75) {
+        verdictEmoji = '✅';
+        verdictLabel = 'Good Compatibility';
+        verdictDesc = 'Your energies complement each other beautifully. The universe blesses this connection with strong alignment and mutual growth.';
+      } else if (totalScore === 50) {
+        verdictEmoji = '🙂';
+        verdictLabel = 'So-So Compatible';
+        verdictDesc = 'Your paths intersect with purpose. With conscious awareness and understanding, this bond holds meaningful potential.';
+      } else {
+        verdictEmoji = '❌';
+        verdictLabel = 'Not Compatible';
+        verdictDesc = 'The cosmic currents present challenges in this pairing. Deep understanding and patience are needed to navigate these vibrations.';
+      }
+
+      // ══════ RENDER RESULTS ══════
+
+      // ── Soul Profile Cards ──
+      document.getElementById('soul1Profile').innerHTML = renderSoulProfile('First Soul', name1, bn1, dn1, compoundNN1, nn1);
+      document.getElementById('soul2Profile').innerHTML = renderSoulProfile('Second Soul', name2, bn2, dn2, compoundNN2, nn2);
+
+      // ── Render Soul Grids & Common Compatibility Grid ──
+      renderSoulGrid('soul1Grid', digitCounts1);
+      renderSoulGrid('soul2Grid', digitCounts2);
+      renderCommonGrid('commonGrid', digitCounts1, digitCounts2);
+
+
+      // ── Name Compatibility Card ──
+      document.getElementById('nameCompatCard').innerHTML = `
+        <p class="name-compat-header">✦ Name Compatibility ✦</p>
+        <p class="name-compat-numbers">${nn1} ↔ ${nn2}</p>
+        <p class="name-compat-relation ${nameRelation}">${capitalize(nameRelation)}</p>
+        <p class="name-compat-pct">${namePct}%</p>
+        <p class="name-compat-note">Name Compatibility is displayed separately and does not affect the overall score.</p>
+      `;
+
+      // ── Comparison Table ──
+      let compHTML = `<p class="comparison-title">✦ Compatibility Breakdown ✦</p>`;
+      comparisons.forEach(c => {
+        compHTML += `
+          <div class="comparison-row">
+            <span class="comparison-nums">${c.a} ↔ ${c.b}</span>
+            <span class="comparison-relation ${c.relation}">${capitalize(c.relation)}</span>
+            <span class="comparison-score ${c.points > 0 ? 'plus' : 'zero'}">+${c.points}</span>
+          </div>
+        `;
+      });
+      document.getElementById('comparisonSection').innerHTML = compHTML;
+
+      // ── Overall Result with Score Ring ──
+      const circumference = 2 * Math.PI * 52; // r=52
+      document.getElementById('overallResult').innerHTML = `
+        <p class="overall-result-label">✦ Overall Compatibility ✦</p>
+        <div class="compat-score-ring-wrap">
+          <svg viewBox="0 0 120 120" class="compat-ring-svg">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="8" />
+            <circle cx="60" cy="60" r="52" fill="none" stroke="url(#compatGradient)" stroke-width="8"
+              stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" id="compatArc"
+              style="transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1)" />
+            <defs>
+              <linearGradient id="compatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00d4ff" />
+                <stop offset="100%" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="compat-score-center">
+            <span class="compat-score-val" id="compatScoreVal">0</span>
+            <span class="compat-score-pct">Match</span>
+          </div>
+        </div>
+        <p class="overall-verdict-emoji">${verdictEmoji}</p>
+        <p class="overall-verdict-text">${verdictLabel}</p>
+        <p class="overall-verdict-desc">${verdictDesc}</p>
+      `;
+
+      // ── Show result section ──
+      const resultSection = document.getElementById('compatResultSection');
+      resultSection.classList.add('visible');
+
+      // ── Animate score ring ──
+      const pct = totalScore / 100;
+      setTimeout(() => {
+        document.getElementById('compatArc').style.strokeDashoffset = circumference - circumference * pct;
+      }, 100);
+
+      // ── Animate counter from 0 to totalScore ──
+      const valEl = document.getElementById('compatScoreVal');
+      let cur = 0;
+      const targetScore = totalScore;
+      const step = Math.max(1, Math.ceil(targetScore / 40));
+      const counter = setInterval(() => {
+        cur = Math.min(cur + step, targetScore);
+        valEl.textContent = cur;
+        if (cur >= targetScore) clearInterval(counter);
+      }, 30);
+
+      // ── Scroll to result ──
+      setTimeout(() => {
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+
+    /* ══════════════════════════════════════
+       HELPER: Render a Soul Profile Card
+    ══════════════════════════════════════ */
+    function renderSoulProfile(label, name, bn, dn, compoundNN, nn) {
+      return `
+        <p class="soul-profile-title">✦ ${label} ✦</p>
+        <div class="soul-profile-row">
+          <span class="soul-profile-label">Name</span>
+          <span class="soul-profile-value" style="font-size:0.95rem;color:rgba(255,255,255,0.8)">${name}</span>
+        </div>
+        <div class="soul-profile-row">
+          <span class="soul-profile-label">Birth Number</span>
+          <span class="soul-profile-value">${bn}</span>
+        </div>
+        <div class="soul-profile-row">
+          <span class="soul-profile-label">Destiny Number</span>
+          <span class="soul-profile-value">${dn}</span>
+        </div>
+        <div class="soul-profile-row">
+          <span class="soul-profile-label">Compound Name Number</span>
+          <span class="soul-profile-value">${compoundNN}</span>
+        </div>
+        <div class="soul-profile-row">
+          <span class="soul-profile-label">Name Number</span>
+          <span class="soul-profile-value">${nn}</span>
+        </div>
+      `;
+    }
+
+    /* ══════════════════════════════════════
+       HELPER: Capitalize first letter
+    ══════════════════════════════════════ */
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    /* ══════════════════════════════════════
+       GRID POSITION MAP (Lo Shu Layout)
+       | 3 | 1 | 9 |
+       | 6 | 7 | 5 |
+       | 2 | 8 | 4 |
+    ══════════════════════════════════════ */
+    const GRID_POSITIONS = [3, 1, 9, 6, 7, 5, 2, 8, 4];
+
+    /* ══════════════════════════════════════
+       RENDER SOUL GRID
+       Shows each digit at most once.
+       If a digit exists in the Universal Grid
+       (digitCounts[digit] > 0), display it once.
+    ══════════════════════════════════════ */
+    function renderSoulGrid(containerId, digitCounts) {
+      const gridEl = document.getElementById(containerId);
+      gridEl.innerHTML = '';
+
+      GRID_POSITIONS.forEach(num => {
+        const present = digitCounts[num] > 0;
+        const cell = document.createElement('div');
+        cell.className = `grid-cell ${present ? 'has-digits' : 'empty-cell'}`;
+
+        const posLabel = document.createElement('span');
+        posLabel.className = 'grid-cell-pos';
+        posLabel.textContent = num;
+
+        const digitsEl = document.createElement('span');
+        digitsEl.className = 'grid-cell-digits';
+        digitsEl.textContent = present ? String(num) : '·';
+
+        cell.appendChild(posLabel);
+        cell.appendChild(digitsEl);
+        gridEl.appendChild(cell);
+      });
+    }
+
+    /* ══════════════════════════════════════
+       RENDER COMMON COMPATIBILITY GRID
+       Compares two Soul Grids:
+       - Both present  → white
+       - Soul 1 only   → green
+       - Soul 2 only   → yellow
+       - Neither       → empty
+    ══════════════════════════════════════ */
+    function renderCommonGrid(containerId, digitCounts1, digitCounts2) {
+      const gridEl = document.getElementById(containerId);
+      gridEl.innerHTML = '';
+
+      GRID_POSITIONS.forEach(num => {
+        const inSoul1 = digitCounts1[num] > 0;
+        const inSoul2 = digitCounts2[num] > 0;
+        const present = inSoul1 || inSoul2;
+
+        const cell = document.createElement('div');
+        cell.className = `grid-cell ${present ? 'has-digits' : 'empty-cell'}`;
+
+        const posLabel = document.createElement('span');
+        posLabel.className = 'grid-cell-pos';
+        posLabel.textContent = num;
+
+        const digitsEl = document.createElement('span');
+        digitsEl.className = 'grid-cell-digits';
+
+        if (inSoul1 && inSoul2) {
+          digitsEl.textContent = String(num);
+          digitsEl.classList.add('common-digit-both');
+        } else if (inSoul1) {
+          digitsEl.textContent = String(num);
+          digitsEl.classList.add('common-digit-soul1');
+        } else if (inSoul2) {
+          digitsEl.textContent = String(num);
+          digitsEl.classList.add('common-digit-soul2');
+        } else {
+          digitsEl.textContent = '·';
+        }
+
+        cell.appendChild(posLabel);
+        cell.appendChild(digitsEl);
+        gridEl.appendChild(cell);
+      });
+    }
+  </script>
+</body>
+
+</html>

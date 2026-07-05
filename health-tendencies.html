@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Tendencies — Anktatvaa · Vedic Numerology</title>
+  <meta name="description"
+    content="Discover your Moolank-based health tendencies through Vedic Numerology. Enter your date of birth to uncover potential health vulnerabilities and preventive guidance based on your birth number.">
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════
+       HEALTH TENDENCIES PAGE — LOCAL STYLES
+    ═══════════════════════════════════════ */
+
+    .health-page-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+    }
+
+    /* ── Hero ── */
+    .health-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .health-hero-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .health-hero-title {
+      font-family: 'Yatra One', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      background: linear-gradient(135deg, #ffd700, #f0c27f, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .health-hero-sub {
+      font-family: 'Philosopher', serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Input Card ── */
+    .health-input-card {
+      position: relative;
+      padding: 2.5rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.12);
+      backdrop-filter: blur(12px);
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .health-input-card .corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: var(--gold);
+      opacity: 0.35;
+    }
+    .health-input-card .corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; border-radius: 3px 0 0 0; }
+    .health-input-card .corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; border-radius: 0 3px 0 0; }
+    .health-input-card .corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; border-radius: 0 0 0 3px; }
+    .health-input-card .corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; border-radius: 0 0 3px 0; }
+
+    .health-input-card .field-group {
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── Moolank Badge ── */
+    .moolank-badge-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .moolank-badge {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .moolank-badge-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 212, 255, 0.25);
+      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08), transparent 70%);
+      animation: moolankPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes moolankPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.7; }
+    }
+
+    .moolank-badge-number {
+      font-family: 'Yatra One', serif;
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, #00d4ff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      z-index: 1;
+    }
+
+    .moolank-badge-info {
+      text-align: left;
+    }
+
+    .moolank-badge-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 0.3rem;
+    }
+
+    .moolank-badge-value {
+      font-family: 'Yatra One', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .moolank-badge-planet {
+      font-family: 'Philosopher', serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-style: italic;
+    }
+
+    /* ── Result Section ── */
+    .health-result-section {
+      display: none;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .health-result-section.visible {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Section Title for Result ── */
+    .health-result-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Health Tendency Cards ── */
+    .health-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .health-card {
+      position: relative;
+      padding: 1.6rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      backdrop-filter: blur(8px);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      cursor: default;
+      overflow: hidden;
+    }
+
+    .health-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--card-accent, #00d4ff), transparent);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .health-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 212, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 212, 255, 0.06), 0 0 0 1px rgba(0, 212, 255, 0.06);
+    }
+
+    .health-card:hover::before {
+      opacity: 1;
+    }
+
+    .health-card-index {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: rgba(0, 212, 255, 0.25);
+    }
+
+    .health-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .health-card-title {
+      font-family: 'Yatra One', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      line-height: 1.3;
+    }
+
+    .health-card-desc {
+      font-family: 'Philosopher', serif;
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .health-card.expanded .health-card-desc {
+      -webkit-line-clamp: unset;
+      overflow: visible;
+    }
+
+    .health-card-toggle {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      transition: color 0.3s ease;
+    }
+
+    .health-card-toggle:hover {
+      color: var(--gold);
+    }
+
+    /* ── Disclaimer Card ── */
+    .health-disclaimer {
+      text-align: center;
+      padding: 1.8rem 2rem;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(248, 113, 113, 0.04), rgba(250, 204, 21, 0.04));
+      border: 1px solid rgba(248, 113, 113, 0.12);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .health-disclaimer-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .health-disclaimer-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(248, 113, 113, 0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    .health-disclaimer-text {
+      font-family: 'Philosopher', serif;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Loading animation ── */
+    .health-loading {
+      display: none;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .health-loading.active {
+      display: block;
+    }
+
+    .health-loading-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(0, 212, 255, 0.1);
+      border-top-color: #00d4ff;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spinHealth 0.8s linear infinite;
+    }
+
+    @keyframes spinHealth {
+      to { transform: rotate(360deg); }
+    }
+
+    .health-loading-text {
+      font-family: 'Philosopher', serif;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* ── Stagger animation for cards ── */
+    .health-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cardSlideUp 0.5s ease forwards;
+    }
+
+    @keyframes cardSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Color accents per health card (cycling) ── */
+    .health-card:nth-child(6n+1) { --card-accent: #00d4ff; }
+    .health-card:nth-child(6n+2) { --card-accent: #a855f7; }
+    .health-card:nth-child(6n+3) { --card-accent: #f59e0b; }
+    .health-card:nth-child(6n+4) { --card-accent: #4ade80; }
+    .health-card:nth-child(6n+5) { --card-accent: #f9a8d4; }
+    .health-card:nth-child(6n+6) { --card-accent: #818cf8; }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .health-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .health-page-section {
+        padding: 4rem 1.2rem 3rem;
+      }
+      .moolank-badge-wrap {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .moolank-badge-info {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .health-input-card {
+        padding: 1.5rem;
+      }
+      .moolank-badge {
+        width: 100px;
+        height: 100px;
+      }
+      .moolank-badge-number {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ═══════ COSMIC BG CANVAS ═══════ -->
+  <canvas id="cosmos"></canvas>
+
+  <div class="page">
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="nav-logo-symbol">✦</span>
+        <span class="nav-logo-text">Anktatvaa</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#features" class="nav-link">Readings</a>
+        <a href="numerology.html" class="nav-link">Numerology</a>
+        <a href="name-vibration.html" class="nav-link">Name Vibrations</a>
+        <a href="compatibility.html" class="nav-link">Compatibility</a>
+        <a href="health-tendencies.html" class="nav-link active">Health</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="index.html#features" class="mobile-link">Readings</a>
+      <a href="numerology.html" class="mobile-link">Numerology</a>
+      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
+      <a href="compatibility.html" class="mobile-link">Compatibility</a>
+      <a href="health-tendencies.html" class="mobile-link">Health</a>
+      <a href="index.html#faq" class="mobile-link">FAQ</a>
+      <div class="mobile-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+    </div>
+
+    <!-- ═══════ HEALTH TENDENCIES MODULE ═══════ -->
+    <section class="health-page-section reveal">
+
+      <!-- Hero -->
+      <div class="health-hero">
+        <p class="health-hero-eyebrow">✦ Vedic Health Insights ✦</p>
+        <h1 class="health-hero-title">Health Tendencies</h1>
+        <p class="health-hero-sub">Your Moolank reveals the cosmic blueprint of your physical constitution.
+          Discover your innate health tendencies and preventive wisdom encoded in your birth number.</p>
+      </div>
+
+      <!-- Input Card -->
+      <div class="health-input-card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="field-group">
+          <label class="field-label" for="healthDob">✦ Date of Birth (DD/MM/YYYY)</label>
+          <input class="field-input" id="healthDob" type="text" placeholder="e.g. 18/10/1998" maxlength="10">
+        </div>
+
+        <button class="submit-btn" id="healthBtn" onclick="revealHealthTendencies()" style="margin-top:0.5rem">
+          ✦ Reveal Health Tendencies ✦
+        </button>
+        <p class="error-msg" id="healthErr"></p>
+      </div>
+
+      <!-- Loading -->
+      <div class="health-loading" id="healthLoading">
+        <div class="health-loading-spinner"></div>
+        <p class="health-loading-text">Consulting the cosmic constitution…</p>
+      </div>
+
+      <!-- ═══════ RESULT SECTION (hidden until calculated) ═══════ -->
+      <div class="health-result-section" id="healthResultSection">
+
+        <!-- Moolank Badge -->
+        <div class="moolank-badge-wrap" id="moolankBadge"></div>
+
+        <!-- Result Title -->
+        <p class="health-result-title" id="healthResultTitle"></p>
+
+        <!-- Health Cards Grid -->
+        <div class="health-cards-grid" id="healthCardsGrid"></div>
+
+        <!-- Disclaimer -->
+        <div class="health-disclaimer">
+          <p class="health-disclaimer-icon">⚕️</p>
+          <p class="health-disclaimer-title">Important Disclaimer</p>
+          <p class="health-disclaimer-text">
+            These health tendencies are based on traditional Vedic numerology and are not a substitute for
+            professional medical advice. Always consult qualified healthcare professionals for health concerns
+            and medical decisions.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+      <div class="footer-symbol">✦</div>
+      <p class="footer-name">Anktatvaa</p>
+      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
+      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
+  <a href="https://wa.me/919170705450?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+    class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 2C8.268 2 2 8.268 2 16c0 2.466.67 4.775 1.838 6.758L2 30l7.465-1.813A13.933 13.933 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"
+        fill="#25D366" />
+      <path
+        d="M23.5 20.1c-.3-.15-1.77-.873-2.044-.972-.273-.1-.472-.15-.671.15-.199.297-.77.97-.944 1.17-.174.198-.348.223-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.671-1.617-.919-2.213-.242-.581-.487-.502-.671-.511-.174-.008-.372-.01-.57-.01-.198 0-.52.074-.793.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z"
+        fill="#fff" />
+    </svg>
+    <span class="wa-tooltip">Chat with Astrologer</span>
+    <span class="wa-pulse"></span>
+  </a>
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <script src="moolank-health-tendencies.js"></script>
+  <script src="script.js"></script>
+  <script>
+    /* ══════════════════════════════════════
+       MOBILE MENU TOGGLE
+    ══════════════════════════════════════ */
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('navHamburger').classList.toggle('active');
+    }
+
+    /* ══════════════════════════════════════
+       AUTO-FORMAT DOB INPUT (DD/MM/YYYY)
+    ══════════════════════════════════════ */
+    const dobInput = document.getElementById('healthDob');
+    dobInput.addEventListener('input', function () {
+      let val = this.value.replace(/\D/g, '');
+      if (val.length > 8) val = val.slice(0, 8);
+      let formatted = '';
+      if (val.length > 0) formatted += val.slice(0, 2);
+      if (val.length > 2) formatted += '/' + val.slice(2, 4);
+      if (val.length > 4) formatted += '/' + val.slice(4, 8);
+      this.value = formatted;
+    });
+    dobInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') revealHealthTendencies();
+    });
+
+    /* ══════════════════════════════════════
+       MOOLANK CALCULATION
+    ══════════════════════════════════════ */
+    function calcMoolank(day) {
+      let n = String(day).split('').map(Number).reduce((a, b) => a + b, 0);
+      while (n >= 10) {
+        n = String(n).split('').map(Number).reduce((a, b) => a + b, 0);
+      }
+      return n;
+    }
+
+    /* ══════════════════════════════════════
+       PLANET MAPPING FOR MOOLANK
+    ══════════════════════════════════════ */
+    const MOOLANK_PLANETS = {
+      1: { planet: 'Sun ☉', color: '#f59e0b' },
+      2: { planet: 'Moon ☽', color: '#a5f3fc' },
+      3: { planet: 'Jupiter ♃', color: '#818cf8' },
+      4: { planet: 'Rahu ☊', color: '#6ee7b7' },
+      5: { planet: 'Mercury ☿', color: '#6ee7b7' },
+      6: { planet: 'Venus ♀', color: '#f9a8d4' },
+      7: { planet: 'Ketu ☋', color: '#a5f3fc' },
+      8: { planet: 'Saturn ♄', color: '#00d4ff' },
+      9: { planet: 'Mars ♂', color: '#f87171' }
+    };
+
+    /* ══════════════════════════════════════
+       HEALTH ICONS (maps to common keywords)
+    ══════════════════════════════════════ */
+    function getHealthIcon(title) {
+      const t = title.toLowerCase();
+      if (t.includes('heart') || t.includes('cardiac') || t.includes('cardiovascular')) return '❤️‍🩹';
+      if (t.includes('blood')) return '🩸';
+      if (t.includes('eye')) return '👁️';
+      if (t.includes('brain') || t.includes('mental') || t.includes('neurological') || t.includes('seizure')) return '🧠';
+      if (t.includes('lung') || t.includes('breathing') || t.includes('asthma') || t.includes('respiratory')) return '🫁';
+      if (t.includes('kidney') || t.includes('urinary') || t.includes('bladder')) return '🫘';
+      if (t.includes('bone') || t.includes('fracture') || t.includes('osteoporosis') || t.includes('spinal') || t.includes('back')) return '🦴';
+      if (t.includes('skin') || t.includes('dermatitis') || t.includes('eczema') || t.includes('itch') || t.includes('allerg')) return '🧴';
+      if (t.includes('stomach') || t.includes('digest') || t.includes('abdominal') || t.includes('gastric') || t.includes('indigestion') || t.includes('acidity') || t.includes('gas')) return '🫃';
+      if (t.includes('liver') || t.includes('bile') || t.includes('jaundice')) return '🫀';
+      if (t.includes('throat') || t.includes('neck')) return '🗣️';
+      if (t.includes('dental') || t.includes('mouth') || t.includes('tongue')) return '🦷';
+      if (t.includes('fever')) return '🌡️';
+      if (t.includes('joint') || t.includes('arthritis') || t.includes('gout')) return '🦿';
+      if (t.includes('injury') || t.includes('wound') || t.includes('cut') || t.includes('fracture') || t.includes('accident') || t.includes('fire') || t.includes('bleed')) return '🩹';
+      if (t.includes('surgery') || t.includes('operation')) return '🏥';
+      if (t.includes('depression') || t.includes('irritat') || t.includes('dream')) return '😔';
+      if (t.includes('sweat')) return '💧';
+      if (t.includes('nose')) return '👃';
+      if (t.includes('breast') || t.includes('chest')) return '🫁';
+      if (t.includes('uterus') || t.includes('conception') || t.includes('abort')) return '🩺';
+      if (t.includes('hair')) return '💇';
+      if (t.includes('obesity') || t.includes('fat')) return '⚖️';
+      if (t.includes('ulcer') || t.includes('piles') || t.includes('hernia') || t.includes('hemorrhoid')) return '💊';
+      if (t.includes('thyroid')) return '🦋';
+      if (t.includes('paralysis') || t.includes('nervous')) return '⚡';
+      if (t.includes('anemia')) return '🩸';
+      if (t.includes('varicose') || t.includes('leg') || t.includes('hip') || t.includes('wrist') || t.includes('sciatica')) return '🦵';
+      if (t.includes('influenza') || t.includes('cholera') || t.includes('epidemic') || t.includes('fox') || t.includes('poison') || t.includes('worm') || t.includes('diarrhea')) return '🦠';
+      return '✦';
+    }
+
+    /* ══════════════════════════════════════
+       HEALTH TENDENCIES DATA
+       (loaded from JS data file)
+    ══════════════════════════════════════ */
+    const healthData = typeof HEALTH_TENDENCIES_DATA !== 'undefined' ? HEALTH_TENDENCIES_DATA : null;
+
+    /* ══════════════════════════════════════
+       MAIN: REVEAL HEALTH TENDENCIES
+    ══════════════════════════════════════ */
+    function revealHealthTendencies() {
+      const dob = document.getElementById('healthDob').value.trim();
+      const errEl = document.getElementById('healthErr');
+      errEl.textContent = '';
+
+      // ── Validate ──
+      if (!dob) {
+        errEl.textContent = '◈ Please enter your date of birth.';
+        return;
+      }
+
+      const m = dob.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      if (!m) {
+        errEl.textContent = '◈ Please enter date in DD/MM/YYYY format.';
+        return;
+      }
+
+      const day = parseInt(m[1], 10);
+      const month = parseInt(m[2], 10);
+      const year = parseInt(m[3], 10);
+
+      if (month < 1 || month > 12 || day < 1 || day > 31) {
+        errEl.textContent = '◈ Invalid date entered.';
+        return;
+      }
+
+      const daysInMonth = new Date(year, month, 0).getDate();
+      if (day > daysInMonth) {
+        errEl.textContent = `◈ ${m[2]}/${m[3]} only has ${daysInMonth} days.`;
+        return;
+      }
+
+      if (!healthData) {
+        errEl.textContent = '◈ Health data is still loading. Please try again in a moment.';
+        return;
+      }
+
+      // ── Calculate Moolank ──
+      const moolank = calcMoolank(day);
+
+      // ── Find matching data ──
+      const entry = healthData.find(e => e.moolank === moolank);
+      if (!entry) {
+        errEl.textContent = '◈ Could not find health tendencies for your Moolank. Please try again.';
+        return;
+      }
+
+      // ── Show loading ──
+      const loadingEl = document.getElementById('healthLoading');
+      const resultEl = document.getElementById('healthResultSection');
+      resultEl.classList.remove('visible');
+      loadingEl.classList.add('active');
+
+      // ── Simulate loading for dramatic effect ──
+      setTimeout(() => {
+        loadingEl.classList.remove('active');
+        renderHealthResults(moolank, day, entry);
+        resultEl.classList.add('visible');
+
+        setTimeout(() => {
+          resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }, 1200);
+    }
+
+    /* ══════════════════════════════════════
+       RENDER HEALTH RESULTS
+    ══════════════════════════════════════ */
+    function renderHealthResults(moolank, day, entry) {
+      const planetInfo = MOOLANK_PLANETS[moolank];
+
+      // ── Moolank Badge ──
+      document.getElementById('moolankBadge').innerHTML = `
+        <div class="moolank-badge">
+          <div class="moolank-badge-ring"></div>
+          <span class="moolank-badge-number">${moolank}</span>
+        </div>
+        <div class="moolank-badge-info">
+          <p class="moolank-badge-label">Your Moolank</p>
+          <p class="moolank-badge-value">Moolank ${moolank}</p>
+          <p class="moolank-badge-planet">Ruled by ${planetInfo.planet}</p>
+        </div>
+      `;
+
+      // ── Title ──
+      document.getElementById('healthResultTitle').textContent =
+        `✦ ${entry.health_tendencies.length} Health Tendencies for Moolank ${moolank} ✦`;
+
+      // ── Health Cards ──
+      const grid = document.getElementById('healthCardsGrid');
+      grid.innerHTML = '';
+
+      entry.health_tendencies.forEach((tendency, index) => {
+        const icon = getHealthIcon(tendency.title);
+        const card = document.createElement('div');
+        card.className = 'health-card';
+        card.style.animationDelay = `${index * 0.08}s`;
+
+        card.innerHTML = `
+          <span class="health-card-index">${String(index + 1).padStart(2, '0')}</span>
+          <span class="health-card-icon">${icon}</span>
+          <p class="health-card-title">${tendency.title}</p>
+          <p class="health-card-desc">${tendency.description}</p>
+          <button class="health-card-toggle" onclick="toggleCard(this)">Read More ↓</button>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    /* ══════════════════════════════════════
+       TOGGLE CARD EXPANSION
+    ══════════════════════════════════════ */
+    function toggleCard(btn) {
+      const card = btn.closest('.health-card');
+      const isExpanded = card.classList.contains('expanded');
+
+      if (isExpanded) {
+        card.classList.remove('expanded');
+        btn.textContent = 'Read More ↓';
+      } else {
+        card.classList.add('expanded');
+        btn.textContent = 'Read Less ↑';
+      }
+    }
+  </script>
+</body>
+
+</html>
