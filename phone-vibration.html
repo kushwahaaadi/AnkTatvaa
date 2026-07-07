@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Vibration Option — Anktatvaa · Celestial Vedic Numerology</title>
+  <meta name="description" content="Check if your mobile number aligns with your Birth and Destiny Number based on Vedic Numerology.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .pv-section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+    }
+
+    .pv-input-card {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .pv-input-card .field-group {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 0;
+    }
+
+    .pv-input-card .submit-btn {
+      flex-shrink: 0;
+      width: auto;
+      min-width: 220px;
+      margin-top: 0;
+    }
+
+    .pv-result-section {
+      display: none;
+      margin-top: 3rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .pv-result-section.visible {
+      display: block;
+    }
+
+    .pv-result-card {
+      position: relative;
+    }
+
+    .pv-result-header {
+      text-align: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+      margin-bottom: 2rem;
+    }
+
+    .pv-result-title {
+      font-family: 'Yatra One', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .pv-details-display {
+      font-family: 'Philosopher', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .pv-numbers-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+
+    .pv-num-badge {
+      text-align: center;
+      position: relative;
+    }
+
+    .pv-num-ring {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto 0.8rem;
+      opacity: 0;
+      transform: scale(0.6);
+      animation: ringPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .pv-num-ring::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      animation: pulseRing 3s ease-in-out infinite;
+    }
+
+    .pv-num-ring::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(168, 85, 247, 0.06));
+      border: 1px solid rgba(0, 212, 255, 0.15);
+    }
+
+    .pv-num-val {
+      font-family: 'Yatra One', serif;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pv-num-label {
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    @keyframes ringPop {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .pv-final-result {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border-top: 1px solid rgba(0, 212, 255, 0.12);
+      text-align: center;
+      border-radius: 6px;
+      background: rgba(0, 212, 255, 0.03);
+    }
+
+    .pv-final-result.suitable {
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      background: rgba(74, 222, 128, 0.05);
+    }
+
+    .pv-final-result.neutral {
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      background: rgba(251, 191, 36, 0.05);
+    }
+
+    .pv-final-result.unsuitable {
+      border: 1px solid rgba(248, 113, 113, 0.4);
+      background: rgba(248, 113, 113, 0.05);
+    }
+
+    .pv-final-heading {
+      font-family: 'Yatra One', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .pv-final-result.suitable .pv-final-heading {
+      color: #4ade80;
+    }
+
+    .pv-final-result.neutral .pv-final-heading {
+      color: #fbbf24;
+    }
+
+    .pv-final-result.unsuitable .pv-final-heading {
+      color: #f87171;
+    }
+
+    .pv-final-text {
+      font-family: 'Vesper Libre', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .pv-report-footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 212, 255, 0.12);
+    }
+
+    .pv-report-footer-text {
+      font-family: 'Philosopher', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(0, 212, 255, 0.3);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .pv-input-card {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .pv-input-card .submit-btn {
+        width: 100%;
+        min-width: unset;
+      }
+      .pv-num-ring {
+        width: 80px;
+        height: 80px;
+      }
+      .pv-num-val {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="cosmos"></canvas>
+
+  <div class="page">
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="nav-logo-symbol">✦</span>
+        <span class="nav-logo-text">Anktatvaa</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#features" class="nav-link">Readings</a>
+        <a href="numerology.html" class="nav-link">Numerology</a>
+        <a href="name-vibration.html" class="nav-link">Name Vibrations</a>
+        <a href="compatibility.html" class="nav-link">Compatibility</a>
+        <a href="health-tendencies.html" class="nav-link">Health</a>
+        <a href="phone-vibration.html" class="nav-link active">Phone Vibration</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="index.html#features" class="mobile-link">Readings</a>
+      <a href="numerology.html" class="mobile-link">Numerology</a>
+      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
+      <a href="compatibility.html" class="mobile-link">Compatibility</a>
+      <a href="health-tendencies.html" class="mobile-link">Health</a>
+      <a href="phone-vibration.html" class="mobile-link">Phone Vibration</a>
+      <a href="index.html#faq" class="mobile-link">FAQ</a>
+      <div class="mobile-auth">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+      </div>
+    </div>
+
+    <!-- ═══════ PHONE VIBRATION MODULE ═══════ -->
+    <section class="pv-section reveal">
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Phone Vibration ✦</p>
+      <h1 class="section-title" style="margin-bottom:0.5rem">Check Your Mobile Number</h1>
+      <p class="section-sub">Discover if your mobile number aligns harmoniously with your Birth and Destiny numbers.</p>
+
+      <!-- ── Input Form ── -->
+      <div class="form-card reveal stagger-1">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="pv-input-card">
+          <div class="field-group">
+            <label class="field-label" for="pvDobInput">✦ Date of Birth (DD/MM/YYYY)</label>
+            <input class="field-input" id="pvDobInput" type="text" placeholder="e.g. 15/08/1990" autocomplete="off">
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="pvMobileInput">✦ Mobile Number</label>
+            <input class="field-input" id="pvMobileInput" type="text" placeholder="e.g. 9876543210" autocomplete="off">
+          </div>
+          <button class="submit-btn float" onclick="calculatePhoneVibration()">
+            ✦ Check Vibration ✦
+          </button>
+        </div>
+        <p class="error-msg" id="pvErrMsg"></p>
+      </div>
+
+      <!-- ── Result Card ── -->
+      <div class="pv-result-section" id="pvResultSection">
+        <div class="form-card pv-result-card">
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+
+          <div class="pv-result-header">
+            <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Phone Vibration Report ✦</p>
+            <h2 class="pv-result-title">Mobile Number Alignment</h2>
+            <p class="pv-details-display" id="pvDetailsDisplay"></p>
+          </div>
+
+          <div class="pv-numbers-wrap">
+            <div class="pv-num-badge">
+              <div class="pv-num-ring" style="animation-delay: 0.1s">
+                <span class="pv-num-val" id="pvBnNum"></span>
+              </div>
+              <p class="pv-num-label">Birth Number (BN)</p>
+            </div>
+            <div class="pv-num-badge">
+              <div class="pv-num-ring" style="animation-delay: 0.2s">
+                <span class="pv-num-val" id="pvDnNum"></span>
+              </div>
+              <p class="pv-num-label">Destiny Number (DN)</p>
+            </div>
+            <div class="pv-num-badge">
+              <div class="pv-num-ring" style="animation-delay: 0.3s">
+                <span class="pv-num-val" id="pvMnNum"></span>
+              </div>
+              <p class="pv-num-label">Mobile Number (MN)</p>
+            </div>
+          </div>
+
+          <div class="pv-final-result" id="pvFinalResult">
+            <h3 class="pv-final-heading" id="pvFinalHeading"></h3>
+            <p class="pv-final-text" id="pvFinalText"></p>
+          </div>
+
+          <div class="pv-report-footer">
+            <p class="pv-report-footer-text">✦ &nbsp; A harmonious mobile number brings clarity and positive vibrations &nbsp; ✦</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+      <div class="footer-symbol">✦</div>
+      <p class="footer-name">Anktatvaa</p>
+      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
+      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('navHamburger').classList.toggle('active');
+    }
+
+    const relationMatrix = {
+      1: { friendly: [1, 2, 3, 4, 7, 9], enemy: [6, 8], neutral: [5] },
+      2: { friendly: [1, 2, 4, 7], enemy: [5, 8, 9], neutral: [3, 6] },
+      3: { friendly: [1, 2, 3, 4, 7, 9], enemy: [6], neutral: [5, 8] },
+      4: { friendly: [1, 2, 3, 4, 7], enemy: [8, 9], neutral: [5, 6] },
+      5: { friendly: [1, 4, 5, 6], enemy: [2, 7], neutral: [3, 8, 9] },
+      6: { friendly: [5, 6, 8], enemy: [2, 3, 4, 7], neutral: [1, 9] },
+      7: { friendly: [1, 2, 4, 5, 7], enemy: [8, 9], neutral: [3, 6] },
+      8: { friendly: [5, 6], enemy: [1, 2, 4, 7, 8, 9], neutral: [3] },
+      9: { friendly: [1, 3, 9], enemy: [2, 4, 7, 8], neutral: [5, 6] }
+    };
+
+    function reduceToSingle(num) {
+      while (num > 9) {
+        num = String(num).split('').reduce((acc, val) => acc + Number(val), 0);
+      }
+      return num;
+    }
+
+    const pvDobInput = document.getElementById('pvDobInput');
+    pvDobInput.addEventListener('input', function (e) {
+      let val = this.value.replace(/\D/g, '');
+      if (val.length > 8) val = val.slice(0, 8);
+      let formatted = '';
+      if (val.length > 0) formatted += val.slice(0, 2);
+      if (val.length > 2) formatted += '/' + val.slice(2, 4);
+      if (val.length > 4) formatted += '/' + val.slice(4, 8);
+      this.value = formatted;
+    });
+
+    pvDobInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') calculatePhoneVibration();
+    });
+
+    document.getElementById('pvMobileInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') calculatePhoneVibration();
+    });
+
+    function calculatePhoneVibration() {
+      const dobRaw = document.getElementById('pvDobInput').value.trim();
+      const mobileRaw = document.getElementById('pvMobileInput').value.trim();
+      const errEl = document.getElementById('pvErrMsg');
+      errEl.textContent = '';
+
+      // Date validation
+      const match = dobRaw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      if (!match) {
+        errEl.textContent = '◈ Please enter a valid date in DD/MM/YYYY format';
+        return;
+      }
+      
+      const day = parseInt(match[1], 10);
+      const month = parseInt(match[2], 10);
+      const year = parseInt(match[3], 10);
+
+      if (month < 1 || month > 12 || day < 1 || day > 31) {
+        errEl.textContent = '◈ Please enter a valid date';
+        return;
+      }
+      
+      const mobileClean = mobileRaw.replace(/\D/g, '');
+      if (mobileClean.length === 0) {
+        errEl.textContent = '◈ Please enter a valid mobile number';
+        return;
+      }
+
+      // Calculate BN
+      const dayDigits = String(day).split('').map(Number);
+      const daySum = dayDigits.reduce((a, b) => a + b, 0);
+      const bn = reduceToSingle(daySum);
+
+      // Calculate DN
+      const allDigitsStr = `${match[1]}${match[2]}${match[3]}`;
+      const allDigits = allDigitsStr.split('').map(Number);
+      const totalSum = allDigits.reduce((a, b) => a + b, 0);
+      const dn = reduceToSingle(totalSum);
+
+      // Calculate MN
+      const mobileDigits = mobileClean.split('').map(Number);
+      const mobileSum = mobileDigits.reduce((a, b) => a + b, 0);
+      const mn = reduceToSingle(mobileSum);
+
+      // Validate Relation
+      const isBnFriendly = relationMatrix[bn].friendly.includes(mn);
+      const isDnFriendly = relationMatrix[dn].friendly.includes(mn);
+      const isBnNeutral = relationMatrix[bn].neutral.includes(mn);
+      const isDnNeutral = relationMatrix[dn].neutral.includes(mn);
+
+      let finalStatus = 'unsuitable';
+      if (isBnFriendly || isDnFriendly) {
+        finalStatus = 'suitable';
+      } else if (isBnNeutral || isDnNeutral) {
+        finalStatus = 'neutral';
+      }
+
+      // Render
+      document.getElementById('pvDetailsDisplay').textContent = `DOB: ${dobRaw} | Mobile: ${mobileRaw}`;
+      document.getElementById('pvBnNum').textContent = bn;
+      document.getElementById('pvDnNum').textContent = dn;
+      document.getElementById('pvMnNum').textContent = mn;
+
+      const finalResultEl = document.getElementById('pvFinalResult');
+      const finalHeading = document.getElementById('pvFinalHeading');
+      const finalText = document.getElementById('pvFinalText');
+
+      if (finalStatus === 'suitable') {
+        finalResultEl.className = 'pv-final-result suitable';
+        finalHeading.textContent = '✦ Suitable Number ✦';
+        let reason = '';
+        if (isBnFriendly && isDnFriendly) {
+          reason = 'is friendly to both your Birth Number and Destiny Number';
+        } else if (isBnFriendly) {
+          reason = 'is friendly to your Birth Number';
+        } else {
+          reason = 'is friendly to your Destiny Number';
+        }
+        finalText.textContent = `Your mobile number vibration (${mn}) ${reason}, making it highly harmonious for your personal and professional growth.`;
+      } else if (finalStatus === 'neutral') {
+        finalResultEl.className = 'pv-final-result neutral';
+        finalHeading.textContent = '✦ So-So Suitable Number ✦';
+        let reason = '';
+        if (isBnNeutral && isDnNeutral) {
+          reason = 'is neutral to both your Birth Number and Destiny Number';
+        } else if (isBnNeutral) {
+          reason = 'is neutral to your Birth Number';
+        } else {
+          reason = 'is neutral to your Destiny Number';
+        }
+        finalText.textContent = `Your mobile number vibration (${mn}) ${reason}. It brings average results and balance without major challenges or massive boosts.`;
+      } else {
+        finalResultEl.className = 'pv-final-result unsuitable';
+        finalHeading.textContent = '✦ Not Suitable ✦';
+        finalText.textContent = `Your mobile number vibration (${mn}) is an enemy to your Birth Number or Destiny Number. You may want to consider a number that aligns better with your cosmic energies.`;
+      }
+
+      const section = document.getElementById('pvResultSection');
+      section.classList.remove('visible');
+      void section.offsetWidth; // trigger reflow
+      section.classList.add('visible');
+
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+  </script>
+</body>
+</html>
