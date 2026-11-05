@@ -1,0 +1,344 @@
+{
+  "Sun": {
+    "Sun-Sun": {
+      "hindi": "Surya-Surya",
+      "description": "The Sun–Sun period is a mixed phase that brings opportunities for success along with important responsibilities. It supports overall progress, recognition, and financial growth through confidence and consistent effort. However, business matters may face obstacles, relationships or married life may experience misunderstandings, and health requires extra attention. Avoid letting ego or impatience affect important decisions. Maintaining a balanced lifestyle, communicating openly with loved ones, and staying disciplined will help you make the most of this period while overcoming its challenges."
+    },
+    "Sun-Moon": {
+      "hindi": "Surya-Chandra",
+      "description": "The Sun–Moon period generally brings emotional balance and positive developments in personal life. It supports marital happiness, financial opportunities, and favorable outcomes from investments or speculation. Career changes may occur but are likely to be moderate rather than dramatic. This is a good time to strengthen relationships and make thoughtful financial decisions. Staying emotionally stable and avoiding impulsive choices will help you benefit from the positive energy of this period."
+    },
+    "Sun-Jupiter": {
+      "hindi": "Surya-Guru",
+      "description": "The Sun–Jupiter period is one of growth, learning, and prosperity. It favors financial improvement, better health, travel opportunities, and overall progress in career or education. Wisdom, confidence, and good judgment can help you achieve long-term goals. Family life is likely to remain stable, although major changes may be limited. Making the most of new opportunities while staying humble and disciplined will bring lasting success during this favorable phase."
+    },
+    "Sun-Rahu": {
+      "hindi": "Surya-Rahu",
+      "description": "The Sun–Rahu period is a mixed phase that requires patience and careful planning. While it offers opportunities for personal improvement and growth, responsibilities may increase and progress in property or relocation matters could remain slow. Be cautious of hidden rivals, unnecessary conflicts, and health-related issues. Avoid taking shortcuts or making risky decisions. Staying focused, maintaining discipline, and handling challenges calmly will help you turn this period into one of gradual progress and learning."
+    },
+    "Sun-Mercury": {
+      "hindi": "Surya-Budh",
+      "description": "The Sun–Mercury period is highly favorable for education, career, communication, and financial growth. Success in exams, investment opportunities, travel, and support from family are likely during this time. However, legal matters may require caution, and business partnerships should be entered carefully. Clear communication and practical decision-making will help you avoid unnecessary complications. Overall, this is a productive period for learning, career advancement, and building a stable future."
+    },
+    "Sun-Venus": {
+      "hindi": "Surya-Shukra",
+      "description": "The Sun–Venus period brings financial opportunities but also tests relationships and professional stability. While income and financial outcomes may improve, misunderstandings in marriage or close relationships may arise. Business and employment matters may require extra effort, and dealing with authorities should be done carefully. Maintaining harmony in personal life, avoiding unnecessary disputes, and staying patient at work will help you make the most of the positive financial potential of this phase."
+    },
+    "Sun-Ketu": {
+      "hindi": "Surya-Ketu",
+      "description": "The Sun–Ketu period is a mixed phase that encourages caution and self-reflection. Government-related work or official matters may be favorable, and overall comfort can improve. However, relationship challenges, especially in marriage, may arise, and important decisions should not be taken impulsively. Stay alert while handling responsibilities and avoid unnecessary conflicts. By remaining calm, disciplined, and focused on long-term goals, you can navigate this period more smoothly and achieve steady progress."
+    },
+    "Sun-Saturn": {
+      "hindi": "Surya-Shani",
+      "description": "The Sun–Saturn period may bring both achievements and responsibilities. Career satisfaction, property gains, family happiness, and investment opportunities are supported, making it a productive phase overall. However, safety and health require extra attention, and unnecessary risks should be avoided. Working patiently, following rules, and maintaining a balanced routine will help you overcome obstacles. With discipline and persistence, this period can bring stable growth and long-term rewards."
+    },
+    "Sun-Mars": {
+      "hindi": "Surya-Mangal",
+      "description": "The Sun–Mars period is energetic and action-oriented, bringing opportunities for career growth, property gains, and family happiness. Investments may also prove beneficial. However, there is an increased need to be careful about accidents, injuries, or risky activities. Avoid acting in anger or haste, and focus on channeling your energy into productive work. With courage, patience, and careful planning, this period can bring meaningful progress and success."
+    }
+  },
+  "Moon": {
+    "Moon-Sun": {
+      "hindi": "Chandra-Surya",
+      "description": "The Moon–Sun period is a mixed phase that encourages emotional strength and practical decisionmaking. It supports gains through government-related work and finances, but may also bring challenges in marriage, health, and personal stability. New responsibilities can feel overwhelming, so maintaining patience and avoiding impulsive reactions is important. Taking care of your physical well-being and communicating openly with loved ones will help you navigate this period with greater confidence and balance."
+    },
+    "Moon-Moon": {
+      "hindi": "Chandra-Chandra",
+      "description": "The Moon–Moon period is generally favorable for emotional well-being, career growth, and personal relationships. It supports career progress, government or business support, and opportunities for marriage or strengthening existing relationships. However, financial decisions should be made carefully, as unnecessary spending or risky investments may lead to losses. Staying emotionally balanced and maintaining financial discipline will help you make the most of this positive and rewarding period."
+    },
+    "Moon-Jupiter": {
+      "hindi": "Chandra-Guru",
+      "description": "The Moon–Jupiter period brings opportunities for career growth, travel, financial improvement, and enhanced reputation. It is a favorable time for learning, professional development, and expanding your horizons. However, family responsibilities, personal expenses, and emotional stress may occasionally create challenges. Managing your finances wisely and maintaining a healthy work-life balance will help you enjoy the benefits of this generally positive phase while minimizing its difficulties."
+    },
+    "Moon-Rahu": {
+      "hindi": "Chandra-Rahu",
+      "description": "The Moon–Rahu period is a mixed phase that may bring financial gains along with emotional and family-related challenges. Unfinished work can finally move forward, and new opportunities may arise, but misunderstandings within the family or sudden changes may create stress. Avoid making impulsive decisions and stay patient during uncertain situations. With careful planning and emotional stability, this period can lead to gradual progress despite occasional obstacles."
+    },
+    "Moon-Mercury": {
+      "hindi": "Chandra-Budh",
+      "description": "The Moon–Mercury period requires extra caution, especially in career, finances, and relationships. Challenges at work, misunderstandings with others, and financial risks may arise if decisions are made hastily. It is also important to remain alert against unnecessary conflicts or hidden rivals. Staying organized, thinking before acting, and avoiding risky investments will help reduce difficulties. Patience, clear communication, and careful planning are the keys to successfully managing this phase."
+    },
+    "Moon-Venus": {
+      "hindi": "Chandra-Shukra",
+      "description": "The Moon–Venus period is one of the most favorable phases of the Moon Maha Dasha. It supports success in education, career, business, travel, creativity, and financial growth. Relationships become more harmonious, and opportunities for comfort and happiness are likely to increase. This is an excellent time to develop new skills, strengthen social connections, and make progress toward long-term goals. Staying humble and making wise financial decisions will help maximize the benefits of this highly positive period."
+    },
+    "Moon-Ketu": {
+      "hindi": "Chandra-Ketu",
+      "description": "The Moon–Ketu period is generally a challenging phase that requires patience and careful decisionmaking. Emotional ups and downs, relationship misunderstandings, and unexpected life changes may occur. Be cautious with legal matters, government-related work, and important documents, as delays or complications are possible. Family members' health may need extra attention, and avoiding risky decisions or unnecessary conflicts is advisable. Although this phase can feel difficult, it also encourages self-reflection, spiritual growth, and personal transformation. Staying calm, disciplined, and positive will help you navigate this period more smoothly."
+    },
+    "Moon-Saturn": {
+      "hindi": "Chandra-Shani",
+      "description": "The Moon–Saturn period can be demanding and requires patience, discipline, and emotional resilience. Business matters, legal issues, and family relationships may experience delays or obstacles, while travel or financial gains may remain average. Responsibilities are likely to increase, making it important to stay focused and avoid unnecessary stress. By working consistently, maintaining healthy relationships, and making practical decisions, you can gradually overcome challenges and build a stronger foundation for the future."
+    },
+    "Moon-Mars": {
+      "hindi": "Chandra-Mangal",
+      "description": "The Moon–Mars period brings a mix of determination and challenges. While hard work and persistence can help you achieve your goals, issues related to property, friendships, marriage, or travel may require extra attention. Emotional reactions and impulsive decisions should be avoided, as they can create unnecessary conflicts. Staying calm, planning carefully, and focusing your energy on productive efforts will help you overcome obstacles and make steady progress during this phase."
+    }
+  },
+  "Jupiter": {
+    "Jupiter-Sun": {
+      "hindi": "Guru-Surya",
+      "description": "The Jupiter–Sun period is highly favorable and brings opportunities for financial growth, good health, career recognition, and success over competitors. Travel, leadership roles, and personal achievements are likely to increase during this phase. However, minor concerns related to children or close friends may require attention. Staying humble, making wise decisions, and maintaining strong relationships will help you enjoy the many benefits of this positive and rewarding period."
+    },
+    "Jupiter-Moon": {
+      "hindi": "Guru-Chandra",
+      "description": "The Jupiter–Moon period is generally positive, supporting financial stability, career opportunities, travel, and personal growth. It also favors government-related work and may bring opportunities in education or business. While family matters and responsibilities toward children may occasionally create emotional stress, maintaining patience and balance will help you handle these situations effectively. Overall, this is a favorable period for steady progress and long-term success."
+    },
+    "Jupiter-Jupiter": {
+      "hindi": "Guru-Guru",
+      "description": "The Jupiter–Jupiter period is one of growth, wisdom, and achievement. It supports success in challenging tasks, strong business connections, and overall career development. Although family tensions or occasional misunderstandings may arise, they can be managed with patience and open communication. This is an excellent time to focus on education, professional goals, and personal development. Staying disciplined and grounded will help you achieve lasting success."
+    },
+    "Jupiter-Rahu": {
+      "hindi": "Guru-Rahu",
+      "description": "The Jupiter–Rahu period is a mixed phase that requires careful planning and patience. Business disputes, property matters, and family disagreements may create obstacles, while financial gains may be moderate despite higher expenses. Avoid making impulsive decisions or getting involved in unnecessary conflicts. Thoughtful planning, honest communication, and practical financial management will help you overcome challenges and make steady progress during this period."
+    },
+    "Jupiter-Mercury": {
+      "hindi": "Guru-Budh",
+      "description": "The Jupiter–Mercury period is favorable for education, communication, and financial opportunities. Success in exams, learning, business, and professional growth is likely, making it a productive time for students and working professionals alike. However, misunderstandings with siblings or close relatives may occasionally arise. Maintaining clear communication and staying focused on long-term goals will help you make the most of this positive and intellectually rewarding phase."
+    },
+    "Jupiter-Venus": {
+      "hindi": "Guru-Shukra",
+      "description": "The Jupiter–Venus period brings opportunities for business success and financial growth but also requires careful management of expenses and personal relationships. Unexpected spending, emotional strain, or misunderstandings with loved ones may occur if finances are not handled wisely. Avoid unnecessary luxury or impulsive purchases. By maintaining balance, making practical financial decisions, and nurturing relationships, you can enjoy the positive outcomes this period has to offer."
+    },
+    "Jupiter-Ketu": {
+      "hindi": "Guru-Ketu",
+      "description": "The Jupiter–Ketu period is a challenging phase that encourages caution and self-awareness. Hidden rivals, unnecessary expenses, and mental stress may create obstacles, especially in business or financial matters. Trading or speculative activities should be approached carefully. Despite these challenges, good financial management and inner wisdom can help maintain stability. Staying patient, avoiding risky decisions, and focusing on personal growth will help you navigate this period successfully."
+    },
+    "Jupiter-Saturn": {
+      "hindi": "Guru-Shani",
+      "description": "The Jupiter–Saturn period is a balanced phase that rewards discipline and consistent effort. Property matters, legal issues, and financial management may bring positive results, while frequent travel can create new opportunities. However, workplace challenges, increased responsibilities, and concerns about a partner's health may require extra attention. Remaining patient, organized, and practical will help you build long-term stability and achieve meaningful progress during this period."
+    },
+    "Jupiter-Mars": {
+      "hindi": "Guru-Mangal",
+      "description": "The Jupiter–Mars period is energetic and action-oriented, offering success in property matters, legal affairs, and long-distance travel. It is a favorable time to take initiative in career and business, as determination can lead to positive results. However, be cautious with important documents, personal safety, and unnecessary conflicts. Careful planning and controlled actions will help you make the most of this productive phase while avoiding avoidable setbacks."
+    }
+  },
+  "Rahu": {
+    "Rahu-Sun": {
+      "hindi": "Rahu-Surya",
+      "description": "The Rahu–Sun period is a challenging phase that requires patience and careful planning. Career or business obstacles, property-related issues, and family concerns may slow progress. While short journeys and relocation matters may remain average, opportunities in financial speculation could bring gains if approached wisely. Avoid unnecessary conflicts with authorities and focus on disciplined decisionmaking. Staying patient and working consistently will help you overcome temporary setbacks and achieve gradual improvement."
+    },
+    "Rahu-Moon": {
+      "hindi": "Rahu-Chandra",
+      "description": "The Rahu–Moon period brings a mix of financial opportunities and emotional challenges. Gains through family or maternal relatives are possible, but misunderstandings at home, hidden rivals, or sudden difficulties may create stress. Emotional balance and careful planning are essential during this phase. Avoid making impulsive decisions, and focus on maintaining harmony in family life. With patience and practical thinking, this period can still bring meaningful financial progress."
+    },
+    "Rahu-Rahu": {
+      "hindi": "Rahu-Rahu",
+      "description": "The Rahu–Rahu period is intense and transformative. It offers opportunities for financial gains through business, enjoyable travel, and happiness in marriage. However, health concerns and safety risks require extra attention. Avoid taking unnecessary risks or making decisions driven by overconfidence. Staying disciplined, maintaining a healthy lifestyle, and carefully evaluating opportunities will help you benefit from this powerful yet demanding period."
+    },
+    "Rahu-Mercury": {
+      "hindi": "Rahu-Budh",
+      "description": "The Rahu–Mercury period is a mixed phase that requires caution in relationships and financial matters. Support from friends and new connections may prove beneficial, but misunderstandings, family disputes, and financial losses through trusted people are possible. Health and safety also deserve attention. Avoid lending money carelessly or making decisions based solely on emotions. Clear communication and practical thinking will help you navigate this period successfully."
+    },
+    "Rahu-Venus": {
+      "hindi": "Rahu-Shukra",
+      "description": "The Rahu–Venus period is generally balanced but requires emotional maturity. Business conditions may remain stable, and major challenges can often be managed successfully. However, family happiness may be affected by misunderstandings or emotional distance. Stay alert against hidden rivals while maintaining patience in personal relationships. Avoid unnecessary arguments and focus on creating harmony at home. A calm and practical approach will help maintain stability throughout this phase."
+    },
+    "Rahu-Ketu": {
+      "hindi": "Rahu-Ketu",
+      "description": "The Rahu–Ketu period is one of the more challenging phases of Rahu Maha Dasha. Work pressure, mental stress, family issues, and business disruptions may create uncertainty. Decision-making can become difficult, making it important to avoid impulsive actions or unnecessary risks. Patience, careful planning, and emotional control are essential during this time. By staying disciplined and focusing on long-term goals, you can gradually overcome obstacles and emerge stronger."
+    },
+    "Rahu-Saturn": {
+      "hindi": "Rahu-Shani",
+      "description": "The Rahu–Saturn period demands discipline and persistence. Financial burdens, debts, difficult journeys, and workplace challenges may arise, requiring careful management of time and resources. You may also feel isolated or disconnected from others at times. Avoid taking on unnecessary responsibilities or making risky financial commitments. Remaining patient, working consistently, and making practical decisions will help you steadily overcome the challenges of this phase."
+    },
+    "Rahu-Mars": {
+      "hindi": "Rahu-Mangal",
+      "description": "The Rahu–Mars period is highly favorable for career growth, education, property, and governmentrelated opportunities. Success in exams, legal matters, and professional advancement is likely, while romantic relationships and marriage may also progress positively. However, remain cautious of deceit or overconfidence. Acting with honesty, discipline, and determination will allow you to maximize the benefits of this energetic and rewarding period."
+    },
+    "Rahu-Jupiter": {
+      "hindi": "Rahu-Guru",
+      "description": "The Rahu–Jupiter period is generally positive and brings opportunities for career growth, financial improvement, business success, and better health. Travel, political or social influence, and secret gains may also prove beneficial. Although property matters, relocation, or family concerns may require attention, the overall outlook remains favorable. Wise decision-making, patience, and a balanced approach will help you make the most of this prosperous and progressive phase"
+    }
+  },
+  "Mercury": {
+    "Mercury-Sun": {
+      "hindi": "Budh-Surya",
+      "description": "The Mercury–Sun period is generally favorable for career growth, financial improvement, and government-related opportunities. It supports employment changes, business progress, and better health while helping you overcome competition. However, love relationships or marriage may face temporary challenges, requiring patience and understanding. Avoid making emotional decisions in personal matters. By staying focused, communicating clearly, and making practical choices, you can achieve steady success during this productive phase."
+    },
+    "Mercury-Moon": {
+      "hindi": "Budh-Chandra",
+      "description": "The Mercury–Moon period brings opportunities for financial growth and improvement in married life. Sudden gains or unexpected financial benefits are possible, and business conditions are likely to improve. However, decision-making should be handled carefully, especially regarding relocation or travel. Staying emotionally balanced and thinking before acting will help you make the most of this positive period while avoiding unnecessary complications."
+    },
+    "Mercury-Mars": {
+      "hindi": "Budh-Mangal",
+      "description": "The Mercury–Mars period is a mixed phase that encourages confidence and personal growth. It supports education, business, family happiness, and travel, making it a good time to pursue new opportunities. However, mental stress, project delays, or conflicts with rivals may arise if actions are taken impulsively. Avoid unnecessary arguments and remain disciplined in your work. Patience and careful planning will help you turn challenges into success."
+    },
+    "Mercury-Mercury": {
+      "hindi": "Budh-Budh",
+      "description": "The Mercury–Mercury period is one of the most favorable phases for learning, career, and personal development. It supports business growth, educational success, financial stability, and enhanced reputation. New relationships and networking opportunities may also prove beneficial. While health requires occasional attention, the overall outlook remains highly positive. Staying focused, continuing to learn, and making practical decisions will help you achieve lasting success during this rewarding period."
+    },
+    "Mercury-Jupiter": {
+      "hindi": "Budh-Guru",
+      "description": "The Mercury–Jupiter period is a positive and growth-oriented phase. It brings success in education, financial stability, business, and career while encouraging wisdom and good decision-making. However, mental instability or confusion may occasionally affect judgment, and risky investments should be avoided. By remaining calm, managing finances wisely, and focusing on long-term goals, you can make excellent progress during this beneficial period."
+    },
+    "Mercury-Venus": {
+      "hindi": "Budh-Shukra",
+      "description": "The Mercury–Venus period offers good opportunities for financial improvement, education, and enjoyable travel. It encourages creativity, communication, and professional growth. However, interpersonal relationships, love life, or family matters may require extra patience, and misunderstandings should be handled calmly. Avoid making emotional decisions or unnecessary arguments. A balanced approach will help you enjoy the positive outcomes while maintaining harmony in your personal life."
+    },
+    "Mercury-Saturn": {
+      "hindi": "Budh-Shani",
+      "description": "The Mercury–Saturn period is a mixed phase that rewards discipline and persistence. Business and career progress are possible, along with beneficial journeys and spiritual growth. However, family disputes, health concerns, and responsibilities toward loved ones may increase. Taking a patient and practical approach will help you overcome obstacles. By staying organized and maintaining emotional balance, you can gradually build long-term stability and success."
+    },
+    "Mercury-Rahu": {
+      "hindi": "Budh-Rahu",
+      "description": "The Mercury–Rahu period can be challenging and requires careful decision-making. Financial gains are possible, but unexpected losses, lifestyle changes, or health concerns may also arise. Business and educational opportunities remain favorable, but avoid risky investments or impulsive choices. Staying alert, managing money wisely, and maintaining a disciplined routine will help you navigate this period successfully while minimizing setbacks."
+    },
+    "Mercury-Ketu": {
+      "hindi": "Budh-Ketu",
+      "description": "The Mercury–Ketu period is a mixed phase that encourages self-awareness and careful planning. Overall outcomes remain positive, with opportunities for government-related financial gains, career progress, and relocation. However, health concerns, family issues, and social or marital challenges may require extra attention. Avoid unnecessary conflicts and make important decisions only after careful thought. Patience, discipline, and clear communication will help you make steady progress during this phase."
+    }
+  },
+  "Venus": {
+    "Venus-Sun": {
+      "hindi": "Shukra-Surya",
+      "description": "The Venus–Sun period is generally favorable and supports financial improvement, career growth, and new opportunities related to property or relocation. It can bring recognition, confidence, and better professional prospects. However, health may require extra attention, and unnecessary stress should be avoided. Maintaining a balanced lifestyle, staying focused on your goals, and making practical decisions will help you enjoy the benefits of this positive phase."
+    },
+    "Venus-Moon": {
+      "hindi": "Shukra-Chandra",
+      "description": "The Venus–Moon period is a positive phase that brings financial growth, improved family relationships, and opportunities for education or business success. New relationships, social recognition, and enjoyable travel may also enhance your personal life. While minor health concerns could arise, they are generally manageable with proper care. Staying optimistic, maintaining harmony with loved ones, and making wise financial decisions will help you make the most of this rewarding period."
+    },
+    "Venus-Mars": {
+      "hindi": "Shukra-Mangal",
+      "description": "The Venus–Mars period is a mixed phase that brings opportunities for financial gains, business growth, and resolving government-related matters. However, emotional challenges, relationship misunderstandings, and family tensions may arise if decisions are made impulsively. Avoid unnecessary conflicts and remain patient in personal matters. By balancing your ambitions with emotional maturity, you can overcome obstacles and achieve steady progress during this period."
+    },
+    "Venus-Mercury": {
+      "hindi": "Shukra-Budh",
+      "description": "The Venus–Mercury period is highly favorable for education, business, career growth, and financial improvement. It supports social happiness, love relationships, travel, and professional success. This is an excellent time to develop new skills, expand your network, and pursue long-term goals. While government-related matters may require some attention, the overall outlook remains positive. Staying focused and making practical decisions will maximize the benefits of this productive phase."
+    },
+    "Venus-Jupiter": {
+      "hindi": "Shukra-Guru",
+      "description": "The Venus–Jupiter period brings opportunities for wealth, career advancement, and foreign travel. It favors business growth, financial gains through valuable assets, and positive developments in relationships. However, avoid unnecessary spending, risky situations, or careless behavior, as these could lead to losses. By remaining disciplined and making thoughtful decisions, you can enjoy lasting success and stability throughout this favorable phase."
+    },
+    "Venus-Venus": {
+      "hindi": "Shukra-Shukra",
+      "description": "The Venus–Venus period is one of the most rewarding phases, bringing financial improvement, educational success, and opportunities in love, marriage, and career. Business growth, travel, and promotions are also well-supported. Although parental health or official matters may require some attention, the overall outlook is highly positive. Maintaining humility, strengthening relationships, and managing finances wisely will help you fully benefit from this prosperous period."
+    },
+    "Venus-Saturn": {
+      "hindi": "Shukra-Shani",
+      "description": "The Venus–Saturn period is a balanced phase that rewards patience and consistent effort. Financial improvement, stable business growth, and educational success are likely, while social and cultural activities may bring happiness. However, progress in business or property matters may be slower than expected, and family or health concerns may require extra attention. Remaining disciplined and avoiding shortcuts will help you achieve long-term success and stability."
+    },
+    "Venus-Rahu": {
+      "hindi": "Shukra-Rahu",
+      "description": "The Venus–Rahu period is a challenging phase that requires careful handling of finances and relationships. While beneficial encounters with new people are possible, disputes at work, family conflicts, and unexpected expenses may create stress. Luck may seem inconsistent, making patience and practical decision-making essential. Avoid unnecessary risks and focus on maintaining harmony in both personal and professional life to overcome challenges successfully."
+    },
+    "Venus-Ketu": {
+      "hindi": "Shukra-Ketu",
+      "description": "The Venus–Ketu period encourages emotional control and self-discipline. It supports travel, career opportunities, and business growth, but relationship challenges, family disagreements, and the risk of indulgent behavior may create obstacles. Avoid making impulsive emotional or financial decisions, and focus on maintaining balance in your personal life. By staying calm, patient, and practical, you can successfully navigate this phase and achieve gradual progress."
+    }
+  },
+  "Ketu": {
+    "Ketu-Sun": {
+      "hindi": "Ketu-Surya",
+      "description": "The Ketu–Sun period is generally favorable and brings opportunities for employment, financial improvement, and government-related gains. Sudden financial benefits and business growth are also possible during this phase. However, health concerns within the family, especially related to a partner, may require extra attention. Maintaining patience, fulfilling responsibilities, and making practical financial decisions will help you enjoy the positive outcomes while managing personal challenges effectively."
+    },
+    "Ketu-Moon": {
+      "hindi": "Ketu-Chandra",
+      "description": "The Ketu–Moon period is a positive phase that supports business growth, financial gains, political or social influence, and beneficial travel opportunities. Windfalls or unexpected financial benefits may also arise. However, family matters, especially involving children, may create emotional stress. Maintaining emotional balance, spending quality time with loved ones, and avoiding unnecessary worries will help you make the most of this rewarding period."
+    },
+    "Ketu-Mars": {
+      "hindi": "Ketu-Mangal",
+      "description": "The Ketu–Mars period is a mixed phase that encourages determination and careful planning. It supports educational success, gradual financial improvement, career advancement, travel, and promotion opportunities. However, concerns related to a parent's health, government matters, or business partnerships may require attention. Avoid rushing into important decisions, and focus on disciplined efforts. Patience and consistency will help you achieve long-term success during this period."
+    },
+    "Ketu-Mercury": {
+      "hindi": "Ketu-Budh",
+      "description": "The Ketu–Mercury period brings opportunities for education, business growth, and career progress. Financial improvement and new job opportunities are likely, making it a productive phase for learning and professional development. However, relationship challenges, emotional misunderstandings, or family disputes may arise if communication is neglected. Staying calm, expressing yourself clearly, and making thoughtful decisions will help you enjoy the benefits of this positive period."
+    },
+    "Ketu-Jupiter": {
+      "hindi": "Ketu-Guru",
+      "description": "The Ketu–Jupiter period is generally favorable and supports financial gains, business growth, government-related success, and gradual improvement in life. Although health concerns and temporary relationship challenges may arise, they are likely to improve with time. Avoid unnecessary stress and focus on long-term planning rather than short-term setbacks. Patience, wisdom, and disciplined efforts will help you make steady progress throughout this phase."
+    },
+    "Ketu-Venus": {
+      "hindi": "Ketu-Shukra",
+      "description": "The Ketu–Venus period is a challenging phase that requires extra care in relationships and finances. Business or work-related disputes, lack of motivation, and family disagreements may create stress. However, helpful new connections or unexpected support from others can bring positive opportunities. Avoid emotional decisions, unnecessary arguments, and impulsive spending. Staying focused on your goals and maintaining harmony with loved ones will help you overcome the challenges of this period."
+    },
+    "Ketu-Ketu": {
+      "hindi": "Ketu-Ketu",
+      "description": "The Ketu–Ketu period is one of the more demanding phases, bringing emotional, financial, and relationship challenges. Business difficulties, family disputes, health concerns, and mental stress may require extra patience and resilience. At the same time, unexpected financial gains through new contacts or strangers are possible. Avoid making impulsive decisions or trusting people too quickly. By staying disciplined, calm, and focused on personal growth, you can navigate this transformative period more effectively."
+    },
+    "Ketu-Saturn": {
+      "hindi": "Ketu-Shani",
+      "description": "The Ketu–Saturn period is a mixed phase that rewards persistence and careful planning. Slow but steady business improvement, long-term projects, and beneficial travel are supported. However, family disputes, minor accidents, property-related issues, or legal matters may create temporary obstacles. Avoid taking unnecessary risks and remain patient when progress feels slow. Consistent effort and practical decisionmaking will help you build lasting stability during this period."
+    },
+    "Ketu-Rahu": {
+      "hindi": "Ketu-Rahu",
+      "description": "The Ketu–Rahu period is a challenging phase that brings sudden changes and emotional uncertainty. Business or employment matters may become unstable, while relationships, married life, and health require extra attention. Challenges involving the opposite sex or love relationships may also arise. Avoid impulsive decisions and remain cautious in both personal and professional matters. By staying patient, adaptable, and focused on long-term goals, you can gradually overcome obstacles and emerge stronger from this transformative phase."
+    }
+  },
+  "Saturn": {
+    "Saturn-Sun": {
+      "hindi": "Shani-Surya",
+      "description": "The Saturn–Sun period is a mixed phase that brings opportunities for employment, financial improvement, and government-related gains. Married life may remain positive despite occasional challenges, and unexpected financial benefits are possible. However, family responsibilities, especially related to children, may increase, while work and business may require extra effort. Staying patient, disciplined, and focused on long-term goals will help you overcome obstacles and make steady progress."
+    },
+    "Saturn-Moon": {
+      "hindi": "Shani-Chandra",
+      "description": "The Saturn–Moon period requires patience and emotional balance. Relationship misunderstandings, financial pressure, and business or job-related challenges may arise, while motivation at work could temporarily decline. However, helpful new contacts or unexpected support from others may create fresh opportunities. Avoid making emotional decisions and focus on consistent effort. Maintaining a positive mindset and managing responsibilities carefully will help you navigate this phase successfully."
+    },
+    "Saturn-Mars": {
+      "hindi": "Shani-Mangal",
+      "description": "The Saturn–Mars period is a challenging phase that tests determination and perseverance. Hard work may not produce immediate results, while financial burdens, loans, travel-related stress, and family disagreements can create pressure. Students should remain focused, as examinations may require extra effort. Avoid frustration and continue working consistently toward your goals. Patience, discipline, and careful financial planning will help you gradually overcome these temporary difficulties."
+    },
+    "Saturn-Mercury": {
+      "hindi": "Shani-Budh",
+      "description": "The Saturn–Mercury period is one of the most favorable phases of Saturn Maha Dasha. It supports career growth, financial improvement, success in education, legal victories, and professional recognition. Opportunities in love, marriage, travel, and investments may also arise. While social relationships may require some caution, the overall outlook is highly positive. Staying focused, working consistently, and making wise decisions will help you achieve lasting success during this rewarding period."
+    },
+    "Saturn-Jupiter": {
+      "hindi": "Shani-Guru",
+      "description": "The Saturn–Jupiter period is generally positive and encourages stability and long-term growth. Financial security, investment opportunities, career progress, and educational success are well supported. However, family happiness may be mixed, and your partner's health or personal relationships may require additional care. Avoid unnecessary conflicts and focus on maintaining balance between work and family. A patient and disciplined approach will help you make the most of this beneficial period."
+    },
+    "Saturn-Venus": {
+      "hindi": "Shani-Shukra",
+      "description": "The Saturn–Venus period is a mixed phase that brings financial gains and opportunities in speculation, but also requires caution in relationships and family matters. Emotional misunderstandings, family unhappiness, or social challenges may arise if communication is neglected. Government-related issues or business risks should also be handled carefully. By maintaining patience, avoiding impulsive decisions, and managing finances wisely, you can successfully navigate this phase and achieve gradual progress."
+    },
+    "Saturn-Saturn": {
+      "hindi": "Shani-Shani",
+      "description": "The Saturn–Saturn period is a demanding phase that emphasizes responsibility, discipline, and perseverance. Business progress may feel slow, financial pressure can increase, and health or family concerns may require extra attention. However, consistent effort and patience will gradually bring improvement over time. Avoid becoming discouraged by temporary setbacks, and focus on building a strong foundation. This period rewards hard work and long-term commitment rather than quick results."
+    },
+    "Saturn-Rahu": {
+      "hindi": "Shani-Rahu",
+      "description": "The Saturn–Rahu period is a transformative phase that requires careful decision-making. Sudden changes in work, business, or personal life may occur, while relationships and health may face temporary challenges. Hidden opportunities can emerge through persistence and adaptability, but impulsive actions should be avoided. Stay focused on your long-term goals, remain flexible during unexpected situations, and maintain emotional balance to make steady progress through this period."
+    },
+    "Saturn-Ketu": {
+      "hindi": "Shani-Ketu",
+      "description": "The Saturn–Ketu period is a mixed phase that encourages patience and self-discipline. Employment opportunities, financial gains, and government-related success are possible, while business conditions may gradually improve. However, family disputes, health concerns, and emotional distance in relationships may require extra attention. Avoid making hasty decisions and focus on practical solutions instead of reacting emotionally. Consistent effort and a calm approach will help you overcome challenges and build long-term stability."
+    }
+  },
+  "Mars": {
+    "Mars-Sun": {
+      "hindi": "Mangal-Surya",
+      "description": "The Mars–Sun period is generally favorable and supports career growth, financial improvement, and positive changes in employment. Government-related work and business opportunities may bring success, while family life is likely to improve. However, health concerns involving your partner or close family members may require attention. Staying disciplined, making practical decisions, and balancing work with personal responsibilities will help you make the most of this productive period."
+    },
+    "Mars-Moon": {
+      "hindi": "Mangal-Chandra",
+      "description": "The Mars–Moon period is a positive phase that encourages business growth, financial gains, and favorable travel opportunities. Success in examinations, career advancement, and improved social standing are also likely. However, family matters, especially involving children, and personal safety require extra attention. Avoid unnecessary risks or emotional decisions. By maintaining patience and focusing on your long-term goals, you can enjoy steady progress throughout this rewarding phase."
+    },
+    "Mars-Mars": {
+      "hindi": "Mangal-Mangal",
+      "description": "The Mars–Mars period is energetic and action-oriented, bringing opportunities for financial improvement, marriage, travel, and career growth. Promotions and professional recognition are possible if you remain focused and determined. However, concerns related to parental health, government matters, or partnerships may require careful handling. Avoid acting impulsively and think through important decisions. A disciplined and balanced approach will help you achieve lasting success during this phase."
+    },
+    "Mars-Mercury": {
+      "hindi": "Mangal-Budh",
+      "description": "The Mars–Mercury period is a mixed phase that supports new opportunities in career, business, and personal growth. Long-term benefits may come through new contacts or networking. However, business challenges, lack of motivation, and interpersonal misunderstandings may temporarily slow your progress. Stay organized, communicate clearly, and avoid making decisions based on frustration. Patience and consistent effort will help you overcome obstacles and achieve steady growth."
+    },
+    "Mars-Jupiter": {
+      "hindi": "Mangal-Guru",
+      "description": "The Mars–Jupiter period is generally favorable and supports employment opportunities, governmentrelated gains, financial improvement, and business success. It is also a good time for investments, career development, and strengthening your financial position. However, health concerns within the family or your partner may require extra attention. Maintaining balance between professional responsibilities and personal life will help you make the most of this beneficial period."
+    },
+    "Mars-Venus": {
+      "hindi": "Mangal-Shukra",
+      "description": "The Mars–Venus period brings opportunities for financial gains, business growth, and control over competitors. Secret financial benefits or support from influential people may also arise. However, family issues and emotional challenges may affect your peace of mind. Avoid unnecessary arguments or emotional reactions in relationships. By staying calm, managing finances wisely, and focusing on longterm goals, you can enjoy a stable and rewarding phase."
+    },
+    "Mars-Saturn": {
+      "hindi": "Mangal-Shani",
+      "description": "The Mars–Saturn period is a mixed phase that requires patience and discipline. Career changes, relocation, and financial improvement are possible, but health concerns and changes in residence or workplace may bring temporary uncertainty. Avoid taking unnecessary risks, especially regarding health or major life decisions. By remaining adaptable, working consistently, and maintaining a practical approach, you can successfully navigate this period and achieve gradual progress."
+    },
+    "Mars-Rahu": {
+      "hindi": "Mangal-Rahu",
+      "description": "The Mars–Rahu period is generally favorable and brings opportunities for employment, financial gains, business improvement, and foreign travel. Unexpected financial benefits and government-related success are also possible. However, family matters, especially involving children, may require attention. Stay humble and avoid overconfidence while making important decisions. A balanced and disciplined approach will help you maximize the positive outcomes of this period."
+    },
+    "Mars-Ketu": {
+      "hindi": "Mangal-Ketu",
+      "description": "The Mars–Ketu period is a positive yet transformative phase that supports the resolution of legal matters, career advancement, property gains, and improved social status. Family happiness and employment opportunities are also likely to increase. However, personal safety and accident-related risks require extra caution. Avoid acting impulsively or taking unnecessary physical risks. By staying alert, disciplined, and focused on your goals, you can achieve meaningful success and long-term stability during this phase."
+    }
+  }
+}
