@@ -7,10 +7,10 @@
   <title>Name Vibrations — Anktatvaa · Celestial Vedic Numerology</title>
   <meta name="description"
     content="Discover the cosmic vibration of your name using ancient Chaldean numerology. Calculate your Name Number and unlock its hidden interpretation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
   <style>
     /* ═══════════════════════════════════════
        NAME VIBRATION MODULE — LOCAL STYLES
@@ -62,7 +62,7 @@
     .nv-result-header {
       text-align: center;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.15);
       margin-bottom: 2rem;
     }
 
@@ -73,7 +73,7 @@
     }
 
     .nv-result-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.4rem, 3.5vw, 2rem);
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
       -webkit-background-clip: text;
@@ -83,7 +83,7 @@
     }
 
     .nv-name-display {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 3px;
       color: var(--muted);
@@ -94,12 +94,12 @@
     .nv-breakdown-section {
       margin: 2.5rem 0;
       padding: 2rem 0;
-      border-top: 1px solid rgba(0, 212, 255, 0.12);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.12);
+      border-top: 1px solid rgba(176, 138, 87, 0.12);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.12);
     }
 
     .nv-section-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 4px;
       color: var(--gold);
@@ -109,7 +109,7 @@
     }
 
     .nv-section-sub {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       color: var(--muted);
       text-align: center;
@@ -135,8 +135,8 @@
       width: 54px;
       height: 68px;
       border-radius: 6px;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(168, 85, 247, 0.04));
-      border: 1px solid rgba(0, 212, 255, 0.25);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.06), rgba(212, 181, 138, 0.04));
+      border: 1px solid rgba(176, 138, 87, 0.25);
       position: relative;
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
       opacity: 0;
@@ -146,8 +146,8 @@
 
     .nv-letter-chip:hover {
       transform: translateY(-3px) scale(1.08);
-      border-color: rgba(0, 212, 255, 0.6);
-      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15), inset 0 0 12px rgba(0, 212, 255, 0.04);
+      border-color: rgba(176, 138, 87, 0.6);
+      box-shadow: 0 4px 20px rgba(176, 138, 87, 0.15), inset 0 0 12px rgba(176, 138, 87, 0.04);
     }
 
     /* Space separator */
@@ -165,11 +165,11 @@
       content: '';
       width: 1px;
       height: 30px;
-      background: rgba(0, 212, 255, 0.15);
+      background: rgba(176, 138, 87, 0.15);
     }
 
     .nv-chip-letter {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.25rem;
       background: linear-gradient(135deg, var(--gold), var(--gold3));
       -webkit-background-clip: text;
@@ -179,9 +179,9 @@
     }
 
     .nv-chip-value {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
-      color: var(--cyan, #00d4ff);
+      color: var(--muted-copper);
       font-weight: 600;
       margin-top: 4px;
     }
@@ -195,8 +195,8 @@
 
     /* ── Running total equation ── */
     .nv-equation-wrap {
-      background: rgba(0, 212, 255, 0.04);
-      border-left: 2px solid rgba(0, 212, 255, 0.3);
+      background: rgba(176, 138, 87, 0.04);
+      border-left: 2px solid rgba(176, 138, 87, 0.3);
       padding: 1rem 1.5rem;
       border-radius: 0 3px 3px 0;
       margin-top: 1.5rem;
@@ -205,12 +205,12 @@
     }
 
     .nv-equation-wrap:hover {
-      border-left-color: rgba(0, 212, 255, 0.7);
-      background: rgba(0, 212, 255, 0.07);
+      border-left-color: rgba(176, 138, 87, 0.7);
+      background: rgba(176, 138, 87, 0.07);
     }
 
     .nv-equation-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--gold);
@@ -219,7 +219,7 @@
     }
 
     .nv-equation-text {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1.05rem;
       color: var(--text);
       line-height: 1.9;
@@ -228,7 +228,7 @@
     }
 
     .nv-eq-plus {
-      color: rgba(0, 212, 255, 0.5);
+      color: rgba(176, 138, 87, 0.5);
       margin: 0 0.2rem;
     }
 
@@ -239,7 +239,7 @@
     }
 
     .nv-eq-result {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       color: var(--gold2);
       font-size: 1.2rem;
     }
@@ -271,7 +271,7 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px solid rgba(0, 212, 255, 0.4);
+      border: 2px solid rgba(176, 138, 87, 0.4);
       animation: pulseRing 2.5s ease-in-out infinite;
     }
 
@@ -280,12 +280,12 @@
       position: absolute;
       inset: 6px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(168, 85, 247, 0.08));
-      border: 1px solid rgba(0, 212, 255, 0.2);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.1), rgba(212, 181, 138, 0.08));
+      border: 1px solid rgba(176, 138, 87, 0.2);
     }
 
     .nv-compound-num {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 3.5rem;
       background: linear-gradient(135deg, var(--gold), var(--gold3), var(--gold));
       -webkit-background-clip: text;
@@ -297,7 +297,7 @@
     }
 
     .nv-compound-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--gold);
@@ -305,7 +305,7 @@
     }
 
     .nv-compound-title {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 1rem;
       color: var(--gold2);
       margin-top: 0.4rem;
@@ -323,12 +323,12 @@
     .nv-interp-section {
       margin-top: 2.5rem;
       padding: 2rem 0;
-      border-top: 1px solid rgba(168, 85, 247, 0.15);
+      border-top: 1px solid rgba(212, 181, 138, 0.15);
     }
 
     .nv-interp-card {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(0, 212, 255, 0.03));
-      border: 1px solid rgba(168, 85, 247, 0.2);
+      background: linear-gradient(135deg, rgba(212, 181, 138, 0.05), rgba(176, 138, 87, 0.03));
+      border: 1px solid rgba(212, 181, 138, 0.2);
       border-radius: 6px;
       padding: 2rem 2.2rem;
       position: relative;
@@ -345,12 +345,12 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle at center, rgba(168, 85, 247, 0.06) 0%, transparent 60%);
+      background: radial-gradient(circle at center, rgba(212, 181, 138, 0.06) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .nv-interp-card:hover {
-      border-color: rgba(168, 85, 247, 0.4);
+      border-color: rgba(212, 181, 138, 0.4);
     }
 
     .nv-interp-header {
@@ -365,17 +365,17 @@
     }
 
     .nv-interp-title {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 4px;
-      color: #c084fc;
+      color: var(--antique-bronze);
       text-transform: uppercase;
     }
 
     .nv-interp-heading {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      background: linear-gradient(135deg, #c084fc, #00d4ff);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -383,7 +383,7 @@
     }
 
     .nv-interp-body {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.95rem;
       color: var(--text);
       line-height: 1.85;
@@ -393,7 +393,7 @@
     }
 
     .nv-interp-missing {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       color: var(--muted);
       font-style: italic;
@@ -406,14 +406,14 @@
       text-align: center;
       margin-top: 2.5rem;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(0, 212, 255, 0.12);
+      border-top: 1px solid rgba(176, 138, 87, 0.12);
     }
 
     .nv-report-footer-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 3px;
-      color: rgba(0, 212, 255, 0.3);
+      color: rgba(176, 138, 87, 0.3);
       text-transform: uppercase;
     }
 
@@ -424,8 +424,8 @@
       justify-content: center;
       gap: 0.6rem;
       cursor: pointer;
-      background: rgba(0, 212, 255, 0.05);
-      border: 1px solid rgba(0, 212, 255, 0.18);
+      background: rgba(176, 138, 87, 0.05);
+      border: 1px solid rgba(176, 138, 87, 0.18);
       border-radius: 4px;
       padding: 0.8rem 1.5rem;
       margin: 2rem auto 0;
@@ -434,12 +434,12 @@
     }
 
     .nv-ref-toggle:hover {
-      border-color: rgba(0, 212, 255, 0.4);
-      background: rgba(0, 212, 255, 0.08);
+      border-color: rgba(176, 138, 87, 0.4);
+      background: rgba(176, 138, 87, 0.08);
     }
 
     .nv-ref-toggle-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--gold);
@@ -474,32 +474,32 @@
     }
 
     .nv-ref-table th {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 2px;
       color: var(--gold);
       text-transform: uppercase;
       text-align: center;
       padding: 0.7rem 0.5rem;
-      border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.2);
     }
 
     .nv-ref-table td {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.95rem;
       color: var(--text);
       text-align: center;
       padding: 0.6rem 0.5rem;
-      border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.06);
       transition: background 0.3s;
     }
 
     .nv-ref-table tr:hover td {
-      background: rgba(0, 212, 255, 0.04);
+      background: rgba(176, 138, 87, 0.04);
     }
 
     .nv-ref-num {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.1rem;
       color: var(--gold2);
     }
@@ -531,7 +531,7 @@
     .shadow-header {
       text-align: center;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+      border-bottom: 1px solid rgba(212, 181, 138, 0.15);
       margin-bottom: 2rem;
     }
 
@@ -562,7 +562,7 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px solid rgba(168, 85, 247, 0.45);
+      border: 2px solid rgba(212, 181, 138, 0.45);
       animation: pulseRing 2.5s ease-in-out infinite;
     }
 
@@ -571,14 +571,14 @@
       position: absolute;
       inset: 6px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(0, 212, 255, 0.06));
-      border: 1px solid rgba(168, 85, 247, 0.25);
+      background: linear-gradient(135deg, rgba(212, 181, 138, 0.12), rgba(176, 138, 87, 0.06));
+      border: 1px solid rgba(212, 181, 138, 0.25);
     }
 
     .shadow-num {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 3.5rem;
-      background: linear-gradient(135deg, #a855f7, #c084fc, #00d4ff);
+      background: linear-gradient(135deg, #E8E0D2, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -588,10 +588,10 @@
     }
 
     .shadow-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
-      color: #a855f7;
+      color: var(--antique-bronze);
       text-transform: uppercase;
     }
 
@@ -602,8 +602,8 @@
       justify-content: center;
       gap: 0.6rem;
       cursor: pointer;
-      background: rgba(168, 85, 247, 0.05);
-      border: 1px solid rgba(168, 85, 247, 0.18);
+      background: rgba(212, 181, 138, 0.05);
+      border: 1px solid rgba(212, 181, 138, 0.18);
       border-radius: 4px;
       padding: 0.8rem 1.5rem;
       margin: 1.5rem auto;
@@ -612,21 +612,21 @@
     }
 
     .shadow-steps-toggle:hover {
-      border-color: rgba(168, 85, 247, 0.4);
-      background: rgba(168, 85, 247, 0.08);
+      border-color: rgba(212, 181, 138, 0.4);
+      background: rgba(212, 181, 138, 0.08);
     }
 
     .shadow-steps-toggle-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
-      color: #c084fc;
+      color: var(--antique-bronze);
       text-transform: uppercase;
     }
 
     .shadow-steps-toggle-icon {
       font-size: 0.7rem;
-      color: #c084fc;
+      color: var(--antique-bronze);
       transition: transform 0.35s ease;
     }
 
@@ -645,8 +645,8 @@
     }
 
     .shadow-step-row {
-      background: rgba(168, 85, 247, 0.04);
-      border-left: 2px solid rgba(168, 85, 247, 0.25);
+      background: rgba(176, 138, 87, 0.04);
+      border-left: 2px solid rgba(176, 138, 87, 0.25);
       padding: 0.6rem 1.2rem;
       margin-bottom: 0.4rem;
       border-radius: 0 3px 3px 0;
@@ -654,21 +654,21 @@
     }
 
     .shadow-step-row:hover {
-      border-left-color: rgba(168, 85, 247, 0.6);
-      background: rgba(168, 85, 247, 0.07);
+      border-left-color: rgba(176, 138, 87, 0.6);
+      background: rgba(176, 138, 87, 0.08);
     }
 
     .shadow-step-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 2px;
-      color: #c084fc;
+      color: var(--muted-copper);
       text-transform: uppercase;
       margin-bottom: 0.3rem;
     }
 
     .shadow-step-digits {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1rem;
       color: var(--text);
       letter-spacing: 3px;
@@ -676,7 +676,7 @@
     }
 
     .shadow-step-count {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.75rem;
       color: var(--muted);
       margin-top: 0.15rem;
@@ -686,12 +686,12 @@
     .shadow-interp-section {
       margin-top: 2.5rem;
       padding: 2rem 0;
-      border-top: 1px solid rgba(168, 85, 247, 0.15);
+      border-top: 1px solid var(--border);
     }
 
     .shadow-interp-card {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.06), rgba(0, 212, 255, 0.03));
-      border: 1px solid rgba(168, 85, 247, 0.25);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 6px;
       padding: 2rem 2.2rem;
       position: relative;
@@ -708,18 +708,18 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle at center, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at center, rgba(176, 138, 87, 0.08) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .shadow-interp-card:hover {
-      border-color: rgba(168, 85, 247, 0.45);
+      border-color: var(--border-hover);
     }
 
     .shadow-interp-heading {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      background: linear-gradient(135deg, #a855f7, #c084fc);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -804,42 +804,127 @@
   <div class="page">
 
     <!-- ═══════ NAVBAR ═══════ -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <span class="nav-logo-symbol">✦</span>
-        <span class="nav-logo-text">Anktatvaa</span>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <!-- LEFT: Brand Logo / Typography -->
+      <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
+        <span class="nav-brand-symbol">✦</span>
+        <div class="nav-brand-group">
+          <span class="nav-brand-title">AnkTatvaa</span>
+          <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: Main Navigation Hierarchy -->
+      <div class="nav-links" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="nav-item nav-dropdown" id="exploreDropdown">
+          <button class="nav-link nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true" aria-controls="exploreMenu" id="exploreBtn" type="button">
+            <span>Explore</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="exploreMenu" role="menu" aria-labelledby="exploreBtn">
+            <div class="dropdown-menu-inner">
+              <a href="numerology.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">01</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Numerology</span>
+                  <span class="dropdown-desc">Vedic matrix &amp; planetary cycles</span>
+                </div>
+              </a>
+              <a href="name-vibration.html" class="dropdown-item active" role="menuitem">
+                <span class="dropdown-num">02</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Name Vibration</span>
+                  <span class="dropdown-desc">Chaldean sound frequencies</span>
+                </div>
+              </a>
+              <a href="compatibility.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">03</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Compatibility</span>
+                  <span class="dropdown-desc">Karmic resonance &amp; soul paths</span>
+                </div>
+              </a>
+              <a href="health-tendencies.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">04</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Health Tendencies</span>
+                  <span class="dropdown-desc">Planetary vitality &amp; constitution</span>
+                </div>
+              </a>
+              <a href="phone-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">05</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Phone Vibration</span>
+                  <span class="dropdown-desc">Digital frequency telemetry</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#reading" class="nav-link" role="menuitem">Readings</a>
+        <a href="index.html#features" class="nav-link" role="menuitem">About</a>
       </div>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#features" class="nav-link">Readings</a>
-        <a href="numerology.html" class="nav-link">Numerology</a>
-        <a href="name-vibration.html" class="nav-link active">Name Vibrations</a>
-        <a href="compatibility.html" class="nav-link">Compatibility</a>
-        <a href="health-tendencies.html" class="nav-link">Health</a>
-        <a href="phone-vibration.html" class="nav-link">Phone Vibration</a>
-        <a href="index.html#faq" class="nav-link">FAQ</a>
-      </div>
+
+      <!-- RIGHT: Account Entry & Primary CTA -->
       <div class="nav-auth">
         <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+        <a href="index.html#reading" class="btn-nav-signup">GET YOUR READING →</a>
       </div>
-      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-link">Home</a>
-      <a href="index.html#features" class="mobile-link">Readings</a>
-      <a href="numerology.html" class="mobile-link">Numerology</a>
-      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
-      <a href="compatibility.html" class="mobile-link">Compatibility</a>
-      <a href="health-tendencies.html" class="mobile-link">Health</a>
-      <a href="phone-vibration.html" class="mobile-link">Phone Vibration</a>
-      <a href="index.html#faq" class="mobile-link">FAQ</a>
-      <div class="mobile-auth">
-        <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+    <!-- ═══════ MOBILE NAVIGATION OVERLAY ═══════ -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-menu-inner">
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-label">Navigation Matrix</div>
+          <a href="index.html" class="mobile-link" onclick="closeMobileMenu()">Home</a>
+          
+          <!-- Expandable Mobile Submenu -->
+          <div class="mobile-submenu-wrap">
+            <button class="mobile-submenu-toggle expanded" onclick="toggleMobileSubmenu(this)" aria-expanded="true" type="button">
+              <span>Explore Tools</span>
+              <svg class="submenu-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-submenu open">
+              <a href="numerology.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">01</span> Numerology
+              </a>
+              <a href="name-vibration.html" class="mobile-sublink active" onclick="closeMobileMenu()">
+                <span class="sublink-num">02</span> Name Vibration
+              </a>
+              <a href="compatibility.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">03</span> Compatibility
+              </a>
+              <a href="health-tendencies.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">04</span> Health Tendencies
+              </a>
+              <a href="phone-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">05</span> Phone Vibration
+              </a>
+            </div>
+          </div>
+
+          <a href="index.html#reading" class="mobile-link" onclick="closeMobileMenu()">Readings</a>
+          <a href="index.html#features" class="mobile-link" onclick="closeMobileMenu()">About</a>
+        </div>
+
+        <div class="mobile-auth-group">
+          <a href="index.html#reading" class="btn-mobile-primary" onclick="closeMobileMenu()">GET YOUR READING →</a>
+          <a href="login.html" class="btn-mobile-secondary" onclick="closeMobileMenu()">Seeker Login</a>
+        </div>
       </div>
     </div>
 
@@ -885,6 +970,14 @@
             <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Name Vibration Report ✦</p>
             <h2 class="nv-result-title">Your Name's Cosmic Number</h2>
             <p class="nv-name-display" id="nvNameDisplay"></p>
+            <div class="report-action-bar">
+              <button class="btn-report-action" onclick="saveCurrentNameReading()" type="button">
+                <span>✦</span> Save to Dashboard
+              </button>
+              <button class="btn-report-action" onclick="window.print()" type="button">
+                <span>⎙</span> Print / Export
+              </button>
+            </div>
           </div>
 
           <!-- Letter-by-Letter Breakdown -->
@@ -911,7 +1004,7 @@
           <!-- ═══════ SHADOW NUMBER SECTION ═══════ -->
           <div class="shadow-section" id="shadowSection">
             <div class="shadow-header">
-              <p class="nv-section-label" style="color:#c084fc">✦ Shadow Number ✦</p>
+              <p class="nv-section-label" style="color:var(--antique-bronze)">✦ Shadow Number ✦</p>
               <p class="nv-section-sub">The hidden vibration beneath your name — revealed through sacred digit reduction</p>
             </div>
 
@@ -1013,7 +1106,7 @@
   </div>
 
   <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
-  <a href="https://wa.me/919170705450?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+  <a href="https://wa.me/919170705450?text=Namaste%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
     class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -1030,14 +1123,6 @@
   <!-- ═══════ SCRIPTS ═══════ -->
   <script src="script.js"></script>
   <script>
-    /* ══════════════════════════════════════
-       MOBILE MENU TOGGLE
-    ══════════════════════════════════════ */
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-      document.getElementById('navHamburger').classList.toggle('active');
-    }
-
     /* ══════════════════════════════════════
        CHALDEAN LETTER-TO-NUMBER MAP
        Based on ancient Chaldean numerology:
@@ -1144,6 +1229,16 @@
       });
     }
 
+    function saveCurrentNameReading() {
+      const name = document.getElementById('nvNameInput').value.trim() || 'Name';
+      const compNum = document.getElementById('nvCompoundNum').textContent;
+      const shadowNum = document.getElementById('shadowNum').textContent;
+      const summary = `Compound Name Number ${compNum} · Shadow Number ${shadowNum} for "${name}".`;
+      if (window.saveReadingRecord) {
+        window.saveReadingRecord('Name Vibration', `${name} (Frequency ${compNum})`, summary, window.location.href);
+      }
+    }
+
     /* ══════════════════════════════════════
        RENDER THE FULL REPORT
     ══════════════════════════════════════ */
@@ -1185,7 +1280,12 @@
       });
 
       // ── 3. Compound Number Ring ──
-      document.getElementById('nvCompoundNum').textContent = data.compoundNumber;
+      const compEl = document.getElementById('nvCompoundNum');
+      if (window.animateNumber) {
+        window.animateNumber(compEl, 1, data.compoundNumber, 950);
+      } else {
+        compEl.textContent = data.compoundNumber;
+      }
 
       // ── 4. Compound title (not used in flat JSON format) ──
       document.getElementById('nvCompoundTitle').textContent = '';
@@ -1198,7 +1298,7 @@
         interpSection.innerHTML = `
           <div class="nv-interp-card">
             <div class="nv-interp-header">
-              <span class="nv-interp-icon">🔮</span>
+              <span class="nv-interp-icon">✦</span>
               <span class="nv-interp-title">✦ Interpretation ✦</span>
             </div>
             <h3 class="nv-interp-heading">Compound Number ${data.compoundNumber}</h3>
@@ -1210,7 +1310,7 @@
           <div class="nv-interp-card">
             <p class="nv-interp-missing">
               ✦ Interpretation for Compound Number ${data.compoundNumber} will be revealed soon. ✦<br>
-              <span style="font-size:0.8rem;margin-top:0.5rem;display:inline-block;color:rgba(0,212,255,0.4)">
+              <span style="font-size:0.8rem;margin-top:0.5rem;display:inline-block;color:rgba(176, 138, 87,0.4)">
                 Contact our Vedic Numerologist for a personal reading.
               </span>
             </p>
@@ -1301,7 +1401,12 @@
       const shadowSection = document.getElementById('shadowSection');
 
       // ── 1. Shadow Number Ring ──
-      document.getElementById('shadowNum').textContent = data.shadowNumber;
+      const shadowEl = document.getElementById('shadowNum');
+      if (window.animateNumber) {
+        window.animateNumber(shadowEl, 1, data.shadowNumber, 850);
+      } else {
+        shadowEl.textContent = data.shadowNumber;
+      }
 
       // ── 2. Reduction Steps ──
       const stepsContainer = document.getElementById('shadowStepsContainer');
@@ -1316,7 +1421,7 @@
 
         row.innerHTML = `
           <p class="shadow-step-label">${isFinal ? '✦ Final — Shadow Number' : label}</p>
-          <p class="shadow-step-digits" ${isFinal ? 'style="color:#c084fc;font-weight:600;font-size:1.15rem;letter-spacing:5px"' : ''}>${step.join(' ')}</p>
+          <p class="shadow-step-digits" ${isFinal ? 'style="color:var(--antique-bronze);font-weight:600;font-size:1.15rem;letter-spacing:5px"' : ''}>${step.join(' ')}</p>
           <p class="shadow-step-count">${step.length} digit${step.length > 1 ? 's' : ''}</p>
         `;
         stepsContainer.appendChild(row);
@@ -1330,8 +1435,8 @@
         interpSection.innerHTML = `
           <div class="shadow-interp-card">
             <div class="nv-interp-header">
-              <span class="nv-interp-icon">🌑</span>
-              <span class="nv-interp-title" style="color:#c084fc">✦ Shadow Interpretation ✦</span>
+              <span class="nv-interp-icon">◈</span>
+              <span class="nv-interp-title" style="color:var(--antique-bronze)">✦ Shadow Interpretation ✦</span>
             </div>
             <h3 class="shadow-interp-heading">Shadow Number ${data.shadowNumber}</h3>
             <div class="nv-interp-body">${interpText}</div>
@@ -1342,7 +1447,7 @@
           <div class="shadow-interp-card">
             <p class="nv-interp-missing">
               ✦ Interpretation for Shadow Number ${data.shadowNumber} will be revealed soon. ✦<br>
-              <span style="font-size:0.8rem;margin-top:0.5rem;display:inline-block;color:rgba(168,85,247,0.4)">
+              <span style="font-size:0.8rem;margin-top:0.5rem;display:inline-block;color:rgba(212, 181, 138,0.4)">
                 Contact our Vedic Numerologist for a personal reading.
               </span>
             </p>
@@ -1391,6 +1496,18 @@
       toggle.classList.toggle('open');
       wrap.classList.toggle('open');
     }
+
+    // Auto-populate and trigger report from URL query parameters
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name');
+      if (name && document.getElementById('nvNameInput')) {
+        document.getElementById('nvNameInput').value = decodeURIComponent(name);
+        if (typeof calculateNameVibration === 'function') {
+          setTimeout(calculateNameVibration, 250);
+        }
+      }
+    });
   </script>
 
 </body>

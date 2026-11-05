@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Dashboard — Anktatvaa · Celestial Vedic Intelligence</title>
+  <meta name="description" content="Seeker Personal Dashboard. Access your saved numerology readings, cosmic profile, and Vedic telemetry.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="cosmos"></canvas>
+
+  <div class="page reveal">
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <!-- LEFT: Brand Logo / Typography -->
+      <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
+        <span class="nav-brand-symbol">✦</span>
+        <div class="nav-brand-group">
+          <span class="nav-brand-title">AnkTatvaa</span>
+          <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: Main Navigation Hierarchy -->
+      <div class="nav-links" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="nav-item nav-dropdown" id="exploreDropdown">
+          <button class="nav-link nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="exploreMenu" id="exploreBtn" type="button">
+            <span>Explore</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="exploreMenu" role="menu" aria-labelledby="exploreBtn">
+            <div class="dropdown-menu-inner">
+              <a href="numerology.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">01</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Numerology</span>
+                  <span class="dropdown-desc">Vedic matrix &amp; planetary cycles</span>
+                </div>
+              </a>
+              <a href="name-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">02</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Name Vibration</span>
+                  <span class="dropdown-desc">Chaldean sound frequencies</span>
+                </div>
+              </a>
+              <a href="compatibility.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">03</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Compatibility</span>
+                  <span class="dropdown-desc">Karmic resonance &amp; soul paths</span>
+                </div>
+              </a>
+              <a href="health-tendencies.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">04</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Health Tendencies</span>
+                  <span class="dropdown-desc">Planetary vitality &amp; constitution</span>
+                </div>
+              </a>
+              <a href="phone-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">05</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Phone Vibration</span>
+                  <span class="dropdown-desc">Digital frequency telemetry</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="dashboard.html" class="nav-link active" role="menuitem">Dashboard</a>
+        <a href="index.html#features" class="nav-link" role="menuitem">About</a>
+      </div>
+
+      <!-- RIGHT: Account Entry & Primary CTA -->
+      <div class="nav-auth">
+        <button onclick="handleLogout()" class="btn-nav-login" style="background:none;border:none;cursor:pointer;">Log Out</button>
+        <a href="numerology.html" class="btn-nav-signup">NEW READING →</a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- ═══════ MOBILE NAVIGATION OVERLAY ═══════ -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-menu-inner">
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-label">Navigation Matrix</div>
+          <a href="index.html" class="mobile-link" onclick="closeMobileMenu()">Home</a>
+          
+          <div class="mobile-submenu-wrap">
+            <button class="mobile-submenu-toggle" onclick="toggleMobileSubmenu(this)" aria-expanded="false" type="button">
+              <span>Explore Tools</span>
+              <svg class="submenu-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-submenu">
+              <a href="numerology.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">01</span> Numerology
+              </a>
+              <a href="name-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">02</span> Name Vibration
+              </a>
+              <a href="compatibility.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">03</span> Compatibility
+              </a>
+              <a href="health-tendencies.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">04</span> Health Tendencies
+              </a>
+              <a href="phone-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">05</span> Phone Vibration
+              </a>
+            </div>
+          </div>
+
+          <a href="dashboard.html" class="mobile-link active" onclick="closeMobileMenu()">Dashboard</a>
+          <a href="index.html#features" class="mobile-link" onclick="closeMobileMenu()">About</a>
+        </div>
+
+        <div class="mobile-auth-group">
+          <a href="numerology.html" class="btn-mobile-primary" onclick="closeMobileMenu()">NEW READING →</a>
+          <button onclick="handleLogout()" class="btn-mobile-secondary" style="width:100%;text-align:center;background:none;border:none;cursor:pointer;">Seeker Log Out</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ DASHBOARD MAIN ═══════ -->
+    <main class="dashboard-section">
+      
+      <!-- Dashboard Header -->
+      <div class="dash-header">
+        <div class="dash-header-left">
+          <span class="dash-eyebrow">✦ Seeker Telemetry Portal ✦</span>
+          <h1 class="dash-title">Cosmic Sanctum</h1>
+          <p class="dash-subtitle">Personalized numerological archive and active karmic cycles</p>
+        </div>
+        <div class="dash-header-actions">
+          <a href="numerology.html" class="btn-primary" style="padding:0.75rem 1.6rem;font-size:11px;">✦ New Analysis →</a>
+        </div>
+      </div>
+
+      <!-- Seeker Profile Card -->
+      <div class="dash-profile-card ui-card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="dash-avatar" id="dashAvatar">✦</div>
+        
+        <div class="dash-user-info">
+          <h2 class="dash-user-name" id="dashUserName">Seeker of Wisdom</h2>
+          <div class="dash-user-meta">
+            <span id="dashUserEmail">seeker@anktatvaa.com</span>
+            <span>·</span>
+            <span id="dashUserDob">DOB: Synchronized</span>
+            <span>·</span>
+            <span style="color:var(--antique-bronze);">Tier: Cosmic Initiate</span>
+          </div>
+        </div>
+
+        <div class="dash-stats-strip">
+          <div class="dash-stat-badge">
+            <span class="dash-stat-num" id="dashSavedCount">0</span>
+            <span class="dash-stat-label">Saved Readings</span>
+          </div>
+          <div class="dash-stat-badge">
+            <span class="dash-stat-num" id="dashToolCount">5</span>
+            <span class="dash-stat-label">Active Portals</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Access Tools Grid -->
+      <h3 class="dash-section-title">
+        <span>Vedic Analysis Matrix</span>
+        <span style="font-family:var(--font-num);font-size:10px;color:var(--stone-grey);letter-spacing:0.15em;">5 INSTRUMENTS AVAILABLE</span>
+      </h3>
+      <div class="dash-tools-grid">
+        <a href="numerology.html" class="dash-tool-card">
+          <span class="dash-tool-num">01 · CYCLES</span>
+          <h4 class="dash-tool-name">Vedic Numerology</h4>
+          <p class="dash-tool-desc">Birth &amp; Destiny numbers, 3×3 universal grid, Mahadasha cycles.</p>
+          <span class="dash-tool-arrow">Launch Portal →</span>
+        </a>
+
+        <a href="name-vibration.html" class="dash-tool-card">
+          <span class="dash-tool-num">02 · SOUND</span>
+          <h4 class="dash-tool-name">Name Vibration</h4>
+          <p class="dash-tool-desc">Chaldean sound frequency, compound resonance, and shadow number.</p>
+          <span class="dash-tool-arrow">Launch Portal →</span>
+        </a>
+
+        <a href="compatibility.html" class="dash-tool-card">
+          <span class="dash-tool-num">03 · RESONANCE</span>
+          <h4 class="dash-tool-name">Compatibility</h4>
+          <p class="dash-tool-desc">Dual soul grid alignment, karmic harmony, and relationship matrix.</p>
+          <span class="dash-tool-arrow">Launch Portal →</span>
+        </a>
+
+        <a href="health-tendencies.html" class="dash-tool-card">
+          <span class="dash-tool-num">04 · VITALITY</span>
+          <h4 class="dash-tool-name">Health Tendencies</h4>
+          <p class="dash-tool-desc">Planetary vitality profiles, bodily constitution, and Moolank wellness.</p>
+          <span class="dash-tool-arrow">Launch Portal →</span>
+        </a>
+
+        <a href="phone-vibration.html" class="dash-tool-card">
+          <span class="dash-tool-num">05 · TELEMETRY</span>
+          <h4 class="dash-tool-name">Phone Vibration</h4>
+          <p class="dash-tool-desc">Digital mobile frequency compatibility with birth and destiny numbers.</p>
+          <span class="dash-tool-arrow">Launch Portal →</span>
+        </a>
+      </div>
+
+      <!-- Saved Readings Section -->
+      <div class="dash-readings-section">
+        <div class="dash-section-title">
+          <span>Saved Celestial Analyses</span>
+          <button onclick="clearAllSavedReadings()" class="btn-tertiary" style="font-size:10px;color:var(--stone-grey);">Clear Archive</button>
+        </div>
+
+        <div class="dash-readings-grid" id="savedReadingsGrid">
+          <!-- Dynamically populated by JS -->
+        </div>
+
+        <!-- Empty State Container -->
+        <div class="empty-state" id="readingsEmptyState" style="display:none;">
+          <div class="empty-state-icon">✦</div>
+          <h4 class="empty-state-title">No Saved Analyses Yet</h4>
+          <p class="empty-state-desc">Your personal cosmic archive is awaiting your first reading. Run any of our Vedic numerology tools and click "Save to Dashboard" to preserve your report.</p>
+          <a href="numerology.html" class="btn-secondary" style="padding:0.75rem 1.6rem;font-size:11px;">Begin Vedic Numerology Reading →</a>
+        </div>
+      </div>
+
+      <!-- Account Settings & Preferences -->
+      <div class="dash-settings-section" style="margin-top:4rem;">
+        <h3 class="dash-section-title">Account Preferences &amp; Data</h3>
+        <div class="ui-card" style="padding:2.2rem;">
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label" for="profileNameInput">Seeker Full Name</label>
+              <input class="field-input" type="text" id="profileNameInput" placeholder="Aditya Kushwaha">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="profileDobInput">Date of Birth</label>
+              <input class="field-input" type="text" id="profileDobInput" placeholder="DD/MM/YYYY">
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:1.2rem;">
+            <button onclick="updateProfileSettings()" class="btn-primary" style="padding:0.75rem 1.8rem;font-size:11px;">Save Profile Changes</button>
+            <span id="profileUpdateMsg" style="font-family:var(--font-num);font-size:11px;color:var(--antique-bronze);"></span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+      <div class="footer-symbol">✦</div>
+      <p class="footer-name">Anktatvaa</p>
+      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
+      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Load and render user profile and saved readings
+    function initDashboard() {
+      let user = null;
+      try {
+        user = JSON.parse(localStorage.getItem('ank_user') || 'null');
+      } catch (e) {}
+
+      // Fallback user display if seeker visited directly
+      if (!user) {
+        user = {
+          name: 'Seeker',
+          email: 'seeker@anktatvaa.com',
+          dob: '18/10/1998',
+          loggedIn: true
+        };
+        try { localStorage.setItem('ank_user', JSON.stringify(user)); } catch (e) {}
+      }
+
+      // Populate User Profile Header
+      const nameEl = document.getElementById('dashUserName');
+      const emailEl = document.getElementById('dashUserEmail');
+      const dobEl = document.getElementById('dashUserDob');
+      const avatarEl = document.getElementById('dashAvatar');
+      const inputName = document.getElementById('profileNameInput');
+      const inputDob = document.getElementById('profileDobInput');
+
+      if (nameEl) nameEl.textContent = user.name || 'Seeker';
+      if (emailEl) emailEl.textContent = user.email || 'seeker@anktatvaa.com';
+      if (dobEl) dobEl.textContent = 'DOB: ' + (user.dob || '18/10/1998');
+      if (inputName) inputName.value = user.name || '';
+      if (inputDob) inputDob.value = user.dob || '';
+
+      if (avatarEl && user.name) {
+        const initials = user.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+        avatarEl.textContent = initials || '✦';
+      }
+
+      // Populate Saved Readings
+      renderSavedReadings();
+    }
+
+    function renderSavedReadings() {
+      const container = document.getElementById('savedReadingsGrid');
+      const emptyState = document.getElementById('readingsEmptyState');
+      const countEl = document.getElementById('dashSavedCount');
+      if (!container) return;
+
+      let readings = [];
+      try {
+        readings = JSON.parse(localStorage.getItem('ank_saved_readings') || '[]');
+      } catch (e) {}
+
+      if (countEl) countEl.textContent = readings.length;
+
+      if (!readings || readings.length === 0) {
+        container.style.display = 'none';
+        if (emptyState) emptyState.style.display = 'block';
+        return;
+      }
+
+      container.style.display = 'grid';
+      if (emptyState) emptyState.style.display = 'none';
+
+      container.innerHTML = readings.map((r, i) => `
+        <div class="dash-reading-card">
+          <div class="dash-reading-header">
+            <span class="dash-reading-tag">✦ ${r.type}</span>
+            <span class="dash-reading-date">${r.date || 'Recent'}</span>
+          </div>
+          <h4 class="dash-reading-title">${r.title || 'Vedic Analysis'}</h4>
+          <p class="dash-reading-summary">${r.summary || 'Personalized numerology telemetry breakdown.'}</p>
+          <div class="dash-reading-footer">
+            <a href="${r.link || 'numerology.html'}" class="btn-tertiary" style="padding:0;font-size:10.5px;">View Report →</a>
+            <button onclick="deleteSavedReading('${r.id}')" class="dash-delete-btn" title="Remove Reading">✕</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function deleteSavedReading(id) {
+      try {
+        let readings = JSON.parse(localStorage.getItem('ank_saved_readings') || '[]');
+        readings = readings.filter(r => r.id !== id);
+        localStorage.setItem('ank_saved_readings', JSON.stringify(readings));
+        renderSavedReadings();
+        if (window.showToast) window.showToast('Reading removed from archive');
+      } catch (e) {}
+    }
+
+    function clearAllSavedReadings() {
+      if (!confirm('Are you sure you wish to clear your entire saved readings archive?')) return;
+      try {
+        localStorage.removeItem('ank_saved_readings');
+        renderSavedReadings();
+        if (window.showToast) window.showToast('Archive cleared');
+      } catch (e) {}
+    }
+
+    function updateProfileSettings() {
+      const name = document.getElementById('profileNameInput').value.trim();
+      const dob = document.getElementById('profileDobInput').value.trim();
+      const msg = document.getElementById('profileUpdateMsg');
+
+      let user = JSON.parse(localStorage.getItem('ank_user') || '{}');
+      if (name) user.name = name;
+      if (dob) user.dob = dob;
+      localStorage.setItem('ank_user', JSON.stringify(user));
+
+      initDashboard();
+      if (msg) {
+        msg.textContent = '✦ Profile updated successfully';
+        setTimeout(() => { msg.textContent = ''; }, 3000);
+      }
+      if (window.showToast) window.showToast('Profile settings updated');
+    }
+
+    function handleLogout() {
+      try {
+        localStorage.removeItem('ank_user');
+      } catch (e) {}
+      window.location.href = 'login.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', initDashboard);
+  </script>
+</body>
+</html>
+

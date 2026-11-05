@@ -7,10 +7,10 @@
   <title>Cosmic Compatibility — Anktatvaa · Vedic Numerology</title>
   <meta name="description"
     content="Discover your cosmic compatibility through Vedic Numerology. Compare birth numbers, destiny paths, and name vibrations to unveil the cosmic bond between two souls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
   <style>
     /* ═══════════════════════════════════════
        COMPATIBILITY PAGE — LOCAL STYLES
@@ -29,7 +29,7 @@
     }
 
     .compat-hero-eyebrow {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.85rem;
       letter-spacing: 0.35em;
@@ -39,9 +39,9 @@
     }
 
     .compat-hero-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(2rem, 5vw, 3.2rem);
-      background: linear-gradient(135deg, #ffd700, #f0c27f, #ffd700);
+      background: linear-gradient(135deg, #E8E0D2, #B08A57);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -50,9 +50,9 @@
     }
 
     .compat-hero-sub {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.65);
+      color: var(--muted);
       max-width: 540px;
       margin: 0 auto;
       line-height: 1.7;
@@ -63,8 +63,8 @@
       position: relative;
       padding: 2.5rem;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 215, 0, 0.12);
+      background: var(--surface);
+      border: 1px solid var(--border);
       backdrop-filter: blur(12px);
       margin-bottom: 2.5rem;
     }
@@ -76,10 +76,38 @@
       border-color: var(--gold);
       opacity: 0.35;
     }
-    .compat-page-card .corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; border-radius: 3px 0 0 0; }
-    .compat-page-card .corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; border-radius: 0 3px 0 0; }
-    .compat-page-card .corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; border-radius: 0 0 0 3px; }
-    .compat-page-card .corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; border-radius: 0 0 3px 0; }
+
+    .compat-page-card .corner-tl {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid;
+      border-left: 2px solid;
+      border-radius: 3px 0 0 0;
+    }
+
+    .compat-page-card .corner-tr {
+      top: -1px;
+      right: -1px;
+      border-top: 2px solid;
+      border-right: 2px solid;
+      border-radius: 0 3px 0 0;
+    }
+
+    .compat-page-card .corner-bl {
+      bottom: -1px;
+      left: -1px;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+      border-radius: 0 0 0 3px;
+    }
+
+    .compat-page-card .corner-br {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+      border-radius: 0 0 3px 0;
+    }
 
     .compat-page-inputs {
       display: grid;
@@ -95,7 +123,7 @@
     }
 
     .compat-page-person-label {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.9rem;
       letter-spacing: 0.2em;
@@ -116,8 +144,8 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,212,255,0.12), transparent 70%);
-      border: 2px solid rgba(0,212,255,0.25);
+      background: radial-gradient(circle, rgba(176, 138, 87, 0.12), transparent 70%);
+      border: 2px solid rgba(176, 138, 87, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -125,7 +153,7 @@
     }
 
     .compat-page-vs-text {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 700;
       font-size: 0.85rem;
       letter-spacing: 0.15em;
@@ -160,7 +188,7 @@
     }
 
     .soul-profile-title {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.2em;
@@ -183,13 +211,13 @@
     }
 
     .soul-profile-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.95rem;
       color: rgba(255, 255, 255, 0.6);
     }
 
     .soul-profile-value {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-weight: 700;
       font-size: 1.1rem;
       color: var(--accent);
@@ -199,14 +227,14 @@
     .name-compat-card {
       padding: 2rem;
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.06), rgba(0, 212, 255, 0.06));
-      border: 1px solid rgba(168, 85, 247, 0.15);
+      background: linear-gradient(135deg, rgba(212, 181, 138, 0.06), rgba(176, 138, 87, 0.06));
+      border: 1px solid rgba(212, 181, 138, 0.15);
       text-align: center;
       margin-bottom: 2rem;
     }
 
     .name-compat-header {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
@@ -216,7 +244,7 @@
     }
 
     .name-compat-numbers {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 1.8rem;
       font-weight: 900;
       color: var(--accent);
@@ -224,7 +252,7 @@
     }
 
     .name-compat-relation {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 1rem;
       letter-spacing: 0.15em;
@@ -232,22 +260,30 @@
       margin-bottom: 0.3rem;
     }
 
-    .name-compat-relation.friendly { color: #4ade80; }
-    .name-compat-relation.neutral  { color: #facc15; }
-    .name-compat-relation.enemy    { color: #f87171; }
+    .name-compat-relation.friendly {
+      color: #D4B58A;
+    }
+
+    .name-compat-relation.neutral {
+      color: #898276;
+    }
+
+    .name-compat-relation.enemy {
+      color: #f87171;
+    }
 
     .name-compat-pct {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 2rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #a855f7, #00d4ff);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .name-compat-note {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.4);
       margin-top: 0.6rem;
@@ -260,7 +296,7 @@
     }
 
     .comparison-title {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
@@ -285,11 +321,11 @@
 
     .comparison-row:hover {
       transform: translateY(-2px);
-      border-color: rgba(0, 212, 255, 0.2);
+      border-color: rgba(176, 138, 87, 0.2);
     }
 
     .comparison-nums {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-weight: 700;
       font-size: 1.1rem;
       color: var(--accent);
@@ -297,7 +333,7 @@
     }
 
     .comparison-relation {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.1em;
@@ -309,15 +345,15 @@
     }
 
     .comparison-relation.friendly {
-      color: #4ade80;
-      background: rgba(74, 222, 128, 0.08);
-      border: 1px solid rgba(74, 222, 128, 0.2);
+      color: #D4B58A;
+      background: rgba(212, 181, 138, 0.08);
+      border: 1px solid rgba(212, 181, 138, 0.2);
     }
 
     .comparison-relation.neutral {
-      color: #facc15;
-      background: rgba(250, 204, 21, 0.08);
-      border: 1px solid rgba(250, 204, 21, 0.2);
+      color: #898276;
+      background: rgba(137, 130, 118, 0.08);
+      border: 1px solid rgba(137, 130, 118, 0.2);
     }
 
     .comparison-relation.enemy {
@@ -327,26 +363,31 @@
     }
 
     .comparison-score {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-weight: 700;
       font-size: 1rem;
       text-align: center;
     }
 
-    .comparison-score.plus  { color: #4ade80; }
-    .comparison-score.zero  { color: #f87171; }
+    .comparison-score.plus {
+      color: #D4B58A;
+    }
+
+    .comparison-score.zero {
+      color: #f87171;
+    }
 
     /* ── Overall Result ── */
     .overall-result {
       text-align: center;
       padding: 2.5rem;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(168, 85, 247, 0.05));
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.05), rgba(212, 181, 138, 0.05));
       border: 1px solid rgba(255, 215, 0, 0.12);
     }
 
     .overall-result-label {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
@@ -378,10 +419,10 @@
     }
 
     .compat-score-val {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 3rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #00d4ff, #a855f7);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -389,7 +430,7 @@
     }
 
     .compat-score-pct {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       letter-spacing: 0.2em;
       color: rgba(255, 255, 255, 0.5);
@@ -402,14 +443,14 @@
     }
 
     .overall-verdict-text {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.4rem;
       color: var(--gold);
       margin-bottom: 0.5rem;
     }
 
     .overall-verdict-desc {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 1rem;
       color: rgba(255, 255, 255, 0.6);
       line-height: 1.7;
@@ -423,15 +464,19 @@
         grid-template-columns: 1fr;
         gap: 1rem;
       }
+
       .compat-page-vs {
         padding-top: 0;
       }
+
       .compat-page-section {
         padding: 4rem 1.2rem 3rem;
       }
+
       .soul-profiles {
         grid-template-columns: 1fr;
       }
+
       .comparison-row {
         grid-template-columns: 1fr;
         gap: 0.5rem;
@@ -444,9 +489,11 @@
         width: 140px;
         height: 140px;
       }
+
       .compat-score-val {
         font-size: 2.4rem;
       }
+
       .compat-page-card {
         padding: 1.5rem;
       }
@@ -462,7 +509,7 @@
     }
 
     .compat-grids-section-title {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
@@ -486,7 +533,7 @@
     }
 
     .compat-grid-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 4px;
       color: var(--gold);
@@ -496,7 +543,7 @@
     }
 
     .compat-grid-sublabel {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.8rem;
       color: var(--muted);
       text-align: center;
@@ -519,10 +566,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(0, 212, 255, 0.18);
+      border: 1px solid rgba(176, 138, 87, 0.18);
       position: relative;
       transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
-      background: rgba(0, 212, 255, 0.02);
+      background: rgba(176, 138, 87, 0.02);
       overflow: hidden;
     }
 
@@ -530,14 +577,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.06), transparent 70%);
+      background: radial-gradient(circle at center, rgba(176, 138, 87, 0.06), transparent 70%);
       opacity: 0;
       transition: opacity 0.4s;
     }
 
     .grid-cell.has-digits {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(168, 85, 247, 0.04));
-      border-color: rgba(0, 212, 255, 0.35);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.06), rgba(212, 181, 138, 0.04));
+      border-color: rgba(176, 138, 87, 0.35);
     }
 
     .grid-cell.has-digits::before {
@@ -545,27 +592,27 @@
     }
 
     .grid-cell.has-digits:hover {
-      border-color: rgba(0, 212, 255, 0.65);
-      box-shadow: 0 0 25px rgba(0, 212, 255, 0.12), inset 0 0 20px rgba(0, 212, 255, 0.04);
+      border-color: rgba(176, 138, 87, 0.65);
+      box-shadow: 0 0 25px rgba(176, 138, 87, 0.12), inset 0 0 20px rgba(176, 138, 87, 0.04);
     }
 
     .grid-cell.empty-cell {
-      background: rgba(5, 10, 24, 0.6);
-      border-color: rgba(0, 212, 255, 0.08);
+      background: rgba(13, 13, 12, 0.6);
+      border-color: rgba(176, 138, 87, 0.08);
     }
 
     .grid-cell-pos {
       position: absolute;
       top: 4px;
       right: 6px;
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 8px;
-      color: rgba(0, 212, 255, 0.25);
+      color: rgba(176, 138, 87, 0.25);
       letter-spacing: 1px;
     }
 
     .grid-cell-digits {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: var(--gold2);
       letter-spacing: 2px;
@@ -586,15 +633,42 @@
       transform: scale(0.85);
       animation: gridCellIn 0.5s ease forwards;
     }
-    .grid-cell:nth-child(1) { animation-delay: 0.1s; }
-    .grid-cell:nth-child(2) { animation-delay: 0.18s; }
-    .grid-cell:nth-child(3) { animation-delay: 0.26s; }
-    .grid-cell:nth-child(4) { animation-delay: 0.34s; }
-    .grid-cell:nth-child(5) { animation-delay: 0.42s; }
-    .grid-cell:nth-child(6) { animation-delay: 0.5s; }
-    .grid-cell:nth-child(7) { animation-delay: 0.58s; }
-    .grid-cell:nth-child(8) { animation-delay: 0.66s; }
-    .grid-cell:nth-child(9) { animation-delay: 0.74s; }
+
+    .grid-cell:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .grid-cell:nth-child(2) {
+      animation-delay: 0.18s;
+    }
+
+    .grid-cell:nth-child(3) {
+      animation-delay: 0.26s;
+    }
+
+    .grid-cell:nth-child(4) {
+      animation-delay: 0.34s;
+    }
+
+    .grid-cell:nth-child(5) {
+      animation-delay: 0.42s;
+    }
+
+    .grid-cell:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+
+    .grid-cell:nth-child(7) {
+      animation-delay: 0.58s;
+    }
+
+    .grid-cell:nth-child(8) {
+      animation-delay: 0.66s;
+    }
+
+    .grid-cell:nth-child(9) {
+      animation-delay: 0.74s;
+    }
 
     @keyframes gridCellIn {
       to {
@@ -610,13 +684,13 @@
     }
 
     .common-digit-soul1 {
-      color: #4ade80 !important;
-      text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+      color: #D4B58A !important;
+      text-shadow: 0 0 8px rgba(212, 181, 138, 0.4);
     }
 
     .common-digit-soul2 {
-      color: #facc15 !important;
-      text-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
+      color: #898276 !important;
+      text-shadow: 0 0 8px rgba(137, 130, 118, 0.4);
     }
 
     /* ── Color Legend ── */
@@ -646,15 +720,15 @@
     }
 
     .legend-swatch.swatch-soul1 {
-      background: #4ade80;
+      background: #D4B58A;
     }
 
     .legend-swatch.swatch-soul2 {
-      background: #facc15;
+      background: #898276;
     }
 
     .legend-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.75rem;
       color: rgba(255, 255, 255, 0.5);
       letter-spacing: 0.5px;
@@ -666,6 +740,7 @@
         grid-template-columns: 1fr;
         gap: 2rem;
       }
+
       .numero-grid {
         max-width: 220px;
       }
@@ -675,6 +750,7 @@
       .numero-grid {
         max-width: 180px;
       }
+
       .grid-cell-digits {
         font-size: 0.9rem !important;
         letter-spacing: 1px;
@@ -690,42 +766,127 @@
   <div class="page">
 
     <!-- ═══════ NAVBAR ═══════ -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <span class="nav-logo-symbol">✦</span>
-        <span class="nav-logo-text">Anktatvaa</span>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <!-- LEFT: Brand Logo / Typography -->
+      <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
+        <span class="nav-brand-symbol">✦</span>
+        <div class="nav-brand-group">
+          <span class="nav-brand-title">AnkTatvaa</span>
+          <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: Main Navigation Hierarchy -->
+      <div class="nav-links" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="nav-item nav-dropdown" id="exploreDropdown">
+          <button class="nav-link nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true" aria-controls="exploreMenu" id="exploreBtn" type="button">
+            <span>Explore</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="exploreMenu" role="menu" aria-labelledby="exploreBtn">
+            <div class="dropdown-menu-inner">
+              <a href="numerology.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">01</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Numerology</span>
+                  <span class="dropdown-desc">Vedic matrix &amp; planetary cycles</span>
+                </div>
+              </a>
+              <a href="name-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">02</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Name Vibration</span>
+                  <span class="dropdown-desc">Chaldean sound frequencies</span>
+                </div>
+              </a>
+              <a href="compatibility.html" class="dropdown-item active" role="menuitem">
+                <span class="dropdown-num">03</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Compatibility</span>
+                  <span class="dropdown-desc">Karmic resonance &amp; soul paths</span>
+                </div>
+              </a>
+              <a href="health-tendencies.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">04</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Health Tendencies</span>
+                  <span class="dropdown-desc">Planetary vitality &amp; constitution</span>
+                </div>
+              </a>
+              <a href="phone-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">05</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Phone Vibration</span>
+                  <span class="dropdown-desc">Digital frequency telemetry</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#reading" class="nav-link" role="menuitem">Readings</a>
+        <a href="index.html#features" class="nav-link" role="menuitem">About</a>
       </div>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#features" class="nav-link">Readings</a>
-        <a href="numerology.html" class="nav-link">Numerology</a>
-        <a href="name-vibration.html" class="nav-link">Name Vibrations</a>
-        <a href="compatibility.html" class="nav-link active">Compatibility</a>
-        <a href="health-tendencies.html" class="nav-link">Health</a>
-        <a href="phone-vibration.html" class="nav-link">Phone Vibration</a>
-        <a href="index.html#faq" class="nav-link">FAQ</a>
-      </div>
+
+      <!-- RIGHT: Account Entry & Primary CTA -->
       <div class="nav-auth">
         <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+        <a href="index.html#reading" class="btn-nav-signup">GET YOUR READING →</a>
       </div>
-      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-link">Home</a>
-      <a href="index.html#features" class="mobile-link">Readings</a>
-      <a href="numerology.html" class="mobile-link">Numerology</a>
-      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
-      <a href="compatibility.html" class="mobile-link">Compatibility</a>
-      <a href="health-tendencies.html" class="mobile-link">Health</a>
-      <a href="phone-vibration.html" class="mobile-link">Phone Vibration</a>
-      <a href="index.html#faq" class="mobile-link">FAQ</a>
-      <div class="mobile-auth">
-        <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+    <!-- ═══════ MOBILE NAVIGATION OVERLAY ═══════ -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-menu-inner">
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-label">Navigation Matrix</div>
+          <a href="index.html" class="mobile-link" onclick="closeMobileMenu()">Home</a>
+          
+          <!-- Expandable Mobile Submenu -->
+          <div class="mobile-submenu-wrap">
+            <button class="mobile-submenu-toggle expanded" onclick="toggleMobileSubmenu(this)" aria-expanded="true" type="button">
+              <span>Explore Tools</span>
+              <svg class="submenu-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-submenu open">
+              <a href="numerology.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">01</span> Numerology
+              </a>
+              <a href="name-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">02</span> Name Vibration
+              </a>
+              <a href="compatibility.html" class="mobile-sublink active" onclick="closeMobileMenu()">
+                <span class="sublink-num">03</span> Compatibility
+              </a>
+              <a href="health-tendencies.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">04</span> Health Tendencies
+              </a>
+              <a href="phone-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">05</span> Phone Vibration
+              </a>
+            </div>
+          </div>
+
+          <a href="index.html#reading" class="mobile-link" onclick="closeMobileMenu()">Readings</a>
+          <a href="index.html#features" class="mobile-link" onclick="closeMobileMenu()">About</a>
+        </div>
+
+        <div class="mobile-auth-group">
+          <a href="index.html#reading" class="btn-mobile-primary" onclick="closeMobileMenu()">GET YOUR READING →</a>
+          <a href="login.html" class="btn-mobile-secondary" onclick="closeMobileMenu()">Seeker Login</a>
+        </div>
       </div>
     </div>
 
@@ -807,7 +968,7 @@
               <div class="numero-grid" id="soul1Grid"></div>
             </div>
             <div class="compat-grid-wrap">
-              <p class="compat-grid-label" style="color: #c084fc;">✦ Common Grid ✦</p>
+              <p class="compat-grid-label" style="color: var(--antique-bronze);">✦ Common Grid ✦</p>
               <p class="compat-grid-sublabel">Shared & exclusive cosmic numbers</p>
               <div class="numero-grid" id="commonGrid"></div>
               <div class="common-grid-legend">
@@ -859,7 +1020,7 @@
   </div>
 
   <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
-  <a href="https://wa.me/919170705450?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+  <a href="https://wa.me/919170705450?text=Namaste%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
     class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -877,14 +1038,6 @@
   <!-- script.js provides: CHALDEAN map, reduceNum(), nameNumber() -->
   <script src="script.js"></script>
   <script>
-    /* ══════════════════════════════════════
-       MOBILE MENU TOGGLE
-    ══════════════════════════════════════ */
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-      document.getElementById('navHamburger').classList.toggle('active');
-    }
-
     /* ══════════════════════════════════════
        AUTO-FORMAT DOB INPUTS (DD/MM/YYYY)
        Same format used on numerology.html
@@ -1023,9 +1176,9 @@
     ══════════════════════════════════════ */
     function checkCompatibility() {
       const name1 = document.getElementById('c1name').value.trim();
-      const dob1  = document.getElementById('c1dob').value.trim();
+      const dob1 = document.getElementById('c1dob').value.trim();
       const name2 = document.getElementById('c2name').value.trim();
-      const dob2  = document.getElementById('c2dob').value.trim();
+      const dob2 = document.getElementById('c2dob').value.trim();
       const errEl = document.getElementById('compatErr');
       errEl.textContent = '';
 
@@ -1035,8 +1188,28 @@
         return;
       }
 
+      // ── Clean and normalize dates (supports DD/MM/YYYY, YYYY-MM-DD, DD-MM-YYYY, etc.) ──
+      function cleanDob(str) {
+        if (!str) return '';
+        str = str.trim().replace(/\./g, '/').replace(/-/g, '/');
+        const p = str.split('/');
+        if (p.length === 3) {
+          if (p[0].length === 4) {
+            return `${p[2].padStart(2, '0')}/${p[1].padStart(2, '0')}/${p[0]}`;
+          } else {
+            return `${p[0].padStart(2, '0')}/${p[1].padStart(2, '0')}/${p[2]}`;
+          }
+        }
+        return str;
+      }
+
+      const normDob1 = cleanDob(dob1);
+      const normDob2 = cleanDob(dob2);
+      document.getElementById('c1dob').value = normDob1;
+      document.getElementById('c2dob').value = normDob2;
+
       // ── Parse DOB1 (DD/MM/YYYY) — same validation as numerology.html ──
-      const m1 = dob1.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      const m1 = normDob1.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
       if (!m1) {
         errEl.textContent = '◈ First Soul: Please enter date in DD/MM/YYYY format.';
         return;
@@ -1053,7 +1226,7 @@
       }
 
       // ── Parse DOB2 (DD/MM/YYYY) ──
-      const m2 = dob2.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      const m2 = normDob2.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
       if (!m2) {
         errEl.textContent = '◈ Second Soul: Please enter date in DD/MM/YYYY format.';
         return;
@@ -1125,19 +1298,19 @@
       // ── Determine verdict ──
       let verdictEmoji, verdictLabel, verdictDesc;
       if (totalScore === 100) {
-        verdictEmoji = '⭐';
+        verdictEmoji = '✦';
         verdictLabel = 'Best Compatibility';
         verdictDesc = 'The cosmos has aligned your paths in perfect harmony. This is a bond that resonates across every vibrational plane — a celestial union.';
       } else if (totalScore === 75) {
-        verdictEmoji = '✅';
+        verdictEmoji = '✦';
         verdictLabel = 'Good Compatibility';
         verdictDesc = 'Your energies complement each other beautifully. The universe blesses this connection with strong alignment and mutual growth.';
       } else if (totalScore === 50) {
-        verdictEmoji = '🙂';
+        verdictEmoji = '◈';
         verdictLabel = 'So-So Compatible';
         verdictDesc = 'Your paths intersect with purpose. With conscious awareness and understanding, this bond holds meaningful potential.';
       } else {
-        verdictEmoji = '❌';
+        verdictEmoji = '·';
         verdictLabel = 'Not Compatible';
         verdictDesc = 'The cosmic currents present challenges in this pairing. Deep understanding and patience are needed to navigate these vibrations.';
       }
@@ -1180,16 +1353,24 @@
       const circumference = 2 * Math.PI * 52; // r=52
       document.getElementById('overallResult').innerHTML = `
         <p class="overall-result-label">✦ Overall Compatibility ✦</p>
+        <div class="report-action-bar" style="justify-content:center;margin-bottom:1.5rem;">
+          <button class="btn-report-action" onclick="saveCurrentCompatReading()" type="button">
+            <span>✦</span> Save to Dashboard
+          </button>
+          <button class="btn-report-action" onclick="window.print()" type="button">
+            <span>⎙</span> Print / Export
+          </button>
+        </div>
         <div class="compat-score-ring-wrap">
           <svg viewBox="0 0 120 120" class="compat-ring-svg">
-            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="8" />
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(176,138,87,0.15)" stroke-width="8" />
             <circle cx="60" cy="60" r="52" fill="none" stroke="url(#compatGradient)" stroke-width="8"
               stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" id="compatArc"
               style="transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1)" />
             <defs>
               <linearGradient id="compatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00d4ff" />
-                <stop offset="100%" stop-color="#a855f7" />
+                <stop offset="0%" stop-color="#B08A57" />
+                <stop offset="100%" stop-color="#D4B58A" />
               </linearGradient>
             </defs>
           </svg>
@@ -1215,19 +1396,38 @@
 
       // ── Animate counter from 0 to totalScore ──
       const valEl = document.getElementById('compatScoreVal');
-      let cur = 0;
-      const targetScore = totalScore;
-      const step = Math.max(1, Math.ceil(targetScore / 40));
-      const counter = setInterval(() => {
-        cur = Math.min(cur + step, targetScore);
-        valEl.textContent = cur;
-        if (cur >= targetScore) clearInterval(counter);
-      }, 30);
+      if (window.animateNumber) {
+        window.animateNumber(valEl, 0, totalScore, 1200);
+      } else {
+        valEl.textContent = totalScore;
+      }
+
+      // Animate Soul Profile numbers
+      const sp1Numbers = document.querySelectorAll('#soul1Profile .sp-num-val');
+      if (sp1Numbers[0] && window.animateNumber) window.animateNumber(sp1Numbers[0], 1, bn1, 750);
+      if (sp1Numbers[1] && window.animateNumber) window.animateNumber(sp1Numbers[1], 1, dn1, 850);
+      if (sp1Numbers[2] && window.animateNumber) window.animateNumber(sp1Numbers[2], 1, nn1, 950);
+
+      const sp2Numbers = document.querySelectorAll('#soul2Profile .sp-num-val');
+      if (sp2Numbers[0] && window.animateNumber) window.animateNumber(sp2Numbers[0], 1, bn2, 750);
+      if (sp2Numbers[1] && window.animateNumber) window.animateNumber(sp2Numbers[1], 1, dn2, 850);
+      if (sp2Numbers[2] && window.animateNumber) window.animateNumber(sp2Numbers[2], 1, nn2, 950);
 
       // ── Scroll to result ──
       setTimeout(() => {
         resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 150);
+    }
+
+    function saveCurrentCompatReading() {
+      const n1 = (document.getElementById('cName1').value.trim() || 'Soul 1');
+      const n2 = (document.getElementById('cName2').value.trim() || 'Soul 2');
+      const score = document.getElementById('compatScoreVal').textContent;
+      const verdict = document.querySelector('.overall-verdict-text') ? document.querySelector('.overall-verdict-text').textContent : '';
+      const summary = `Cosmic compatibility between ${n1} and ${n2}: ${score}% (${verdict}).`;
+      if (window.saveReadingRecord) {
+        window.saveReadingRecord('Compatibility', `${n1} & ${n2} (${score}%)`, summary, window.location.href);
+      }
     }
 
     /* ══════════════════════════════════════
@@ -1348,6 +1548,30 @@
         gridEl.appendChild(cell);
       });
     }
+
+    // Auto-populate and trigger report from URL query parameters (e.g. redirected from home)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const c1name = params.get('c1name');
+      const c1dob = params.get('c1dob');
+      const c2name = params.get('c2name');
+      const c2dob = params.get('c2dob');
+      if (c1name && document.getElementById('c1name')) document.getElementById('c1name').value = decodeURIComponent(c1name);
+      if (c2name && document.getElementById('c2name')) document.getElementById('c2name').value = decodeURIComponent(c2name);
+      const formatDob = (val) => {
+        if (!val) return val;
+        if (val.includes('-')) {
+          const parts = val.split('-');
+          if (parts.length === 3) return `${parts[2].padStart(2, '0')}/${parts[1].padStart(2, '0')}/${parts[0]}`;
+        }
+        return val;
+      };
+      if (c1dob && document.getElementById('c1dob')) document.getElementById('c1dob').value = formatDob(c1dob);
+      if (c2dob && document.getElementById('c2dob')) document.getElementById('c2dob').value = formatDob(c2dob);
+      if ((c1dob || c1name) && (c2dob || c2name) && typeof checkCompatibility === 'function') {
+        setTimeout(checkCompatibility, 250);
+      }
+    });
   </script>
 </body>
 

@@ -5,9 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Vibration Option — Anktatvaa · Celestial Vedic Numerology</title>
-  <meta name="description" content="Check if your mobile number aligns with your Birth and Destiny Number based on Vedic Numerology.">
+  <meta name="description"
+    content="Check if your mobile number aligns with your Birth and Destiny Number based on Vedic Numerology.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     .pv-section {
       max-width: 780px;
@@ -52,12 +55,12 @@
     .pv-result-header {
       text-align: center;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.15);
       margin-bottom: 2rem;
     }
 
     .pv-result-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.4rem, 3.5vw, 2rem);
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
       -webkit-background-clip: text;
@@ -67,7 +70,7 @@
     }
 
     .pv-details-display {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 3px;
       color: var(--muted);
@@ -106,7 +109,7 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 1px solid rgba(0, 212, 255, 0.3);
+      border: 1px solid rgba(176, 138, 87, 0.3);
       animation: pulseRing 3s ease-in-out infinite;
     }
 
@@ -115,12 +118,12 @@
       position: absolute;
       inset: 4px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(168, 85, 247, 0.06));
-      border: 1px solid rgba(0, 212, 255, 0.15);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.08), rgba(212, 181, 138, 0.06));
+      border: 1px solid rgba(176, 138, 87, 0.15);
     }
 
     .pv-num-val {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 2.8rem;
       background: linear-gradient(135deg, var(--gold), var(--gold3));
       -webkit-background-clip: text;
@@ -132,7 +135,7 @@
     }
 
     .pv-num-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 3px;
       color: var(--gold);
@@ -149,10 +152,10 @@
     .pv-final-result {
       margin-top: 2.5rem;
       padding: 2rem;
-      border-top: 1px solid rgba(0, 212, 255, 0.12);
+      border-top: 1px solid rgba(176, 138, 87, 0.12);
       text-align: center;
       border-radius: 6px;
-      background: rgba(0, 212, 255, 0.03);
+      background: rgba(176, 138, 87, 0.03);
     }
 
     .pv-final-result.suitable {
@@ -171,25 +174,25 @@
     }
 
     .pv-final-heading {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.8rem;
       margin-bottom: 1rem;
     }
 
     .pv-final-result.suitable .pv-final-heading {
-      color: #4ade80;
+      color: #B08A57;
     }
 
     .pv-final-result.neutral .pv-final-heading {
-      color: #fbbf24;
+      color: #D4B58A;
     }
 
     .pv-final-result.unsuitable .pv-final-heading {
-      color: #f87171;
+      color: #c26d60;
     }
 
     .pv-final-text {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 1.05rem;
       color: var(--text);
       line-height: 1.7;
@@ -199,14 +202,14 @@
       text-align: center;
       margin-top: 2.5rem;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(0, 212, 255, 0.12);
+      border-top: 1px solid rgba(176, 138, 87, 0.12);
     }
 
     .pv-report-footer-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 3px;
-      color: rgba(0, 212, 255, 0.3);
+      color: rgba(176, 138, 87, 0.3);
       text-transform: uppercase;
     }
 
@@ -215,14 +218,17 @@
         flex-direction: column;
         align-items: stretch;
       }
+
       .pv-input-card .submit-btn {
         width: 100%;
         min-width: unset;
       }
+
       .pv-num-ring {
         width: 80px;
         height: 80px;
       }
+
       .pv-num-val {
         font-size: 2.2rem;
       }
@@ -236,48 +242,134 @@
 
   <div class="page">
     <!-- ═══════ NAVBAR ═══════ -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <span class="nav-logo-symbol">✦</span>
-        <span class="nav-logo-text">Anktatvaa</span>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <!-- LEFT: Brand Logo / Typography -->
+      <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
+        <span class="nav-brand-symbol">✦</span>
+        <div class="nav-brand-group">
+          <span class="nav-brand-title">AnkTatvaa</span>
+          <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: Main Navigation Hierarchy -->
+      <div class="nav-links" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="nav-item nav-dropdown" id="exploreDropdown">
+          <button class="nav-link nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true" aria-controls="exploreMenu" id="exploreBtn" type="button">
+            <span>Explore</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="exploreMenu" role="menu" aria-labelledby="exploreBtn">
+            <div class="dropdown-menu-inner">
+              <a href="numerology.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">01</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Numerology</span>
+                  <span class="dropdown-desc">Vedic matrix &amp; planetary cycles</span>
+                </div>
+              </a>
+              <a href="name-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">02</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Name Vibration</span>
+                  <span class="dropdown-desc">Chaldean sound frequencies</span>
+                </div>
+              </a>
+              <a href="compatibility.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">03</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Compatibility</span>
+                  <span class="dropdown-desc">Karmic resonance &amp; soul paths</span>
+                </div>
+              </a>
+              <a href="health-tendencies.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">04</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Health Tendencies</span>
+                  <span class="dropdown-desc">Planetary vitality &amp; constitution</span>
+                </div>
+              </a>
+              <a href="phone-vibration.html" class="dropdown-item active" role="menuitem">
+                <span class="dropdown-num">05</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Phone Vibration</span>
+                  <span class="dropdown-desc">Digital frequency telemetry</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#reading" class="nav-link" role="menuitem">Readings</a>
+        <a href="index.html#features" class="nav-link" role="menuitem">About</a>
       </div>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#features" class="nav-link">Readings</a>
-        <a href="numerology.html" class="nav-link">Numerology</a>
-        <a href="name-vibration.html" class="nav-link">Name Vibrations</a>
-        <a href="compatibility.html" class="nav-link">Compatibility</a>
-        <a href="health-tendencies.html" class="nav-link">Health</a>
-        <a href="phone-vibration.html" class="nav-link active">Phone Vibration</a>
-        <a href="index.html#faq" class="nav-link">FAQ</a>
-      </div>
+
+      <!-- RIGHT: Account Entry & Primary CTA -->
       <div class="nav-auth">
         <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+        <a href="index.html#reading" class="btn-nav-signup">GET YOUR READING →</a>
       </div>
-      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-link">Home</a>
-      <a href="index.html#features" class="mobile-link">Readings</a>
-      <a href="numerology.html" class="mobile-link">Numerology</a>
-      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
-      <a href="compatibility.html" class="mobile-link">Compatibility</a>
-      <a href="health-tendencies.html" class="mobile-link">Health</a>
-      <a href="phone-vibration.html" class="mobile-link">Phone Vibration</a>
-      <a href="index.html#faq" class="mobile-link">FAQ</a>
-      <div class="mobile-auth">
-        <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+    <!-- ═══════ MOBILE NAVIGATION OVERLAY ═══════ -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-menu-inner">
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-label">Navigation Matrix</div>
+          <a href="index.html" class="mobile-link" onclick="closeMobileMenu()">Home</a>
+          
+          <!-- Expandable Mobile Submenu -->
+          <div class="mobile-submenu-wrap">
+            <button class="mobile-submenu-toggle expanded" onclick="toggleMobileSubmenu(this)" aria-expanded="true" type="button">
+              <span>Explore Tools</span>
+              <svg class="submenu-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-submenu open">
+              <a href="numerology.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">01</span> Numerology
+              </a>
+              <a href="name-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">02</span> Name Vibration
+              </a>
+              <a href="compatibility.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">03</span> Compatibility
+              </a>
+              <a href="health-tendencies.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">04</span> Health Tendencies
+              </a>
+              <a href="phone-vibration.html" class="mobile-sublink active" onclick="closeMobileMenu()">
+                <span class="sublink-num">05</span> Phone Vibration
+              </a>
+            </div>
+          </div>
+
+          <a href="index.html#reading" class="mobile-link" onclick="closeMobileMenu()">Readings</a>
+          <a href="index.html#features" class="mobile-link" onclick="closeMobileMenu()">About</a>
+        </div>
+
+        <div class="mobile-auth-group">
+          <a href="index.html#reading" class="btn-mobile-primary" onclick="closeMobileMenu()">GET YOUR READING →</a>
+          <a href="login.html" class="btn-mobile-secondary" onclick="closeMobileMenu()">Seeker Login</a>
+        </div>
       </div>
     </div>
 
     <!-- ═══════ PHONE VIBRATION MODULE ═══════ -->
     <section class="pv-section reveal">
-      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Phone Vibration ✦</p>
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Phone Vibration
+        ✦</p>
       <h1 class="section-title" style="margin-bottom:0.5rem">Check Your Mobile Number</h1>
       <p class="section-sub">Discover if your mobile number aligns harmoniously with your Birth and Destiny numbers.</p>
 
@@ -316,6 +408,14 @@
             <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Phone Vibration Report ✦</p>
             <h2 class="pv-result-title">Mobile Number Alignment</h2>
             <p class="pv-details-display" id="pvDetailsDisplay"></p>
+            <div class="report-action-bar" style="justify-content:center;margin:1.2rem 0 0.5rem;">
+              <button class="btn-report-action" onclick="saveCurrentPhoneReading()" type="button">
+                <span>✦</span> Save to Dashboard
+              </button>
+              <button class="btn-report-action" onclick="window.print()" type="button">
+                <span>⎙</span> Print / Export
+              </button>
+            </div>
           </div>
 
           <div class="pv-numbers-wrap">
@@ -345,7 +445,8 @@
           </div>
 
           <div class="pv-report-footer">
-            <p class="pv-report-footer-text">✦ &nbsp; A harmonious mobile number brings clarity and positive vibrations &nbsp; ✦</p>
+            <p class="pv-report-footer-text">✦ &nbsp; A harmonious mobile number brings clarity and positive vibrations
+              &nbsp; ✦</p>
           </div>
         </div>
       </div>
@@ -363,11 +464,6 @@
 
   <script src="script.js"></script>
   <script>
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-      document.getElementById('navHamburger').classList.toggle('active');
-    }
-
     const relationMatrix = {
       1: { friendly: [1, 2, 3, 4, 7, 9], enemy: [6, 8], neutral: [5] },
       2: { friendly: [1, 2, 4, 7], enemy: [5, 8, 9], neutral: [3, 6] },
@@ -418,7 +514,7 @@
         errEl.textContent = '◈ Please enter a valid date in DD/MM/YYYY format';
         return;
       }
-      
+
       const day = parseInt(match[1], 10);
       const month = parseInt(match[2], 10);
       const year = parseInt(match[3], 10);
@@ -427,7 +523,7 @@
         errEl.textContent = '◈ Please enter a valid date';
         return;
       }
-      
+
       const mobileClean = mobileRaw.replace(/\D/g, '');
       if (mobileClean.length === 0) {
         errEl.textContent = '◈ Please enter a valid mobile number';
@@ -465,9 +561,15 @@
 
       // Render
       document.getElementById('pvDetailsDisplay').textContent = `DOB: ${dobRaw} | Mobile: ${mobileRaw}`;
-      document.getElementById('pvBnNum').textContent = bn;
-      document.getElementById('pvDnNum').textContent = dn;
-      document.getElementById('pvMnNum').textContent = mn;
+      if (window.animateNumber) {
+        window.animateNumber(document.getElementById('pvBnNum'), 1, bn, 750);
+        window.animateNumber(document.getElementById('pvDnNum'), 1, dn, 850);
+        window.animateNumber(document.getElementById('pvMnNum'), 1, mn, 950);
+      } else {
+        document.getElementById('pvBnNum').textContent = bn;
+        document.getElementById('pvDnNum').textContent = dn;
+        document.getElementById('pvMnNum').textContent = mn;
+      }
 
       const finalResultEl = document.getElementById('pvFinalResult');
       const finalHeading = document.getElementById('pvFinalHeading');
@@ -512,6 +614,37 @@
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 150);
     }
+
+    function saveCurrentPhoneReading() {
+      const phone = document.getElementById('pvMobileInput').value.trim();
+      const mn = document.getElementById('pvMnNum').textContent;
+      const status = document.getElementById('pvFinalHeading').textContent;
+      const summary = `Mobile (${phone}) frequency ${mn} status: ${status}.`;
+      if (window.saveReadingRecord) {
+        window.saveReadingRecord('Phone Vibration', `Phone ${phone} (${mn})`, summary, window.location.href);
+      }
+    }
+
+    // Auto-populate and trigger report from URL query parameters
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const dob = params.get('dob');
+      const phone = params.get('phone');
+      const formatDob = (val) => {
+        if (!val) return val;
+        if (val.includes('-')) {
+          const parts = val.split('-');
+          if (parts.length === 3) return `${parts[2].padStart(2, '0')}/${parts[1].padStart(2, '0')}/${parts[0]}`;
+        }
+        return val;
+      };
+      if (dob && document.getElementById('pvDobInput')) document.getElementById('pvDobInput').value = formatDob(dob);
+      if (phone && document.getElementById('pvMobileInput')) document.getElementById('pvMobileInput').value = phone;
+      if (dob && phone && typeof calculatePhoneVibration === 'function') {
+        setTimeout(calculatePhoneVibration, 250);
+      }
+    });
   </script>
 </body>
+
 </html>

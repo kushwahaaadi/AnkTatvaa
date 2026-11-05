@@ -7,10 +7,10 @@
   <title>Numerology Report — Anktatvaa · Celestial Vedic Numerology</title>
   <meta name="description"
     content="Generate your personalized Vedic Numerology Report. Calculate your Birth Number, Destiny Number, and explore your Universal Numerology Grid based on your Date of Birth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
   <style>
     /* ═══════════════════════════════════════
        NUMEROLOGY REPORT MODULE — LOCAL STYLES
@@ -62,7 +62,7 @@
     .report-header {
       text-align: center;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.15);
       margin-bottom: 2rem;
     }
 
@@ -73,7 +73,7 @@
     }
 
     .report-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.4rem, 3.5vw, 2rem);
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
       -webkit-background-clip: text;
@@ -83,7 +83,7 @@
     }
 
     .report-dob-display {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 3px;
       color: var(--muted);
@@ -120,7 +120,7 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 1px solid rgba(0, 212, 255, 0.3);
+      border: 1px solid rgba(176, 138, 87, 0.3);
       animation: pulseRing 3s ease-in-out infinite;
     }
 
@@ -129,12 +129,12 @@
       position: absolute;
       inset: 4px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(168, 85, 247, 0.06));
-      border: 1px solid rgba(0, 212, 255, 0.15);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.08), rgba(212, 181, 138, 0.06));
+      border: 1px solid rgba(176, 138, 87, 0.15);
     }
 
     .report-num-val {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 2.8rem;
       background: linear-gradient(135deg, var(--gold), var(--gold3));
       -webkit-background-clip: text;
@@ -146,7 +146,7 @@
     }
 
     .report-num-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 3px;
       color: var(--gold);
@@ -154,7 +154,7 @@
     }
 
     .report-num-desc {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       color: var(--muted);
       font-style: italic;
@@ -166,12 +166,12 @@
     .grid-section {
       margin: 2.5rem 0;
       padding: 2rem 0;
-      border-top: 1px solid rgba(0, 212, 255, 0.12);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.12);
+      border-top: 1px solid rgba(176, 138, 87, 0.12);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.12);
     }
 
     .grid-section-title {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 4px;
       color: var(--gold);
@@ -181,7 +181,7 @@
     }
 
     .grid-section-sub {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       color: var(--muted);
       text-align: center;
@@ -203,10 +203,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(0, 212, 255, 0.18);
+      border: 1px solid rgba(176, 138, 87, 0.18);
       position: relative;
       transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
-      background: rgba(0, 212, 255, 0.02);
+      background: rgba(176, 138, 87, 0.02);
       overflow: hidden;
     }
 
@@ -214,14 +214,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.06), transparent 70%);
+      background: radial-gradient(circle at center, rgba(176, 138, 87, 0.06), transparent 70%);
       opacity: 0;
       transition: opacity 0.4s;
     }
 
     .grid-cell.has-digits {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(168, 85, 247, 0.04));
-      border-color: rgba(0, 212, 255, 0.35);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.06), rgba(212, 181, 138, 0.04));
+      border-color: rgba(176, 138, 87, 0.35);
     }
 
     .grid-cell.has-digits::before {
@@ -229,13 +229,13 @@
     }
 
     .grid-cell.has-digits:hover {
-      border-color: rgba(0, 212, 255, 0.65);
-      box-shadow: 0 0 25px rgba(0, 212, 255, 0.12), inset 0 0 20px rgba(0, 212, 255, 0.04);
+      border-color: rgba(176, 138, 87, 0.65);
+      box-shadow: 0 0 25px rgba(176, 138, 87, 0.12), inset 0 0 20px rgba(176, 138, 87, 0.04);
     }
 
     .grid-cell.empty-cell {
-      background: rgba(5, 10, 24, 0.6);
-      border-color: rgba(0, 212, 255, 0.08);
+      background: rgba(13, 13, 12, 0.6);
+      border-color: rgba(176, 138, 87, 0.08);
     }
 
     /* Corner position number label */
@@ -243,14 +243,14 @@
       position: absolute;
       top: 6px;
       right: 8px;
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
-      color: rgba(0, 212, 255, 0.25);
+      color: rgba(176, 138, 87, 0.25);
       letter-spacing: 1px;
     }
 
     .grid-cell-digits {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.2rem, 3vw, 1.8rem);
       color: var(--gold2);
       letter-spacing: 4px;
@@ -324,16 +324,16 @@
     }
 
     .numbers-analysis-card {
-      background: rgba(0, 212, 255, 0.03);
-      border: 1px solid rgba(0, 212, 255, 0.15);
+      background: rgba(176, 138, 87, 0.03);
+      border: 1px solid rgba(176, 138, 87, 0.15);
       border-radius: 3px;
       padding: 1.5rem;
       transition: border-color 0.3s, background 0.3s;
     }
 
     .numbers-analysis-card:hover {
-      border-color: rgba(0, 212, 255, 0.4);
-      background: rgba(0, 212, 255, 0.06);
+      border-color: rgba(176, 138, 87, 0.4);
+      background: rgba(176, 138, 87, 0.06);
     }
 
     .analysis-card-header {
@@ -348,7 +348,7 @@
     }
 
     .analysis-card-title {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--gold);
@@ -368,7 +368,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.1rem;
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -378,13 +378,13 @@
     }
 
     .chip-present {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(168, 85, 247, 0.1));
-      border: 1px solid rgba(0, 212, 255, 0.4);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.15), rgba(212, 181, 138, 0.1));
+      border: 1px solid rgba(176, 138, 87, 0.4);
       color: var(--gold2);
     }
 
     .chip-present:hover {
-      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 0 15px rgba(176, 138, 87, 0.3);
     }
 
     .chip-missing {
@@ -398,7 +398,7 @@
     }
 
     .analysis-empty {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       font-style: italic;
       color: var(--muted);
@@ -411,8 +411,8 @@
     }
 
     .calc-block {
-      background: rgba(0, 212, 255, 0.04);
-      border-left: 2px solid rgba(0, 212, 255, 0.3);
+      background: rgba(176, 138, 87, 0.04);
+      border-left: 2px solid rgba(176, 138, 87, 0.3);
       padding: 1rem 1.5rem;
       margin-bottom: 1rem;
       border-radius: 0 3px 3px 0;
@@ -420,12 +420,12 @@
     }
 
     .calc-block:hover {
-      border-left-color: rgba(0, 212, 255, 0.7);
-      background: rgba(0, 212, 255, 0.07);
+      border-left-color: rgba(176, 138, 87, 0.7);
+      background: rgba(176, 138, 87, 0.07);
     }
 
     .calc-block-title {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--gold);
@@ -434,7 +434,7 @@
     }
 
     .calc-block-steps {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1.05rem;
       color: var(--text);
       line-height: 1.9;
@@ -447,7 +447,7 @@
     }
 
     .calc-result-highlight {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       color: var(--gold2);
       font-size: 1.15rem;
     }
@@ -457,14 +457,14 @@
       text-align: center;
       margin-top: 2.5rem;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(0, 212, 255, 0.12);
+      border-top: 1px solid rgba(176, 138, 87, 0.12);
     }
 
     .report-footer-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 3px;
-      color: rgba(0, 212, 255, 0.3);
+      color: rgba(176, 138, 87, 0.3);
       text-transform: uppercase;
     }
 
@@ -531,11 +531,11 @@
     .mahadasha-panel {
       margin-top: 2.5rem;
       padding: 2rem 0;
-      border-top: 1px solid rgba(0, 212, 255, 0.12);
+      border-top: 1px solid rgba(176, 138, 87, 0.12);
     }
 
     .mahadasha-panel-title {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 4px;
       color: var(--gold);
@@ -545,7 +545,7 @@
     }
 
     .mahadasha-panel-sub {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       color: var(--muted);
       text-align: center;
@@ -577,7 +577,7 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px solid rgba(168, 85, 247, 0.4);
+      border: 2px solid rgba(212, 181, 138, 0.4);
       animation: pulseRing 2.5s ease-in-out infinite;
     }
 
@@ -586,14 +586,14 @@
       position: absolute;
       inset: 6px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(0, 212, 255, 0.08));
-      border: 1px solid rgba(168, 85, 247, 0.25);
+      background: linear-gradient(135deg, rgba(212, 181, 138, 0.12), rgba(176, 138, 87, 0.08));
+      border: 1px solid rgba(212, 181, 138, 0.25);
     }
 
     .mahadasha-num {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 3.2rem;
-      background: linear-gradient(135deg, #a855f7, #c084fc, #00d4ff);
+      background: linear-gradient(135deg, #E8E0D2, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -603,15 +603,15 @@
     }
 
     .mahadasha-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
-      color: #a855f7;
+      color: var(--antique-bronze);
       text-transform: uppercase;
     }
 
     .mahadasha-planet {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       color: var(--muted);
       font-style: italic;
@@ -629,8 +629,8 @@
 
     .mahadasha-year-badge {
       text-align: center;
-      background: rgba(168, 85, 247, 0.06);
-      border: 1px solid rgba(168, 85, 247, 0.25);
+      background: rgba(212, 181, 138, 0.06);
+      border: 1px solid rgba(212, 181, 138, 0.25);
       border-radius: 4px;
       padding: 1rem 1.8rem;
       min-width: 130px;
@@ -638,12 +638,12 @@
     }
 
     .mahadasha-year-badge:hover {
-      border-color: rgba(168, 85, 247, 0.5);
-      background: rgba(168, 85, 247, 0.1);
+      border-color: rgba(212, 181, 138, 0.5);
+      background: rgba(212, 181, 138, 0.1);
     }
 
     .mahadasha-year-val {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.4rem;
       color: var(--gold2);
       line-height: 1;
@@ -651,7 +651,7 @@
     }
 
     .mahadasha-year-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 3px;
       color: var(--muted);
@@ -665,14 +665,14 @@
     }
 
     .mahadasha-duration-text {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1rem;
       color: var(--muted);
       letter-spacing: 0.5px;
     }
 
     .mahadasha-duration-text .highlight {
-      color: #c084fc;
+      color: var(--antique-bronze);
       font-weight: 600;
     }
 
@@ -686,7 +686,7 @@
     .timeline-bar {
       position: relative;
       height: 6px;
-      background: rgba(0, 212, 255, 0.1);
+      background: rgba(176, 138, 87, 0.1);
       border-radius: 3px;
       overflow: hidden;
       margin-bottom: 1.2rem;
@@ -694,7 +694,7 @@
 
     .timeline-progress {
       height: 100%;
-      background: linear-gradient(90deg, #a855f7, #c084fc, #00d4ff);
+      background: linear-gradient(90deg, #B08A57, #D4B58A);
       border-radius: 3px;
       transition: width 1.2s ease;
       position: relative;
@@ -708,10 +708,10 @@
       transform: translate(50%, -50%);
       width: 14px;
       height: 14px;
-      background: #c084fc;
-      border: 2px solid rgba(5, 10, 24, 0.9);
+      background: var(--antique-bronze);
+      border: 2px solid rgba(13, 13, 12, 0.9);
       border-radius: 50%;
-      box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+      box-shadow: 0 0 12px rgba(176, 138, 87, 0.4);
     }
 
     .timeline-labels {
@@ -720,13 +720,13 @@
     }
 
     .timeline-label {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       color: var(--muted);
     }
 
     .timeline-label.active {
-      color: #c084fc;
+      color: var(--antique-bronze);
       font-weight: 600;
     }
 
@@ -758,11 +758,11 @@
     .antardasha-panel {
       margin-top: 2.5rem;
       padding: 2rem 0;
-      border-top: 1px solid rgba(245, 158, 11, 0.15);
+      border-top: 1px solid rgba(212, 181, 138, 0.15);
     }
 
     .antardasha-panel-title {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       letter-spacing: 4px;
       color: var(--amber);
@@ -772,7 +772,7 @@
     }
 
     .antardasha-panel-sub {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       color: var(--muted);
       text-align: center;
@@ -804,7 +804,7 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px solid rgba(245, 158, 11, 0.4);
+      border: 2px solid rgba(212, 181, 138, 0.4);
       animation: pulseRing 2.8s ease-in-out infinite;
     }
 
@@ -813,14 +813,14 @@
       position: absolute;
       inset: 5px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.06));
-      border: 1px solid rgba(245, 158, 11, 0.2);
+      background: linear-gradient(135deg, rgba(212, 181, 138, 0.1), rgba(251, 191, 36, 0.06));
+      border: 1px solid rgba(212, 181, 138, 0.2);
     }
 
     .antardasha-num {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 2.8rem;
-      background: linear-gradient(135deg, #f59e0b, #fbbf24, #f59e0b);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -830,15 +830,15 @@
     }
 
     .antardasha-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
-      color: var(--amber);
+      color: var(--antique-bronze);
       text-transform: uppercase;
     }
 
     .antardasha-planet {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       color: var(--muted);
       font-style: italic;
@@ -856,8 +856,8 @@
 
     .antardasha-date-badge {
       text-align: center;
-      background: rgba(245, 158, 11, 0.05);
-      border: 1px solid rgba(245, 158, 11, 0.2);
+      background: var(--bronze-surface);
+      border: 1px solid var(--border);
       border-radius: 4px;
       padding: 0.9rem 1.4rem;
       min-width: 120px;
@@ -865,21 +865,21 @@
     }
 
     .antardasha-date-badge:hover {
-      border-color: rgba(245, 158, 11, 0.45);
-      background: rgba(245, 158, 11, 0.08);
+      border-color: var(--border-hover);
+      background: rgba(176, 138, 87, 0.12);
     }
 
     .antardasha-date-val {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1.1rem;
       font-weight: 600;
-      color: var(--gold2);
+      color: var(--antique-bronze);
       line-height: 1;
       margin-bottom: 0.35rem;
     }
 
     .antardasha-date-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 3px;
       color: var(--muted);
@@ -893,14 +893,14 @@
     }
 
     .antardasha-elapsed-text {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1rem;
       color: var(--muted);
       letter-spacing: 0.5px;
     }
 
     .antardasha-elapsed-text .highlight {
-      color: var(--amber2);
+      color: var(--antique-bronze);
       font-weight: 600;
     }
 
@@ -916,16 +916,16 @@
     }
 
     .antardasha-timeline .timeline-progress {
-      background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+      background: linear-gradient(90deg, #B08A57, #D4B58A);
     }
 
     .antardasha-timeline .timeline-progress::after {
-      background: #fbbf24;
-      box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+      background: var(--antique-bronze);
+      box-shadow: 0 0 12px rgba(176, 138, 87, 0.4);
     }
 
     .antardasha-timeline .timeline-label.active {
-      color: var(--amber2);
+      color: var(--antique-bronze);
     }
 
     /* ── Collapsible Timeline Table ── */
@@ -935,8 +935,8 @@
       justify-content: center;
       gap: 0.6rem;
       cursor: pointer;
-      background: rgba(245, 158, 11, 0.05);
-      border: 1px solid rgba(245, 158, 11, 0.18);
+      background: rgba(212, 181, 138, 0.05);
+      border: 1px solid rgba(212, 181, 138, 0.18);
       border-radius: 4px;
       padding: 0.8rem 1.5rem;
       margin: 0 auto 1rem;
@@ -945,12 +945,12 @@
     }
 
     .ad-timeline-toggle:hover {
-      border-color: rgba(245, 158, 11, 0.4);
-      background: rgba(245, 158, 11, 0.08);
+      border-color: rgba(212, 181, 138, 0.4);
+      background: rgba(212, 181, 138, 0.08);
     }
 
     .ad-timeline-toggle-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--amber);
@@ -984,32 +984,32 @@
     }
 
     .ad-timeline-table th {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 9px;
       letter-spacing: 2px;
       color: var(--amber);
       text-transform: uppercase;
       text-align: center;
       padding: 0.7rem 0.5rem;
-      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+      border-bottom: 1px solid rgba(212, 181, 138, 0.2);
     }
 
     .ad-timeline-table td {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.95rem;
       color: var(--text);
       text-align: center;
       padding: 0.65rem 0.5rem;
-      border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+      border-bottom: 1px solid rgba(176, 138, 87, 0.06);
       transition: background 0.3s;
     }
 
     .ad-timeline-table tr:hover td {
-      background: rgba(245, 158, 11, 0.04);
+      background: rgba(212, 181, 138, 0.04);
     }
 
     .ad-timeline-table tr.ad-row-active td {
-      background: rgba(245, 158, 11, 0.08);
+      background: rgba(212, 181, 138, 0.08);
       color: var(--amber2);
       font-weight: 600;
     }
@@ -1020,7 +1020,7 @@
       height: 6px;
       border-radius: 50%;
       background: var(--amber2);
-      box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+      box-shadow: 0 0 8px rgba(212, 181, 138, 0.5);
       margin-right: 0.4rem;
       vertical-align: middle;
     }
@@ -1056,8 +1056,8 @@
     .ad-outcome-section {
       margin-top: 2.5rem;
       padding: 2rem 1.8rem;
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.04), rgba(168, 85, 247, 0.04));
-      border: 1px solid rgba(245, 158, 11, 0.18);
+      background: linear-gradient(135deg, rgba(212, 181, 138, 0.04), rgba(212, 181, 138, 0.04));
+      border: 1px solid rgba(212, 181, 138, 0.18);
       border-radius: 8px;
       position: relative;
       overflow: hidden;
@@ -1071,7 +1071,7 @@
       left: -40%;
       width: 180%;
       height: 180%;
-      background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.06) 0%, transparent 55%);
+      background: radial-gradient(circle at 30% 30%, rgba(212, 181, 138, 0.06) 0%, transparent 55%);
       pointer-events: none;
     }
 
@@ -1081,7 +1081,7 @@
     }
 
     .ad-outcome-eyebrow {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 4px;
       color: var(--amber);
@@ -1090,9 +1090,9 @@
     }
 
     .ad-outcome-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      background: linear-gradient(135deg, #f59e0b, #fbbf24, #c084fc);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1100,14 +1100,14 @@
     }
 
     .ad-outcome-hindi {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       color: var(--muted);
       font-style: italic;
     }
 
     .ad-outcome-body {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.95rem;
       color: var(--text);
       line-height: 1.85;
@@ -1120,13 +1120,13 @@
     }
 
     .ad-outcome-body::first-letter {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 2.2rem;
       float: left;
       line-height: 1;
       margin-right: 0.4rem;
       margin-top: 0.1rem;
-      background: linear-gradient(135deg, #f59e0b, #c084fc);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1135,7 +1135,7 @@
     .ad-outcome-divider {
       width: 60px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(176, 138, 87, 0.4), transparent);
       margin: 1.5rem auto 0;
     }
 
@@ -1162,17 +1162,17 @@
       text-align: center;
       margin-bottom: 2rem;
       padding-bottom: 1.8rem;
-      border-bottom: 1px solid rgba(245, 158, 11, 0.12);
+      border-bottom: 1px solid var(--border);
       position: relative;
       z-index: 1;
     }
 
     .ad-greeting-blueprint {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 5px;
-      background: linear-gradient(135deg, #d4a017 0%, #f5c842 30%, #ffe88a 50%, #f5c842 70%, #d4a017 100%);
+      background: linear-gradient(135deg, #E8E0D2 0%, #D4B58A 50%, #B08A57 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1182,9 +1182,9 @@
     }
 
     .ad-greeting-name {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.5rem, 4vw, 2.2rem);
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 40%, #c084fc 70%, #00d4ff 100%);
+      background: linear-gradient(135deg, #E8E0D2 0%, #D4B58A 50%, #B08A57 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1199,7 +1199,7 @@
     }
 
     .ad-greeting-tagline {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       color: var(--muted);
       line-height: 1.6;
@@ -1226,8 +1226,8 @@
     .personal-transits-section {
       margin: 2.5rem 0;
       padding: 2.5rem 1.5rem;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(0, 212, 255, 0.03));
-      border: 1px solid rgba(168, 85, 247, 0.15);
+      background: linear-gradient(135deg, rgba(212, 181, 138, 0.05), rgba(176, 138, 87, 0.03));
+      border: 1px solid rgba(212, 181, 138, 0.15);
       border-radius: 8px;
       position: relative;
       overflow: hidden;
@@ -1241,7 +1241,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle at center, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at center, rgba(212, 181, 138, 0.08) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -1271,15 +1271,15 @@
       justify-content: center;
       position: relative;
       margin: 0 auto 0.8rem;
-      background: rgba(168, 85, 247, 0.04);
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.05);
+      background: rgba(212, 181, 138, 0.04);
+      border: 1px solid rgba(212, 181, 138, 0.2);
+      box-shadow: 0 0 15px rgba(212, 181, 138, 0.05);
       transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .transit-badge:hover .transit-ring {
-      border-color: rgba(0, 212, 255, 0.5);
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+      border-color: rgba(176, 138, 87, 0.5);
+      box-shadow: 0 0 20px rgba(176, 138, 87, 0.2);
     }
 
     .transit-ring::before {
@@ -1287,14 +1287,14 @@
       position: absolute;
       inset: -3px;
       border-radius: 50%;
-      border: 1px solid rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(212, 181, 138, 0.15);
       animation: pulseRing 3.5s ease-in-out infinite;
     }
 
     .transit-val {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 2.5rem;
-      background: linear-gradient(135deg, #c084fc, #00d4ff);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1304,16 +1304,16 @@
     }
 
     .transit-label {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 2px;
-      color: #c084fc;
+      color: var(--antique-bronze);
       text-transform: uppercase;
       font-weight: bold;
     }
 
     .transit-desc {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.8rem;
       color: var(--muted);
       font-style: italic;
@@ -1336,7 +1336,7 @@
     }
 
     .present-chip {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       letter-spacing: 0.5px;
       padding: 0.5rem 1.2rem;
@@ -1347,13 +1347,13 @@
     }
 
     .present-chip:hover {
-      background: rgba(168, 85, 247, 0.1);
+      background: rgba(212, 181, 138, 0.1);
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.15);
+      box-shadow: 0 4px 15px rgba(212, 181, 138, 0.15);
     }
 
     .present-chip strong {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.05rem;
       margin-left: 0.3rem;
     }
@@ -1384,8 +1384,8 @@
     .py-outcome-section {
       margin: 2rem 0;
       padding: 2.2rem 2rem;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.04), rgba(168, 85, 247, 0.04));
-      border: 1px solid rgba(0, 212, 255, 0.18);
+      background: linear-gradient(135deg, rgba(176, 138, 87, 0.04), rgba(212, 181, 138, 0.04));
+      border: 1px solid rgba(176, 138, 87, 0.18);
       border-radius: 8px;
       position: relative;
       overflow: hidden;
@@ -1399,7 +1399,7 @@
       left: -40%;
       width: 180%;
       height: 180%;
-      background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.06) 0%, transparent 55%);
+      background: radial-gradient(circle at 30% 30%, rgba(176, 138, 87, 0.06) 0%, transparent 55%);
       pointer-events: none;
     }
 
@@ -1409,7 +1409,7 @@
     }
 
     .py-outcome-eyebrow {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 10px;
       letter-spacing: 4px;
       color: var(--gold);
@@ -1418,9 +1418,9 @@
     }
 
     .py-outcome-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(1.3rem, 3vw, 1.8rem);
-      background: linear-gradient(135deg, var(--gold), #c084fc, #fbbf24);
+      background: linear-gradient(135deg, #E8E0D2, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1428,7 +1428,7 @@
     }
 
     .py-outcome-theme {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.95rem;
       color: var(--muted);
       letter-spacing: 2px;
@@ -1437,7 +1437,7 @@
     }
 
     .py-outcome-body {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 1rem;
       color: var(--text);
       line-height: 1.85;
@@ -1448,7 +1448,7 @@
     }
 
     .py-outcome-body::first-letter {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 2.5rem;
       float: left;
       line-height: 1;
@@ -1496,7 +1496,7 @@
     }
 
     .py-effects-title {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.85rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -1522,7 +1522,7 @@
     }
 
     .py-effect-tag {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       padding: 0.3rem 0.7rem;
       border-radius: 4px;
@@ -1546,8 +1546,8 @@
       display: flex;
       gap: 0.8rem;
       align-items: flex-start;
-      background: rgba(245, 158, 11, 0.05);
-      border: 1px solid rgba(245, 158, 11, 0.18);
+      background: rgba(212, 181, 138, 0.05);
+      border: 1px solid rgba(212, 181, 138, 0.18);
       border-radius: 6px;
       padding: 1rem 1.2rem;
       margin-bottom: 1.5rem;
@@ -1561,17 +1561,17 @@
     }
 
     .py-notes-text {
-      font-family: 'Vesper Libre', serif;
+      font-family: var(--font-sans);
       font-size: 0.9rem;
       line-height: 1.6;
-      color: #fbbf24;
+      color: #D4B58A;
       font-style: italic;
     }
 
     .py-outcome-divider {
       width: 60px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(176, 138, 87, 0.5), transparent);
       margin: 1.5rem auto 0;
     }
 
@@ -1598,42 +1598,127 @@
   <div class="page">
 
     <!-- ═══════ NAVBAR ═══════ -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <span class="nav-logo-symbol">✦</span>
-        <span class="nav-logo-text">Anktatvaa</span>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <!-- LEFT: Brand Logo / Typography -->
+      <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
+        <span class="nav-brand-symbol">✦</span>
+        <div class="nav-brand-group">
+          <span class="nav-brand-title">AnkTatvaa</span>
+          <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: Main Navigation Hierarchy -->
+      <div class="nav-links" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="nav-item nav-dropdown" id="exploreDropdown">
+          <button class="nav-link nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true" aria-controls="exploreMenu" id="exploreBtn" type="button">
+            <span>Explore</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="exploreMenu" role="menu" aria-labelledby="exploreBtn">
+            <div class="dropdown-menu-inner">
+              <a href="numerology.html" class="dropdown-item active" role="menuitem">
+                <span class="dropdown-num">01</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Numerology</span>
+                  <span class="dropdown-desc">Vedic matrix &amp; planetary cycles</span>
+                </div>
+              </a>
+              <a href="name-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">02</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Name Vibration</span>
+                  <span class="dropdown-desc">Chaldean sound frequencies</span>
+                </div>
+              </a>
+              <a href="compatibility.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">03</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Compatibility</span>
+                  <span class="dropdown-desc">Karmic resonance &amp; soul paths</span>
+                </div>
+              </a>
+              <a href="health-tendencies.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">04</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Health Tendencies</span>
+                  <span class="dropdown-desc">Planetary vitality &amp; constitution</span>
+                </div>
+              </a>
+              <a href="phone-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">05</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Phone Vibration</span>
+                  <span class="dropdown-desc">Digital frequency telemetry</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#reading" class="nav-link" role="menuitem">Readings</a>
+        <a href="index.html#features" class="nav-link" role="menuitem">About</a>
       </div>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#features" class="nav-link">Readings</a>
-        <a href="numerology.html" class="nav-link active">Numerology</a>
-        <a href="name-vibration.html" class="nav-link">Name Vibrations</a>
-        <a href="compatibility.html" class="nav-link">Compatibility</a>
-        <a href="health-tendencies.html" class="nav-link">Health</a>
-        <a href="phone-vibration.html" class="nav-link">Phone Vibration</a>
-        <a href="index.html#faq" class="nav-link">FAQ</a>
-      </div>
+
+      <!-- RIGHT: Account Entry & Primary CTA -->
       <div class="nav-auth">
         <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+        <a href="index.html#reading" class="btn-nav-signup">GET YOUR READING →</a>
       </div>
-      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-link">Home</a>
-      <a href="index.html#features" class="mobile-link">Readings</a>
-      <a href="numerology.html" class="mobile-link">Numerology</a>
-      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
-      <a href="compatibility.html" class="mobile-link">Compatibility</a>
-      <a href="health-tendencies.html" class="mobile-link">Health</a>
-      <a href="phone-vibration.html" class="mobile-link">Phone Vibration</a>
-      <a href="index.html#faq" class="mobile-link">FAQ</a>
-      <div class="mobile-auth">
-        <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+    <!-- ═══════ MOBILE NAVIGATION OVERLAY ═══════ -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-menu-inner">
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-label">Navigation Matrix</div>
+          <a href="index.html" class="mobile-link" onclick="closeMobileMenu()">Home</a>
+          
+          <!-- Expandable Mobile Submenu -->
+          <div class="mobile-submenu-wrap">
+            <button class="mobile-submenu-toggle expanded" onclick="toggleMobileSubmenu(this)" aria-expanded="true" type="button">
+              <span>Explore Tools</span>
+              <svg class="submenu-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-submenu open">
+              <a href="numerology.html" class="mobile-sublink active" onclick="closeMobileMenu()">
+                <span class="sublink-num">01</span> Numerology
+              </a>
+              <a href="name-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">02</span> Name Vibration
+              </a>
+              <a href="compatibility.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">03</span> Compatibility
+              </a>
+              <a href="health-tendencies.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">04</span> Health Tendencies
+              </a>
+              <a href="phone-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">05</span> Phone Vibration
+              </a>
+            </div>
+          </div>
+
+          <a href="index.html#reading" class="mobile-link" onclick="closeMobileMenu()">Readings</a>
+          <a href="index.html#features" class="mobile-link" onclick="closeMobileMenu()">About</a>
+        </div>
+
+        <div class="mobile-auth-group">
+          <a href="index.html#reading" class="btn-mobile-primary" onclick="closeMobileMenu()">GET YOUR READING →</a>
+          <a href="login.html" class="btn-mobile-secondary" onclick="closeMobileMenu()">Seeker Login</a>
+        </div>
       </div>
     </div>
 
@@ -1683,6 +1768,14 @@
             <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Numerology Report ✦</p>
             <h2 class="report-title">Your Cosmic Numbers</h2>
             <p class="report-dob-display" id="reportDobDisplay"></p>
+            <div class="report-action-bar">
+              <button class="btn-report-action" onclick="saveCurrentNumerologyReading()" type="button">
+                <span>✦</span> Save to Dashboard
+              </button>
+              <button class="btn-report-action" onclick="window.print()" type="button">
+                <span>⎙</span> Print / Export
+              </button>
+            </div>
           </div>
 
           <!-- Birth Number & Destiny Number -->
@@ -1707,17 +1800,17 @@
             
             <div class="py-effects-container">
               <div class="py-effects-column positive">
-                <p class="py-effects-title">✨ Positive Highlights</p>
+                <p class="py-effects-title">✦ Positive Highlights</p>
                 <ul class="py-effects-list" id="pyPositiveHighlights"></ul>
               </div>
               <div class="py-effects-column negative">
-                <p class="py-effects-title">⚠️ Precautions</p>
+                <p class="py-effects-title">◈ Precautions</p>
                 <ul class="py-effects-list" id="pyPrecautions"></ul>
               </div>
             </div>
             
             <div class="py-outcome-notes" id="pyOutcomeNotes" style="display:none;">
-              <span class="py-notes-icon">🔮</span>
+              <span class="py-notes-icon">✦</span>
               <p class="py-notes-text" id="pyNotesText"></p>
             </div>
             
@@ -1766,8 +1859,8 @@
           </div>
 
           <!-- Present Cosmic Grid (3rd Grid) -->
-          <div class="grid-section" style="border-top: 1px solid rgba(168, 85, 247, 0.18);">
-            <p class="grid-section-title" style="color: #c084fc;">✦ Present Cosmic Grid ✦</p>
+          <div class="grid-section" style="border-top: 1px solid var(--border);">
+            <p class="grid-section-title" style="color: var(--antique-bronze);">✦ Present Cosmic Grid ✦</p>
             <p class="grid-section-sub">Your cosmic grid enhanced with Personal Year, Month &amp; Day transits</p>
             <div class="personal-transit-chips" id="presentGridTransits"></div>
             <div class="numero-grid" id="presentCosmicGrid"></div>
@@ -1921,7 +2014,7 @@
   </div>
 
   <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
-  <a href="https://wa.me/919170705450?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+  <a href="https://wa.me/919170705450?text=Namaste%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
     class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -1938,14 +2031,6 @@
   <!-- ═══════ SCRIPTS ═══════ -->
   <script src="script.js"></script>
   <script>
-    /* ══════════════════════════════════════
-       MOBILE MENU TOGGLE
-    ══════════════════════════════════════ */
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-      document.getElementById('navHamburger').classList.toggle('active');
-    }
-
     /* ══════════════════════════════════════
        NUMEROLOGY CALCULATIONS
     ══════════════════════════════════════ */
@@ -1993,15 +2078,15 @@
        PLANET RULERS for each number
     ══════════════════════════════════════ */
     const PLANET_MAP = {
-      1: { planet: 'Sun', symbol: '☉', color: '#f59e0b' },
-      2: { planet: 'Moon', symbol: '☽', color: '#a5f3fc' },
-      3: { planet: 'Jupiter', symbol: '♃', color: '#818cf8' },
-      4: { planet: 'Rahu', symbol: '☊', color: '#6ee7b7' },
-      5: { planet: 'Mercury', symbol: '☿', color: '#00d4ff' },
-      6: { planet: 'Venus', symbol: '♀', color: '#f9a8d4' },
-      7: { planet: 'Ketu', symbol: '☋', color: '#c084fc' },
-      8: { planet: 'Saturn', symbol: '♄', color: '#38bdf8' },
-      9: { planet: 'Mars', symbol: '♂', color: '#f87171' },
+      1: { planet: 'Sun', symbol: '☉', color: '#B08A57' },
+      2: { planet: 'Moon', symbol: '☽', color: '#E8E0D2' },
+      3: { planet: 'Jupiter', symbol: '♃', color: '#D4B58A' },
+      4: { planet: 'Rahu', symbol: '☊', color: '#898276' },
+      5: { planet: 'Mercury', symbol: '☿', color: '#C49E6A' },
+      6: { planet: 'Venus', symbol: '♀', color: '#E8E0D2' },
+      7: { planet: 'Ketu', symbol: '☋', color: '#898276' },
+      8: { planet: 'Saturn', symbol: '♄', color: '#9A7646' },
+      9: { planet: 'Mars', symbol: '♂', color: '#B08A57' },
     };
 
     /* ══════════════════════════════════════
@@ -2019,8 +2104,26 @@
         return;
       }
 
+      // ── Clean and normalize date (supports DD/MM/YYYY, YYYY-MM-DD, DD-MM-YYYY) ──
+      function cleanDob(str) {
+        if (!str) return '';
+        str = str.trim().replace(/\./g, '/').replace(/-/g, '/');
+        const p = str.split('/');
+        if (p.length === 3) {
+          if (p[0].length === 4) {
+            return `${p[2].padStart(2, '0')}/${p[1].padStart(2, '0')}/${p[0]}`;
+          } else {
+            return `${p[0].padStart(2, '0')}/${p[1].padStart(2, '0')}/${p[2]}`;
+          }
+        }
+        return str;
+      }
+
+      const rawNormalized = cleanDob(raw);
+      document.getElementById('numDob').value = rawNormalized;
+
       // ── Validate format DD/MM/YYYY ──
-      const match = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      const match = rawNormalized.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
       if (!match) {
         errEl.textContent = '◈ Please enter a valid date in DD/MM/YYYY format';
         return;
@@ -2118,6 +2221,19 @@
       });
     }
 
+    function saveCurrentNumerologyReading() {
+      const name = document.getElementById('numFullName').value.trim() || 'Seeker';
+      const dob = document.getElementById('numDob').value.trim();
+      const bnEl = document.querySelector('#reportNumbers .report-num-val');
+      const dnEls = document.querySelectorAll('#reportNumbers .report-num-val');
+      const bn = bnEl ? bnEl.textContent : '';
+      const dn = dnEls.length > 1 ? dnEls[1].textContent : '';
+      const summary = `Birth Number ${bn} · Destiny Number ${dn} for ${name} (DOB: ${dob}).`;
+      if (window.saveReadingRecord) {
+        window.saveReadingRecord('Vedic Numerology', `${name}'s Blueprint (BN ${bn} · DN ${dn})`, summary, window.location.href);
+      }
+    }
+
     /* ══════════════════════════════════════
        RENDER THE FULL REPORT
      ══════════════════════════════════════ */
@@ -2202,6 +2318,16 @@
 
 
 
+      // Animate numerical reveal for Birth Number & Destiny Number
+      const valEls = document.querySelectorAll('#reportNumbers .report-num-val');
+      if (valEls[0] && window.animateNumber) window.animateNumber(valEls[0], 1, bn, 850);
+      if (valEls[1] && window.animateNumber) window.animateNumber(valEls[1], 1, dn, 1050);
+
+      const transitEls = document.querySelectorAll('#personalTransits .transit-val');
+      if (transitEls[0] && window.animateNumber) window.animateNumber(transitEls[0], 1, py, 750);
+      if (transitEls[1] && window.animateNumber) window.animateNumber(transitEls[1], 1, pm, 850);
+      if (transitEls[2] && window.animateNumber) window.animateNumber(transitEls[2], 1, pd, 950);
+
       // Universal Grid
       const gridEl = document.getElementById('numeroGrid');
       gridEl.innerHTML = '';
@@ -2232,7 +2358,7 @@
       document.getElementById('numbersAnalysis').innerHTML = `
         <div class="numbers-analysis-card">
           <div class="analysis-card-header">
-            <span class="analysis-card-icon">✨</span>
+            <span class="analysis-card-icon">✦</span>
             <span class="analysis-card-title">Present Numbers</span>
           </div>
           <div class="analysis-nums">
@@ -2347,6 +2473,19 @@
         });
     }
 
+    function saveCurrentNumerologyReading() {
+      const name = document.getElementById('numFullName').value.trim() || 'Seeker';
+      const dob = document.getElementById('numDob').value.trim();
+      const bnEl = document.querySelector('#reportNumbers .report-num-val');
+      const dnEls = document.querySelectorAll('#reportNumbers .report-num-val');
+      const bn = bnEl ? bnEl.textContent : '';
+      const dn = dnEls.length > 1 ? dnEls[1].textContent : '';
+      const summary = `Birth Number ${bn} · Destiny Number ${dn} for ${name} (DOB: ${dob}).`;
+      if (window.saveReadingRecord) {
+        window.saveReadingRecord('Vedic Numerology', `${name}'s Blueprint (BN ${bn} · DN ${dn})`, summary, window.location.href);
+      }
+    }
+
     /* ══════════════════════════════════════
        MAHADASHA CALCULATION & RENDERING
     ══════════════════════════════════════ */
@@ -2456,9 +2595,9 @@
       // Show transit chips above the grid
       document.getElementById('presentGridTransits').innerHTML = `
         <div class="present-transit-chips">
-          <span class="present-chip" style="border-color: rgba(168,85,247,0.5); color: #c084fc;">Personal Year: <strong>${data.personalYear}</strong></span>
-          <span class="present-chip" style="border-color: rgba(0,212,255,0.5); color: #00d4ff;">Personal Month: <strong>${data.personalMonth}</strong></span>
-          <span class="present-chip" style="border-color: rgba(245,158,11,0.5); color: #fbbf24;">Personal Day: <strong>${data.personalDay}</strong></span>
+          <span class="present-chip" style="border-color: rgba(176,138,87,0.4); color: var(--antique-bronze);">Personal Year: <strong>${data.personalYear}</strong></span>
+          <span class="present-chip" style="border-color: rgba(212,181,138,0.4); color: var(--muted-copper);">Personal Month: <strong>${data.personalMonth}</strong></span>
+          <span class="present-chip" style="border-color: rgba(176,138,87,0.4); color: var(--antique-bronze);">Personal Day: <strong>${data.personalDay}</strong></span>
         </div>
       `;
 
@@ -2675,6 +2814,29 @@
       toggle.classList.toggle('open');
       wrap.classList.toggle('open');
     }
+
+    // Auto-populate and trigger report from URL query parameters (e.g. redirected from home)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name');
+      const dob = params.get('dob');
+      if (name && document.getElementById('numFullName')) {
+        document.getElementById('numFullName').value = decodeURIComponent(name);
+      }
+      if (dob && document.getElementById('numDob')) {
+        let formatted = dob;
+        if (dob.includes('-')) {
+          const parts = dob.split('-');
+          if (parts.length === 3) {
+            formatted = `${parts[2].padStart(2, '0')}/${parts[1].padStart(2, '0')}/${parts[0]}`;
+          }
+        }
+        document.getElementById('numDob').value = formatted;
+        if (typeof generateReport === 'function') {
+          setTimeout(generateReport, 250);
+        }
+      }
+    });
   </script>
 
 </body>

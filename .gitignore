@@ -1,0 +1,5 @@
+*.bak
+*-orig.jpg
+.DS_Store
+Thumbs.db
+/AnkTatvaa-main/

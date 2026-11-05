@@ -7,10 +7,10 @@
   <title>Health Tendencies — Anktatvaa · Vedic Numerology</title>
   <meta name="description"
     content="Discover your Moolank-based health tendencies through Vedic Numerology. Enter your date of birth to uncover potential health vulnerabilities and preventive guidance based on your birth number.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Vesper+Libre:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
   <style>
     /* ═══════════════════════════════════════
        HEALTH TENDENCIES PAGE — LOCAL STYLES
@@ -29,7 +29,7 @@
     }
 
     .health-hero-eyebrow {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.85rem;
       letter-spacing: 0.35em;
@@ -39,9 +39,9 @@
     }
 
     .health-hero-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: clamp(2rem, 5vw, 3.2rem);
-      background: linear-gradient(135deg, #ffd700, #f0c27f, #ffd700);
+      background: linear-gradient(135deg, #E8E0D2, #B08A57);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -50,7 +50,7 @@
     }
 
     .health-hero-sub {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 1.1rem;
       color: rgba(255, 255, 255, 0.65);
       max-width: 580px;
@@ -63,8 +63,8 @@
       position: relative;
       padding: 2.5rem;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 215, 0, 0.12);
+      background: var(--surface);
+      border: 1px solid var(--border);
       backdrop-filter: blur(12px);
       margin-bottom: 2.5rem;
       max-width: 520px;
@@ -110,8 +110,8 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px solid rgba(0, 212, 255, 0.25);
-      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08), transparent 70%);
+      border: 2px solid rgba(176, 138, 87, 0.25);
+      background: radial-gradient(circle at center, rgba(176, 138, 87, 0.08), transparent 70%);
       animation: moolankPulse 3s ease-in-out infinite;
     }
 
@@ -121,9 +121,9 @@
     }
 
     .moolank-badge-number {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 3.2rem;
-      background: linear-gradient(135deg, #00d4ff, #a855f7);
+      background: linear-gradient(135deg, #B08A57, #D4B58A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -136,7 +136,7 @@
     }
 
     .moolank-badge-label {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
@@ -146,14 +146,14 @@
     }
 
     .moolank-badge-value {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.6rem;
       color: var(--gold);
       margin-bottom: 0.2rem;
     }
 
     .moolank-badge-planet {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.95rem;
       color: rgba(255, 255, 255, 0.5);
       font-style: italic;
@@ -176,7 +176,7 @@
 
     /* ── Section Title for Result ── */
     .health-result-title {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
@@ -213,15 +213,15 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, transparent, var(--card-accent, #00d4ff), transparent);
+      background: linear-gradient(90deg, transparent, var(--card-accent, #B08A57), transparent);
       opacity: 0;
       transition: opacity 0.35s ease;
     }
 
     .health-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(0, 212, 255, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 212, 255, 0.06), 0 0 0 1px rgba(0, 212, 255, 0.06);
+      border-color: rgba(176, 138, 87, 0.4);
+      box-shadow: 0 8px 32px rgba(176, 138, 87, 0.06), 0 0 0 1px rgba(176, 138, 87, 0.06);
     }
 
     .health-card:hover::before {
@@ -232,11 +232,11 @@
       position: absolute;
       top: 12px;
       right: 14px;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.7rem;
       letter-spacing: 0.15em;
-      color: rgba(0, 212, 255, 0.25);
+      color: rgba(176, 138, 87, 0.25);
     }
 
     .health-card-icon {
@@ -246,7 +246,7 @@
     }
 
     .health-card-title {
-      font-family: 'Yatra One', serif;
+      font-family: var(--font-heading);
       font-size: 1.1rem;
       color: var(--gold);
       margin-bottom: 0.7rem;
@@ -254,7 +254,7 @@
     }
 
     .health-card-desc {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.92rem;
       color: rgba(255, 255, 255, 0.55);
       line-height: 1.7;
@@ -273,7 +273,7 @@
     .health-card-toggle {
       display: inline-block;
       margin-top: 0.6rem;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.78rem;
       letter-spacing: 0.15em;
@@ -307,7 +307,7 @@
     }
 
     .health-disclaimer-title {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.25em;
@@ -317,7 +317,7 @@
     }
 
     .health-disclaimer-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 0.88rem;
       color: rgba(255, 255, 255, 0.45);
       line-height: 1.7;
@@ -339,8 +339,8 @@
     .health-loading-spinner {
       width: 48px;
       height: 48px;
-      border: 3px solid rgba(0, 212, 255, 0.1);
-      border-top-color: #00d4ff;
+      border: 3px solid rgba(176, 138, 87, 0.15);
+      border-top-color: #B08A57;
       border-radius: 50%;
       margin: 0 auto 1rem;
       animation: spinHealth 0.8s linear infinite;
@@ -351,9 +351,9 @@
     }
 
     .health-loading-text {
-      font-family: 'Philosopher', serif;
+      font-family: var(--font-heading);
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--muted);
       animation: pulse 1.5s ease-in-out infinite;
     }
 
@@ -376,13 +376,13 @@
       }
     }
 
-    /* ── Color accents per health card (cycling) ── */
-    .health-card:nth-child(6n+1) { --card-accent: #00d4ff; }
-    .health-card:nth-child(6n+2) { --card-accent: #a855f7; }
-    .health-card:nth-child(6n+3) { --card-accent: #f59e0b; }
-    .health-card:nth-child(6n+4) { --card-accent: #4ade80; }
-    .health-card:nth-child(6n+5) { --card-accent: #f9a8d4; }
-    .health-card:nth-child(6n+6) { --card-accent: #818cf8; }
+    /* ── Color accents per health card (architectural bronze & copper tones) ── */
+    .health-card:nth-child(6n+1) { --card-accent: #B08A57; }
+    .health-card:nth-child(6n+2) { --card-accent: #D4B58A; }
+    .health-card:nth-child(6n+3) { --card-accent: #C49E6A; }
+    .health-card:nth-child(6n+4) { --card-accent: #E8E0D2; }
+    .health-card:nth-child(6n+5) { --card-accent: #9A7646; }
+    .health-card:nth-child(6n+6) { --card-accent: #898276; }
 
     /* ── Responsive ── */
     @media (max-width: 700px) {
@@ -423,42 +423,127 @@
   <div class="page">
 
     <!-- ═══════ NAVBAR ═══════ -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <span class="nav-logo-symbol">✦</span>
-        <span class="nav-logo-text">Anktatvaa</span>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <!-- LEFT: Brand Logo / Typography -->
+      <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
+        <span class="nav-brand-symbol">✦</span>
+        <div class="nav-brand-group">
+          <span class="nav-brand-title">AnkTatvaa</span>
+          <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: Main Navigation Hierarchy -->
+      <div class="nav-links" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="nav-item nav-dropdown" id="exploreDropdown">
+          <button class="nav-link nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true" aria-controls="exploreMenu" id="exploreBtn" type="button">
+            <span>Explore</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="exploreMenu" role="menu" aria-labelledby="exploreBtn">
+            <div class="dropdown-menu-inner">
+              <a href="numerology.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">01</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Numerology</span>
+                  <span class="dropdown-desc">Vedic matrix &amp; planetary cycles</span>
+                </div>
+              </a>
+              <a href="name-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">02</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Name Vibration</span>
+                  <span class="dropdown-desc">Chaldean sound frequencies</span>
+                </div>
+              </a>
+              <a href="compatibility.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">03</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Compatibility</span>
+                  <span class="dropdown-desc">Karmic resonance &amp; soul paths</span>
+                </div>
+              </a>
+              <a href="health-tendencies.html" class="dropdown-item active" role="menuitem">
+                <span class="dropdown-num">04</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Health Tendencies</span>
+                  <span class="dropdown-desc">Planetary vitality &amp; constitution</span>
+                </div>
+              </a>
+              <a href="phone-vibration.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-num">05</span>
+                <div class="dropdown-info">
+                  <span class="dropdown-title">Phone Vibration</span>
+                  <span class="dropdown-desc">Digital frequency telemetry</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#reading" class="nav-link" role="menuitem">Readings</a>
+        <a href="index.html#features" class="nav-link" role="menuitem">About</a>
       </div>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#features" class="nav-link">Readings</a>
-        <a href="numerology.html" class="nav-link">Numerology</a>
-        <a href="name-vibration.html" class="nav-link">Name Vibrations</a>
-        <a href="compatibility.html" class="nav-link">Compatibility</a>
-        <a href="health-tendencies.html" class="nav-link active">Health</a>
-        <a href="phone-vibration.html" class="nav-link">Phone Vibration</a>
-        <a href="index.html#faq" class="nav-link">FAQ</a>
-      </div>
+
+      <!-- RIGHT: Account Entry & Primary CTA -->
       <div class="nav-auth">
         <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+        <a href="index.html#reading" class="btn-nav-signup">GET YOUR READING →</a>
       </div>
-      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html" class="mobile-link">Home</a>
-      <a href="index.html#features" class="mobile-link">Readings</a>
-      <a href="numerology.html" class="mobile-link">Numerology</a>
-      <a href="name-vibration.html" class="mobile-link">Name Vibrations</a>
-      <a href="compatibility.html" class="mobile-link">Compatibility</a>
-      <a href="health-tendencies.html" class="mobile-link">Health</a>
-      <a href="phone-vibration.html" class="mobile-link">Phone Vibration</a>
-      <a href="index.html#faq" class="mobile-link">FAQ</a>
-      <div class="mobile-auth">
-        <a href="login.html" class="btn-nav-login">Login</a>
-        <a href="signup.html" class="btn-nav-signup">Begin Journey</a>
+    <!-- ═══════ MOBILE NAVIGATION OVERLAY ═══════ -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-menu-inner">
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-label">Navigation Matrix</div>
+          <a href="index.html" class="mobile-link" onclick="closeMobileMenu()">Home</a>
+          
+          <!-- Expandable Mobile Submenu -->
+          <div class="mobile-submenu-wrap">
+            <button class="mobile-submenu-toggle expanded" onclick="toggleMobileSubmenu(this)" aria-expanded="true" type="button">
+              <span>Explore Tools</span>
+              <svg class="submenu-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-submenu open">
+              <a href="numerology.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">01</span> Numerology
+              </a>
+              <a href="name-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">02</span> Name Vibration
+              </a>
+              <a href="compatibility.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">03</span> Compatibility
+              </a>
+              <a href="health-tendencies.html" class="mobile-sublink active" onclick="closeMobileMenu()">
+                <span class="sublink-num">04</span> Health Tendencies
+              </a>
+              <a href="phone-vibration.html" class="mobile-sublink" onclick="closeMobileMenu()">
+                <span class="sublink-num">05</span> Phone Vibration
+              </a>
+            </div>
+          </div>
+
+          <a href="index.html#reading" class="mobile-link" onclick="closeMobileMenu()">Readings</a>
+          <a href="index.html#features" class="mobile-link" onclick="closeMobileMenu()">About</a>
+        </div>
+
+        <div class="mobile-auth-group">
+          <a href="index.html#reading" class="btn-mobile-primary" onclick="closeMobileMenu()">GET YOUR READING →</a>
+          <a href="login.html" class="btn-mobile-secondary" onclick="closeMobileMenu()">Seeker Login</a>
+        </div>
       </div>
     </div>
 
@@ -503,6 +588,16 @@
         <!-- Moolank Badge -->
         <div class="moolank-badge-wrap" id="moolankBadge"></div>
 
+        <!-- Action Bar -->
+        <div class="report-action-bar" style="justify-content:center;margin-bottom:1.5rem;">
+          <button class="btn-report-action" onclick="saveCurrentHealthReading()" type="button">
+            <span>✦</span> Save to Dashboard
+          </button>
+          <button class="btn-report-action" onclick="window.print()" type="button">
+            <span>⎙</span> Print / Export
+          </button>
+        </div>
+
         <!-- Result Title -->
         <p class="health-result-title" id="healthResultTitle"></p>
 
@@ -511,7 +606,7 @@
 
         <!-- Disclaimer -->
         <div class="health-disclaimer">
-          <p class="health-disclaimer-icon">⚕️</p>
+          <p class="health-disclaimer-icon">◈</p>
           <p class="health-disclaimer-title">Important Disclaimer</p>
           <p class="health-disclaimer-text">
             These health tendencies are based on traditional Vedic numerology and are not a substitute for
@@ -536,7 +631,7 @@
   </div>
 
   <!-- ═══════ WHATSAPP FLOATING BUTTON ═══════ -->
-  <a href="https://wa.me/919170705450?text=Namaste%20🙏%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
+  <a href="https://wa.me/919170705450?text=Namaste%20I%20visited%20Ank%20Jyotish%20and%20would%20like%20to%20book%20a%20personal%20reading."
     class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -554,14 +649,6 @@
   <script src="moolank-health-tendencies.js"></script>
   <script src="script.js"></script>
   <script>
-    /* ══════════════════════════════════════
-       MOBILE MENU TOGGLE
-    ══════════════════════════════════════ */
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-      document.getElementById('navHamburger').classList.toggle('active');
-    }
-
     /* ══════════════════════════════════════
        AUTO-FORMAT DOB INPUT (DD/MM/YYYY)
     ══════════════════════════════════════ */
@@ -594,51 +681,21 @@
        PLANET MAPPING FOR MOOLANK
     ══════════════════════════════════════ */
     const MOOLANK_PLANETS = {
-      1: { planet: 'Sun ☉', color: '#f59e0b' },
-      2: { planet: 'Moon ☽', color: '#a5f3fc' },
-      3: { planet: 'Jupiter ♃', color: '#818cf8' },
-      4: { planet: 'Rahu ☊', color: '#6ee7b7' },
-      5: { planet: 'Mercury ☿', color: '#6ee7b7' },
-      6: { planet: 'Venus ♀', color: '#f9a8d4' },
-      7: { planet: 'Ketu ☋', color: '#a5f3fc' },
-      8: { planet: 'Saturn ♄', color: '#00d4ff' },
-      9: { planet: 'Mars ♂', color: '#f87171' }
+      1: { planet: 'Sun ☉', color: '#B08A57' },
+      2: { planet: 'Moon ☽', color: '#E8E0D2' },
+      3: { planet: 'Jupiter ♃', color: '#D4B58A' },
+      4: { planet: 'Rahu ☊', color: '#898276' },
+      5: { planet: 'Mercury ☿', color: '#C49E6A' },
+      6: { planet: 'Venus ♀', color: '#E8E0D2' },
+      7: { planet: 'Ketu ☋', color: '#898276' },
+      8: { planet: 'Saturn ♄', color: '#9A7646' },
+      9: { planet: 'Mars ♂', color: '#B08A57' }
     };
 
     /* ══════════════════════════════════════
-       HEALTH ICONS (maps to common keywords)
+       HEALTH ICONS (maps to clean Vedic motif)
     ══════════════════════════════════════ */
     function getHealthIcon(title) {
-      const t = title.toLowerCase();
-      if (t.includes('heart') || t.includes('cardiac') || t.includes('cardiovascular')) return '❤️‍🩹';
-      if (t.includes('blood')) return '🩸';
-      if (t.includes('eye')) return '👁️';
-      if (t.includes('brain') || t.includes('mental') || t.includes('neurological') || t.includes('seizure')) return '🧠';
-      if (t.includes('lung') || t.includes('breathing') || t.includes('asthma') || t.includes('respiratory')) return '🫁';
-      if (t.includes('kidney') || t.includes('urinary') || t.includes('bladder')) return '🫘';
-      if (t.includes('bone') || t.includes('fracture') || t.includes('osteoporosis') || t.includes('spinal') || t.includes('back')) return '🦴';
-      if (t.includes('skin') || t.includes('dermatitis') || t.includes('eczema') || t.includes('itch') || t.includes('allerg')) return '🧴';
-      if (t.includes('stomach') || t.includes('digest') || t.includes('abdominal') || t.includes('gastric') || t.includes('indigestion') || t.includes('acidity') || t.includes('gas')) return '🫃';
-      if (t.includes('liver') || t.includes('bile') || t.includes('jaundice')) return '🫀';
-      if (t.includes('throat') || t.includes('neck')) return '🗣️';
-      if (t.includes('dental') || t.includes('mouth') || t.includes('tongue')) return '🦷';
-      if (t.includes('fever')) return '🌡️';
-      if (t.includes('joint') || t.includes('arthritis') || t.includes('gout')) return '🦿';
-      if (t.includes('injury') || t.includes('wound') || t.includes('cut') || t.includes('fracture') || t.includes('accident') || t.includes('fire') || t.includes('bleed')) return '🩹';
-      if (t.includes('surgery') || t.includes('operation')) return '🏥';
-      if (t.includes('depression') || t.includes('irritat') || t.includes('dream')) return '😔';
-      if (t.includes('sweat')) return '💧';
-      if (t.includes('nose')) return '👃';
-      if (t.includes('breast') || t.includes('chest')) return '🫁';
-      if (t.includes('uterus') || t.includes('conception') || t.includes('abort')) return '🩺';
-      if (t.includes('hair')) return '💇';
-      if (t.includes('obesity') || t.includes('fat')) return '⚖️';
-      if (t.includes('ulcer') || t.includes('piles') || t.includes('hernia') || t.includes('hemorrhoid')) return '💊';
-      if (t.includes('thyroid')) return '🦋';
-      if (t.includes('paralysis') || t.includes('nervous')) return '⚡';
-      if (t.includes('anemia')) return '🩸';
-      if (t.includes('varicose') || t.includes('leg') || t.includes('hip') || t.includes('wrist') || t.includes('sciatica')) return '🦵';
-      if (t.includes('influenza') || t.includes('cholera') || t.includes('epidemic') || t.includes('fox') || t.includes('poison') || t.includes('worm') || t.includes('diarrhea')) return '🦠';
       return '✦';
     }
 
@@ -735,6 +792,10 @@
         </div>
       `;
 
+      // Animate Moolank Number Reveal
+      const moolankEl = document.querySelector('.moolank-badge-number');
+      if (moolankEl && window.animateNumber) window.animateNumber(moolankEl, 1, moolank, 850);
+
       // ── Title ──
       document.getElementById('healthResultTitle').textContent =
         `✦ ${entry.health_tendencies.length} Health Tendencies for Moolank ${moolank} ✦`;
@@ -761,6 +822,18 @@
       });
     }
 
+    function saveCurrentHealthReading() {
+      const dob = document.getElementById('healthDob').value.trim();
+      const moolankEl = document.querySelector('.moolank-badge-number');
+      const moolank = moolankEl ? moolankEl.textContent : '';
+      const planetEl = document.querySelector('.moolank-badge-planet');
+      const planet = planetEl ? planetEl.textContent : '';
+      const summary = `Moolank ${moolank} (${planet}) health tendencies & constitutional profile.`;
+      if (window.saveReadingRecord) {
+        window.saveReadingRecord('Health Tendencies', `Moolank ${moolank} Wellness Profile`, summary, window.location.href);
+      }
+    }
+
     /* ══════════════════════════════════════
        TOGGLE CARD EXPANSION
     ══════════════════════════════════════ */
@@ -776,6 +849,26 @@
         btn.textContent = 'Read Less ↑';
       }
     }
+
+    // Auto-populate and trigger report from URL query parameters
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const dob = params.get('dob');
+      const formatDob = (val) => {
+        if (!val) return val;
+        if (val.includes('-')) {
+          const parts = val.split('-');
+          if (parts.length === 3) return `${parts[2].padStart(2, '0')}/${parts[1].padStart(2, '0')}/${parts[0]}`;
+        }
+        return val;
+      };
+      if (dob && document.getElementById('healthDob')) {
+        document.getElementById('healthDob').value = formatDob(dob);
+        if (typeof revealHealthTendencies === 'function') {
+          setTimeout(revealHealthTendencies, 250);
+        }
+      }
+    });
   </script>
 </body>
 

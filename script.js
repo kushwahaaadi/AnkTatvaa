@@ -1,208 +1,451 @@
 /* ══════════════════════════════════════
-   COSMOS CANVAS — DEEP SPACE STARFIELD
+   COSMOS CANVAS — ULTRA-CRISP REAL GALAXY
 ══════════════════════════════════════ */
 const canvas = document.getElementById('cosmos');
-const ctx    = canvas.getContext('2d');
-let W, H;
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-resize();
-window.addEventListener('resize', resize);
+const ctx    = canvas ? canvas.getContext('2d') : null;
+let W = 0, H = 0;
+let dpr = 1;
+
+function resize() {
+  if (!canvas || !ctx) return;
+  // High-DPI Retina scaling (eliminates blurriness on 1080p/4K/Retina displays)
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.width  = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.zIndex = '0';
+  canvas.style.pointerEvents = 'none';
+}
+if (canvas) {
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.zIndex = '0';
+  canvas.style.pointerEvents = 'none';
+  resize();
+  window.addEventListener('resize', resize);
+}
+
+// ── Background Galaxy Image ──
+const cosmosBgImg = new Image();
+let cosmosImgLoaded = false;
+cosmosBgImg.src = 'cosmos-bg.jpg';
+cosmosBgImg.onload = () => {
+  cosmosImgLoaded = true;
+};
+cosmosBgImg.onerror = () => {
+  cosmosBgImg.src = 'assets/images/cosmos-bg.jpg';
+};
 
 // ── Helpers ──
 const rnd  = (a, b) => a + Math.random() * (b - a);
 const rndI = (a, b) => (a + Math.random() * (b - a)) | 0;
 
-// Star colour presets [r, g, b]
+// Ancient Vedic celestial spectrum: warm ivory, antique bronze, muted copper, soft stone stellar accents
 const STAR_COLORS = [
-  [255, 255, 255],  // pure white
-  [220, 240, 255],  // ice blue-white
-  [200, 225, 255],  // pale blue
-  [255, 245, 210],  // warm white
-  [180, 210, 255],  // steel blue
-  [255, 220, 160],  // golden amber (rare)
+  [232, 224, 210],  // Warm Ivory (#E8E0D2)
+  [176, 138, 87],   // Antique Bronze (#B08A57)
+  [212, 181, 138],  // Muted Copper (#D4B58A)
+  [247, 243, 235],  // Bright Ivory Highlight (#F7F3EB)
+  [137, 130, 118],  // Stone Grey (#898276)
+  [195, 160, 115],  // Ancient Bronze Midtone
 ];
-const randColor = () => STAR_COLORS[Math.random() < 0.08 ? 5 : rndI(0, 5)];
+const randColor = () => STAR_COLORS[rndI(0, STAR_COLORS.length)];
 
-// ── LAYER 1: 150 tiny distant stars ──
-const starsDeep = Array.from({ length: 150 }, () => {
+// ── LAYER 1: 300 Pin-sharp micro-stars (sub-pixel deep space) ──
+const starsDeep = Array.from({ length: 300 }, () => {
   const [r, g, b] = randColor();
-  return { x: Math.random(), y: Math.random(), r: rnd(0.3, 0.85),
-           t: rnd(0, Math.PI * 2), sp: rnd(0.004, 0.010), r_: r, g_: g, b_: b };
+  return {
+    x: Math.random(),
+    y: Math.random(),
+    r: rnd(0.25, 0.75),
+    t: rnd(0, Math.PI * 2),
+    sp: rnd(0.008, 0.024),
+    vx: rnd(-0.000025, 0.000025),
+    vy: rnd(-0.000015, 0.000015),
+    r_: r, g_: g, b_: b
+  };
 });
 
-// ── LAYER 2: 70 medium twinkling stars ──
-const starsMid = Array.from({ length: 70 }, () => {
+// ── LAYER 2: 80 Medium scintillating stars with soft atmospheric halos ──
+const starsMid = Array.from({ length: 80 }, () => {
   const [r, g, b] = randColor();
-  return { x: Math.random(), y: Math.random(), r: rnd(0.9, 1.8),
-           t: rnd(0, Math.PI * 2), sp: rnd(0.007, 0.018), r_: r, g_: g, b_: b };
+  return {
+    x: Math.random(),
+    y: Math.random(),
+    r: rnd(0.75, 1.35),
+    t: rnd(0, Math.PI * 2),
+    sp: rnd(0.010, 0.028),
+    vx: rnd(-0.000035, 0.000035),
+    vy: rnd(-0.000020, 0.000020),
+    r_: r, g_: g, b_: b
+  };
 });
 
-// ── LAYER 3: 20 bright stars with glint crosses ──
+// ── LAYER 3: 20 Primary Astrological Anchors with crystal cross-diffraction spikes ──
 const starsBright = Array.from({ length: 20 }, () => {
   const [r, g, b] = randColor();
-  return { x: Math.random(), y: Math.random(), r: rnd(1.6, 2.8),
-           t: rnd(0, Math.PI * 2), sp: rnd(0.010, 0.022),
-           r_: r, g_: g, b_: b, glint: Math.random() < 0.5 };
+  return {
+    x: Math.random(),
+    y: Math.random(),
+    r: rnd(1.4, 2.1),
+    t: rnd(0, Math.PI * 2),
+    sp: rnd(0.012, 0.026),
+    r_: r, g_: g, b_: b,
+    rot: rnd(0, Math.PI),
+    rotSp: rnd(-0.0005, 0.0005)
+  };
 });
 
-// ── Milky Way band: 80 micro-stars on a diagonal ──
-const milkyWay = Array.from({ length: 80 }, () => {
-  const along = Math.random(), off = rnd(-0.07, 0.07);
-  return { x: along * 1.3 - 0.1 + off * 0.4, y: along * 0.55 + 0.2 + off,
-           r: rnd(0.15, 0.55), a: rnd(0.07, 0.28) };
-});
-
-// ── Nebula clouds ──
-const nebulae = [
-  { x: 0.12, y: 0.18, r: 0.42, c: '0,100,200',   a: 0.07, t: 0,   sp: 0.00025 },
-  { x: 0.80, y: 0.58, r: 0.35, c: '120,30,180',  a: 0.08, t: 1.4, sp: 0.00018 },
-  { x: 0.50, y: 0.04, r: 0.30, c: '0,180,220',   a: 0.06, t: 0.7, sp: 0.00030 },
-  { x: 0.28, y: 0.80, r: 0.28, c: '80,0,160',    a: 0.07, t: 2.0, sp: 0.00022 },
-  { x: 0.88, y: 0.12, r: 0.24, c: '20,120,255',  a: 0.06, t: 0.3, sp: 0.00020 },
-  { x: 0.60, y: 0.85, r: 0.22, c: '160,0,255',   a: 0.05, t: 1.1, sp: 0.00028 },
-  { x: 0.38, y: 0.42, r: 0.18, c: '0,60,160',    a: 0.04, t: 0.5, sp: 0.00015 },
-  { x: 0.70, y: 0.30, r: 0.16, c: '60,0,200',    a: 0.04, t: 1.8, sp: 0.00032 },
-];
-
-// ── Shooting stars ──
+// ── Shooting Stars / Rare High-Altitude Meteors ──
 const shoots = [];
 function spawnShoot() {
-  const angle = Math.random() < 0.7 ? 0.45 : rnd(0.15, 0.65);
-  shoots.push({ x: rnd(0, 0.75), y: rnd(0, 0.45), len: rnd(0.07, 0.15),
-                spd: rnd(0.004, 0.008), angle, life: 1,
-                decay: rnd(0.013, 0.022), width: rnd(1, 2) });
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const angle = rnd(0.35, 0.55);
+  shoots.push({
+    x: rnd(0.12, 0.85),
+    y: rnd(0.02, 0.30),
+    len: rnd(0.08, 0.16),
+    spd: rnd(0.006, 0.012),
+    angle,
+    life: 1.0,
+    decay: rnd(0.015, 0.025),
+    width: rnd(0.8, 1.4)
+  });
 }
-setInterval(() => spawnShoot(), 2500);
-setTimeout(spawnShoot, 600);
-setTimeout(spawnShoot, 2000);
+// Infrequent, rare and elegant cosmic occurrences
+setInterval(spawnShoot, 11000);
+setTimeout(spawnShoot, 2500);
 
-// ── Mouse parallax tracking ──
+// ── Interactive Stardust (Subtle Champagne Embers) ──
+const stardust = [];
+let targetMouseX = 0.5, targetMouseY = 0.5;
 let mouseX = 0.5, mouseY = 0.5;
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX / window.innerWidth;
-  mouseY = e.clientY / window.innerHeight;
-});
+let lastMoveTime = 0;
 
-/* ── Main draw loop ── */
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (!isTouchDevice) {
+  document.addEventListener('mousemove', (e) => {
+    targetMouseX = e.clientX / window.innerWidth;
+    targetMouseY = e.clientY / window.innerHeight;
+
+    const now = performance.now();
+    if (now - lastMoveTime > 45 && stardust.length < 24) {
+      lastMoveTime = now;
+      stardust.push({
+        x: e.clientX,
+        y: e.clientY,
+        vx: rnd(-0.35, 0.35),
+        vy: rnd(-0.5, 0.2),
+        size: rnd(0.6, 1.4),
+        life: 1.0,
+        decay: rnd(0.020, 0.035),
+        r: 176, g: 138, b: 87
+      });
+    }
+  }, { passive: true });
+}
+
+// ── Master Clock for Celestial Float ──
+let cosmosClock = 0;
+const sacredCircleEl = document.querySelector('.sacred-circle');
+
+/* ══════════════════════════════════════
+   MAIN COSMOS RENDER LOOP
+══════════════════════════════════════ */
 function drawCosmos() {
-  ctx.clearRect(0, 0, W, H);
+  if (!canvas || !ctx) return;
+  cosmosClock += 0.0016;
 
-  // Deep space gradient background
-  const grd = ctx.createLinearGradient(0, 0, 0, H);
-  grd.addColorStop(0,   '#020812');
-  grd.addColorStop(0.5, '#050a18');
-  grd.addColorStop(1,   '#02050f');
-  ctx.fillStyle = grd;
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth <= 768 || isTouchDevice;
+
+  // Smooth mouse interpolation (disabled on mobile / reduced motion)
+  if (!isMobile && !prefersReduced) {
+    mouseX += (targetMouseX - mouseX) * 0.035;
+    mouseY += (targetMouseY - mouseY) * 0.035;
+  } else {
+    mouseX = 0.5;
+    mouseY = 0.5;
+  }
+
+  const px = (mouseX - 0.5);
+  const py = (mouseY - 0.5);
+
+  // Subtle Parallax Response on Vedic Sacred Geometry in Hero
+  if (sacredCircleEl && !isMobile && !prefersReduced) {
+    const tiltX = (px * -14).toFixed(1);
+    const tiltY = (py * -10).toFixed(1);
+    sacredCircleEl.style.transform = `translate(-50%, -50%) translate3d(${tiltX}px, ${tiltY}px, 0)`;
+  }
+
+  // Clear full canvas buffer
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.restore();
+
+  // Apply retina dpr scaling for razor-sharp rendering
+  ctx.save();
+  ctx.scale(dpr, dpr);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  // 1. Base Obsidian Black & Dark Bronze (#0D0D0C / #1B1915)
+  const baseGrd = ctx.createLinearGradient(0, 0, 0, H);
+  baseGrd.addColorStop(0,    '#0A0A09');
+  baseGrd.addColorStop(0.35, '#0D0D0C');
+  baseGrd.addColorStop(0.70, '#151410');
+  baseGrd.addColorStop(1,    '#0A0A09');
+  ctx.fillStyle = baseGrd;
   ctx.fillRect(0, 0, W, H);
 
-  // Parallax offsets
-  const px = (mouseX - 0.5) * 15;
-  const py = (mouseY - 0.5) * 10;
+  // 2. Ancient Observatory Warm Atmospheric Lighting (Subtle Bronze & Copper Depth)
+  // Atmospheric Aura 1: Antique Bronze Warmth
+  const n1x = W * 0.45 + (px * 16) + Math.sin(cosmosClock * 0.35) * 22;
+  const n1y = H * 0.32 + (py * 12) + Math.cos(cosmosClock * 0.28) * 18;
+  const n1r = Math.min(W, H) * 0.65;
+  const neb1 = ctx.createRadialGradient(n1x, n1y, 0, n1x, n1y, n1r);
+  neb1.addColorStop(0, 'rgba(176, 138, 87, 0.08)');
+  neb1.addColorStop(0.5, 'rgba(27, 25, 21, 0.03)');
+  neb1.addColorStop(1, 'transparent');
+  ctx.fillStyle = neb1;
+  ctx.fillRect(0, 0, W, H);
 
-  // Milky Way band
-  for (const m of milkyWay) {
-    ctx.beginPath();
-    ctx.arc(m.x * W + px * 0.3, m.y * H + py * 0.3, m.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(180,210,255,${m.a})`;
-    ctx.fill();
+  // Atmospheric Aura 2: Muted Copper Subtle Warmth
+  const n2x = W * 0.78 + (px * 22) - Math.cos(cosmosClock * 0.30) * 26;
+  const n2y = H * 0.62 + (py * 16) - Math.sin(cosmosClock * 0.22) * 22;
+  const n2r = Math.min(W, H) * 0.58;
+  const neb2 = ctx.createRadialGradient(n2x, n2y, 0, n2x, n2y, n2r);
+  neb2.addColorStop(0, 'rgba(212, 181, 138, 0.06)');
+  neb2.addColorStop(0.5, 'rgba(27, 25, 21, 0.02)');
+  neb2.addColorStop(1, 'transparent');
+  ctx.fillStyle = neb2;
+  ctx.fillRect(0, 0, W, H);
+
+  // Atmospheric Aura 3: Dark Bronze Ambient Depth
+  const n3x = W * 0.18 + (px * 18) + Math.cos(cosmosClock * 0.20) * 18;
+  const n3y = H * 0.76 + (py * 14) + Math.sin(cosmosClock * 0.26) * 16;
+  const n3r = Math.min(W, H) * 0.50;
+  const neb3 = ctx.createRadialGradient(n3x, n3y, 0, n3x, n3y, n3r);
+  neb3.addColorStop(0, 'rgba(176, 138, 87, 0.05)');
+  neb3.addColorStop(0.5, 'rgba(27, 25, 21, 0.02)');
+  neb3.addColorStop(1, 'transparent');
+  ctx.fillStyle = neb3;
+  ctx.fillRect(0, 0, W, H);
+
+  // 3. Subtle Photo-Nebula Integration (if image exists, screen blended softly)
+  if (cosmosImgLoaded && cosmosBgImg.naturalWidth) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    ctx.globalAlpha = 0.08;
+
+    const imgW = cosmosBgImg.naturalWidth;
+    const imgH = cosmosBgImg.naturalHeight;
+    const zoom = 1.012 + Math.sin(cosmosClock * 0.25) * 0.006;
+    const driftX = Math.sin(cosmosClock * 0.18) * 0.005;
+    const driftY = Math.cos(cosmosClock * 0.15) * 0.004;
+
+    const totalOffX = (px * 0.018 + driftX);
+    const totalOffY = (py * 0.014 + driftY);
+    const scale = Math.max(W / imgW, H / imgH) * zoom;
+    const destW = imgW * scale;
+    const destH = imgH * scale;
+    const destX = Math.round((W - destW) * 0.5 + (totalOffX * W));
+    const destY = Math.round((H - destH) * 0.5 + (totalOffY * H));
+
+    ctx.drawImage(cosmosBgImg, destX, destY, destW, destH);
+    ctx.restore();
   }
 
-  // Nebula clouds (with parallax)
-  for (const n of nebulae) {
-    n.t += n.sp;
-    const nx = n.x * W + Math.sin(n.t * 1.2) * W * 0.03 + px * 0.8;
-    const ny = n.y * H + Math.cos(n.t)       * H * 0.025 + py * 0.6;
-    const gr = ctx.createRadialGradient(nx, ny, 0, nx, ny, W * n.r);
-    gr.addColorStop(0,   `rgba(${n.c},${n.a})`);
-    gr.addColorStop(0.5, `rgba(${n.c},${+(n.a * 0.4).toFixed(3)})`);
-    gr.addColorStop(1,   'transparent');
-    ctx.fillStyle = gr;
-    ctx.fillRect(0, 0, W, H);
-  }
-
-  // LAYER 1 — tiny distant stars
+  // 4. LAYER 1: 300 Pin-sharp needlepoint micro-stars
   for (const s of starsDeep) {
-    s.t += s.sp;
-    const a = 0.4 + 0.55 * Math.abs(Math.sin(s.t));
+    if (!prefersReduced) {
+      s.t += s.sp;
+      s.x += s.vx;
+      s.y += s.vy;
+      if (s.x < 0) s.x += 1;
+      if (s.x > 1) s.x -= 1;
+      if (s.y < 0) s.y += 1;
+      if (s.y > 1) s.y -= 1;
+    }
+    const a = 0.18 + 0.56 * Math.pow(Math.sin(s.t), 2);
+    const sx = Math.round(s.x * W + px * 7);
+    const sy = Math.round(s.y * H + py * 5);
+
     ctx.beginPath();
-    ctx.arc(s.x * W + px * 0.15, s.y * H + py * 0.1, s.r, 0, Math.PI * 2);
+    ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${s.r_},${s.g_},${s.b_},${a.toFixed(2)})`;
     ctx.fill();
   }
 
-  // LAYER 2 — medium twinkling stars
+  // 5. Additive Blending for Radiant Foreground Stars
+  ctx.globalCompositeOperation = 'screen';
+
+  // LAYER 2: 80 Medium scintillating stars with soft diamond glow
   for (const s of starsMid) {
-    s.t += s.sp;
-    const a = 0.55 + 0.45 * Math.abs(Math.sin(s.t));
-    ctx.beginPath();
-    ctx.arc(s.x * W + px * 0.35, s.y * H + py * 0.25, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${s.r_},${s.g_},${s.b_},${a.toFixed(2)})`;
-    ctx.fill();
-  }
+    if (!prefersReduced) {
+      s.t += s.sp;
+      s.x += s.vx;
+      s.y += s.vy;
+      if (s.x < 0) s.x += 1;
+      if (s.x > 1) s.x -= 1;
+      if (s.y < 0) s.y += 1;
+      if (s.y > 1) s.y -= 1;
+    }
+    const a = 0.32 + 0.52 * Math.pow(Math.sin(s.t), 2);
+    const sx = s.x * W + px * 15;
+    const sy = s.y * H + py * 11;
 
-  // LAYER 3 — bright stars with halo + optional glint cross
-  for (const s of starsBright) {
-    s.t += s.sp;
-    const a  = 0.8 + 0.2 * Math.abs(Math.sin(s.t));
-    const sx = s.x * W + px * 0.5, sy = s.y * H + py * 0.35;
-
-    // Soft glow halo
-    const halo = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 5);
-    halo.addColorStop(0, `rgba(${s.r_},${s.g_},${s.b_},${(a * 0.4).toFixed(2)})`);
-    halo.addColorStop(1, 'transparent');
-    ctx.beginPath();
-    ctx.arc(sx, sy, s.r * 5, 0, Math.PI * 2);
-    ctx.fillStyle = halo;
-    ctx.fill();
-
-    // Core dot
+    // Star core
     ctx.beginPath();
     ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${s.r_},${s.g_},${s.b_},${a.toFixed(2)})`;
     ctx.fill();
 
-    // 4-point sparkle cross
-    if (s.glint) {
-      const arm = s.r * (4 + 2 * Math.abs(Math.sin(s.t * 0.4)));
-      const ga  = (a * 0.65).toFixed(2);
-      const col = `rgba(${s.r_},${s.g_},${s.b_},${ga})`;
-      ctx.lineWidth = 0.7;
-      ctx.lineCap   = 'round';
-      const hg = ctx.createLinearGradient(sx - arm, sy, sx + arm, sy);
-      hg.addColorStop(0, 'transparent'); hg.addColorStop(0.5, col); hg.addColorStop(1, 'transparent');
-      ctx.strokeStyle = hg;
-      ctx.beginPath(); ctx.moveTo(sx - arm, sy); ctx.lineTo(sx + arm, sy); ctx.stroke();
-      const vg = ctx.createLinearGradient(sx, sy - arm, sx, sy + arm);
-      vg.addColorStop(0, 'transparent'); vg.addColorStop(0.5, col); vg.addColorStop(1, 'transparent');
-      ctx.strokeStyle = vg;
-      ctx.beginPath(); ctx.moveTo(sx, sy - arm); ctx.lineTo(sx, sy + arm); ctx.stroke();
-    }
+    // Soft diamond glow halo
+    const halo = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 2.6);
+    halo.addColorStop(0, `rgba(${s.r_},${s.g_},${s.b_},${(a * 0.32).toFixed(2)})`);
+    halo.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.arc(sx, sy, s.r * 2.6, 0, Math.PI * 2);
+    ctx.fillStyle = halo;
+    ctx.fill();
   }
 
-  // Shooting stars
+  // LAYER 3: 20 Primary Astrological Anchors with crystal cross-diffraction spikes
+  for (const s of starsBright) {
+    if (!prefersReduced) {
+      s.t += s.sp;
+      s.rot += s.rotSp;
+    }
+    const a = 0.58 + 0.32 * Math.sin(s.t);
+    const sx = s.x * W + px * 24;
+    const sy = s.y * H + py * 18;
+
+    // Radiant halo
+    const halo = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 3.8);
+    halo.addColorStop(0, `rgba(${s.r_},${s.g_},${s.b_},${(a * 0.42).toFixed(2)})`);
+    halo.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.arc(sx, sy, s.r * 3.8, 0, Math.PI * 2);
+    ctx.fillStyle = halo;
+    ctx.fill();
+
+    // Core star
+    ctx.beginPath();
+    ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${s.r_},${s.g_},${s.b_},${a.toFixed(2)})`;
+    ctx.fill();
+
+    // Delicate 4-point cross diffraction spikes (lineWidth = 0.6)
+    const arm = s.r * (3.2 + 0.8 * Math.sin(s.t * 0.7));
+    const col = `rgba(${s.r_},${s.g_},${s.b_},${(a * 0.65).toFixed(2)})`;
+
+    ctx.save();
+    ctx.translate(sx, sy);
+    ctx.rotate(s.rot);
+    ctx.lineWidth = 0.6;
+    ctx.lineCap   = 'round';
+
+    // Horizontal ray
+    const hg = ctx.createLinearGradient(-arm, 0, arm, 0);
+    hg.addColorStop(0, 'transparent');
+    hg.addColorStop(0.5, col);
+    hg.addColorStop(1, 'transparent');
+    ctx.strokeStyle = hg;
+    ctx.beginPath();
+    ctx.moveTo(-arm, 0);
+    ctx.lineTo(arm, 0);
+    ctx.stroke();
+
+    // Vertical ray
+    const vg = ctx.createLinearGradient(0, -arm, 0, arm);
+    vg.addColorStop(0, 'transparent');
+    vg.addColorStop(0.5, col);
+    vg.addColorStop(1, 'transparent');
+    ctx.strokeStyle = vg;
+    ctx.beginPath();
+    ctx.moveTo(0, -arm);
+    ctx.lineTo(0, arm);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  // 6. Interactive Stardust Trails (Subtle Champagne Embers)
+  for (let i = stardust.length - 1; i >= 0; i--) {
+    const p = stardust[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life -= p.decay;
+
+    if (p.life <= 0) {
+      stardust.splice(i, 1);
+      continue;
+    }
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${p.r},${p.g},${p.b},${(p.life * 0.55).toFixed(2)})`;
+    ctx.fill();
+  }
+
+  // 7. Rare Cosmic Meteors
   for (let i = shoots.length - 1; i >= 0; i--) {
     const s = shoots[i];
     s.x   += s.spd;
     s.y   += s.spd * s.angle;
     s.life -= s.decay;
-    if (s.life <= 0) { shoots.splice(i, 1); continue; }
-    const x1 = s.x * W, y1 = s.y * H;
-    const x2 = (s.x - s.len) * W, y2 = (s.y - s.len * s.angle) * H;
+
+    if (s.life <= 0) {
+      shoots.splice(i, 1);
+      continue;
+    }
+
+    const x1 = s.x * W;
+    const y1 = s.y * H;
+    const x2 = (s.x - s.len) * W;
+    const y2 = (s.y - s.len * s.angle) * H;
+
     const sg = ctx.createLinearGradient(x2, y2, x1, y1);
     sg.addColorStop(0,   'transparent');
-    sg.addColorStop(0.6, `rgba(180,230,255,${(s.life * 0.55).toFixed(2)})`);
-    sg.addColorStop(1,   `rgba(240,250,255,${(s.life * 0.95).toFixed(2)})`);
-    ctx.beginPath(); ctx.moveTo(x2, y2); ctx.lineTo(x1, y1);
-    ctx.strokeStyle = sg; ctx.lineWidth = s.width; ctx.lineCap = 'round';
+    sg.addColorStop(0.6, `rgba(212,181,138,${(s.life * 0.45).toFixed(2)})`);
+    sg.addColorStop(1,   `rgba(232,224,210,${(s.life * 0.80).toFixed(2)})`);
+
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x1, y1);
+    ctx.strokeStyle = sg;
+    ctx.lineWidth = s.width;
+    ctx.lineCap = 'round';
     ctx.stroke();
-    ctx.beginPath(); ctx.arc(x1, y1, s.width * 1.3, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(240,250,255,${(s.life * 0.9).toFixed(2)})`;
+
+    ctx.beginPath();
+    ctx.arc(x1, y1, s.width * 1.1, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(247,243,235,${(s.life * 0.85).toFixed(2)})`;
     ctx.fill();
   }
 
+  // Restore regular composite mode and coordinate system
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.restore();
+
   requestAnimationFrame(drawCosmos);
 }
-drawCosmos();
+
+if (canvas && getComputedStyle(canvas).display !== 'none') {
+  drawCosmos();
+}
 
 /* ══════════════════════════════════════
    SCROLL REVEAL — IntersectionObserver
@@ -224,26 +467,237 @@ drawCosmos();
 })();
 
 /* ══════════════════════════════════════
-   NAVBAR SCROLL SHADOW
+   NAVIGATION CONTROLLER (DESKTOP & MOBILE)
 ══════════════════════════════════════ */
-(function initNavScroll() {
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('navHamburger');
+  if (!menu || !btn) return;
+  const isOpen = menu.classList.contains('open');
+  if (isOpen) {
+    closeMobileMenu();
+  } else {
+    menu.classList.add('open');
+    btn.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  }
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('navHamburger');
+  if (menu) menu.classList.remove('open');
+  if (btn) {
+    btn.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  document.body.classList.remove('menu-open');
+}
+
+function toggleMobileSubmenu(btn) {
+  if (!btn) return;
+  const wrap = btn.closest('.mobile-submenu-wrap');
+  if (!wrap) return;
+  const submenu = wrap.querySelector('.mobile-submenu');
+  if (!submenu) return;
+  const isExpanded = btn.classList.contains('expanded');
+  if (isExpanded) {
+    btn.classList.remove('expanded');
+    btn.setAttribute('aria-expanded', 'false');
+    submenu.classList.remove('open');
+  } else {
+    btn.classList.add('expanded');
+    btn.setAttribute('aria-expanded', 'true');
+    submenu.classList.add('open');
+  }
+}
+
+// Ensure functions are available globally for onclick attributes
+window.toggleMobileMenu = toggleMobileMenu;
+window.closeMobileMenu = closeMobileMenu;
+window.toggleMobileSubmenu = toggleMobileSubmenu;
+
+(function initNavigationSystem() {
+  // 1. Sticky Navbar Scroll Effect
   const nav = document.querySelector('.navbar');
-  if (!nav) return;
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        if (window.scrollY > 40) {
-          nav.classList.add('scrolled');
-        } else {
-          nav.classList.remove('scrolled');
+  if (nav) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (window.scrollY > 20) {
+            nav.classList.add('scrolled');
+          } else {
+            nav.classList.remove('scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+  }
+
+  // 2. Desktop Dropdown Accessibility & Click/Keyboard Toggle
+  const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+  const dropdownWrap = document.querySelector('.nav-dropdown');
+
+  if (dropdownTrigger && dropdownWrap) {
+    dropdownTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = dropdownWrap.classList.contains('open');
+      if (isOpen) {
+        dropdownWrap.classList.remove('open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      } else {
+        dropdownWrap.classList.add('open');
+        dropdownTrigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!dropdownWrap.contains(e.target)) {
+        dropdownWrap.classList.remove('open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Keyboard support: Escape closes dropdown / mobile menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (dropdownWrap.classList.contains('open')) {
+          dropdownWrap.classList.remove('open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+          dropdownTrigger.focus();
         }
-        ticking = false;
-      });
-      ticking = true;
+        closeMobileMenu();
+      }
+    });
+  }
+
+  // Close mobile menu on resize to desktop (width > 900px)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      closeMobileMenu();
     }
   });
 })();
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL & INTERACTION SYSTEM
+   ══════════════════════════════════════ */
+(function initScrollRevealSystem() {
+  // Check reduced-motion preference
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    // Graceful degradation: content remains immediately visible
+    return;
+  }
+
+  // Safe activation: add class to enable reveal transitions in CSS
+  document.body.classList.add('reveal-init');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.12
+  };
+
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Auto-observe all .reveal and .reveal-stagger elements
+  function observeRevealElements() {
+    const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    targets.forEach(el => {
+      // If already in viewport upon page load, reveal immediately
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('revealed');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeRevealElements);
+  } else {
+    observeRevealElements();
+  }
+})();
+
+/* ══════════════════════════════════════
+   REFINED NUMERICAL REVEAL ENGINE
+   ══════════════════════════════════════ */
+function animateNumber(element, start, end, duration = 900, suffix = '') {
+  if (!element) return;
+
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    element.textContent = end + suffix;
+    element.classList.add('num-settled');
+    return;
+  }
+
+  const target = Number(end);
+  if (isNaN(target)) {
+    element.textContent = end + suffix;
+    return;
+  }
+
+  const initial = Number(start) || 0;
+  const isFloat = !Number.isInteger(target);
+  const diff = target - initial;
+  const startTime = performance.now();
+
+  // Smooth luxury deceleration curve (ease-out quartic)
+  const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+
+  element.classList.remove('num-settled');
+
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeOutQuart(progress);
+    const current = initial + diff * eased;
+
+    element.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      element.textContent = end + suffix;
+      element.classList.add('num-settled');
+    }
+  }
+
+  element.textContent = initial + suffix;
+  requestAnimationFrame(step);
+}
+window.animateNumber = animateNumber;
+
+/* ══════════════════════════════════════
+   BUTTON ARROW MICRO-INTERACTIONS
+   ══════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Wrap any raw '→' in buttons with .btn-arrow span for smooth glide
+  const buttons = document.querySelectorAll('.btn-primary, .submit-btn, .btn-hero-primary, .btn-nav-signup, .btn-secondary, .btn-hero-secondary, .btn-tertiary');
+  buttons.forEach(btn => {
+    if (!btn.querySelector('.btn-arrow') && btn.innerHTML.includes('→')) {
+      btn.innerHTML = btn.innerHTML.replace('→', '<span class="btn-arrow" aria-hidden="true">→</span>');
+    }
+  });
+});
 
 /* ══════════════════════════════════════
    BUTTON RIPPLE EFFECT
@@ -262,6 +716,65 @@ document.addEventListener('click', function(e) {
   btn.appendChild(ripple);
   setTimeout(() => ripple.remove(), 700);
 });
+
+/* ══════════════════════════════════════
+   READINGS PERSISTENCE & TOAST HELPER
+   ══════════════════════════════════════ */
+function showToast(message) {
+  let toast = document.getElementById('reportToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'reportToast';
+    toast.className = 'report-toast';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = '<span>✦</span><span>' + message + '</span>';
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3200);
+}
+if (typeof window !== 'undefined') window.showToast = showToast;
+
+function saveReadingRecord(type, title, summary, link) {
+  try {
+    const list = JSON.parse(localStorage.getItem('ank_saved_readings') || '[]');
+    const record = {
+      id: 'rd_' + Date.now(),
+      type: type || 'Numerology',
+      title: title || 'Celestial Reading',
+      summary: summary || '',
+      link: link || window.location.href,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      timestamp: Date.now()
+    };
+    list.unshift(record);
+    localStorage.setItem('ank_saved_readings', JSON.stringify(list.slice(0, 40)));
+    showToast('Analysis saved to your Cosmic Dashboard');
+    return true;
+  } catch (e) {
+    console.error('Could not save reading:', e);
+    showToast('Failed to save reading locally');
+    return false;
+  }
+}
+if (typeof window !== 'undefined') window.saveReadingRecord = saveReadingRecord;
+
+// Check user login state to update navbar
+(function checkNavAuth() {
+  if (typeof document === 'undefined') return;
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      const user = JSON.parse(localStorage.getItem('ank_user') || 'null');
+      if (user && user.loggedIn) {
+        document.querySelectorAll('.btn-nav-login, .btn-mobile-secondary').forEach(btn => {
+          btn.textContent = 'Dashboard';
+          btn.href = 'dashboard.html';
+        });
+      }
+    } catch (e) {}
+  });
+})();
 
 /* ══════════════════════════════════════
    NUMEROLOGY CALCULATIONS
@@ -311,18 +824,18 @@ function personalYearNumber(dob) {
    NUMBER ESSENCE LOOKUP TABLE
 ══════════════════════════════════════ */
 const NUMBER_ESSENCE = {
-  1: { keyword: 'The Leader', planet: 'Sun', symbol: '☉', color: '#f59e0b', desc: 'You are born to lead, innovate, and pioneer. Number 1 carries the energy of the Sun — independence, ambition, and the courage to forge new paths. You are a natural initiator who inspires others through sheer willpower and vision.' },
-  2: { keyword: 'The Diplomat', planet: 'Moon', symbol: '☽', color: '#a5f3fc', desc: 'You are the cosmic peacemaker, guided by the Moon. Number 2 embodies sensitivity, intuition, and the gift of harmony. Your strength lies in collaboration, emotional intelligence, and the ability to see both sides of every situation.' },
-  3: { keyword: 'The Creative', planet: 'Jupiter', symbol: '♃', color: '#818cf8', desc: 'Blessed by Jupiter, you are a vessel of creative expression and joy. Number 3 radiates optimism, artistic talent, and magnetic communication. You inspire and uplift everyone around you with your natural charisma.' },
-  4: { keyword: 'The Builder', planet: 'Rahu', symbol: '☊', color: '#6ee7b7', desc: 'Under the shadow planet Rahu, you are the cosmic architect. Number 4 brings discipline, determination, and the ability to manifest grand visions into reality. Your karmic path demands hard work, but rewards are immense.' },
-  5: { keyword: 'The Explorer', planet: 'Mercury', symbol: '☿', color: '#00d4ff', desc: 'Mercury gifts you with restless intelligence and the spirit of adventure. Number 5 craves freedom, change, and diverse experiences. You are a natural communicator, adaptable and quick-witted, thriving on variety.' },
-  6: { keyword: 'The Nurturer', planet: 'Venus', symbol: '♀', color: '#f9a8d4', desc: 'Venus blesses you with love, beauty, and cosmic responsibility. Number 6 is the caretaker of the zodiac — devoted to family, harmony, and aesthetic perfection. Your heart is your greatest compass.' },
-  7: { keyword: 'The Mystic', planet: 'Ketu', symbol: '☋', color: '#c084fc', desc: 'The shadow planet Ketu guides your path of spiritual depth and inner wisdom. Number 7 is the seeker of truth — introspective, analytical, and drawn to life\'s deeper mysteries. Solitude is where your power regenerates.' },
-  8: { keyword: 'The Powerhouse', planet: 'Saturn', symbol: '♄', color: '#38bdf8', desc: 'Saturn shapes you through karma, discipline, and material mastery. Number 8 carries the energy of authority, abundance, and cosmic justice. Your challenges forge you into an unstoppable force of transformation.' },
-  9: { keyword: 'The Humanitarian', planet: 'Mars', symbol: '♂', color: '#f87171', desc: 'Mars empowers you with courage, passion, and universal compassion. Number 9 is the number of completion and selfless service. You are a warrior of light, destined to leave a lasting impact on the world.' },
-  11: { keyword: 'The Illuminator', planet: 'Moon (Master)', symbol: '☽✦', color: '#a855f7', desc: 'Master Number 11 carries heightened intuition and spiritual illumination. You are a cosmic channel, deeply psychic and sensitive. Your life purpose is to inspire and awaken others through your elevated consciousness.' },
-  22: { keyword: 'The Master Builder', planet: 'Rahu (Master)', symbol: '☊✦', color: '#00d4ff', desc: 'Master Number 22 is the most powerful number in numerology — the Master Builder. You have the vision of the 11 combined with the practical ability of the 4. You can literally reshape reality on a grand scale.' },
-  33: { keyword: 'The Master Teacher', planet: 'Jupiter (Master)', symbol: '♃✦', color: '#818cf8', desc: 'Master Number 33 is the Master Teacher — the rarest and most spiritually evolved number. You embody unconditional love and healing. Your presence alone elevates the consciousness of those around you.' },
+  1: { keyword: 'The Leader', planet: 'Sun', symbol: '☉', color: '#B08A57', desc: 'You are born to lead, innovate, and pioneer. Number 1 carries the energy of the Sun — independence, ambition, and the courage to forge new paths. You are a natural initiator who inspires others through sheer willpower and vision.' },
+  2: { keyword: 'The Diplomat', planet: 'Moon', symbol: '☽', color: '#E8E0D2', desc: 'You are the cosmic peacemaker, guided by the Moon. Number 2 embodies sensitivity, intuition, and the gift of harmony. Your strength lies in collaboration, emotional intelligence, and the ability to see both sides of every situation.' },
+  3: { keyword: 'The Creative', planet: 'Jupiter', symbol: '♃', color: '#D4B58A', desc: 'Blessed by Jupiter, you are a vessel of creative expression and joy. Number 3 radiates optimism, artistic talent, and magnetic communication. You inspire and uplift everyone around you with your natural charisma.' },
+  4: { keyword: 'The Builder', planet: 'Rahu', symbol: '☊', color: '#898276', desc: 'Under the shadow planet Rahu, you are the cosmic architect. Number 4 brings discipline, determination, and the ability to manifest grand visions into reality. Your karmic path demands hard work, but rewards are immense.' },
+  5: { keyword: 'The Explorer', planet: 'Mercury', symbol: '☿', color: '#C49E6A', desc: 'Mercury gifts you with restless intelligence and the spirit of adventure. Number 5 craves freedom, change, and diverse experiences. You are a natural communicator, adaptable and quick-witted, thriving on variety.' },
+  6: { keyword: 'The Nurturer', planet: 'Venus', symbol: '♀', color: '#E8E0D2', desc: 'Venus blesses you with love, beauty, and cosmic responsibility. Number 6 is the caretaker of the zodiac — devoted to family, harmony, and aesthetic perfection. Your heart is your greatest compass.' },
+  7: { keyword: 'The Mystic', planet: 'Ketu', symbol: '☋', color: '#B08A57', desc: 'The shadow planet Ketu guides your path of spiritual depth and inner wisdom. Number 7 is the seeker of truth — introspective, analytical, and drawn to life\'s deeper mysteries. Solitude is where your power regenerates.' },
+  8: { keyword: 'The Powerhouse', planet: 'Saturn', symbol: '♄', color: '#9A7646', desc: 'Saturn shapes you through karma, discipline, and material mastery. Number 8 carries the energy of authority, abundance, and cosmic justice. Your challenges forge you into an unstoppable force of transformation.' },
+  9: { keyword: 'The Humanitarian', planet: 'Mars', symbol: '♂', color: '#B08A57', desc: 'Mars empowers you with courage, passion, and universal compassion. Number 9 is the number of completion and selfless service. You are a warrior of light, destined to leave a lasting impact on the world.' },
+  11: { keyword: 'The Illuminator', planet: 'Moon (Master)', symbol: '☽✦', color: '#D4B58A', desc: 'Master Number 11 carries heightened intuition and spiritual illumination. You are a cosmic channel, deeply psychic and sensitive. Your life purpose is to inspire and awaken others through your elevated consciousness.' },
+  22: { keyword: 'The Master Builder', planet: 'Rahu (Master)', symbol: '☊✦', color: '#B08A57', desc: 'Master Number 22 is the most powerful number in numerology — the Master Builder. You have the vision of the 11 combined with the practical ability of the 4. You can literally reshape reality on a grand scale.' },
+  33: { keyword: 'The Master Teacher', planet: 'Jupiter (Master)', symbol: '♃✦', color: '#D4B58A', desc: 'Master Number 33 is the Master Teacher — the rarest and most spiritually evolved number. You embody unconditional love and healing. Your presence alone elevates the consciousness of those around you.' },
 };
 
 /* ══════════════════════════════════════
@@ -347,238 +860,41 @@ function cycleLoading() {
 }
 
 /* ══════════════════════════════════════
-   MAIN READING FUNCTION (EXPANDED)
+   MAIN READING FUNCTION (REDIRECT & REPORT)
 ══════════════════════════════════════ */
 async function doReading() {
-  const name      = document.getElementById('fname').value.trim();
-  const dob       = document.getElementById('fdob').value;
-  const phone     = document.getElementById('fphone').value.trim();
-  const challenge = document.getElementById('fchallenge').value.trim();
+  const name      = (document.getElementById('fname') ? document.getElementById('fname').value : '').trim();
+  const dob       = document.getElementById('fdob') ? document.getElementById('fdob').value : '';
+  const phone     = (document.getElementById('fphone') ? document.getElementById('fphone').value : '').trim();
+  const challenge = (document.getElementById('fchallenge') ? document.getElementById('fchallenge').value : '').trim();
   const errEl     = document.getElementById('errMsg');
 
-  errEl.textContent = '';
+  if (errEl) errEl.textContent = '';
 
-  if (!name || !dob || !phone) {
-    errEl.textContent = '◈ Please fill your name, date of birth and phone number';
-    return;
-  }
-  if (phone.replace(/\D/g, '').length < 6) {
-    errEl.textContent = '◈ Please enter a valid phone number (minimum 6 digits)';
+  // If clicked completely blank, redirect straight to the full Numerology portal
+  if (!name && !dob) {
+    window.location.href = 'numerology.html';
     return;
   }
 
-  const lp = lifePathNumber(dob);
-  const nn = nameNumber(name);
-  const pn = phoneNumber(phone);
-  const py = personalYearNumber(dob);
-  const essence = NUMBER_ESSENCE[lp] || NUMBER_ESSENCE[reduceNum(lp, false)];
-
-  document.getElementById('submitBtn').disabled = true;
-  document.getElementById('loadingDiv').style.display = 'block';
-  document.getElementById('result-section').style.display = 'none';
-  const loadInterval = setInterval(cycleLoading, 1800);
-
-  try {
-    const currentYear = new Date().getFullYear();
-    let pyData = null;
-    try {
-      const pyResp = await fetch("personal_year_1_9_v2 (1).json");
-      if (pyResp.ok) {
-        const pyJson = await pyResp.json();
-        const pyReduced = reduceNum(py, false);
-        pyData = pyJson[String(pyReduced)];
-      }
-    } catch (e) {
-      console.error("Error fetching personal_year_1_9_v2 (1).json:", e);
-    }
-
-    const prompt = `You are an ancient Vedic numerology sage with mastery of Chaldean numerology, Pythagorean methods, Vedic astro-numerology, and Sanskrit sacred texts. A seeker has approached you.
-
-Seeker's Details:
-- Full Name: ${name}
-- Date of Birth: ${dob}
-- Phone Number: ${phone}
-- Their stated current challenge: ${challenge || 'general life reading — reveal what is currently causing them difficulty'}
-
-Calculated Sacred Numbers:
-- Life Path Number: ${lp}
-- Chaldean Name Number: ${nn}
-- Phone Vibration Number: ${pn}
-- Personal Year Number (${currentYear}): ${py}
-- Ruling Planet: ${essence.planet} (${essence.symbol})
-
-Provide a HIGHLY SPECIFIC, deeply personal numerological reading. Focus on what is CURRENTLY going wrong or challenging in their life and WHY, based on the numerological analysis. Reference dharma, karma, yugas, chakras and Vedic concepts naturally.
-
-Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly these eight keys:
-
-{
-  "current_situation": "3-4 sentences. Be very specific about what the combination of their Life Path ${lp} and Personal Year ${py} reveals about their current struggles, obstacles and why this period feels difficult.",
-  "phone_influence": "2-3 sentences. Explain how their phone vibration number ${pn} interacts with their name number ${nn} — is it harmonious or discordant? How does this affect their daily energy, decisions and relationships?",
-  "present_cycle": "2-3 sentences. Explain the Personal Year ${py} cycle they are in during ${currentYear} — what karmic lessons, transitions or tests this year is bringing, and when the energy will shift.",
-  "planetary_ruler": "3-4 sentences. Explain how their ruling planet ${essence.planet} (${essence.symbol}) shapes their personality, career path, and relationships. What are the gifts and challenges of being ruled by this planet? How should they harness this planetary energy right now?",
-  "chakra_block": "2 sentences. Identify the specific chakra most affected by their Life Path ${lp} and current Personal Year ${py}. Name the physical and emotional symptoms this blockage produces in daily life.",
-  "lucky_elements": {"day": "specific day of the week", "color": "specific color", "gemstone": "specific gemstone name", "direction": "compass direction", "metal": "specific metal"},
-  "year_forecast": "3-4 sentences. Give a concise forecast for the remainder of ${currentYear} — what months will be powerful, when to take action vs. retreat, and what the closing energy of the year holds for them.",
-  "remedy": "4 sentences. Give precise, actionable Vedic remedies — include: a specific mantra to chant with number of repetitions, a gemstone or crystal, a colour to wear on a specific day, and a simple daily ritual aligned to their numbers."
-}`;
-
-    let reading;
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1500,
-          messages: [{ role: "user", content: prompt }]
-        })
-      });
-
-      const data    = await response.json();
-      const rawText = data.content.map(item => item.text || "").join("");
-      const cleaned = rawText.replace(/```json|```/g, "").trim();
-      reading = JSON.parse(cleaned);
-    } catch (_) {
-      reading = {
-        current_situation: "Your Life Path number reveals a powerful confluence of karmic energies demanding your attention this cycle. The universe has positioned specific tests along your path to accelerate your soul's evolution. Current difficulties are not random — they are precisely calibrated to dissolve the old patterns that no longer serve your dharmic purpose.",
-        phone_influence:   "Your phone number carries a vibrational dissonance with your name number, subtly draining your mental clarity and decision-making energy each day. This discordant frequency may be contributing to misunderstandings in communication and delayed outcomes in matters you initiate.",
-        present_cycle:     "Your current Personal Year places you in a period of deep transformation and inner reckoning. Old structures in your career and relationships must dissolve before new ones aligned with your true dharma can emerge. This cycle demands surrender rather than force.",
-        planetary_ruler:   `Your ruling planet ${essence.planet} shapes your core identity with the energy of ${essence.keyword}. This planetary influence gives you remarkable ${lp <= 5 ? 'drive and mental acuity' : 'depth and resilience'}, but can also create periods of intense internal pressure when its energy is blocked or misdirected. Right now, ${essence.planet}'s transit is asking you to realign your daily habits with your soul's true calling.`,
-        chakra_block:      "Your heart chakra shows significant restriction, manifesting as emotional guardedness, difficulty receiving support, and a subtle sense of isolation. This blockage is also suppressing the natural flow of abundance and meaningful connection into your life.",
-        lucky_elements:    { day: "Sunday", color: "Gold", gemstone: "Ruby", direction: "East", metal: "Gold" },
-        year_forecast:     `The remainder of ${currentYear} brings a gradual shift from turbulence to clarity. The months of August and October will be particularly powerful for new beginnings and decisive action. By November, much of the karmic fog will lift, revealing clearer paths forward. Close the year with gratitude rituals to seal the positive energy.`,
-        remedy:            "Chant 'Om Namah Shivaya' 108 times each morning before sunrise to clear karmic residue. Wear deep indigo or violet on Saturdays to strengthen your intuitive faculties. Place an amethyst crystal at your workspace to neutralise discordant phone vibrations. Each evening, light a ghee lamp and sit in silence for 9 minutes — this simple ritual will begin to restore your chakra balance within 21 days."
-      };
-    }
-
-    clearInterval(loadInterval);
-    document.getElementById('loadingDiv').style.display = 'none';
-    document.getElementById('res-name').textContent = name;
-
-    // Number badges
-    document.getElementById('res-numbers').innerHTML = `
-      <div class="num-badge"><div class="num-val">${lp}</div><div class="num-label">Life Path</div></div>
-      <div class="num-badge"><div class="num-val">${nn}</div><div class="num-label">Name Number</div></div>
-      <div class="num-badge"><div class="num-val">${pn}</div><div class="num-label">Phone Vibration</div></div>
-      <div class="num-badge"><div class="num-val">${py}</div><div class="num-label">Personal Year</div></div>
-    `;
-
-    // Build the rich result HTML
-    let resultHTML = '';
-
-    // Essence card
-    resultHTML += `
-      <div class="essence-card">
-        <div class="essence-number">${lp}</div>
-        <div class="essence-keyword">✦ ${essence.keyword} ✦</div>
-        <p class="essence-desc">${essence.desc}</p>
-      </div>
-    `;
-
-    // Planetary ruler card
-    resultHTML += `
-      <div class="planetary-ruler-card">
-        <span class="planetary-symbol" style="color:${essence.color}">${essence.symbol}</span>
-        <p class="planetary-name">Ruled by ${essence.planet}</p>
-        <p class="planetary-desc">${reading.planetary_ruler || ''}</p>
-      </div>
-    `;
-
-    // Personal Year Outcome card
-    if (pyData) {
-      resultHTML += `
-        <div class="reading-divider">
-          <div class="reading-divider-line"></div>
-          <span class="reading-divider-label">✦ Personal Year ${py} Outcome ✦</span>
-          <div class="reading-divider-line"></div>
-        </div>
-        <div class="essence-card" style="border-color: rgba(0, 212, 255, 0.25); background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(168, 85, 247, 0.06)); text-align: center;">
-          <div class="essence-keyword" style="color: var(--gold); font-size: 11px; letter-spacing: 3px; margin-bottom: 0.6rem;">Theme: ${pyData.theme || ''}</div>
-          <p class="essence-desc" style="font-size: 1.05rem; margin-bottom: 1.5rem; text-align: justify; line-height: 1.85;">${pyData.description || ''}</p>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; text-align: left;">
-            <div style="background: rgba(0, 0, 0, 0.25); padding: 1.2rem; border-radius: 6px; border-left: 3px solid #6ee7b7; border-top: 1px solid rgba(255,255,255,0.03); border-right: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);">
-              <p style="font-family: 'Philosopher', serif; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; font-weight: bold; color: #6ee7b7;">✨ Positive Highlights</p>
-              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                ${(pyData.positive_highlights || []).map(eff => `<span style="font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; padding: 0.3rem 0.7rem; border-radius: 4px; background: rgba(110, 231, 183, 0.04); border: 1px solid rgba(110, 231, 183, 0.15); color: var(--text); text-transform: capitalize;">${eff}</span>`).join('')}
-              </div>
-            </div>
-            <div style="background: rgba(0, 0, 0, 0.25); padding: 1.2rem; border-radius: 6px; border-left: 3px solid #f87171; border-top: 1px solid rgba(255,255,255,0.03); border-right: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);">
-              <p style="font-family: 'Philosopher', serif; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; font-weight: bold; color: #f87171;">⚠️ Precautions</p>
-              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                ${(pyData.precautions || []).map(eff => `<span style="font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; padding: 0.3rem 0.7rem; border-radius: 4px; background: rgba(248, 113, 113, 0.04); border: 1px solid rgba(248, 113, 113, 0.15); color: var(--text); text-transform: capitalize;">${eff}</span>`).join('')}
-              </div>
-            </div>
-          </div>
-          
-          ${pyData.notes ? `
-            <div style="display: flex; gap: 0.8rem; align-items: flex-start; background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.18); border-radius: 6px; padding: 1rem 1.2rem; text-align: left;">
-              <span style="font-size: 1.25rem; line-height: 1;">🔮</span>
-              <p style="font-family: 'Vesper Libre', serif; font-size: 0.9rem; line-height: 1.6; color: #fbbf24; font-style: italic; margin: 0;">${pyData.notes}</p>
-            </div>
-          ` : ''}
-        </div>
-      `;
-    }
-
-    // Lucky elements grid
-    const lucky = reading.lucky_elements || {};
-    resultHTML += `
-      <div class="reading-divider">
-        <div class="reading-divider-line"></div>
-        <span class="reading-divider-label">✦ Your Lucky Elements ✦</span>
-        <div class="reading-divider-line"></div>
-      </div>
-      <div class="lucky-elements-grid">
-        <div class="lucky-card"><span class="lucky-icon">📅</span><p class="lucky-label">Lucky Day</p><p class="lucky-value">${lucky.day || 'Sunday'}</p></div>
-        <div class="lucky-card"><span class="lucky-icon">🎨</span><p class="lucky-label">Lucky Color</p><p class="lucky-value">${lucky.color || 'Gold'}</p></div>
-        <div class="lucky-card"><span class="lucky-icon">💎</span><p class="lucky-label">Gemstone</p><p class="lucky-value">${lucky.gemstone || 'Ruby'}</p></div>
-        <div class="lucky-card"><span class="lucky-icon">🧭</span><p class="lucky-label">Direction</p><p class="lucky-value">${lucky.direction || 'East'}</p></div>
-        <div class="lucky-card"><span class="lucky-icon">⚙️</span><p class="lucky-label">Metal</p><p class="lucky-value">${lucky.metal || 'Gold'}</p></div>
-      </div>
-    `;
-
-    // Reading blocks divider
-    resultHTML += `
-      <div class="reading-divider">
-        <div class="reading-divider-line"></div>
-        <span class="reading-divider-label">✦ Your Cosmic Reading ✦</span>
-        <div class="reading-divider-line"></div>
-      </div>
-    `;
-
-    // Reading sections
-    const sections = [
-      { title: "◈ What Is Currently Afflicting You",  key: "current_situation" },
-      { title: "✦ Your Phone's Hidden Influence",     key: "phone_influence"   },
-      { title: "◉ Your Present Cosmic Cycle",         key: "present_cycle"     },
-      { title: "⚡ Chakra Blockage Revealed",         key: "chakra_block"      },
-      { title: "🔮 Year Ahead Forecast",              key: "year_forecast"     },
-      { title: "☽ Vedic Remedies Prescribed For You", key: "remedy"            },
-    ];
-
-    resultHTML += sections.map(s => `
-      <div class="reading-block">
-        <p class="reading-title">${s.title}</p>
-        <p class="reading-text">${reading[s.key] || ''}</p>
-      </div>
-    `).join('');
-
-    document.getElementById('res-reading').innerHTML = resultHTML;
-
-    document.getElementById('result-section').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-
-  } catch (error) {
-    clearInterval(loadInterval);
-    document.getElementById('loadingDiv').style.display = 'none';
-    document.getElementById('errMsg').textContent = '◈ The cosmic connection wavered — please try again';
-    console.error('Reading error:', error);
+  if (!name || !dob) {
+    if (errEl) errEl.textContent = '◈ Please enter your full name and date of birth';
+    return;
   }
 
-  document.getElementById('submitBtn').disabled = false;
+  const btn = document.getElementById('submitBtn');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = '◈ Aligning your celestial matrix...';
+  }
+
+  const params = new URLSearchParams();
+  params.set('name', name);
+  params.set('dob', dob);
+  if (phone) params.set('phone', phone);
+  if (challenge) params.set('challenge', challenge);
+
+  window.location.href = `numerology.html?${params.toString()}`;
 }
 
 /* ══════════════════════════════════════
@@ -586,17 +902,17 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
 ══════════════════════════════════════ */
 (function initDailyCosmicNumber() {
   const DAY_MEANINGS = {
-    1: { color: '#f59e0b', msg: 'A day of new beginnings & bold initiative — plant the seeds of your desires today.' },
-    2: { color: '#a5f3fc', msg: 'A day of harmony, partnerships & divine patience — collaborate and listen deeply.' },
-    3: { color: '#f9a8d4', msg: 'A day of creative expression & cosmic joy — let your voice and art flow freely.' },
-    4: { color: '#6ee7b7', msg: 'A day of discipline, structure & earthly work — build with steady cosmic intention.' },
-    5: { color: '#00d4ff', msg: 'A day of freedom, change & adventure — embrace the unexpected gifts of the cosmos.' },
-    6: { color: '#c084fc', msg: 'A day of love, family & cosmic responsibility — nurture those around you with grace.' },
-    7: { color: '#818cf8', msg: 'A day of spiritual reflection & inner wisdom — meditate, seek truth, go within.' },
-    8: { color: '#f87171', msg: 'A day of power, abundance & karmic balance — take decisive action toward your goals.' },
-    9: { color: '#fbbf24', msg: 'A day of completion, compassion & universal love — release what no longer serves you.' },
-    11: { color: '#00d4ff', msg: 'A Master Number day — heightened intuition and spiritual illumination surround you.' },
-    22: { color: '#a855f7', msg: 'A Master Builder day — your dreams have cosmic backing to be made manifest today.' },
+    1: { color: '#B08A57', msg: 'A day of new beginnings & bold initiative — plant the seeds of your desires today.' },
+    2: { color: '#E8E0D2', msg: 'A day of harmony, partnerships & divine patience — collaborate and listen deeply.' },
+    3: { color: '#D4B58A', msg: 'A day of creative expression & cosmic joy — let your voice and art flow freely.' },
+    4: { color: '#898276', msg: 'A day of discipline, structure & earthly work — build with steady cosmic intention.' },
+    5: { color: '#C49E6A', msg: 'A day of freedom, change & adventure — embrace the unexpected gifts of the cosmos.' },
+    6: { color: '#E8E0D2', msg: 'A day of love, family & cosmic responsibility — nurture those around you with grace.' },
+    7: { color: '#B08A57', msg: 'A day of spiritual reflection & inner wisdom — meditate, seek truth, go within.' },
+    8: { color: '#9A7646', msg: 'A day of power, abundance & karmic balance — take decisive action toward your goals.' },
+    9: { color: '#B08A57', msg: 'A day of completion, compassion & universal love — release what no longer serves you.' },
+    11: { color: '#D4B58A', msg: 'A Master Number day — heightened intuition and spiritual illumination surround you.' },
+    22: { color: '#B08A57', msg: 'A Master Builder day — your dreams have cosmic backing to be made manifest today.' },
   };
 
   const today = new Date();
@@ -612,7 +928,7 @@ Respond ONLY with a valid JSON object (no markdown, no extra text) with exactly 
 
   if (numEl) {
     numEl.textContent = universalDay;
-    numEl.style.background = `linear-gradient(135deg, ${meaning.color}, #a855f7)`;
+    numEl.style.background = 'linear-gradient(135deg, #B08A57, #D4B58A)';
     numEl.style.webkitBackgroundClip = 'text';
     numEl.style.webkitTextFillColor = 'transparent';
     numEl.style.backgroundClip = 'text';
@@ -654,31 +970,31 @@ function compatScore(lp1, lp2, nn1, nn2) {
 function verdictText(score, lp1, lp2, name1, name2) {
   if (score >= 85) {
     return {
-      label: '✨ Twin Flame Resonance',
-      color: '#a855f7',
+      label: '✦ Twin Flame Resonance',
+      color: '#B08A57',
       text: `${name1} and ${name2} share an extraordinarily rare cosmic bond. Your Life Paths ${lp1} and ${lp2} create a sacred harmonic — the universe deliberately wove your souls together. This connection carries deep karmic completion and mutual spiritual acceleration.`
     };
   } else if (score >= 72) {
     return {
-      label: '🌟 Soulmate Alignment',
-      color: '#00d4ff',
+      label: '✦ Soulmate Alignment',
+      color: '#D4B58A',
       text: `${name1} and ${name2} hold a powerful soulmate vibration. Your numbers complement each other beautifully, supporting growth, trust and shared dharmic purpose. The stars smile upon this union.`
     };
   } else if (score >= 58) {
     return {
-      label: '⚡ Magnetic Connection',
+      label: '◈ Magnetic Connection',
       color: '#38bdf8',
       text: `${name1} and ${name2} generate genuine magnetic energy together. There are areas of natural flow and areas that will challenge you to grow. With conscious effort and understanding of each other's cosmic blueprint, this bond strengthens over time.`
     };
   } else if (score >= 40) {
     return {
-      label: '🌀 Karmic Lesson Bond',
+      label: '◈ Karmic Lesson Bond',
       color: '#f59e0b',
       text: `${name1} and ${name2} share a karmic lesson relationship. The friction between your numbers is not random — the universe has brought you together for mutual spiritual growth. Understanding each other's Life Path is the key to transformation.`
     };
   } else {
     return {
-      label: '🔥 Cosmic Growth Challenge',
+      label: '◈ Cosmic Growth Challenge',
       color: '#f87171',
       text: `${name1} and ${name2} carry strongly contrasting cosmic energies. This bond will require significant patience and spiritual maturity. However, great souls forge great lessons — and such unions, when navigated with awareness, can be profoundly transformative.`
     };
@@ -686,78 +1002,37 @@ function verdictText(score, lp1, lp2, name1, name2) {
 }
 
 function checkCompatibility() {
-  const name1 = document.getElementById('c1name').value.trim();
-  const dob1  = document.getElementById('c1dob').value;
-  const name2 = document.getElementById('c2name').value.trim();
-  const dob2  = document.getElementById('c2dob').value;
+  const name1 = (document.getElementById('c1name') ? document.getElementById('c1name').value : '').trim();
+  const dob1  = document.getElementById('c1dob') ? document.getElementById('c1dob').value : '';
+  const name2 = (document.getElementById('c2name') ? document.getElementById('c2name').value : '').trim();
+  const dob2  = document.getElementById('c2dob') ? document.getElementById('c2dob').value : '';
   const errEl = document.getElementById('compatErr');
 
-  errEl.textContent = '';
+  if (errEl) errEl.textContent = '';
 
-  if (!name1 || !dob1 || !name2 || !dob2) {
-    errEl.textContent = '◈ Please fill all four fields for both souls';
+  // If clicked without filling any fields, navigate directly to full Compatibility portal
+  if (!name1 && !dob1 && !name2 && !dob2) {
+    window.location.href = 'compatibility.html';
     return;
   }
 
-  const lp1 = lifePathNumber(dob1);
-  const lp2 = lifePathNumber(dob2);
-  const nn1 = nameNumber(name1);
-  const nn2 = nameNumber(name2);
-  const score = compatScore(lp1, lp2, nn1, nn2);
-  const verdict = verdictText(score, lp1, lp2, name1, name2);
+  if (!name1 || !dob1 || !name2 || !dob2) {
+    if (errEl) errEl.textContent = '◈ Please fill all four fields for both souls';
+    return;
+  }
 
-  // Show result
-  const resultEl = document.getElementById('compatResult');
-  resultEl.classList.add('visible');
+  const btn = document.getElementById('compatBtn');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = '◈ Decrypting cosmic bond...';
+  }
 
-  // Animate score counter
-  const scoreEl = document.getElementById('compatScore');
-  let current = 0;
-  const step = Math.ceil(score / 60);
-  const counter = setInterval(() => {
-    current = Math.min(current + step, score);
-    scoreEl.textContent = current;
-    if (current >= score) clearInterval(counter);
-  }, 20);
+  const params = new URLSearchParams({
+    c1name: name1,
+    c1dob: dob1,
+    c2name: name2,
+    c2dob: dob2
+  });
 
-  // Animate arc
-  const arc = document.getElementById('compatArc');
-  setTimeout(() => {
-    const offset = 327 - (327 * score / 100);
-    arc.style.strokeDashoffset = offset;
-  }, 100);
-
-  // Details grid
-  const details = document.getElementById('compatDetails');
-  details.innerHTML = `
-    <div class="compat-detail-card">
-      <span class="compat-detail-icon">🌟</span>
-      <p class="compat-detail-title">${name1.split(' ')[0]}'s Life Path</p>
-      <p class="compat-detail-val">${lp1}</p>
-    </div>
-    <div class="compat-detail-card">
-      <span class="compat-detail-icon">🌙</span>
-      <p class="compat-detail-title">${name2.split(' ')[0]}'s Life Path</p>
-      <p class="compat-detail-val">${lp2}</p>
-    </div>
-    <div class="compat-detail-card">
-      <span class="compat-detail-icon">✨</span>
-      <p class="compat-detail-title">${name1.split(' ')[0]}'s Name Number</p>
-      <p class="compat-detail-val">${nn1}</p>
-    </div>
-    <div class="compat-detail-card">
-      <span class="compat-detail-icon">⭐</span>
-      <p class="compat-detail-title">${name2.split(' ')[0]}'s Name Number</p>
-      <p class="compat-detail-val">${nn2}</p>
-    </div>
-    <div class="compat-verdict" style="grid-column:1/-1">
-      <p class="compat-verdict-title" style="color:${verdict.color}">${verdict.label}</p>
-      <p class="compat-verdict-text">${verdict.text}</p>
-    </div>
-  `;
-
-  // Smooth scroll to result
-  setTimeout(() => {
-    resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 150);
+  window.location.href = `compatibility.html?${params.toString()}`;
 }
