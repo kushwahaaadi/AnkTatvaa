@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { calculatePhoneVibration, PLANET_MAP, RELATION_MATRIX } from '@/lib/numerology';
 import { saveReading } from '@/lib/firebase';
 import { useToast } from '@/components/ToastProvider';
+import AnimatedNumber from '@/components/AnimatedNumber';
+import SpotlightCard from '@/components/SpotlightCard';
 
 export default function PhoneVibrationPage() {
   const { showToast } = useToast();
@@ -81,7 +83,7 @@ export default function PhoneVibrationPage() {
       </div>
 
       {/* Input Form */}
-      <div className="max-w-xl mx-auto bg-[#161411]/90 border border-[#B08A57]/25 rounded-md p-6 sm:p-8 backdrop-blur-xl mb-12 shadow-[0_16px_40px_rgba(0,0,0,0.8)]">
+      <SpotlightCard className="max-w-xl mx-auto p-6 sm:p-8 backdrop-blur-xl mb-12 shadow-[0_16px_40px_rgba(0,0,0,0.8)]">
         <form onSubmit={handleCalculate} className="space-y-4">
           <div>
             <label className="block font-mono text-[11px] uppercase tracking-wider text-[#898276] mb-1.5">
@@ -122,7 +124,7 @@ export default function PhoneVibrationPage() {
             Calculate Phone Vibration →
           </button>
         </form>
-      </div>
+      </SpotlightCard>
 
       {/* Results */}
       {result && (
@@ -147,45 +149,45 @@ export default function PhoneVibrationPage() {
 
           {/* Triad of Numbers */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm text-center">
+            <SpotlightCard className="p-6 text-center">
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#898276] block mb-2">
                 Birth Number (BN)
               </span>
               <span className="font-mono text-4xl font-bold text-[#B08A57]">
-                {result.bn}
+                <AnimatedNumber value={result.bn} duration={800} />
               </span>
               <p className="text-xs font-mono text-[#898276] mt-2">
                 {PLANET_MAP[result.bn]?.planet} {PLANET_MAP[result.bn]?.symbol}
               </p>
-            </div>
+            </SpotlightCard>
 
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm text-center">
+            <SpotlightCard className="p-6 text-center">
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#898276] block mb-2">
                 Destiny Number (DN)
               </span>
               <span className="font-mono text-4xl font-bold text-[#D4B58A]">
-                {result.dn}
+                <AnimatedNumber value={result.dn} duration={950} />
               </span>
               <p className="text-xs font-mono text-[#898276] mt-2">
                 {PLANET_MAP[result.dn]?.planet} {PLANET_MAP[result.dn]?.symbol}
               </p>
-            </div>
+            </SpotlightCard>
 
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm text-center">
+            <SpotlightCard className="p-6 text-center">
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#898276] block mb-2">
                 Mobile Number (MN)
               </span>
               <span className="font-mono text-4xl font-bold text-[#F7F3EB]">
-                {result.mn}
+                <AnimatedNumber value={result.mn} duration={1100} />
               </span>
               <p className="text-xs font-mono text-[#898276] mt-2">
                 {PLANET_MAP[result.mn]?.planet} {PLANET_MAP[result.mn]?.symbol}
               </p>
-            </div>
+            </SpotlightCard>
           </div>
 
           {/* Planetary Affinity Matrix */}
-          <div className="p-6 sm:p-8 bg-[#161411]/90 border border-[#B08A57]/30 rounded-sm space-y-4">
+          <SpotlightCard className="p-6 sm:p-8 space-y-4">
             <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57] block">
               ◈ Vedic Affinity Matrix
             </span>
@@ -214,7 +216,7 @@ export default function PhoneVibrationPage() {
                 </span>
               </div>
             </div>
-          </div>
+          </SpotlightCard>
         </div>
       )}
     </div>

@@ -5,6 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import { calculateBirthNumber, calculateDestinyNumber, calculateCompatibility, PLANET_MAP } from '@/lib/numerology';
 import { saveReading } from '@/lib/firebase';
 import { useToast } from '@/components/ToastProvider';
+import AnimatedNumber from '@/components/AnimatedNumber';
+import SpotlightCard from '@/components/SpotlightCard';
 
 function CompatibilityContent() {
   const searchParams = useSearchParams();
@@ -111,7 +113,7 @@ function CompatibilityContent() {
       </div>
 
       {/* Input Card */}
-      <div className="max-w-2xl mx-auto bg-[#161411]/90 border border-[#B08A57]/25 rounded-md p-6 sm:p-8 backdrop-blur-xl mb-12 shadow-[0_16px_40px_rgba(0,0,0,0.8)]">
+      <SpotlightCard className="max-w-2xl mx-auto p-6 sm:p-8 backdrop-blur-xl mb-12 shadow-[0_16px_40px_rgba(0,0,0,0.8)]">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Soul 1 */}
           <div className="space-y-3 pb-4 border-b border-[#B08A57]/20">
@@ -174,7 +176,7 @@ function CompatibilityContent() {
             Reveal Cosmic Affinity →
           </button>
         </form>
-      </div>
+      </SpotlightCard>
 
       {/* Results */}
       {result && (
@@ -199,13 +201,13 @@ function CompatibilityContent() {
           </div>
 
           {/* Central Compatibility Gauge */}
-          <div className="p-8 bg-[#161411]/90 border border-[#B08A57]/30 rounded-sm text-center flex flex-col items-center">
+          <SpotlightCard className="p-8 text-center flex flex-col items-center">
             <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57] mb-2">
               Overall Affinity Score
             </span>
             <div className="w-28 h-28 my-3 flex items-center justify-center border-2 border-[#B08A57] rounded-full bg-[#0D0D0C] shadow-[0_0_30px_rgba(176,138,87,0.25)]">
               <span className="font-mono text-4xl font-bold text-[#F7F3EB]">
-                {result.score}%
+                <AnimatedNumber value={result.score} suffix="%" duration={1200} />
               </span>
             </div>
             <h3 className="font-serif text-xl font-bold text-[#B08A57] mt-2 mb-3">
@@ -214,11 +216,11 @@ function CompatibilityContent() {
             <p className="text-sm text-[#E8E0D2] max-w-xl leading-relaxed">
               {result.verdict.text}
             </p>
-          </div>
+          </SpotlightCard>
 
           {/* Dual Profiles Comparison */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm">
+            <SpotlightCard className="p-6">
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#B08A57]/15">
                 <span className="font-serif text-lg font-bold text-[#F7F3EB]">{result.name1}</span>
                 <span className="font-mono text-xs text-[#898276]">{result.dob1}</span>
@@ -241,9 +243,9 @@ function CompatibilityContent() {
                   <span className="text-[#E8E0D2]">{result.nn1}</span>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm">
+            <SpotlightCard className="p-6">
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#B08A57]/15">
                 <span className="font-serif text-lg font-bold text-[#F7F3EB]">{result.name2}</span>
                 <span className="font-mono text-xs text-[#898276]">{result.dob2}</span>
@@ -266,7 +268,7 @@ function CompatibilityContent() {
                   <span className="text-[#E8E0D2]">{result.nn2}</span>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         </div>
       )}

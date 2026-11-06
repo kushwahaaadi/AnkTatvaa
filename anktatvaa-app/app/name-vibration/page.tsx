@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { calculateNameFrequency, CHALDEAN_MAP, reduceToSingle } from '@/lib/numerology';
 import { saveReading } from '@/lib/firebase';
 import { useToast } from '@/components/ToastProvider';
+import AnimatedNumber from '@/components/AnimatedNumber';
+import SpotlightCard from '@/components/SpotlightCard';
 
 export default function NameVibrationPage() {
   const { showToast } = useToast();
@@ -64,7 +66,7 @@ export default function NameVibrationPage() {
       </div>
 
       {/* Input Card */}
-      <div className="max-w-xl mx-auto bg-[#161411]/90 border border-[#B08A57]/25 rounded-md p-6 backdrop-blur-xl mb-12 shadow-[0_16px_40px_rgba(0,0,0,0.8)]">
+      <SpotlightCard className="max-w-xl mx-auto p-6 backdrop-blur-xl mb-12 shadow-[0_16px_40px_rgba(0,0,0,0.8)]">
         <form onSubmit={handleCalculate} className="space-y-4">
           <div>
             <label className="block font-mono text-[11px] uppercase tracking-wider text-[#898276] mb-1.5">
@@ -92,7 +94,7 @@ export default function NameVibrationPage() {
             Compute Frequency Matrix →
           </button>
         </form>
-      </div>
+      </SpotlightCard>
 
       {/* Results */}
       {result && (
@@ -117,7 +119,7 @@ export default function NameVibrationPage() {
           </div>
 
           {/* Letter Value Breakdown */}
-          <div className="p-6 bg-[#161411]/70 border border-[#B08A57]/20 rounded-sm">
+          <SpotlightCard className="p-6 bg-[#161411]/70">
             <span className="font-mono text-xs uppercase tracking-widest text-[#898276] block mb-4">
               Chaldean Letter-by-Letter Decomposition
             </span>
@@ -137,14 +139,14 @@ export default function NameVibrationPage() {
                 );
               })}
             </div>
-          </div>
+          </SpotlightCard>
 
           {/* Compound & Shadow Numbers Card */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/30 rounded-sm flex items-center gap-6">
-              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#B08A57]/50 rounded-full bg-[#0D0D0C]">
+            <SpotlightCard className="p-6 flex items-center gap-6">
+              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#B08A57]/50 rounded-full bg-[#0D0D0C] shadow-[0_0_20px_rgba(176,138,87,0.2)]">
                 <span className="font-mono text-3xl font-bold text-[#B08A57]">
-                  {result.compoundNumber}
+                  <AnimatedNumber value={result.compoundNumber} duration={900} />
                 </span>
               </div>
               <div>
@@ -158,12 +160,12 @@ export default function NameVibrationPage() {
                   The primary outer vibrational force projected into society and career.
                 </p>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/30 rounded-sm flex items-center gap-6">
-              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#D4B58A]/50 rounded-full bg-[#0D0D0C]">
+            <SpotlightCard className="p-6 flex items-center gap-6">
+              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#D4B58A]/50 rounded-full bg-[#0D0D0C] shadow-[0_0_20px_rgba(212,181,138,0.2)]">
                 <span className="font-mono text-3xl font-bold text-[#D4B58A]">
-                  {result.shadowNumber}
+                  <AnimatedNumber value={result.shadowNumber} duration={1100} />
                 </span>
               </div>
               <div>
@@ -177,23 +179,23 @@ export default function NameVibrationPage() {
                   The deep subconscious resonance operating under karmic pressure.
                 </p>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
 
           {/* Compound Interpretation from JSON */}
           {interpretations[String(result.compoundNumber)] && (
-            <div className="p-6 sm:p-8 bg-[#161411]/90 border border-[#B08A57]/30 rounded-sm space-y-3">
+            <SpotlightCard className="p-6 sm:p-8 space-y-3">
               <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57] block">
                 ✦ Interpretation · Compound Frequency {result.compoundNumber}
               </span>
               <p className="text-sm text-[#E8E0D2] leading-relaxed">
                 {interpretations[String(result.compoundNumber)]}
               </p>
-            </div>
+            </SpotlightCard>
           )}
 
           {/* Inverted Pyramid Visualizer */}
-          <div className="p-6 sm:p-8 bg-[#161411]/80 border border-[#B08A57]/20 rounded-sm">
+          <SpotlightCard className="p-6 sm:p-8">
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#B08A57]/15">
               <span className="font-mono text-xs uppercase tracking-widest text-[#E8E0D2]">
                 ◈ Inverted Pyramid Reduction Steps
@@ -224,7 +226,7 @@ export default function NameVibrationPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </SpotlightCard>
         </div>
       )}
     </div>

@@ -18,6 +18,8 @@ import {
 } from '@/lib/numerology';
 import { saveReading } from '@/lib/firebase';
 import { useToast } from '@/components/ToastProvider';
+import AnimatedNumber from '@/components/AnimatedNumber';
+import SpotlightCard from '@/components/SpotlightCard';
 
 function NumerologyContent() {
   const searchParams = useSearchParams();
@@ -266,10 +268,10 @@ function NumerologyContent() {
 
           {/* Core Numbers (Birth Number & Destiny Number) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/30 rounded-sm flex items-center gap-6">
-              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#B08A57]/50 rounded-full bg-[#0D0D0C]">
+            <SpotlightCard className="p-6 flex items-center gap-6">
+              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#B08A57]/50 rounded-full bg-[#0D0D0C] shadow-[0_0_20px_rgba(176,138,87,0.2)]">
                 <span className="font-mono text-4xl font-bold text-[#B08A57]">
-                  {birthNumber}
+                  <AnimatedNumber value={birthNumber} duration={900} />
                 </span>
               </div>
               <div>
@@ -283,12 +285,12 @@ function NumerologyContent() {
                   Defines your core temperament, natural talents, and raw psychic identity.
                 </p>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/30 rounded-sm flex items-center gap-6">
-              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#D4B58A]/50 rounded-full bg-[#0D0D0C]">
+            <SpotlightCard className="p-6 flex items-center gap-6">
+              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center border border-[#D4B58A]/50 rounded-full bg-[#0D0D0C] shadow-[0_0_20px_rgba(212,181,138,0.2)]">
                 <span className="font-mono text-4xl font-bold text-[#D4B58A]">
-                  {destinyNumber}
+                  <AnimatedNumber value={destinyNumber} duration={1100} />
                 </span>
               </div>
               <div>
@@ -302,12 +304,12 @@ function NumerologyContent() {
                   Represents your dharmic mission, life obstacles, and ultimate destiny trajectory.
                 </p>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
 
           {/* Personal Transits (Year, Month, Day) */}
           {transits && (
-            <div className="p-6 bg-[#161411]/60 border border-[#B08A57]/20 rounded-sm">
+            <SpotlightCard className="p-6 bg-[#161411]/60">
               <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#B08A57]/15">
                 <span className="font-mono text-xs uppercase tracking-widest text-[#E8E0D2]">
                   ✦ Current Personal Transits
@@ -320,7 +322,7 @@ function NumerologyContent() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
                 <div className="p-4 bg-[#0D0D0C]/80 border border-[#B08A57]/20 rounded-sm">
                   <div className="font-mono text-2xl font-bold text-[#B08A57] mb-1">
-                    {transits.personalYear}
+                    <AnimatedNumber value={transits.personalYear} duration={850} />
                   </div>
                   <div className="font-mono text-[10px] uppercase tracking-wider text-[#E8E0D2]">
                     Personal Year
@@ -332,7 +334,7 @@ function NumerologyContent() {
 
                 <div className="p-4 bg-[#0D0D0C]/80 border border-[#B08A57]/20 rounded-sm">
                   <div className="font-mono text-2xl font-bold text-[#D4B58A] mb-1">
-                    {transits.personalMonth}
+                    <AnimatedNumber value={transits.personalMonth} duration={950} />
                   </div>
                   <div className="font-mono text-[10px] uppercase tracking-wider text-[#E8E0D2]">
                     Personal Month
@@ -344,7 +346,7 @@ function NumerologyContent() {
 
                 <div className="p-4 bg-[#0D0D0C]/80 border border-[#B08A57]/20 rounded-sm">
                   <div className="font-mono text-2xl font-bold text-[#E8E0D2] mb-1">
-                    {transits.personalDay}
+                    <AnimatedNumber value={transits.personalDay} duration={1050} />
                   </div>
                   <div className="font-mono text-[10px] uppercase tracking-wider text-[#E8E0D2]">
                     Personal Day
@@ -354,14 +356,14 @@ function NumerologyContent() {
                   </p>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           )}
 
           {/* 3x3 Universal Grid (Loshu-Vedic) */}
           {gridData && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               {/* The Matrix */}
-              <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm">
+              <SpotlightCard className="p-6">
                 <span className="font-mono text-xs uppercase tracking-widest text-[#E8E0D2] block mb-4">
                   ◈ 3x3 Celestial Grid Matrix
                 </span>
@@ -385,11 +387,11 @@ function NumerologyContent() {
                     );
                   })}
                 </div>
-              </div>
+              </SpotlightCard>
 
               {/* Present vs Missing Numbers Analysis */}
               <div className="space-y-6">
-                <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm">
+                <SpotlightCard className="p-6">
                   <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57] block mb-3">
                     ✦ Present Planetary Frequencies
                   </span>
@@ -406,9 +408,9 @@ function NumerologyContent() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </SpotlightCard>
 
-                <div className="p-6 bg-[#161411]/80 border border-[#B08A57]/25 rounded-sm">
+                <SpotlightCard className="p-6">
                   <span className="font-mono text-xs uppercase tracking-widest text-[#898276] block mb-3">
                     ◈ Missing Numbers (Karmic Focus Areas)
                   </span>
@@ -431,14 +433,14 @@ function NumerologyContent() {
                       </span>
                     )}
                   </div>
-                </div>
+                </SpotlightCard>
               </div>
             </div>
           )}
 
           {/* Personal Year Detailed Outcome (Loaded from JSON) */}
           {pyOutcome && (
-            <div className="p-6 sm:p-8 bg-[#161411]/90 border border-[#B08A57]/30 rounded-sm space-y-4">
+            <SpotlightCard className="p-6 sm:p-8 space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-[#B08A57]/20">
                 <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57]">
                   ✦ Personal Year {transits?.personalYear} Synthesis
@@ -480,12 +482,12 @@ function NumerologyContent() {
                   </div>
                 </div>
               )}
-            </div>
+            </SpotlightCard>
           )}
 
           {/* Mahadasha & Antardasha Section */}
           {mahadasha && currentAD && (
-            <div className="p-6 sm:p-8 bg-[#161411]/90 border border-[#B08A57]/30 rounded-sm space-y-6">
+            <SpotlightCard className="p-6 sm:p-8 space-y-6">
               <div className="flex items-center justify-between pb-4 border-b border-[#B08A57]/20">
                 <div>
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#B08A57] block">
@@ -565,7 +567,7 @@ function NumerologyContent() {
                   </div>
                 )}
               </div>
-            </div>
+            </SpotlightCard>
           )}
         </div>
       )}

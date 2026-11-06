@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { reduceToSingle } from '@/lib/numerology';
+import AnimatedNumber from '@/components/AnimatedNumber';
+import SpotlightCard from '@/components/SpotlightCard';
 
 export default function HomePage() {
   const router = useRouter();
@@ -102,7 +104,7 @@ export default function HomePage() {
         </p>
 
         {/* ── HERO INPUT CARD ── */}
-        <div className="w-full max-w-2xl bg-[#161411]/90 border border-[#B08A57]/25 rounded-md p-6 sm:p-8 backdrop-blur-xl shadow-[0_16px_50px_rgba(0,0,0,0.85)] text-left mb-16">
+        <SpotlightCard className="w-full max-w-2xl p-6 sm:p-8 backdrop-blur-xl shadow-[0_16px_50px_rgba(0,0,0,0.85)] text-left mb-16">
           <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#B08A57]/20">
             <span className="font-mono text-xs uppercase tracking-widest text-[#E8E0D2] flex items-center gap-2">
               <span className="text-[#B08A57]">◈</span>
@@ -188,13 +190,13 @@ export default function HomePage() {
               <span>→</span>
             </button>
           </form>
-        </div>
+        </SpotlightCard>
 
         {/* ── DAILY COSMIC VIBRATION BANNER ── */}
-        <div className="w-full max-w-2xl bg-[#1B1915]/60 border border-[#B08A57]/20 rounded-md p-5 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 text-left mb-20">
+        <SpotlightCard className="w-full max-w-2xl p-5 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 text-left mb-20">
           <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center border border-[#B08A57]/40 rounded-full bg-[#0D0D0C]">
             <span className="font-mono text-3xl font-bold text-[#B08A57]">
-              {dailyNumber}
+              <AnimatedNumber value={dailyNumber} duration={1000} />
             </span>
           </div>
           <div>
@@ -211,7 +213,7 @@ export default function HomePage() {
               {dailyText}
             </p>
           </div>
-        </div>
+        </SpotlightCard>
       </section>
 
       {/* ── TOOLS DIRECTORY ── */}
@@ -230,110 +232,104 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Tool 1 */}
-          <Link
-            href="/numerology"
-            className="group p-6 bg-[#161411]/80 hover:bg-[#1B1915] border border-[#B08A57]/20 hover:border-[#B08A57]/50 rounded-sm transition-all duration-300"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-xs text-[#B08A57]">01 · ☉ / ☽</span>
-              <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-            <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
-              Vedic Numerology & Mahadasha
-            </h3>
-            <p className="text-xs text-[#898276] leading-relaxed">
-              Calculates your Birth Number (Moolank), Destiny Number (Bhagyank), 3x3 Universal Grid, and planetary Mahadasha & Antardasha timelines.
-            </p>
-          </Link>
-
-          {/* Tool 2 */}
-          <Link
-            href="/name-vibration"
-            className="group p-6 bg-[#161411]/80 hover:bg-[#1B1915] border border-[#B08A57]/20 hover:border-[#B08A57]/50 rounded-sm transition-all duration-300"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-xs text-[#B08A57]">02 · ☿</span>
-              <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-            <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
-              Name Vibration & Shadow Matrix
-            </h3>
-            <p className="text-xs text-[#898276] leading-relaxed">
-              Unveil your compound letter frequency using authentic Chaldean values and calculate your hidden Inverted Pyramid Shadow Number.
-            </p>
-          </Link>
-
-          {/* Tool 3 */}
-          <Link
-            href="/compatibility"
-            className="group p-6 bg-[#161411]/80 hover:bg-[#1B1915] border border-[#B08A57]/20 hover:border-[#B08A57]/50 rounded-sm transition-all duration-300"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-xs text-[#B08A57]">03 · ♀</span>
-              <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-            <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
-              Dual Profile Compatibility
-            </h3>
-            <p className="text-xs text-[#898276] leading-relaxed">
-              Cross-examine two souls through Life Path frequencies and Name numbers to evaluate twin-flame, soulmate, or karmic resonance.
-            </p>
-          </Link>
-
-          {/* Tool 4 */}
-          <Link
-            href="/health-tendencies"
-            className="group p-6 bg-[#161411]/80 hover:bg-[#1B1915] border border-[#B08A57]/20 hover:border-[#B08A57]/50 rounded-sm transition-all duration-300"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-xs text-[#B08A57]">04 · ♃</span>
-              <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-            <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
-              Planetary Vitality & Health
-            </h3>
-            <p className="text-xs text-[#898276] leading-relaxed">
-              Understand constitutional predispositions and lifestyle balance techniques associated with your governing planetary ruler.
-            </p>
-          </Link>
-
-          {/* Tool 5 */}
-          <Link
-            href="/phone-vibration"
-            className="group p-6 bg-[#161411]/80 hover:bg-[#1B1915] border border-[#B08A57]/20 hover:border-[#B08A57]/50 rounded-sm transition-all duration-300"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-xs text-[#B08A57]">05 · ♄</span>
-              <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-            <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
-              Phone Number Vibration
-            </h3>
-            <p className="text-xs text-[#898276] leading-relaxed">
-              Analyze whether your mobile digits harmonize with your Birth and Destiny numbers or generate conflicting planetary friction.
-            </p>
-          </Link>
-
-          {/* Seeker Dashboard Portal */}
-          <Link
-            href="/dashboard"
-            className="group p-6 bg-[#1B1915]/50 hover:bg-[#1B1915] border border-[#B08A57]/30 hover:border-[#B08A57] rounded-sm transition-all duration-300 flex flex-col justify-between"
-          >
-            <div>
+          <Link href="/numerology" className="group">
+            <SpotlightCard className="h-full p-6 hover:border-[#B08A57]/60">
               <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-xs text-[#B08A57]">✦ CLOUD VAULT</span>
+                <span className="font-mono text-xs text-[#B08A57]">01 · ☉ / ☽</span>
                 <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
               </div>
               <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
-                Seeker Dashboard & Storage
+                Vedic Numerology & Mahadasha
               </h3>
               <p className="text-xs text-[#898276] leading-relaxed">
-                Access your archived readings, export full PDF records to free Firebase Cloud Storage, and manage your seeker profile.
+                Calculates your Birth Number (Moolank), Destiny Number (Bhagyank), 3x3 Universal Grid, and planetary Mahadasha & Antardasha timelines.
               </p>
-            </div>
-            <div className="pt-4 mt-4 border-t border-[#B08A57]/15 text-[11px] font-mono text-[#B08A57]">
-              Firebase Spark Powered · 5GB Free Cloud Archive
-            </div>
+            </SpotlightCard>
+          </Link>
+
+          {/* Tool 2 */}
+          <Link href="/name-vibration" className="group">
+            <SpotlightCard className="h-full p-6 hover:border-[#B08A57]/60">
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-xs text-[#B08A57]">02 · ☿</span>
+                <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+              <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
+                Name Vibration & Shadow Matrix
+              </h3>
+              <p className="text-xs text-[#898276] leading-relaxed">
+                Unveil your compound letter frequency using authentic Chaldean values and calculate your hidden Inverted Pyramid Shadow Number.
+              </p>
+            </SpotlightCard>
+          </Link>
+
+          {/* Tool 3 */}
+          <Link href="/compatibility" className="group">
+            <SpotlightCard className="h-full p-6 hover:border-[#B08A57]/60">
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-xs text-[#B08A57]">03 · ♀</span>
+                <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+              <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
+                Dual Profile Compatibility
+              </h3>
+              <p className="text-xs text-[#898276] leading-relaxed">
+                Cross-examine two souls through Life Path frequencies and Name numbers to evaluate twin-flame, soulmate, or karmic resonance.
+              </p>
+            </SpotlightCard>
+          </Link>
+
+          {/* Tool 4 */}
+          <Link href="/health-tendencies" className="group">
+            <SpotlightCard className="h-full p-6 hover:border-[#B08A57]/60">
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-xs text-[#B08A57]">04 · ♃</span>
+                <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+              <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
+                Planetary Vitality & Health
+              </h3>
+              <p className="text-xs text-[#898276] leading-relaxed">
+                Understand constitutional predispositions and lifestyle balance techniques associated with your governing planetary ruler.
+              </p>
+            </SpotlightCard>
+          </Link>
+
+          {/* Tool 5 */}
+          <Link href="/phone-vibration" className="group">
+            <SpotlightCard className="h-full p-6 hover:border-[#B08A57]/60">
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-xs text-[#B08A57]">05 · ♄</span>
+                <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+              <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
+                Phone Number Vibration
+              </h3>
+              <p className="text-xs text-[#898276] leading-relaxed">
+                Analyze whether your mobile digits harmonize with your Birth and Destiny numbers or generate conflicting planetary friction.
+              </p>
+            </SpotlightCard>
+          </Link>
+
+          {/* Seeker Dashboard Portal */}
+          <Link href="/dashboard" className="group">
+            <SpotlightCard className="h-full p-6 hover:border-[#B08A57]/60 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs text-[#B08A57]">✦ CLOUD VAULT</span>
+                  <span className="text-xs text-[#898276] group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+                <h3 className="font-serif text-xl font-bold text-[#F7F3EB] group-hover:text-[#B08A57] transition-colors mb-2">
+                  Seeker Dashboard & Storage
+                </h3>
+                <p className="text-xs text-[#898276] leading-relaxed">
+                  Access your archived readings, export full PDF records to free Firebase Cloud Storage, and manage your seeker profile.
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-[#B08A57]/15 text-[11px] font-mono text-[#B08A57]">
+                Firebase Spark Powered · 5GB Free Cloud Archive
+              </div>
+            </SpotlightCard>
           </Link>
         </div>
       </section>
