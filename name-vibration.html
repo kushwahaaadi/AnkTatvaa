@@ -931,8 +931,7 @@
     <!-- ═══════ NAME VIBRATIONS MODULE ═══════ -->
     <section class="nv-section reveal">
 
-      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Name
-        Vibrations ✦</p>
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">Name Vibrations</p>
       <h1 class="section-title" style="margin-bottom:0.5rem">Decode Your Name's Cosmic Signal</h1>
       <p class="section-sub">Every letter carries a sacred Chaldean frequency — discover the compound vibration your
         name broadcasts into the universe</p>
@@ -946,15 +945,21 @@
 
         <div class="nv-input-card">
           <div class="field-group">
-            <label class="field-label" for="nvNameInput">✦ Full Name (as per use)</label>
+            <label class="field-label" for="nvNameInput">Full Name (as per use) <span class="label-req">*</span></label>
             <input class="field-input" id="nvNameInput" type="text" placeholder="e.g. Aditya Kushwaha"
               autocomplete="off">
           </div>
           <button class="submit-btn float" id="nvSubmitBtn" onclick="calculateNameVibration()">
-            ✦ Reveal Name Vibration ✦
+            Reveal Name Vibration →
           </button>
         </div>
         <p class="error-msg" id="nvErrMsg"></p>
+      </div>
+
+      <!-- Loading Ritual (#4) -->
+      <div class="loading-ritual" id="nvLoadingDiv">
+        <div class="ritual-spinner"></div>
+        <p class="ritual-text" id="nvLoadingText">Calculating Chaldean Vibrations... <span class="ritual-sanskrit-sub">॥ नामांक कम्पन शोधन ॥</span></p>
       </div>
 
       <!-- ── Result Card ── -->
@@ -967,12 +972,12 @@
 
           <!-- Header -->
           <div class="nv-result-header">
-            <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Name Vibration Report ✦</p>
+            <p class="hero-eyebrow" style="animation:none;opacity:1">Name Vibration Report</p>
             <h2 class="nv-result-title">Your Name's Cosmic Number</h2>
             <p class="nv-name-display" id="nvNameDisplay"></p>
             <div class="report-action-bar">
               <button class="btn-report-action" onclick="saveCurrentNameReading()" type="button">
-                <span>✦</span> Save to Dashboard
+                <span>⬡</span> Save to Dashboard
               </button>
               <button class="btn-report-action" onclick="window.print()" type="button">
                 <span>⎙</span> Print / Export
@@ -982,7 +987,7 @@
 
           <!-- Letter-by-Letter Breakdown -->
           <div class="nv-breakdown-section">
-            <p class="nv-section-label">✦ Chaldean Letter Breakdown ✦</p>
+            <p class="nv-section-label">Chaldean Letter Breakdown</p>
             <p class="nv-section-sub">Each letter mapped to its sacred vibrational number</p>
             <div class="nv-letter-grid" id="nvLetterGrid"></div>
 
@@ -1004,7 +1009,7 @@
           <!-- ═══════ SHADOW NUMBER SECTION ═══════ -->
           <div class="shadow-section" id="shadowSection">
             <div class="shadow-header">
-              <p class="nv-section-label" style="color:var(--antique-bronze)">✦ Shadow Number ✦</p>
+              <p class="nv-section-label" style="color:var(--antique-bronze)">Shadow Number</p>
               <p class="nv-section-sub">The hidden vibration beneath your name — revealed through sacred digit reduction</p>
             </div>
 
@@ -1086,8 +1091,7 @@
 
           <!-- Footer -->
           <div class="nv-report-footer">
-            <p class="nv-report-footer-text">✦ &nbsp; Your name is a cosmic signal — those who decode it awaken
-              &nbsp; ✦</p>
+            <p class="nv-report-footer-text">— Your name is a cosmic signal — those who decode it awaken —</p>
           </div>
         </div>
       </div>
@@ -1096,11 +1100,37 @@
 
     <!-- ═══════ FOOTER ═══════ -->
     <footer class="footer">
-      <div class="footer-symbol">✦</div>
-      <p class="footer-name">Anktatvaa</p>
-      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
-      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
-      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      <div class="footer-colophon">
+        <div class="colophon-ornament">
+          <span class="colophon-wire"></span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-glyph">ॐ</span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-wire"></span>
+        </div>
+        <p class="footer-name">Anktatvaa</p>
+        <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+        <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोलम्</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="index.html#reading" class="footer-link">Vedic Matrix</a>
+        <span class="footer-sep">·</span>
+        <a href="numerology.html" class="footer-link">Full Reading</a>
+        <span class="footer-sep">·</span>
+        <a href="compatibility.html" class="footer-link">Cosmic Compatibility</a>
+        <span class="footer-sep">·</span>
+        <a href="phone-vibration.html" class="footer-link">Phone Frequency</a>
+        <span class="footer-sep">·</span>
+        <a href="health-tendencies.html" class="footer-link">Planetary Health</a>
+        <span class="footer-sep">·</span>
+        <a href="name-vibration.html" class="footer-link">Name Vibration</a>
+      </nav>
+
+      <div class="footer-footnote">
+        <p class="footer-disclaimer">Rooted in ancient Chaldean &amp; Vedic traditions. Crafted for seeker illumination.</p>
+        <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      </div>
     </footer>
 
   </div>
@@ -1218,15 +1248,26 @@
       // ── Calculate Shadow Number ──
       const shadowResult = calculateShadowNumber(values);
 
-      // ── Render the report ──
-      renderNameReport({
+      // ── Render the report with Sacred Ritual (#4) ──
+      const reportData = {
         originalName: rawName,
         letterData: letterData,
         values: values,
         compoundNumber: compoundNumber,
         shadowNumber: shadowResult.shadowNumber,
         shadowSteps: shadowResult.steps
-      });
+      };
+
+      const loadingDiv = document.getElementById('nvLoadingDiv');
+      const loadingText = document.getElementById('nvLoadingText');
+      const section = document.getElementById('nvResultSection');
+      if (section) section.classList.remove('visible');
+
+      if (window.runCalculationRitual && loadingDiv) {
+        window.runCalculationRitual(loadingDiv, loadingText, () => renderNameReport(reportData));
+      } else {
+        renderNameReport(reportData);
+      }
     }
 
     function saveCurrentNameReading() {

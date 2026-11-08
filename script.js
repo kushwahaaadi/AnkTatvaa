@@ -860,6 +860,50 @@ function cycleLoading() {
 }
 
 /* ══════════════════════════════════════
+   SACRED CALCULATION RITUAL (#4)
+══════════════════════════════════════ */
+function runCalculationRitual(loadingEl, textEl, onComplete) {
+  const stages = [
+    { text: 'Harmonizing Solar & Lunar Coordinates...', sanskrit: 'सूर्य-चन्द्र समन्वय' },
+    { text: 'Decoding Chaldean & Pythagorean Vibrations...', sanskrit: 'अंक तत्व शोधन' },
+    { text: 'Unveiling Karmic Blueprint & Destiny Cycles...', sanskrit: 'महादशा उद्घाटन' }
+  ];
+
+  if (!loadingEl) {
+    onComplete();
+    return;
+  }
+
+  loadingEl.style.display = 'block';
+  loadingEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  let stageIdx = 0;
+
+  function showNextStage() {
+    if (textEl && stages[stageIdx]) {
+      textEl.style.opacity = '0';
+      textEl.style.transform = 'translateY(4px)';
+      setTimeout(() => {
+        textEl.innerHTML = `${stages[stageIdx].text} <span class="ritual-sanskrit-sub">॥ ${stages[stageIdx].sanskrit} ॥</span>`;
+        textEl.style.opacity = '1';
+        textEl.style.transform = 'translateY(0)';
+      }, 120);
+    }
+    stageIdx++;
+    if (stageIdx < stages.length) {
+      setTimeout(showNextStage, 440);
+    } else {
+      setTimeout(() => {
+        loadingEl.style.display = 'none';
+        onComplete();
+      }, 480);
+    }
+  }
+
+  showNextStage();
+}
+window.runCalculationRitual = runCalculationRitual;
+
+/* ══════════════════════════════════════
    MAIN READING FUNCTION (REDIRECT & REPORT)
 ══════════════════════════════════════ */
 async function doReading() {
@@ -878,23 +922,28 @@ async function doReading() {
   }
 
   if (!name || !dob) {
-    if (errEl) errEl.textContent = '◈ Please enter your full name and date of birth';
+    if (errEl) errEl.textContent = 'Please enter your full name and date of birth';
     return;
   }
 
   const btn = document.getElementById('submitBtn');
+  const loadingDiv = document.getElementById('loadingDiv');
+  const loadingText = document.getElementById('loadingText');
+
   if (btn) {
     btn.disabled = true;
-    btn.textContent = '◈ Aligning your celestial matrix...';
+    btn.textContent = 'Aligning your celestial matrix...';
   }
 
-  const params = new URLSearchParams();
-  params.set('name', name);
-  params.set('dob', dob);
-  if (phone) params.set('phone', phone);
-  if (challenge) params.set('challenge', challenge);
+  runCalculationRitual(loadingDiv, loadingText, () => {
+    const params = new URLSearchParams();
+    params.set('name', name);
+    params.set('dob', dob);
+    if (phone) params.set('phone', phone);
+    if (challenge) params.set('challenge', challenge);
 
-  window.location.href = `numerology.html?${params.toString()}`;
+    window.location.href = `numerology.html?${params.toString()}`;
+  });
 }
 
 /* ══════════════════════════════════════
@@ -927,11 +976,10 @@ async function doReading() {
   const msgEl = document.getElementById('dailyMsg');
 
   if (numEl) {
-    numEl.textContent = universalDay;
-    numEl.style.background = 'linear-gradient(135deg, #B08A57, #D4B58A)';
-    numEl.style.webkitBackgroundClip = 'text';
-    numEl.style.webkitTextFillColor = 'transparent';
-    numEl.style.backgroundClip = 'text';
+    const DEVANAGARI_DIGITS = { 0: '०', 1: '१', 2: '२', 3: '३', 4: '४', 5: '५', 6: '६', 7: '७', 8: '८', 9: '९', 11: '११', 22: '२२', 33: '३३' };
+    const devNum = DEVANAGARI_DIGITS[universalDay] || '';
+    numEl.innerHTML = `${universalDay} <span class="transit-vedic-glyph">${devNum}</span>`;
+    numEl.style.color = 'var(--gold-primary)';
   }
   if (msgEl) msgEl.textContent = meaning.msg;
 })();

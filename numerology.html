@@ -1055,12 +1055,13 @@
     /* ── Mahadasha-Antardasha Outcome Section ── */
     .ad-outcome-section {
       margin-top: 2.5rem;
-      padding: 2rem 1.8rem;
-      background: linear-gradient(135deg, rgba(212, 181, 138, 0.04), rgba(212, 181, 138, 0.04));
-      border: 1px solid rgba(212, 181, 138, 0.18);
-      border-radius: 8px;
+      padding: 2.2rem 2rem;
+      background: linear-gradient(180deg, rgba(20, 16, 11, 0.75) 0%, rgba(15, 13, 9, 0.9) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-sm, 6px);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
       animation: fadeUp 0.8s ease both;
     }
 
@@ -1071,45 +1072,47 @@
       left: -40%;
       width: 180%;
       height: 180%;
-      background: radial-gradient(circle at 30% 30%, rgba(212, 181, 138, 0.06) 0%, transparent 55%);
+      background: radial-gradient(circle at 30% 30%, rgba(196, 158, 106, 0.06) 0%, transparent 55%);
       pointer-events: none;
     }
 
     .ad-outcome-header {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
     .ad-outcome-eyebrow {
-      font-family: var(--font-heading);
-      font-size: 10px;
-      letter-spacing: 4px;
-      color: var(--amber);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-light);
       text-transform: uppercase;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      opacity: 0.85;
     }
 
     .ad-outcome-title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      background: linear-gradient(135deg, #B08A57, #D4B58A);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.3rem;
+      font-family: var(--font-serif, 'Cormorant Garamond', serif);
+      font-size: clamp(1.4rem, 3.2vw, 2rem);
+      font-weight: 600;
+      color: var(--ivory-text);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
     }
 
     .ad-outcome-hindi {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-style: italic;
+      font-family: 'Yatra One', 'Noto Serif Devanagari', serif;
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      letter-spacing: 0.03em;
     }
 
     .ad-outcome-body {
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      color: var(--text);
+      font-family: var(--font-body, 'DM Sans', sans-serif);
+      font-size: 1.025rem;
+      color: var(--parchment-body);
       line-height: 1.85;
       text-align: justify;
       position: relative;
@@ -1120,23 +1123,22 @@
     }
 
     .ad-outcome-body::first-letter {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
+      font-family: var(--font-serif, 'Cormorant Garamond', serif);
+      font-size: 3.2rem;
       float: left;
-      line-height: 1;
-      margin-right: 0.4rem;
-      margin-top: 0.1rem;
-      background: linear-gradient(135deg, #B08A57, #D4B58A);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      line-height: 0.85;
+      margin-right: 0.75rem;
+      margin-top: 0.15rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      text-shadow: 0 0 16px rgba(196, 158, 106, 0.35);
     }
 
     .ad-outcome-divider {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(176, 138, 87, 0.4), transparent);
-      margin: 1.5rem auto 0;
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+      margin: 1.8rem auto 0;
     }
 
     @keyframes outcomeReveal {
@@ -1409,107 +1411,148 @@
     }
 
     .py-outcome-eyebrow {
-      font-family: var(--font-heading);
-      font-size: 10px;
-      letter-spacing: 4px;
-      color: var(--gold);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-light);
       text-transform: uppercase;
       margin-bottom: 0.5rem;
+      font-weight: 500;
+      opacity: 0.85;
     }
 
     .py-outcome-title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      background: linear-gradient(135deg, #E8E0D2, #B08A57, #D4B58A);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-family: var(--font-serif, 'Cormorant Garamond', serif);
+      font-size: clamp(1.4rem, 3.2vw, 2rem);
+      font-weight: 600;
+      color: var(--ivory-text);
+      letter-spacing: 0.02em;
       margin-bottom: 0.4rem;
+      line-height: 1.2;
     }
 
     .py-outcome-theme {
-      font-family: var(--font-heading);
-      font-size: 0.95rem;
-      color: var(--muted);
-      letter-spacing: 2px;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      color: var(--gold-primary);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      font-weight: bold;
+      font-weight: 600;
     }
 
     .py-outcome-body {
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      color: var(--text);
+      font-family: var(--font-body, 'DM Sans', sans-serif);
+      font-size: 1.05rem;
+      color: var(--parchment-body);
       line-height: 1.85;
-      text-align: justify;
+      text-align: left;
       position: relative;
       z-index: 1;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2.2rem;
     }
 
     .py-outcome-body::first-letter {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
+      font-family: var(--font-serif, 'Cormorant Garamond', serif);
+      font-size: 3.2rem;
       float: left;
-      line-height: 1;
-      margin-right: 0.5rem;
-      margin-top: 0.1rem;
-      background: linear-gradient(135deg, var(--gold), var(--rose));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      line-height: 0.85;
+      margin-right: 0.75rem;
+      margin-top: 0.15rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      text-shadow: 0 0 16px rgba(196, 158, 106, 0.35);
     }
 
     .py-effects-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.8rem;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
       position: relative;
       z-index: 1;
     }
 
     .py-effects-column {
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 6px;
-      padding: 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .py-effects-column:hover {
-      transform: translateY(-2px);
+      background: linear-gradient(180deg, rgba(20, 16, 11, 0.75) 0%, rgba(15, 13, 9, 0.9) 100%);
+      border-radius: var(--radius-sm, 6px);
+      padding: 1.6rem 1.8rem;
+      border: 1px solid var(--gold-border-subtle);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      position: relative;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .py-effects-column.positive {
-      border-left: 3px solid #6ee7b7;
-    }
-    .py-effects-column.positive:hover {
-      border-color: rgba(110, 231, 183, 0.3);
+      border-top: 2px solid var(--gold-primary);
+      border-left: 1px solid var(--gold-border);
     }
 
     .py-effects-column.negative {
-      border-left: 3px solid #f87171;
+      border-top: 2px solid var(--vermilion);
+      border-left: 1px solid rgba(179, 54, 31, 0.3);
     }
-    .py-effects-column.negative:hover {
-      border-color: rgba(248, 113, 113, 0.3);
+
+    .py-effects-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding-bottom: 1.1rem;
+      margin-bottom: 1.1rem;
+      border-bottom: 1px solid var(--gold-border-subtle);
+    }
+
+    .py-effects-glyph {
+      font-family: 'Yatra One', 'Noto Serif Devanagari', serif;
+      font-size: 1.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .py-effects-glyph.gold {
+      color: var(--gold-primary);
+      text-shadow: 0 0 10px rgba(196, 158, 106, 0.4);
+    }
+
+    .py-effects-glyph.vermilion {
+      color: var(--vermilion);
+      text-shadow: 0 0 10px rgba(179, 54, 31, 0.5);
     }
 
     .py-effects-title {
-      font-family: var(--font-heading);
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-      font-weight: bold;
+      font-family: var(--font-serif, 'Cormorant Garamond', serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin: 0 0 0.15rem 0;
+      line-height: 1.2;
     }
 
     .py-effects-column.positive .py-effects-title {
-      color: #6ee7b7;
+      color: var(--ivory-text);
     }
 
     .py-effects-column.negative .py-effects-title {
-      color: #f87171;
+      color: var(--ivory-text);
+    }
+
+    .py-effects-subtitle {
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .py-effects-column.positive .py-effects-subtitle {
+      color: var(--gold-primary);
+      opacity: 0.9;
+    }
+
+    .py-effects-column.negative .py-effects-subtitle {
+      color: var(--vermilion);
+      opacity: 0.95;
     }
 
     .py-effects-list {
@@ -1517,29 +1560,64 @@
       padding: 0;
       margin: 0;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 0.5rem;
     }
 
-    .py-effect-tag {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      text-transform: capitalize;
+    .py-effect-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.55rem 0.4rem;
+      border-bottom: 1px solid rgba(196, 158, 106, 0.07);
+      transition: background-color 0.25s ease, padding-left 0.25s ease;
+      border-radius: 3px;
     }
 
-    .py-effects-column.positive .py-effect-tag {
-      border-color: rgba(110, 231, 183, 0.15);
-      background: rgba(110, 231, 183, 0.04);
+    .py-effect-item:last-child {
+      border-bottom: none;
     }
 
-    .py-effects-column.negative .py-effect-tag {
-      border-color: rgba(248, 113, 113, 0.15);
-      background: rgba(248, 113, 113, 0.04);
+    .py-effect-item:hover {
+      background-color: rgba(196, 158, 106, 0.04);
+      padding-left: 0.7rem;
+    }
+
+    .py-item-marker {
+      font-family: 'Yatra One', 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .py-item-marker.gold {
+      color: var(--gold-primary);
+    }
+
+    .py-item-marker.vermilion {
+      color: var(--vermilion);
+    }
+
+    .py-item-text {
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      font-size: 0.925rem;
+      line-height: 1.6;
+      color: var(--parchment-body);
+      letter-spacing: 0.01em;
+    }
+
+    .py-effect-item:hover .py-item-text {
+      color: var(--ivory-bright);
+    }
+
+    @media (max-width: 768px) {
+      .py-effects-container {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+      .py-effects-column {
+        padding: 1.3rem 1.4rem;
+      }
     }
 
     .py-outcome-notes {
@@ -1725,8 +1803,7 @@
     <!-- ═══════ NUMEROLOGY REPORT MODULE ═══════ -->
     <section class="numero-section reveal">
 
-      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Vedic Numerology
-        Grid ✦</p>
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">Vedic Numerology Grid</p>
       <h1 class="section-title" style="margin-bottom:0.5rem">Decode Your Cosmic Blueprint</h1>
       <p class="section-sub">Enter your date of birth and unveil the sacred numbers that shape your destiny</p>
 
@@ -1739,20 +1816,26 @@
 
         <div class="dob-input-card">
           <div class="field-group">
-            <label class="field-label" for="numFullName">✦ Full Name</label>
+            <label class="field-label" for="numFullName">Full Name <span class="label-req">*</span></label>
             <input class="field-input" id="numFullName" type="text" placeholder="e.g. Aditya Kushwaha"
               autocomplete="name">
           </div>
           <div class="field-group">
-            <label class="field-label" for="numDob">✦ Date of Birth (DD/MM/YYYY)</label>
+            <label class="field-label" for="numDob">Date of Birth (DD/MM/YYYY) <span class="label-req">*</span></label>
             <input class="field-input" id="numDob" type="text" placeholder="e.g. 18/10/1998" maxlength="10"
               autocomplete="off" inputmode="numeric">
           </div>
           <button class="submit-btn float" id="numSubmitBtn" onclick="generateReport()">
-            ✦ Reveal Numerology Report ✦
+            Reveal Numerology Report →
           </button>
         </div>
         <p class="error-msg" id="numErrMsg"></p>
+      </div>
+
+      <!-- Loading Ritual (#4) -->
+      <div class="loading-ritual" id="numeroLoadingDiv">
+        <div class="ritual-spinner"></div>
+        <p class="ritual-text" id="numeroLoadingText">Aligning Solar &amp; Lunar Coordinates... <span class="ritual-sanskrit-sub">॥ सूर्य-चन्द्र समन्वय ॥</span></p>
       </div>
 
       <!-- Report Result -->
@@ -1765,12 +1848,12 @@
 
           <!-- Header -->
           <div class="report-header">
-            <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Numerology Report ✦</p>
+            <p class="hero-eyebrow" style="animation:none;opacity:1">Numerology Report</p>
             <h2 class="report-title">Your Cosmic Numbers</h2>
             <p class="report-dob-display" id="reportDobDisplay"></p>
             <div class="report-action-bar">
               <button class="btn-report-action" onclick="saveCurrentNumerologyReading()" type="button">
-                <span>✦</span> Save to Dashboard
+                <span>⬡</span> Save to Dashboard
               </button>
               <button class="btn-report-action" onclick="window.print()" type="button">
                 <span>⎙</span> Print / Export
@@ -1783,7 +1866,7 @@
 
           <!-- Personal Transits Section -->
           <div class="personal-transits-section">
-            <p class="grid-section-title">✦ Current Personal Transits ✦</p>
+            <p class="grid-section-title">Current Personal Transits</p>
             <p class="grid-section-sub" id="transitDateDisplay"></p>
             <div class="personal-transits-grid" id="personalTransits"></div>
           </div>
@@ -1791,7 +1874,7 @@
           <!-- Personal Year Outcome Section -->
           <div class="py-outcome-section" id="pyOutcomeSection" style="display:none;">
             <div class="py-outcome-header">
-              <p class="py-outcome-eyebrow">✦ Personal Year Outcome ✦</p>
+              <p class="py-outcome-eyebrow">Personal Year Outcome</p>
               <h3 class="py-outcome-title" id="pyOutcomeTitle"></h3>
               <p class="py-outcome-theme" id="pyOutcomeTheme"></p>
             </div>
@@ -1800,17 +1883,29 @@
             
             <div class="py-effects-container">
               <div class="py-effects-column positive">
-                <p class="py-effects-title">✦ Positive Highlights</p>
+                <div class="py-effects-header">
+                  <span class="py-effects-glyph gold">॥</span>
+                  <div>
+                    <p class="py-effects-title">Auspicious Currents</p>
+                    <p class="py-effects-subtitle">शुभ प्रभाव · Favorable Alignments</p>
+                  </div>
+                </div>
                 <ul class="py-effects-list" id="pyPositiveHighlights"></ul>
               </div>
               <div class="py-effects-column negative">
-                <p class="py-effects-title">◈ Precautions</p>
+                <div class="py-effects-header">
+                  <span class="py-effects-glyph vermilion">॥</span>
+                  <div>
+                    <p class="py-effects-title">Karmic Vigilance</p>
+                    <p class="py-effects-subtitle">सावधानी एवं संयम · Mindful Restraints</p>
+                  </div>
+                </div>
                 <ul class="py-effects-list" id="pyPrecautions"></ul>
               </div>
             </div>
             
             <div class="py-outcome-notes" id="pyOutcomeNotes" style="display:none;">
-              <span class="py-notes-icon">✦</span>
+              <span class="py-notes-icon">॥</span>
               <p class="py-notes-text" id="pyNotesText"></p>
             </div>
             
@@ -1821,7 +1916,7 @@
 
           <!-- Universal Grid -->
           <div class="grid-section">
-            <p class="grid-section-title">✦ Universal Numerology Grid ✦</p>
+            <p class="grid-section-title">Universal Numerology Grid</p>
             <p class="grid-section-sub">Each digit from your birth date placed in its sacred position</p>
             <div class="numero-grid" id="numeroGrid"></div>
           </div>
@@ -1831,7 +1926,7 @@
 
           <!-- Footer -->
           <div class="report-footer">
-            <p class="report-footer-text">✦ &nbsp; The numbers speak — those who decode them transform &nbsp; ✦</p>
+            <p class="report-footer-text">— The numbers speak — those who decode them transform —</p>
           </div>
         </div>
       </div>
@@ -1846,21 +1941,21 @@
 
           <!-- Header -->
           <div class="report-header">
-            <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Cosmic Grid + Mahadasha ✦</p>
+            <p class="hero-eyebrow" style="animation:none;opacity:1">Cosmic Grid + Mahadasha</p>
             <h2 class="report-title">Your Cosmic Grid &amp; Current Mahadasha</h2>
             <p class="report-dob-display" id="mahadashaDobDisplay"></p>
           </div>
 
           <!-- Duplicate Grid -->
           <div class="grid-section">
-            <p class="grid-section-title">✦ Universal Numerology Grid ✦</p>
+            <p class="grid-section-title">Universal Numerology Grid</p>
             <p class="grid-section-sub">Each digit from your birth date placed in its sacred position</p>
             <div class="numero-grid" id="mahadashaGrid"></div>
           </div>
 
           <!-- Present Cosmic Grid (3rd Grid) -->
           <div class="grid-section" style="border-top: 1px solid var(--border);">
-            <p class="grid-section-title" style="color: var(--antique-bronze);">✦ Present Cosmic Grid ✦</p>
+            <p class="grid-section-title" style="color: var(--antique-bronze);">Present Cosmic Grid</p>
             <p class="grid-section-sub">Your cosmic grid enhanced with Personal Year, Month &amp; Day transits</p>
             <div class="personal-transit-chips" id="presentGridTransits"></div>
             <div class="numero-grid" id="presentCosmicGrid"></div>
@@ -1868,7 +1963,7 @@
 
           <!-- Mahadasha Info Panel -->
           <div class="mahadasha-panel">
-            <p class="mahadasha-panel-title">✦ Current Mahadasha ✦</p>
+            <p class="mahadasha-panel-title">Current Mahadasha</p>
             <p class="mahadasha-panel-sub">The planetary period governing your present karmic cycle</p>
 
             <!-- Active Mahadasha Number -->
@@ -1912,7 +2007,7 @@
 
           <!-- ══════ ANTARDASHA PANEL ══════ -->
           <div class="antardasha-panel" id="antardashaPanel">
-            <p class="antardasha-panel-title">✦ Current Antardasha ✦</p>
+            <p class="antardasha-panel-title">Current Antardasha</p>
             <p class="antardasha-panel-sub">The sub-period within your Mahadasha shaping your present moments</p>
 
             <!-- Active Antardasha Number -->
@@ -1983,19 +2078,52 @@
               </div>
 
               <div class="ad-outcome-header">
-                <p class="ad-outcome-eyebrow">✦ Cosmic Insight ✦</p>
+                <p class="ad-outcome-eyebrow">Cosmic Insight</p>
                 <p class="ad-outcome-title" id="adOutcomeTitle"></p>
                 <p class="ad-outcome-hindi" id="adOutcomeHindi"></p>
               </div>
               <p class="ad-outcome-body" id="adOutcomeBody"></p>
+
+              <!-- Prescribed Vedic Planetary Alignment (#3) -->
+              <div class="mahadasha-remedial-box" id="mdRemedialBox" style="display:none;">
+                <div class="remedial-header">
+                  <span class="remedial-glyph">॥</span>
+                  <div>
+                    <p class="remedial-title">Prescribed Vedic Planetary Alignment</p>
+                    <p class="remedial-subtitle">दशा शान्ति एवं रत्न-मन्त्र विधान</p>
+                  </div>
+                </div>
+                <div class="remedial-grid">
+                  <div class="remedial-cell">
+                    <span class="remedial-lbl">Governing Deity</span>
+                    <span class="remedial-val" id="mdDeity">—</span>
+                  </div>
+                  <div class="remedial-cell">
+                    <span class="remedial-lbl">Auspicious Gemstone</span>
+                    <span class="remedial-val" id="mdGemstone">—</span>
+                  </div>
+                  <div class="remedial-cell">
+                    <span class="remedial-lbl">Presiding Day & Direction</span>
+                    <span class="remedial-val" id="mdDayDir">—</span>
+                  </div>
+                  <div class="remedial-cell">
+                    <span class="remedial-lbl">Spiritual Essence</span>
+                    <span class="remedial-val" id="mdEssence">—</span>
+                  </div>
+                </div>
+                <div class="remedial-mantra">
+                  <span class="mantra-title">Sacred Beej Mantra for Active Dasha:</span>
+                  <p class="mantra-shloka" id="mdMantra">—</p>
+                </div>
+              </div>
+
               <div class="ad-outcome-divider"></div>
             </div>
           </div>
 
           <!-- Footer -->
           <div class="report-footer">
-            <p class="report-footer-text">✦ &nbsp; Mahadasha & Antardasha reveal the cosmic rhythm of your karmic
-              journey &nbsp; ✦</p>
+            <p class="report-footer-text">— Mahadasha & Antardasha reveal the cosmic rhythm of your karmic journey —</p>
           </div>
         </div>
       </div>
@@ -2004,11 +2132,37 @@
 
     <!-- ═══════ FOOTER ═══════ -->
     <footer class="footer">
-      <div class="footer-symbol">✦</div>
-      <p class="footer-name">Anktatvaa</p>
-      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
-      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
-      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      <div class="footer-colophon">
+        <div class="colophon-ornament">
+          <span class="colophon-wire"></span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-glyph">ॐ</span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-wire"></span>
+        </div>
+        <p class="footer-name">Anktatvaa</p>
+        <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+        <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोलम्</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="index.html#reading" class="footer-link">Vedic Matrix</a>
+        <span class="footer-sep">·</span>
+        <a href="numerology.html" class="footer-link">Full Reading</a>
+        <span class="footer-sep">·</span>
+        <a href="compatibility.html" class="footer-link">Cosmic Compatibility</a>
+        <span class="footer-sep">·</span>
+        <a href="phone-vibration.html" class="footer-link">Phone Frequency</a>
+        <span class="footer-sep">·</span>
+        <a href="health-tendencies.html" class="footer-link">Planetary Health</a>
+        <span class="footer-sep">·</span>
+        <a href="name-vibration.html" class="footer-link">Name Vibration</a>
+      </nav>
+
+      <div class="footer-footnote">
+        <p class="footer-disclaimer">Rooted in ancient Chaldean &amp; Vedic traditions. Crafted for seeker illumination.</p>
+        <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      </div>
     </footer>
 
   </div>
@@ -2205,8 +2359,8 @@
       // Personal Day Calculation
       const personalDay = reduceWithMaster(personalMonth + currentDate);
 
-      // ── Render Report ──
-      renderReport({
+      // ── Render Report with Sacred Ritual (#4) ──
+      const reportData = {
         dob: raw,
         fullName,
         day, month, year,
@@ -2218,7 +2372,18 @@
         personalYear,
         personalMonth,
         personalDay
-      });
+      };
+
+      const loadingDiv = document.getElementById('numeroLoadingDiv');
+      const loadingText = document.getElementById('numeroLoadingText');
+      const reportSec = document.getElementById('reportSection');
+      if (reportSec) reportSec.classList.remove('visible');
+
+      if (window.runCalculationRitual && loadingDiv) {
+        window.runCalculationRitual(loadingDiv, loadingText, () => renderReport(reportData));
+      } else {
+        renderReport(reportData);
+      }
     }
 
     function saveCurrentNumerologyReading() {
@@ -2258,23 +2423,42 @@
       // DOB display
       document.getElementById('reportDobDisplay').textContent = `Date of Birth: ${data.dob}`;
 
-      // Number badges
+      // Number badges with Classical Vedic Details (#4)
+      const DEVANAGARI_DIGITS = { 0: '०', 1: '१', 2: '२', 3: '३', 4: '४', 5: '५', 6: '६', 7: '७', 8: '८', 9: '९', 11: '११', 22: '२२', 33: '३३' };
+      const VEDIC_GRAHAS = {
+        1: 'Surya ☉ (सूर्य)',
+        2: 'Chandra ☽ (चन्द्र)',
+        3: 'Guru ♃ (बृहस्पति)',
+        4: 'Rahu ☊ (राहु)',
+        5: 'Budha ☿ (बुध)',
+        6: 'Shukra ♀ (शुक्र)',
+        7: 'Ketu ☋ (केतु)',
+        8: 'Shani ♄ (शनि)',
+        9: 'Mangal ♂ (मंगल)',
+      };
+
       const bn = data.birthNumber;
       const dn = data.destinyNumber;
       document.getElementById('reportNumbers').innerHTML = `
         <div class="report-num-badge">
+          <span class="vedic-bindu"></span>
           <div class="report-num-ring">
             <span class="report-num-val">${bn}</span>
+            <span class="vedic-glyph">${DEVANAGARI_DIGITS[bn] || ''}</span>
           </div>
-          <p class="report-num-label">Birth Number</p>
+          <p class="report-num-label">Birth Number (Moolank)</p>
           <p class="report-num-desc">${PLANET_MAP[bn].planet} ${PLANET_MAP[bn].symbol}</p>
+          <span class="graha-pill" onclick="openGrahaModal(${bn})" title="Explore Vedic Graha Archive">${VEDIC_GRAHAS[bn] || PLANET_MAP[bn].planet} · View Archetype ↗</span>
         </div>
         <div class="report-num-badge">
+          <span class="vedic-bindu"></span>
           <div class="report-num-ring">
             <span class="report-num-val">${dn}</span>
+            <span class="vedic-glyph">${DEVANAGARI_DIGITS[dn] || ''}</span>
           </div>
-          <p class="report-num-label">Destiny Number</p>
+          <p class="report-num-label">Destiny Number (Bhagyank)</p>
           <p class="report-num-desc">${PLANET_MAP[dn].planet} ${PLANET_MAP[dn].symbol}</p>
+          <span class="graha-pill" onclick="openGrahaModal(${dn})" title="Explore Vedic Graha Archive">${VEDIC_GRAHAS[dn] || PLANET_MAP[dn].planet} · View Archetype ↗</span>
         </div>
       `;
 
@@ -2296,6 +2480,7 @@
         <div class="transit-badge">
           <div class="transit-ring">
             <span class="transit-val">${py}</span>
+            <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[py] || ''}</span>
           </div>
           <p class="transit-label">Personal Year</p>
           <p class="transit-desc"><strong>${pyEss.title}</strong>: ${pyEss.desc}</p>
@@ -2303,6 +2488,7 @@
         <div class="transit-badge">
           <div class="transit-ring">
             <span class="transit-val">${pm}</span>
+            <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[pm] || ''}</span>
           </div>
           <p class="transit-label">Personal Month</p>
           <p class="transit-desc"><strong>${pmEss.title}</strong>: ${pmEss.desc}</p>
@@ -2310,6 +2496,7 @@
         <div class="transit-badge">
           <div class="transit-ring">
             <span class="transit-val">${pd}</span>
+            <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[pd] || ''}</span>
           </div>
           <p class="transit-label">Personal Day</p>
           <p class="transit-desc"><strong>${pdEss.title}</strong>: ${pdEss.desc}</p>
@@ -2358,13 +2545,13 @@
       document.getElementById('numbersAnalysis').innerHTML = `
         <div class="numbers-analysis-card">
           <div class="analysis-card-header">
-            <span class="analysis-card-icon">✦</span>
+            <span class="analysis-card-icon">॥</span>
             <span class="analysis-card-title">Present Numbers</span>
           </div>
           <div class="analysis-nums">
             ${data.presentNums.length > 0
           ? data.presentNums.map(n =>
-            `<span class="analysis-num-chip chip-present" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n}</span>`
+            `<span class="analysis-num-chip chip-present" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[n] || ''}</span></span>`
           ).join('')
           : '<span class="analysis-empty">None present</span>'
         }
@@ -2372,13 +2559,13 @@
         </div>
         <div class="numbers-analysis-card">
           <div class="analysis-card-header">
-            <span class="analysis-card-icon">◈</span>
+            <span class="analysis-card-icon">॥</span>
             <span class="analysis-card-title">Missing Numbers</span>
           </div>
           <div class="analysis-nums">
             ${data.missingNums.length > 0
           ? data.missingNums.map(n =>
-            `<span class="analysis-num-chip chip-missing" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n}</span>`
+            `<span class="analysis-num-chip chip-missing" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[n] || ''}</span></span>`
           ).join('')
           : '<span class="analysis-empty">All numbers present!</span>'
         }
@@ -2430,25 +2617,33 @@
           outcomeTheme.textContent = `Theme: ${entry.theme || ''}`;
           outcomeBody.textContent = entry.description || '';
 
-          // Positive highlights tags
+          // Auspicious Currents (Benefic Alignments)
           posList.innerHTML = '';
           if (entry.positive_highlights && entry.positive_highlights.length > 0) {
             entry.positive_highlights.forEach(highlight => {
-              const tag = document.createElement('li');
-              tag.className = 'py-effect-tag';
-              tag.textContent = highlight;
-              posList.appendChild(tag);
+              const li = document.createElement('li');
+              li.className = 'py-effect-item positive';
+              const cleanText = highlight.charAt(0).toUpperCase() + highlight.slice(1);
+              li.innerHTML = `
+                <span class="py-item-marker gold">।</span>
+                <span class="py-item-text">${cleanText}</span>
+              `;
+              posList.appendChild(li);
             });
           }
 
-          // Precautions tags
+          // Karmic Vigilance (Mindful Restraints)
           negList.innerHTML = '';
           if (entry.precautions && entry.precautions.length > 0) {
             entry.precautions.forEach(precaution => {
-              const tag = document.createElement('li');
-              tag.className = 'py-effect-tag';
-              tag.textContent = precaution;
-              negList.appendChild(tag);
+              const li = document.createElement('li');
+              li.className = 'py-effect-item negative';
+              const cleanText = precaution.charAt(0).toUpperCase() + precaution.slice(1);
+              li.innerHTML = `
+                <span class="py-item-marker vermilion">।</span>
+                <span class="py-item-text">${cleanText}</span>
+              `;
+              negList.appendChild(li);
             });
           }
 
@@ -2795,6 +2990,18 @@
             greetingEl.style.display = 'none';
           }
 
+          // Populate Vedic Remedial Folio (#3)
+          const remedialBox = document.getElementById('mdRemedialBox');
+          if (remedialBox && VEDIC_GRAHA_ARCHIVE[mahadashaNumber]) {
+            const rData = VEDIC_GRAHA_ARCHIVE[mahadashaNumber];
+            document.getElementById('mdDeity').textContent = rData.deity;
+            document.getElementById('mdGemstone').textContent = rData.gemstone;
+            document.getElementById('mdDayDir').textContent = rData.dayDirection;
+            document.getElementById('mdEssence').textContent = rData.essence;
+            document.getElementById('mdMantra').textContent = rData.mantra;
+            remedialBox.style.display = 'block';
+          }
+
           // Reset animation by cloning
           outcomeBody.style.animation = 'none';
           outcomeBody.offsetHeight; // trigger reflow
@@ -2807,6 +3014,145 @@
           outcomeSection.style.display = 'none';
         });
     }
+
+    /* ══════════════════════════════════════
+       SACRED VEDIC GRAHA ARCHIVE (#4)
+    ══════════════════════════════════════ */
+    const VEDIC_GRAHA_ARCHIVE = {
+      1: {
+        planet: 'Sun',
+        sanskrit: 'सूर्य (Surya)',
+        glyph: '☉',
+        deity: 'Lord Surya / Gayatri',
+        gemstone: 'Ruby (माणिक्य - Manik)',
+        metal: 'Pure Copper & Gold',
+        dayDirection: 'Sunday · East (पूर्व)',
+        mantra: 'ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः ॥',
+        essence: 'Atmakaraka — Vital life-force, supreme sovereignty, luminous intellect, willpower, and divine fatherhood.'
+      },
+      2: {
+        planet: 'Moon',
+        sanskrit: 'चन्द्र (Chandra)',
+        glyph: '☽',
+        deity: 'Lord Shiva / Goddess Parvati',
+        gemstone: 'Natural Pearl (मोती - Moti)',
+        metal: 'Pure Silver',
+        dayDirection: 'Monday · North-West (वायव्य)',
+        mantra: 'ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः ॥',
+        essence: 'Manas — Mind, emotional depth, intuitive stillness, motherly compassion, and psychic tides.'
+      },
+      3: {
+        planet: 'Jupiter',
+        sanskrit: 'बृहस्पति (Brihaspati / Guru)',
+        glyph: '♃',
+        deity: 'Lord Brahma / Brihaspati',
+        gemstone: 'Yellow Sapphire (पुखराज - Pukhraj)',
+        metal: 'Gold / Brass',
+        dayDirection: 'Thursday · North-East (ईशान)',
+        mantra: 'ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः ॥',
+        essence: 'Guru — Supreme wisdom, spiritual illumination, dharmic expansion, honor, and celestial counsel.'
+      },
+      4: {
+        planet: 'Rahu',
+        sanskrit: 'राहु (Rahu)',
+        glyph: '☊',
+        deity: 'Goddess Durga / Bhairava',
+        gemstone: 'Hessonite Garnet (गोमेद - Gomed)',
+        metal: 'Mixed Alloy / Lead',
+        dayDirection: 'Saturday · South-West (नैऋत्य)',
+        mantra: 'ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः ॥',
+        essence: 'Shadow Node — Maya, sudden breakthroughs, unorthodox intellect, worldly ambition, and karmic destiny.'
+      },
+      5: {
+        planet: 'Mercury',
+        sanskrit: 'बुध (Budha)',
+        glyph: '☿',
+        deity: 'Lord Vishnu',
+        gemstone: 'Emerald (पन्ना - Panna)',
+        metal: 'Bronze / Brass',
+        dayDirection: 'Wednesday · North (उत्तर)',
+        mantra: 'ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः ॥',
+        essence: 'Buddhi — Acute discrimination, eloquence, commerce, analytical versatility, and cosmic humor.'
+      },
+      6: {
+        planet: 'Venus',
+        sanskrit: 'शुक्र (Shukra)',
+        glyph: '♀',
+        deity: 'Goddess Lakshmi / Shukracharya',
+        gemstone: 'Diamond or White Zircon (हीरा - Heera)',
+        metal: 'Silver / White Gold',
+        dayDirection: 'Friday · South-East (आग्नेय)',
+        mantra: 'ॐ द्रां द्रीं द्रौं सः शुक्राय नमः ॥',
+        essence: 'Daitya Guru — Aesthetics, refined grace, divine harmony, marital union, and material opulence.'
+      },
+      7: {
+        planet: 'Ketu',
+        sanskrit: 'केतु (Ketu)',
+        glyph: '☋',
+        deity: 'Lord Ganesha / Matsya Avatar',
+        gemstone: 'Cat’s Eye (लहसुनिया - Lehsunia)',
+        metal: 'Iron / Bell Metal',
+        dayDirection: 'Tuesday · North-West (वायव्य)',
+        mantra: 'ॐ स्त्रां स्त्रीं स्त्रौं सः केतवे नमः ॥',
+        essence: 'Mokshakaraka — Spiritual liberation, ascetic detachment, occult mysticism, and psychic insight.'
+      },
+      8: {
+        planet: 'Saturn',
+        sanskrit: 'शनि (Shani)',
+        glyph: '♄',
+        deity: 'Lord Shani / Lord Shiva',
+        gemstone: 'Blue Sapphire (नीलम - Neelam)',
+        metal: 'Iron / Dark Steel',
+        dayDirection: 'Saturday · West (पश्चिम)',
+        mantra: 'ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः ॥',
+        essence: 'Karmaphala Data — Disciplined endurance, eternal justice, deep contemplation, and time (Kala).'
+      },
+      9: {
+        planet: 'Mars',
+        sanskrit: 'मङ्गल (Mangala)',
+        glyph: '♂',
+        deity: 'Lord Kartikeya / Hanuman',
+        gemstone: 'Red Coral (मूँगा - Moonga)',
+        metal: 'Pure Copper',
+        dayDirection: 'Tuesday · South (दक्षिण)',
+        mantra: 'ॐ क्रां क्रीं क्रौं सः भौमाय नमः ॥',
+        essence: 'Bhauma — Warrior courage, righteous initiative, physical vitality, protective fire, and steadfast focus.'
+      }
+    };
+
+    function openGrahaModal(num) {
+      const g = VEDIC_GRAHA_ARCHIVE[num];
+      if (!g) return;
+      document.getElementById('gmSymbol').textContent = g.glyph || '☉';
+      document.getElementById('gmTitle').textContent = `${g.planet} — Archetype ${num}`;
+      document.getElementById('gmSanskrit').textContent = g.sanskrit;
+      document.getElementById('gmDeity').textContent = g.deity;
+      document.getElementById('gmGemstone').textContent = g.gemstone;
+      document.getElementById('gmMetal').textContent = g.metal;
+      document.getElementById('gmDayDirection').textContent = g.dayDirection;
+      document.getElementById('gmEssence').textContent = g.essence;
+      document.getElementById('gmMantra').textContent = g.mantra;
+
+      const backdrop = document.getElementById('grahaModalBackdrop');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGrahaModal() {
+      const backdrop = document.getElementById('grahaModalBackdrop');
+      if (backdrop) backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeGrahaModalOnBackdrop(e) {
+      if (e.target.id === 'grahaModalBackdrop') {
+        closeGrahaModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeGrahaModal();
+    });
 
     function toggleAntardashaTimeline() {
       const toggle = document.getElementById('adTimelineToggle');
@@ -2838,6 +3184,51 @@
       }
     });
   </script>
+
+  <!-- ═══════ SACRED GRAHA ARCHIVE MODAL (#4) ═══════ -->
+  <div class="graha-modal-backdrop" id="grahaModalBackdrop" onclick="closeGrahaModalOnBackdrop(event)">
+    <div class="graha-modal-card" id="grahaModalCard">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <button class="graha-modal-close" onclick="closeGrahaModal()" aria-label="Close Graha Archive">✕</button>
+
+      <div class="graha-modal-header">
+        <span class="graha-modal-symbol" id="gmSymbol">☉</span>
+        <h3 class="graha-modal-title" id="gmTitle">Surya — Archetype 1</h3>
+        <p class="graha-modal-sanskrit" id="gmSanskrit">सूर्य (Surya)</p>
+      </div>
+
+      <div class="graha-details-grid">
+        <div class="graha-detail-item">
+          <p class="graha-detail-label">Presiding Deity</p>
+          <p class="graha-detail-val" id="gmDeity">Lord Surya</p>
+        </div>
+        <div class="graha-detail-item">
+          <p class="graha-detail-label">Sacred Gemstone (रत्न)</p>
+          <p class="graha-detail-val" id="gmGemstone">Ruby (माणिक्य)</p>
+        </div>
+        <div class="graha-detail-item">
+          <p class="graha-detail-label">Metal &amp; Alloy</p>
+          <p class="graha-detail-val" id="gmMetal">Copper &amp; Gold</p>
+        </div>
+        <div class="graha-detail-item">
+          <p class="graha-detail-label">Auspicious Day &amp; Direction</p>
+          <p class="graha-detail-val" id="gmDayDirection">Sunday · East</p>
+        </div>
+        <div class="graha-detail-item" style="grid-column: 1 / -1;">
+          <p class="graha-detail-label">Spiritual Archetype</p>
+          <p class="graha-detail-val" id="gmEssence"></p>
+        </div>
+      </div>
+
+      <div class="graha-mantra-box">
+        <p class="graha-mantra-label">Sacred Beej Mantra (दशा जाप विधान)</p>
+        <p class="graha-mantra-text" id="gmMantra"></p>
+      </div>
+    </div>
+  </div>
 
 </body>
 

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=Yatra+One&display=swap"
     rel="stylesheet">
 </head>
 
@@ -149,11 +149,11 @@
     <!-- ═══════ DAILY COSMIC NUMBER BANNER ═══════ -->
     <div class="cosmic-banner" id="cosmicBanner">
       <div class="cosmic-banner-inner">
-        <span class="cosmic-banner-icon">✦</span>
+        <span class="cosmic-banner-icon">·</span>
         <span class="cosmic-banner-label">Universal Alignment Index</span>
         <span class="cosmic-banner-num" id="dailyNum">—</span>
         <span class="cosmic-banner-msg" id="dailyMsg">Synchronizing planetary cycle...</span>
-        <span class="cosmic-banner-icon">✦</span>
+        <span class="cosmic-banner-icon">·</span>
       </div>
     </div>
 
@@ -255,9 +255,7 @@
       <div class="hero-content">
         <!-- Eyebrow Label -->
         <p class="hero-eyebrow">
-          <span class="hero-eyebrow-accent">✦</span>
           <span class="hero-eyebrow-text">ANCIENT WISDOM · NUMERICAL INTELLIGENCE</span>
-          <span class="hero-eyebrow-accent">✦</span>
         </p>
 
         <!-- Large Editorial Headline -->
@@ -502,25 +500,25 @@
         <div class="corner corner-bl"></div>
         <div class="corner corner-br"></div>
         <div class="field-group">
-          <label class="field-label" for="fname">✦ Full Name (as given at birth)</label>
+          <label class="field-label" for="fname">Full Name (as given at birth) <span class="label-req">*</span></label>
           <input class="field-input" id="fname" type="text" placeholder="Enter your complete birth name...">
         </div>
         <div class="field-row">
           <div class="field-group">
-            <label class="field-label" for="fdob">✦ Date of Birth</label>
+            <label class="field-label" for="fdob">Date of Birth <span class="label-req">*</span></label>
             <input class="field-input" id="fdob" type="date">
           </div>
           <div class="field-group">
-            <label class="field-label" for="fphone">✦ Mobile Number</label>
+            <label class="field-label" for="fphone">Mobile Number</label>
             <input class="field-input" id="fphone" type="tel" placeholder="10-digit number">
           </div>
         </div>
         <div class="field-group">
-          <label class="field-label" for="fchallenge">✦ Current Life Challenge</label>
+          <label class="field-label" for="fchallenge">Current Life Challenge</label>
           <input class="field-input" id="fchallenge" type="text"
             placeholder="Career, relationships, health, finances...">
         </div>
-        <button class="submit-btn float" id="submitBtn" onclick="doReading()">✦ Reveal My Stellar Reading ✦</button>
+        <button class="submit-btn float" id="submitBtn" onclick="doReading()">Calculate Vedic Matrix →</button>
         <p class="error-msg" id="errMsg"></p>
       </div>
 
@@ -542,7 +540,7 @@
           </div>
           <div id="res-reading"></div>
           <div class="result-footer">
-            <p class="result-footer-text">✦ &nbsp; The cosmos speaks — those who listen transform &nbsp; ✦</p>
+            <p class="result-footer-text">— The ancient cosmos reveals, the conscious seeker transforms —</p>
           </div>
         </div>
       </div>
@@ -562,13 +560,13 @@
         <div class="compat-inputs">
           <!-- Person 1 -->
           <div class="compat-person">
-            <p class="compat-person-label">✦ First Soul</p>
+            <p class="compat-person-label">First Soul (Seeker)</p>
             <div class="field-group">
-              <label class="field-label" for="c1name">✦ Full Name</label>
+              <label class="field-label" for="c1name">Full Name <span class="label-req">*</span></label>
               <input class="field-input" id="c1name" type="text" placeholder="Enter first person's name...">
             </div>
             <div class="field-group">
-              <label class="field-label" for="c1dob">✦ Date of Birth</label>
+              <label class="field-label" for="c1dob">Date of Birth <span class="label-req">*</span></label>
               <input class="field-input" id="c1dob" type="date">
             </div>
           </div>
@@ -580,19 +578,19 @@
 
           <!-- Person 2 -->
           <div class="compat-person">
-            <p class="compat-person-label">✦ Second Soul</p>
+            <p class="compat-person-label">Second Soul (Partner)</p>
             <div class="field-group">
-              <label class="field-label" for="c2name">✦ Full Name</label>
+              <label class="field-label" for="c2name">Full Name <span class="label-req">*</span></label>
               <input class="field-input" id="c2name" type="text" placeholder="Enter second person's name...">
             </div>
             <div class="field-group">
-              <label class="field-label" for="c2dob">✦ Date of Birth</label>
+              <label class="field-label" for="c2dob">Date of Birth <span class="label-req">*</span></label>
               <input class="field-input" id="c2dob" type="date">
             </div>
           </div>
         </div>
 
-        <button class="submit-btn" id="compatBtn" onclick="checkCompatibility()">✦ Reveal Cosmic Bond ✦</button>
+        <button class="submit-btn" id="compatBtn" onclick="checkCompatibility()">Calculate Soul Affinity →</button>
         <p class="error-msg" id="compatErr"></p>
       </div>
 
@@ -627,42 +625,42 @@
       <p class="section-sub" style="text-align:center">Ancient celestial sciences decoded for your modern life</p>
       <div class="features-grid reveal-stagger">
         <a href="numerology.html" class="feat-card feat-link reveal stagger-1">
-          <span class="feat-icon">✦</span>
+          <span class="feat-num">१</span>
           <p class="feat-title">Vedic Numerology</p>
           <p class="feat-text">Ancient Chaldean &amp; Pythagorean systems merged with celestial wisdom for stellar
             accuracy</p>
           <span class="feat-action">Explore Matrix →</span>
         </a>
         <a href="phone-vibration.html" class="feat-card feat-link reveal stagger-2">
-          <span class="feat-icon">◈</span>
+          <span class="feat-num">२</span>
           <p class="feat-title">Phone Vibration</p>
           <p class="feat-text">Your phone number emits a cosmic frequency that shapes your daily reality like a stellar
             signal</p>
           <span class="feat-action">Analyze Frequency →</span>
         </a>
         <a href="numerology.html" class="feat-card feat-link reveal stagger-3">
-          <span class="feat-icon">✦</span>
+          <span class="feat-num">३</span>
           <p class="feat-title">Present Analysis</p>
           <p class="feat-text">Know exactly which cosmic cycles are active in your life right now and what the stars say
             to do</p>
           <span class="feat-action">View Forecast →</span>
         </a>
         <a href="health-tendencies.html" class="feat-card feat-link reveal stagger-4">
-          <span class="feat-icon">◈</span>
+          <span class="feat-num">४</span>
           <p class="feat-title">Planetary Alignment</p>
           <p class="feat-text">Discover how the planets aligned at your birth shape your energy, bodily balance and
             life's mission</p>
           <span class="feat-action">Explore Health →</span>
         </a>
         <a href="name-vibration.html" class="feat-card feat-link reveal stagger-5">
-          <span class="feat-icon">✦</span>
+          <span class="feat-num">५</span>
           <p class="feat-title">Name Vibration</p>
           <p class="feat-text">Each letter carries a Chaldean frequency — your name is a cosmic signal broadcast into
             the universe</p>
           <span class="feat-action">Decode Name →</span>
         </a>
         <a href="compatibility.html" class="feat-card feat-link reveal stagger-6">
-          <span class="feat-icon">◈</span>
+          <span class="feat-num">६</span>
           <p class="feat-title">Cosmic Compatibility</p>
           <p class="feat-text">Compare soul grids, birth numbers and destiny paths to discover divine synergy between
             partners</p>
@@ -698,7 +696,7 @@
 
     <!-- ═══════ FAQ ═══════ -->
     <section class="faq-section reveal" id="faq">
-      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.8rem">✦ Celestial Guidance ✦</p>
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.8rem">ANCIENT WISDOM · SACRED ARCHIVE</p>
       <h2 class="section-title" style="text-align:center">Frequently Asked Questions</h2>
       <p class="section-sub" style="text-align:center">Ancient wisdom answered for the modern seeker</p>
 
@@ -707,7 +705,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>What is Vedic Numerology?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>Vedic Numerology is an ancient cosmic science rooted in both Chaldean and Pythagorean traditions. It
@@ -720,7 +718,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>How does my name affect my numerology reading?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>Every letter carries a specific Chaldean vibrational frequency. When combined, the letters of your birth
@@ -733,7 +731,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>What is a Life Path Number?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>Your Life Path Number is derived by reducing your full date of birth to a single digit (or a master
@@ -746,7 +744,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>Why does my mobile number matter cosmically?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>Your phone number is not random — it emits a continuous vibrational frequency that interacts with your
@@ -759,7 +757,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>Which planets govern my numbers?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>In Vedic Numerology each digit is ruled by a celestial body: 1 → Sun ☉, 2 → Moon ☽, 3 → Jupiter ♃, 4 →
@@ -772,7 +770,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>What are celestial remedies and do they work?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>Celestial remedies are personalised prescriptions drawn from ancient Vedic texts — including specific
@@ -785,7 +783,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>Is my data safe and kept private?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>Absolutely. Your name, date of birth, and mobile number are used solely to generate your personal
@@ -797,7 +795,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             <span>How do I book a personal consultation?</span>
-            <span class="faq-icon">✦</span>
+            <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>Simply tap the WhatsApp button floating at the bottom-right of the page to connect directly with our
@@ -813,11 +811,37 @@
     <!-- ═══════ FOOTER ═══════ -->
 
     <footer class="footer">
-      <div class="footer-symbol">✦</div>
-      <p class="footer-name">Anktatvaa</p>
-      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
-      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
-      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      <div class="footer-colophon">
+        <div class="colophon-ornament">
+          <span class="colophon-wire"></span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-glyph">ॐ</span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-wire"></span>
+        </div>
+        <p class="footer-name">Anktatvaa</p>
+        <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+        <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोलम्</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="#reading" class="footer-link">Vedic Matrix</a>
+        <span class="footer-sep">·</span>
+        <a href="numerology.html" class="footer-link">Full Reading</a>
+        <span class="footer-sep">·</span>
+        <a href="compatibility.html" class="footer-link">Cosmic Compatibility</a>
+        <span class="footer-sep">·</span>
+        <a href="phone-vibration.html" class="footer-link">Phone Frequency</a>
+        <span class="footer-sep">·</span>
+        <a href="health-tendencies.html" class="footer-link">Planetary Health</a>
+        <span class="footer-sep">·</span>
+        <a href="name-vibration.html" class="footer-link">Name Vibration</a>
+      </nav>
+
+      <div class="footer-footnote">
+        <p class="footer-disclaimer">Rooted in ancient Chaldean &amp; Vedic traditions. Crafted for seeker illumination.</p>
+        <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      </div>
     </footer>
 
   </div>

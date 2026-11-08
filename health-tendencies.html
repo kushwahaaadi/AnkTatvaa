@@ -552,7 +552,7 @@
 
       <!-- Hero -->
       <div class="health-hero">
-        <p class="health-hero-eyebrow">✦ Vedic Health Insights ✦</p>
+        <p class="health-hero-eyebrow">Vedic Health Insights</p>
         <h1 class="health-hero-title">Health Tendencies</h1>
         <p class="health-hero-sub">Your Moolank reveals the cosmic blueprint of your physical constitution.
           Discover your innate health tendencies and preventive wisdom encoded in your birth number.</p>
@@ -566,20 +566,20 @@
         <div class="corner corner-br"></div>
 
         <div class="field-group">
-          <label class="field-label" for="healthDob">✦ Date of Birth (DD/MM/YYYY)</label>
+          <label class="field-label" for="healthDob">Date of Birth (DD/MM/YYYY) <span class="label-req">*</span></label>
           <input class="field-input" id="healthDob" type="text" placeholder="e.g. 18/10/1998" maxlength="10">
         </div>
 
         <button class="submit-btn" id="healthBtn" onclick="revealHealthTendencies()" style="margin-top:0.5rem">
-          ✦ Reveal Health Tendencies ✦
+          Reveal Health Tendencies →
         </button>
         <p class="error-msg" id="healthErr"></p>
       </div>
 
-      <!-- Loading -->
+      <!-- Loading Ritual (#4) -->
       <div class="health-loading" id="healthLoading">
         <div class="health-loading-spinner"></div>
-        <p class="health-loading-text">Consulting the cosmic constitution…</p>
+        <p class="health-loading-text">Consulting the Cosmic Constitution… <span class="ritual-sanskrit-sub">॥ प्रकृति एवं धातु शोधन ॥</span></p>
       </div>
 
       <!-- ═══════ RESULT SECTION (hidden until calculated) ═══════ -->
@@ -591,7 +591,7 @@
         <!-- Action Bar -->
         <div class="report-action-bar" style="justify-content:center;margin-bottom:1.5rem;">
           <button class="btn-report-action" onclick="saveCurrentHealthReading()" type="button">
-            <span>✦</span> Save to Dashboard
+            <span>⬡</span> Save to Dashboard
           </button>
           <button class="btn-report-action" onclick="window.print()" type="button">
             <span>⎙</span> Print / Export
@@ -606,8 +606,8 @@
 
         <!-- Disclaimer -->
         <div class="health-disclaimer">
-          <p class="health-disclaimer-icon">◈</p>
-          <p class="health-disclaimer-title">Important Disclaimer</p>
+          <p class="health-disclaimer-icon">॥</p>
+          <p class="health-disclaimer-title">Important Guidance</p>
           <p class="health-disclaimer-text">
             These health tendencies are based on traditional Vedic numerology and are not a substitute for
             professional medical advice. Always consult qualified healthcare professionals for health concerns
@@ -621,11 +621,37 @@
 
     <!-- ═══════ FOOTER ═══════ -->
     <footer class="footer">
-      <div class="footer-symbol">✦</div>
-      <p class="footer-name">Anktatvaa</p>
-      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
-      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
-      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      <div class="footer-colophon">
+        <div class="colophon-ornament">
+          <span class="colophon-wire"></span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-glyph">ॐ</span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-wire"></span>
+        </div>
+        <p class="footer-name">Anktatvaa</p>
+        <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+        <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोलम्</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="index.html#reading" class="footer-link">Vedic Matrix</a>
+        <span class="footer-sep">·</span>
+        <a href="numerology.html" class="footer-link">Full Reading</a>
+        <span class="footer-sep">·</span>
+        <a href="compatibility.html" class="footer-link">Cosmic Compatibility</a>
+        <span class="footer-sep">·</span>
+        <a href="phone-vibration.html" class="footer-link">Phone Frequency</a>
+        <span class="footer-sep">·</span>
+        <a href="health-tendencies.html" class="footer-link">Planetary Health</a>
+        <span class="footer-sep">·</span>
+        <a href="name-vibration.html" class="footer-link">Name Vibration</a>
+      </nav>
+
+      <div class="footer-footnote">
+        <p class="footer-disclaimer">Rooted in ancient Chaldean &amp; Vedic traditions. Crafted for seeker illumination.</p>
+        <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      </div>
     </footer>
 
   </div>

@@ -895,7 +895,7 @@
 
       <!-- Hero -->
       <div class="compat-hero">
-        <p class="compat-hero-eyebrow">✦ Vedic Compatibility ✦</p>
+        <p class="compat-hero-eyebrow">Vedic Compatibility</p>
         <h1 class="compat-hero-title">Cosmic Compatibility</h1>
         <p class="compat-hero-sub">Discover if the universe wove your destinies together.
           Compare birth numbers, destiny paths, and name vibrations to unveil the cosmic bond between two souls.</p>
@@ -911,13 +911,13 @@
         <div class="compat-page-inputs">
           <!-- Person 1 -->
           <div class="compat-page-person">
-            <p class="compat-page-person-label">✦ First Soul</p>
+            <p class="compat-page-person-label">First Soul</p>
             <div class="field-group">
-              <label class="field-label" for="c1name">✦ Full Name</label>
+              <label class="field-label" for="c1name">Full Name <span class="label-req">*</span></label>
               <input class="field-input" id="c1name" type="text" placeholder="Enter first person's name...">
             </div>
             <div class="field-group">
-              <label class="field-label" for="c1dob">✦ Date of Birth (DD/MM/YYYY)</label>
+              <label class="field-label" for="c1dob">Date of Birth (DD/MM/YYYY) <span class="label-req">*</span></label>
               <input class="field-input" id="c1dob" type="text" placeholder="e.g. 18/10/1998" maxlength="10">
             </div>
           </div>
@@ -931,22 +931,28 @@
 
           <!-- Person 2 -->
           <div class="compat-page-person">
-            <p class="compat-page-person-label">✦ Second Soul</p>
+            <p class="compat-page-person-label">Second Soul</p>
             <div class="field-group">
-              <label class="field-label" for="c2name">✦ Full Name</label>
+              <label class="field-label" for="c2name">Full Name <span class="label-req">*</span></label>
               <input class="field-input" id="c2name" type="text" placeholder="Enter second person's name...">
             </div>
             <div class="field-group">
-              <label class="field-label" for="c2dob">✦ Date of Birth (DD/MM/YYYY)</label>
+              <label class="field-label" for="c2dob">Date of Birth (DD/MM/YYYY) <span class="label-req">*</span></label>
               <input class="field-input" id="c2dob" type="text" placeholder="e.g. 25/04/1995" maxlength="10">
             </div>
           </div>
         </div>
 
         <button class="submit-btn" id="compatBtn" onclick="checkCompatibility()" style="margin-top:2rem">
-          ✦ Reveal Cosmic Bond ✦
+          Calculate Soul Affinity →
         </button>
         <p class="error-msg" id="compatErr"></p>
+      </div>
+
+      <!-- Loading Ritual (#4) -->
+      <div class="loading-ritual" id="compatLoadingDiv">
+        <div class="ritual-spinner"></div>
+        <p class="ritual-text" id="compatLoadingText">Aligning Dual Soul Matrices... <span class="ritual-sanskrit-sub">॥ द्वैत आत्मा समन्वय ॥</span></p>
       </div>
 
       <!-- ═══════ RESULT SECTION (hidden until calculated) ═══════ -->
@@ -960,15 +966,15 @@
 
         <!-- Soul Grids + Common Compatibility Grid -->
         <div class="compat-grids-section">
-          <p class="compat-grids-section-title">✦ Soul Grids & Common Compatibility ✦</p>
+          <p class="compat-grids-section-title">Soul Grids &amp; Common Compatibility</p>
           <div class="compat-grids-row">
             <div class="compat-grid-wrap">
-              <p class="compat-grid-label">✦ Soul 1 Grid ✦</p>
+              <p class="compat-grid-label">Soul 1 Grid</p>
               <p class="compat-grid-sublabel">Unique digits from first soul</p>
               <div class="numero-grid" id="soul1Grid"></div>
             </div>
             <div class="compat-grid-wrap">
-              <p class="compat-grid-label" style="color: var(--antique-bronze);">✦ Common Grid ✦</p>
+              <p class="compat-grid-label" style="color: var(--antique-bronze);">Common Grid</p>
               <p class="compat-grid-sublabel">Shared & exclusive cosmic numbers</p>
               <div class="numero-grid" id="commonGrid"></div>
               <div class="common-grid-legend">
@@ -987,7 +993,7 @@
               </div>
             </div>
             <div class="compat-grid-wrap">
-              <p class="compat-grid-label">✦ Soul 2 Grid ✦</p>
+              <p class="compat-grid-label">Soul 2 Grid</p>
               <p class="compat-grid-sublabel">Unique digits from second soul</p>
               <div class="numero-grid" id="soul2Grid"></div>
             </div>
@@ -1010,11 +1016,37 @@
 
     <!-- ═══════ FOOTER ═══════ -->
     <footer class="footer">
-      <div class="footer-symbol">✦</div>
-      <p class="footer-name">Anktatvaa</p>
-      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
-      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
-      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      <div class="footer-colophon">
+        <div class="colophon-ornament">
+          <span class="colophon-wire"></span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-glyph">ॐ</span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-wire"></span>
+        </div>
+        <p class="footer-name">Anktatvaa</p>
+        <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+        <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोलम्</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="index.html#reading" class="footer-link">Vedic Matrix</a>
+        <span class="footer-sep">·</span>
+        <a href="numerology.html" class="footer-link">Full Reading</a>
+        <span class="footer-sep">·</span>
+        <a href="compatibility.html" class="footer-link">Cosmic Compatibility</a>
+        <span class="footer-sep">·</span>
+        <a href="phone-vibration.html" class="footer-link">Phone Frequency</a>
+        <span class="footer-sep">·</span>
+        <a href="health-tendencies.html" class="footer-link">Planetary Health</a>
+        <span class="footer-sep">·</span>
+        <a href="name-vibration.html" class="footer-link">Name Vibration</a>
+      </nav>
+
+      <div class="footer-footnote">
+        <p class="footer-disclaimer">Rooted in ancient Chaldean &amp; Vedic traditions. Crafted for seeker illumination.</p>
+        <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      </div>
     </footer>
 
   </div>
@@ -1298,125 +1330,135 @@
       // ── Determine verdict ──
       let verdictEmoji, verdictLabel, verdictDesc;
       if (totalScore === 100) {
-        verdictEmoji = '✦';
+        verdictEmoji = '॥';
         verdictLabel = 'Best Compatibility';
         verdictDesc = 'The cosmos has aligned your paths in perfect harmony. This is a bond that resonates across every vibrational plane — a celestial union.';
       } else if (totalScore === 75) {
-        verdictEmoji = '✦';
+        verdictEmoji = '॥';
         verdictLabel = 'Good Compatibility';
         verdictDesc = 'Your energies complement each other beautifully. The universe blesses this connection with strong alignment and mutual growth.';
       } else if (totalScore === 50) {
-        verdictEmoji = '◈';
-        verdictLabel = 'So-So Compatible';
+        verdictEmoji = '·';
+        verdictLabel = 'Moderate Compatibility';
         verdictDesc = 'Your paths intersect with purpose. With conscious awareness and understanding, this bond holds meaningful potential.';
       } else {
         verdictEmoji = '·';
-        verdictLabel = 'Not Compatible';
+        verdictLabel = 'Challenging Compatibility';
         verdictDesc = 'The cosmic currents present challenges in this pairing. Deep understanding and patience are needed to navigate these vibrations.';
       }
 
-      // ══════ RENDER RESULTS ══════
-
-      // ── Soul Profile Cards ──
-      document.getElementById('soul1Profile').innerHTML = renderSoulProfile('First Soul', name1, bn1, dn1, compoundNN1, nn1);
-      document.getElementById('soul2Profile').innerHTML = renderSoulProfile('Second Soul', name2, bn2, dn2, compoundNN2, nn2);
-
-      // ── Render Soul Grids & Common Compatibility Grid ──
-      renderSoulGrid('soul1Grid', digitCounts1);
-      renderSoulGrid('soul2Grid', digitCounts2);
-      renderCommonGrid('commonGrid', digitCounts1, digitCounts2);
-
-
-      // ── Name Compatibility Card ──
-      document.getElementById('nameCompatCard').innerHTML = `
-        <p class="name-compat-header">✦ Name Compatibility ✦</p>
-        <p class="name-compat-numbers">${nn1} ↔ ${nn2}</p>
-        <p class="name-compat-relation ${nameRelation}">${capitalize(nameRelation)}</p>
-        <p class="name-compat-pct">${namePct}%</p>
-        <p class="name-compat-note">Name Compatibility is displayed separately and does not affect the overall score.</p>
-      `;
-
-      // ── Comparison Table ──
-      let compHTML = `<p class="comparison-title">✦ Compatibility Breakdown ✦</p>`;
-      comparisons.forEach(c => {
-        compHTML += `
-          <div class="comparison-row">
-            <span class="comparison-nums">${c.a} ↔ ${c.b}</span>
-            <span class="comparison-relation ${c.relation}">${capitalize(c.relation)}</span>
-            <span class="comparison-score ${c.points > 0 ? 'plus' : 'zero'}">+${c.points}</span>
-          </div>
-        `;
-      });
-      document.getElementById('comparisonSection').innerHTML = compHTML;
-
-      // ── Overall Result with Score Ring ──
-      const circumference = 2 * Math.PI * 52; // r=52
-      document.getElementById('overallResult').innerHTML = `
-        <p class="overall-result-label">✦ Overall Compatibility ✦</p>
-        <div class="report-action-bar" style="justify-content:center;margin-bottom:1.5rem;">
-          <button class="btn-report-action" onclick="saveCurrentCompatReading()" type="button">
-            <span>✦</span> Save to Dashboard
-          </button>
-          <button class="btn-report-action" onclick="window.print()" type="button">
-            <span>⎙</span> Print / Export
-          </button>
-        </div>
-        <div class="compat-score-ring-wrap">
-          <svg viewBox="0 0 120 120" class="compat-ring-svg">
-            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(176,138,87,0.15)" stroke-width="8" />
-            <circle cx="60" cy="60" r="52" fill="none" stroke="url(#compatGradient)" stroke-width="8"
-              stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" id="compatArc"
-              style="transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1)" />
-            <defs>
-              <linearGradient id="compatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#B08A57" />
-                <stop offset="100%" stop-color="#D4B58A" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="compat-score-center">
-            <span class="compat-score-val" id="compatScoreVal">0</span>
-            <span class="compat-score-pct">Match</span>
-          </div>
-        </div>
-        <p class="overall-verdict-emoji">${verdictEmoji}</p>
-        <p class="overall-verdict-text">${verdictLabel}</p>
-        <p class="overall-verdict-desc">${verdictDesc}</p>
-      `;
-
-      // ── Show result section ──
+      // ══════ RENDER RESULTS WITH RITUAL (#4) ══════
+      const loadingDiv = document.getElementById('compatLoadingDiv');
+      const loadingText = document.getElementById('compatLoadingText');
       const resultSection = document.getElementById('compatResultSection');
-      resultSection.classList.add('visible');
+      if (resultSection) resultSection.classList.remove('visible');
 
-      // ── Animate score ring ──
-      const pct = totalScore / 100;
-      setTimeout(() => {
-        document.getElementById('compatArc').style.strokeDashoffset = circumference - circumference * pct;
-      }, 100);
+      function executeCompatRender() {
+        // ── Soul Profile Cards ──
+        document.getElementById('soul1Profile').innerHTML = renderSoulProfile('First Soul', name1, bn1, dn1, compoundNN1, nn1);
+        document.getElementById('soul2Profile').innerHTML = renderSoulProfile('Second Soul', name2, bn2, dn2, compoundNN2, nn2);
 
-      // ── Animate counter from 0 to totalScore ──
-      const valEl = document.getElementById('compatScoreVal');
-      if (window.animateNumber) {
-        window.animateNumber(valEl, 0, totalScore, 1200);
-      } else {
-        valEl.textContent = totalScore;
+        // ── Render Soul Grids & Common Compatibility Grid ──
+        renderSoulGrid('soul1Grid', digitCounts1);
+        renderSoulGrid('soul2Grid', digitCounts2);
+        renderCommonGrid('commonGrid', digitCounts1, digitCounts2);
+
+        // ── Name Compatibility Card ──
+        document.getElementById('nameCompatCard').innerHTML = `
+          <p class="name-compat-header">Name Compatibility</p>
+          <p class="name-compat-numbers">${nn1} ↔ ${nn2}</p>
+          <p class="name-compat-relation ${nameRelation}">${capitalize(nameRelation)}</p>
+          <p class="name-compat-pct">${namePct}%</p>
+          <p class="name-compat-note">Name Compatibility is calculated separately according to Chaldean frequencies.</p>
+        `;
+
+        // ── Comparison Table ──
+        let compHTML = `<p class="comparison-title">Compatibility Breakdown</p>`;
+        comparisons.forEach(c => {
+          compHTML += `
+            <div class="comparison-row">
+              <span class="comparison-nums">${c.a} ↔ ${c.b}</span>
+              <span class="comparison-relation ${c.relation}">${capitalize(c.relation)}</span>
+              <span class="comparison-score ${c.points > 0 ? 'plus' : 'zero'}">+${c.points}</span>
+            </div>
+          `;
+        });
+        document.getElementById('comparisonSection').innerHTML = compHTML;
+
+        // ── Overall Result with Score Ring ──
+        const circumference = 2 * Math.PI * 52; // r=52
+        document.getElementById('overallResult').innerHTML = `
+          <p class="overall-result-label">Overall Compatibility</p>
+          <div class="report-action-bar" style="justify-content:center;margin-bottom:1.5rem;">
+            <button class="btn-report-action" onclick="saveCurrentCompatReading()" type="button">
+              <span>⬡</span> Save to Dashboard
+            </button>
+            <button class="btn-report-action" onclick="window.print()" type="button">
+              <span>⎙</span> Print / Export
+            </button>
+          </div>
+          <div class="compat-score-ring-wrap">
+            <svg viewBox="0 0 120 120" class="compat-ring-svg">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(176,138,87,0.15)" stroke-width="8" />
+              <circle cx="60" cy="60" r="52" fill="none" stroke="url(#compatGradient)" stroke-width="8"
+                stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" id="compatArc"
+                style="transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1)" />
+              <defs>
+                <linearGradient id="compatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#B08A57" />
+                  <stop offset="100%" stop-color="#D4B58A" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="compat-score-center">
+              <span class="compat-score-val" id="compatScoreVal">0</span>
+              <span class="compat-score-pct">Match</span>
+            </div>
+          </div>
+          <p class="overall-verdict-emoji">${verdictEmoji}</p>
+          <p class="overall-verdict-text">${verdictLabel}</p>
+          <p class="overall-verdict-desc">${verdictDesc}</p>
+        `;
+
+        // ── Show result section ──
+        resultSection.classList.add('visible');
+
+        // ── Animate score ring ──
+        const pct = totalScore / 100;
+        setTimeout(() => {
+          document.getElementById('compatArc').style.strokeDashoffset = circumference - circumference * pct;
+        }, 100);
+
+        // ── Animate counter from 0 to totalScore ──
+        const valEl = document.getElementById('compatScoreVal');
+        if (window.animateNumber) {
+          window.animateNumber(valEl, 0, totalScore, 1200);
+        } else {
+          valEl.textContent = totalScore;
+        }
+
+        // Animate Soul Profile numbers
+        const sp1Numbers = document.querySelectorAll('#soul1Profile .sp-num-val');
+        if (sp1Numbers[0] && window.animateNumber) window.animateNumber(sp1Numbers[0], 1, bn1, 750);
+        if (sp1Numbers[1] && window.animateNumber) window.animateNumber(sp1Numbers[1], 1, dn1, 850);
+        if (sp1Numbers[2] && window.animateNumber) window.animateNumber(sp1Numbers[2], 1, nn1, 950);
+
+        const sp2Numbers = document.querySelectorAll('#soul2Profile .sp-num-val');
+        if (sp2Numbers[0] && window.animateNumber) window.animateNumber(sp2Numbers[0], 1, bn2, 750);
+        if (sp2Numbers[1] && window.animateNumber) window.animateNumber(sp2Numbers[1], 1, dn2, 850);
+        if (sp2Numbers[2] && window.animateNumber) window.animateNumber(sp2Numbers[2], 1, nn2, 950);
+
+        // ── Scroll to result ──
+        setTimeout(() => {
+          resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
       }
 
-      // Animate Soul Profile numbers
-      const sp1Numbers = document.querySelectorAll('#soul1Profile .sp-num-val');
-      if (sp1Numbers[0] && window.animateNumber) window.animateNumber(sp1Numbers[0], 1, bn1, 750);
-      if (sp1Numbers[1] && window.animateNumber) window.animateNumber(sp1Numbers[1], 1, dn1, 850);
-      if (sp1Numbers[2] && window.animateNumber) window.animateNumber(sp1Numbers[2], 1, nn1, 950);
-
-      const sp2Numbers = document.querySelectorAll('#soul2Profile .sp-num-val');
-      if (sp2Numbers[0] && window.animateNumber) window.animateNumber(sp2Numbers[0], 1, bn2, 750);
-      if (sp2Numbers[1] && window.animateNumber) window.animateNumber(sp2Numbers[1], 1, dn2, 850);
-      if (sp2Numbers[2] && window.animateNumber) window.animateNumber(sp2Numbers[2], 1, nn2, 950);
-
-      // ── Scroll to result ──
-      setTimeout(() => {
-        resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 150);
+      if (window.runCalculationRitual && loadingDiv) {
+        window.runCalculationRitual(loadingDiv, loadingText, executeCompatRender);
+      } else {
+        executeCompatRender();
+      }
     }
 
     function saveCurrentCompatReading() {
@@ -1434,19 +1476,20 @@
        HELPER: Render a Soul Profile Card
     ══════════════════════════════════════ */
     function renderSoulProfile(label, name, bn, dn, compoundNN, nn) {
+      const DEVANAGARI_DIGITS = { 0: '०', 1: '१', 2: '२', 3: '३', 4: '४', 5: '५', 6: '६', 7: '७', 8: '८', 9: '९', 11: '११', 22: '२२', 33: '३३' };
       return `
-        <p class="soul-profile-title">✦ ${label} ✦</p>
+        <p class="soul-profile-title">${label}</p>
         <div class="soul-profile-row">
           <span class="soul-profile-label">Name</span>
-          <span class="soul-profile-value" style="font-size:0.95rem;color:rgba(255,255,255,0.8)">${name}</span>
+          <span class="soul-profile-value" style="font-size:0.95rem;color:rgba(255,255,255,0.85)">${name}</span>
         </div>
         <div class="soul-profile-row">
           <span class="soul-profile-label">Birth Number</span>
-          <span class="soul-profile-value">${bn}</span>
+          <span class="soul-profile-value">${bn} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[bn] || ''}</span></span>
         </div>
         <div class="soul-profile-row">
           <span class="soul-profile-label">Destiny Number</span>
-          <span class="soul-profile-value">${dn}</span>
+          <span class="soul-profile-value">${dn} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[dn] || ''}</span></span>
         </div>
         <div class="soul-profile-row">
           <span class="soul-profile-label">Compound Name Number</span>
@@ -1454,7 +1497,7 @@
         </div>
         <div class="soul-profile-row">
           <span class="soul-profile-label">Name Number</span>
-          <span class="soul-profile-value">${nn}</span>
+          <span class="soul-profile-value">${nn} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[nn] || ''}</span></span>
         </div>
       `;
     }

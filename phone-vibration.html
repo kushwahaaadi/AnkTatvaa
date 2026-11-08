@@ -368,8 +368,7 @@
 
     <!-- ═══════ PHONE VIBRATION MODULE ═══════ -->
     <section class="pv-section reveal">
-      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">✦ Phone Vibration
-        ✦</p>
+      <p class="hero-eyebrow" style="text-align:center;margin-bottom:0.6rem;animation:none;opacity:1">Phone Vibration</p>
       <h1 class="section-title" style="margin-bottom:0.5rem">Check Your Mobile Number</h1>
       <p class="section-sub">Discover if your mobile number aligns harmoniously with your Birth and Destiny numbers.</p>
 
@@ -382,18 +381,24 @@
 
         <div class="pv-input-card">
           <div class="field-group">
-            <label class="field-label" for="pvDobInput">✦ Date of Birth (DD/MM/YYYY)</label>
+            <label class="field-label" for="pvDobInput">Date of Birth (DD/MM/YYYY) <span class="label-req">*</span></label>
             <input class="field-input" id="pvDobInput" type="text" placeholder="e.g. 15/08/1990" autocomplete="off">
           </div>
           <div class="field-group">
-            <label class="field-label" for="pvMobileInput">✦ Mobile Number</label>
+            <label class="field-label" for="pvMobileInput">Mobile Number <span class="label-req">*</span></label>
             <input class="field-input" id="pvMobileInput" type="text" placeholder="e.g. 9876543210" autocomplete="off">
           </div>
           <button class="submit-btn float" onclick="calculatePhoneVibration()">
-            ✦ Check Vibration ✦
+            Check Vibration →
           </button>
         </div>
         <p class="error-msg" id="pvErrMsg"></p>
+      </div>
+
+      <!-- Loading Ritual (#4) -->
+      <div class="loading-ritual" id="pvLoadingDiv">
+        <div class="ritual-spinner"></div>
+        <p class="ritual-text" id="pvLoadingText">Measuring Electromagnetic Resonance... <span class="ritual-sanskrit-sub">॥ अंक स्पन्दन समन्वय ॥</span></p>
       </div>
 
       <!-- ── Result Card ── -->
@@ -405,12 +410,12 @@
           <div class="corner corner-br"></div>
 
           <div class="pv-result-header">
-            <p class="hero-eyebrow" style="animation:none;opacity:1">✦ Phone Vibration Report ✦</p>
+            <p class="hero-eyebrow" style="animation:none;opacity:1">Phone Vibration Report</p>
             <h2 class="pv-result-title">Mobile Number Alignment</h2>
             <p class="pv-details-display" id="pvDetailsDisplay"></p>
             <div class="report-action-bar" style="justify-content:center;margin:1.2rem 0 0.5rem;">
               <button class="btn-report-action" onclick="saveCurrentPhoneReading()" type="button">
-                <span>✦</span> Save to Dashboard
+                <span>⬡</span> Save to Dashboard
               </button>
               <button class="btn-report-action" onclick="window.print()" type="button">
                 <span>⎙</span> Print / Export
@@ -445,8 +450,7 @@
           </div>
 
           <div class="pv-report-footer">
-            <p class="pv-report-footer-text">✦ &nbsp; A harmonious mobile number brings clarity and positive vibrations
-              &nbsp; ✦</p>
+            <p class="pv-report-footer-text">— A harmonious mobile number brings clarity and positive vibrations —</p>
           </div>
         </div>
       </div>
@@ -454,11 +458,37 @@
 
     <!-- ═══════ FOOTER ═══════ -->
     <footer class="footer">
-      <div class="footer-symbol">✦</div>
-      <p class="footer-name">Anktatvaa</p>
-      <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
-      <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोल</p>
-      <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      <div class="footer-colophon">
+        <div class="colophon-ornament">
+          <span class="colophon-wire"></span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-glyph">ॐ</span>
+          <span class="colophon-bindu"></span>
+          <span class="colophon-wire"></span>
+        </div>
+        <p class="footer-name">Anktatvaa</p>
+        <p class="footer-tagline">Ancient Wisdom · Celestial Clarity</p>
+        <p class="footer-sanskrit">सत्यं तेजो अनन्तं खगोलम्</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="index.html#reading" class="footer-link">Vedic Matrix</a>
+        <span class="footer-sep">·</span>
+        <a href="numerology.html" class="footer-link">Full Reading</a>
+        <span class="footer-sep">·</span>
+        <a href="compatibility.html" class="footer-link">Cosmic Compatibility</a>
+        <span class="footer-sep">·</span>
+        <a href="phone-vibration.html" class="footer-link">Phone Frequency</a>
+        <span class="footer-sep">·</span>
+        <a href="health-tendencies.html" class="footer-link">Planetary Health</a>
+        <span class="footer-sep">·</span>
+        <a href="name-vibration.html" class="footer-link">Name Vibration</a>
+      </nav>
+
+      <div class="footer-footnote">
+        <p class="footer-disclaimer">Rooted in ancient Chaldean &amp; Vedic traditions. Crafted for seeker illumination.</p>
+        <p class="footer-copy">© 2025 Anktatvaa. All stellar rights reserved.</p>
+      </div>
     </footer>
   </div>
 
@@ -559,60 +589,72 @@
         finalStatus = 'neutral';
       }
 
-      // Render
-      document.getElementById('pvDetailsDisplay').textContent = `DOB: ${dobRaw} | Mobile: ${mobileRaw}`;
-      if (window.animateNumber) {
-        window.animateNumber(document.getElementById('pvBnNum'), 1, bn, 750);
-        window.animateNumber(document.getElementById('pvDnNum'), 1, dn, 850);
-        window.animateNumber(document.getElementById('pvMnNum'), 1, mn, 950);
-      } else {
-        document.getElementById('pvBnNum').textContent = bn;
-        document.getElementById('pvDnNum').textContent = dn;
-        document.getElementById('pvMnNum').textContent = mn;
-      }
-
-      const finalResultEl = document.getElementById('pvFinalResult');
-      const finalHeading = document.getElementById('pvFinalHeading');
-      const finalText = document.getElementById('pvFinalText');
-
-      if (finalStatus === 'suitable') {
-        finalResultEl.className = 'pv-final-result suitable';
-        finalHeading.textContent = '✦ Suitable Number ✦';
-        let reason = '';
-        if (isBnFriendly && isDnFriendly) {
-          reason = 'is friendly to both your Birth Number and Destiny Number';
-        } else if (isBnFriendly) {
-          reason = 'is friendly to your Birth Number';
-        } else {
-          reason = 'is friendly to your Destiny Number';
-        }
-        finalText.textContent = `Your mobile number vibration (${mn}) ${reason}, making it highly harmonious for your personal and professional growth.`;
-      } else if (finalStatus === 'neutral') {
-        finalResultEl.className = 'pv-final-result neutral';
-        finalHeading.textContent = '✦ So-So Suitable Number ✦';
-        let reason = '';
-        if (isBnNeutral && isDnNeutral) {
-          reason = 'is neutral to both your Birth Number and Destiny Number';
-        } else if (isBnNeutral) {
-          reason = 'is neutral to your Birth Number';
-        } else {
-          reason = 'is neutral to your Destiny Number';
-        }
-        finalText.textContent = `Your mobile number vibration (${mn}) ${reason}. It brings average results and balance without major challenges or massive boosts.`;
-      } else {
-        finalResultEl.className = 'pv-final-result unsuitable';
-        finalHeading.textContent = '✦ Not Suitable ✦';
-        finalText.textContent = `Your mobile number vibration (${mn}) is an enemy to your Birth Number or Destiny Number. You may want to consider a number that aligns better with your cosmic energies.`;
-      }
-
+      // Render with Sacred Ritual (#4)
+      const loadingDiv = document.getElementById('pvLoadingDiv');
+      const loadingText = document.getElementById('pvLoadingText');
       const section = document.getElementById('pvResultSection');
-      section.classList.remove('visible');
-      void section.offsetWidth; // trigger reflow
-      section.classList.add('visible');
+      if (section) section.classList.remove('visible');
 
-      setTimeout(() => {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 150);
+      function executePvRender() {
+        document.getElementById('pvDetailsDisplay').textContent = `DOB: ${dobRaw} | Mobile: ${mobileRaw}`;
+        if (window.animateNumber) {
+          window.animateNumber(document.getElementById('pvBnNum'), 1, bn, 750);
+          window.animateNumber(document.getElementById('pvDnNum'), 1, dn, 850);
+          window.animateNumber(document.getElementById('pvMnNum'), 1, mn, 950);
+        } else {
+          document.getElementById('pvBnNum').textContent = bn;
+          document.getElementById('pvDnNum').textContent = dn;
+          document.getElementById('pvMnNum').textContent = mn;
+        }
+
+        const finalResultEl = document.getElementById('pvFinalResult');
+        const finalHeading = document.getElementById('pvFinalHeading');
+        const finalText = document.getElementById('pvFinalText');
+
+        if (finalStatus === 'suitable') {
+          finalResultEl.className = 'pv-final-result suitable';
+          finalHeading.textContent = 'Harmonious Frequency';
+          let reason = '';
+          if (isBnFriendly && isDnFriendly) {
+            reason = 'is friendly to both your Birth Number and Destiny Number';
+          } else if (isBnFriendly) {
+            reason = 'is friendly to your Birth Number';
+          } else {
+            reason = 'is friendly to your Destiny Number';
+          }
+          finalText.textContent = `Your mobile number vibration (${mn}) ${reason}, making it highly harmonious for your personal and professional growth.`;
+        } else if (finalStatus === 'neutral') {
+          finalResultEl.className = 'pv-final-result neutral';
+          finalHeading.textContent = 'Moderate Alignment';
+          let reason = '';
+          if (isBnNeutral && isDnNeutral) {
+            reason = 'is neutral to both your Birth Number and Destiny Number';
+          } else if (isBnNeutral) {
+            reason = 'is neutral to your Birth Number';
+          } else {
+            reason = 'is neutral to your Destiny Number';
+          }
+          finalText.textContent = `Your mobile number vibration (${mn}) ${reason}. It brings average results and balance without major challenges or massive boosts.`;
+        } else {
+          finalResultEl.className = 'pv-final-result unsuitable';
+          finalHeading.textContent = 'Discordant Frequency';
+          finalText.textContent = `Your mobile number vibration (${mn}) is an enemy to your Birth Number or Destiny Number. You may want to consider a number that aligns better with your cosmic energies.`;
+        }
+
+        section.classList.remove('visible');
+        void section.offsetWidth; // trigger reflow
+        section.classList.add('visible');
+
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      }
+
+      if (window.runCalculationRitual && loadingDiv) {
+        window.runCalculationRitual(loadingDiv, loadingText, executePvRender);
+      } else {
+        executePvRender();
+      }
     }
 
     function saveCurrentPhoneReading() {
