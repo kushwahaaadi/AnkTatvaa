@@ -20,7 +20,6 @@
     <nav class="navbar" role="navigation" aria-label="Main Navigation">
       <!-- LEFT: Brand Logo / Typography -->
       <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
-        <span class="nav-brand-symbol">✦</span>
         <div class="nav-brand-group">
           <span class="nav-brand-title">AnkTatvaa</span>
           <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
@@ -146,12 +145,12 @@
       <!-- Dashboard Header -->
       <div class="dash-header">
         <div class="dash-header-left">
-          <span class="dash-eyebrow">✦ Seeker Telemetry Portal ✦</span>
+          <span class="dash-eyebrow">Seeker Telemetry Portal</span>
           <h1 class="dash-title">Cosmic Sanctum</h1>
           <p class="dash-subtitle">Personalized numerological archive and active karmic cycles</p>
         </div>
         <div class="dash-header-actions">
-          <a href="numerology.html" class="btn-primary" style="padding:0.75rem 1.6rem;font-size:11px;">✦ New Analysis →</a>
+          <a href="numerology.html" class="btn-primary" style="padding:0.75rem 1.6rem;font-size:11px;">New Analysis →</a>
         </div>
       </div>
 
@@ -162,7 +161,7 @@
         <div class="corner corner-bl"></div>
         <div class="corner corner-br"></div>
 
-        <div class="dash-avatar" id="dashAvatar">✦</div>
+        <div class="dash-avatar" id="dashAvatar">ॐ</div>
         
         <div class="dash-user-info">
           <h2 class="dash-user-name" id="dashUserName">Seeker of Wisdom</h2>
@@ -242,7 +241,7 @@
 
         <!-- Empty State Container -->
         <div class="empty-state" id="readingsEmptyState" style="display:none;">
-          <div class="empty-state-icon">✦</div>
+          <div class="empty-state-icon">ॐ</div>
           <h4 class="empty-state-title">No Saved Analyses Yet</h4>
           <p class="empty-state-desc">Your personal cosmic archive is awaiting your first reading. Run any of our Vedic numerology tools and click "Save to Dashboard" to preserve your report.</p>
           <a href="numerology.html" class="btn-secondary" style="padding:0.75rem 1.6rem;font-size:11px;">Begin Vedic Numerology Reading →</a>
@@ -345,7 +344,7 @@
 
       if (avatarEl && user.name) {
         const initials = user.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
-        avatarEl.textContent = initials || '✦';
+        avatarEl.textContent = initials || 'ॐ';
       }
 
       // Populate Saved Readings
@@ -377,7 +376,7 @@
       container.innerHTML = readings.map((r, i) => `
         <div class="dash-reading-card">
           <div class="dash-reading-header">
-            <span class="dash-reading-tag">✦ ${r.type}</span>
+            <span class="dash-reading-tag">${r.type}</span>
             <span class="dash-reading-date">${r.date || 'Recent'}</span>
           </div>
           <h4 class="dash-reading-title">${r.title || 'Vedic Analysis'}</h4>
@@ -421,7 +420,7 @@
 
       initDashboard();
       if (msg) {
-        msg.textContent = '✦ Profile updated successfully';
+        msg.textContent = 'Profile updated successfully';
         setTimeout(() => { msg.textContent = ''; }, 3000);
       }
       if (window.showToast) window.showToast('Profile settings updated');

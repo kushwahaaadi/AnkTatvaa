@@ -85,7 +85,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md bg-[#161411]/95 border border-[#B08A57]/30 rounded-md p-8 backdrop-blur-2xl shadow-[0_16px_50px_rgba(0,0,0,0.85)]">
         <div className="text-center mb-8">
           <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center border border-[#B08A57]/40 rounded-full bg-[#0D0D0C]">
-            <span className="text-[#B08A57] text-lg">✦</span>
+            <span className="text-[#B08A57] text-lg font-serif">ॐ</span>
           </div>
           <h1 className="font-serif text-2xl font-bold text-[#F7F3EB]">
             Seeker Sanctuary Login

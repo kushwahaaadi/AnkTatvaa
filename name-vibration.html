@@ -807,7 +807,6 @@
     <nav class="navbar" role="navigation" aria-label="Main Navigation">
       <!-- LEFT: Brand Logo / Typography -->
       <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
-        <span class="nav-brand-symbol">✦</span>
         <div class="nav-brand-group">
           <span class="nav-brand-title">AnkTatvaa</span>
           <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
@@ -1339,8 +1338,8 @@
         interpSection.innerHTML = `
           <div class="nv-interp-card">
             <div class="nv-interp-header">
-              <span class="nv-interp-icon">✦</span>
-              <span class="nv-interp-title">✦ Interpretation ✦</span>
+              <span class="nv-interp-icon">॥</span>
+              <span class="nv-interp-title">Vedic Interpretation</span>
             </div>
             <h3 class="nv-interp-heading">Compound Number ${data.compoundNumber}</h3>
             <div class="nv-interp-body">${interpText}</div>
@@ -1350,7 +1349,7 @@
         interpSection.innerHTML = `
           <div class="nv-interp-card">
             <p class="nv-interp-missing">
-              ✦ Interpretation for Compound Number ${data.compoundNumber} will be revealed soon. ✦<br>
+              Interpretation for Compound Number ${data.compoundNumber} will be revealed soon.<br>
               <span style="font-size:0.8rem;margin-top:0.5rem;display:inline-block;color:rgba(176, 138, 87,0.4)">
                 Contact our Vedic Numerologist for a personal reading.
               </span>
@@ -1461,7 +1460,7 @@
         const isFinal = idx === data.shadowSteps.length - 1;
 
         row.innerHTML = `
-          <p class="shadow-step-label">${isFinal ? '✦ Final — Shadow Number' : label}</p>
+          <p class="shadow-step-label">${isFinal ? 'Final — Shadow Number' : label}</p>
           <p class="shadow-step-digits" ${isFinal ? 'style="color:var(--antique-bronze);font-weight:600;font-size:1.15rem;letter-spacing:5px"' : ''}>${step.join(' ')}</p>
           <p class="shadow-step-count">${step.length} digit${step.length > 1 ? 's' : ''}</p>
         `;
@@ -1476,8 +1475,8 @@
         interpSection.innerHTML = `
           <div class="shadow-interp-card">
             <div class="nv-interp-header">
-              <span class="nv-interp-icon">◈</span>
-              <span class="nv-interp-title" style="color:var(--antique-bronze)">✦ Shadow Interpretation ✦</span>
+              <span class="nv-interp-icon">॥</span>
+              <span class="nv-interp-title" style="color:var(--antique-bronze)">Shadow Interpretation</span>
             </div>
             <h3 class="shadow-interp-heading">Shadow Number ${data.shadowNumber}</h3>
             <div class="nv-interp-body">${interpText}</div>
@@ -1487,7 +1486,7 @@
         interpSection.innerHTML = `
           <div class="shadow-interp-card">
             <p class="nv-interp-missing">
-              ✦ Interpretation for Shadow Number ${data.shadowNumber} will be revealed soon. ✦<br>
+              Interpretation for Shadow Number ${data.shadowNumber} will be revealed soon.<br>
               <span style="font-size:0.8rem;margin-top:0.5rem;display:inline-block;color:rgba(212, 181, 138,0.4)">
                 Contact our Vedic Numerologist for a personal reading.
               </span>

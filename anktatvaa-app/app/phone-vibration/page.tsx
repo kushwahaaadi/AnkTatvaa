@@ -142,7 +142,7 @@ export default function PhoneVibrationPage() {
               onClick={handleSaveReading}
               className="px-4 py-2 bg-[#1B1915] hover:bg-[#B08A57]/20 border border-[#B08A57]/40 text-[#E8E0D2] font-mono text-xs tracking-wider uppercase rounded-sm transition-colors flex items-center gap-2 cursor-pointer"
             >
-              <span>✦</span>
+              <span>⬡</span>
               <span>Save to Seeker Archive</span>
             </button>
           </div>

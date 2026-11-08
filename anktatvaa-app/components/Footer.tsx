@@ -10,7 +10,6 @@ export default function Footer() {
         {/* Brand Column */}
         <div className="md:col-span-1 space-y-4">
           <Link href="/" className="inline-flex items-center gap-2 group">
-            <span className="text-[#B08A57] text-lg">✦</span>
             <span className="font-serif text-xl font-bold tracking-wider text-[#F7F3EB]">
               AnkTatvaa
             </span>

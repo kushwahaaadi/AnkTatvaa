@@ -113,7 +113,7 @@ export default function NameVibrationPage() {
               onClick={handleSaveReading}
               className="px-4 py-2 bg-[#1B1915] hover:bg-[#B08A57]/20 border border-[#B08A57]/40 text-[#E8E0D2] font-mono text-xs tracking-wider uppercase rounded-sm transition-colors flex items-center gap-2 cursor-pointer"
             >
-              <span>✦</span>
+              <span>⬡</span>
               <span>Save to Seeker Archive</span>
             </button>
           </div>
@@ -186,7 +186,7 @@ export default function NameVibrationPage() {
           {interpretations[String(result.compoundNumber)] && (
             <SpotlightCard className="p-6 sm:p-8 space-y-3">
               <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57] block">
-                ✦ Interpretation · Compound Frequency {result.compoundNumber}
+                Interpretation · Compound Frequency {result.compoundNumber}
               </span>
               <p className="text-sm text-[#E8E0D2] leading-relaxed">
                 {interpretations[String(result.compoundNumber)]}

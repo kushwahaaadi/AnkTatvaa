@@ -84,7 +84,7 @@ export default function HomePage() {
       <section className="relative px-6 lg:px-12 pt-16 pb-24 max-w-7xl mx-auto flex flex-col items-center text-center">
         {/* Subtle Decorative Geometric Glyph */}
         <div className="w-16 h-16 mb-6 flex items-center justify-center border border-[#B08A57]/30 rounded-full bg-[#1B1915]/60 backdrop-blur-md">
-          <span className="text-2xl text-[#B08A57]">✦</span>
+          <span className="text-2xl text-[#B08A57]">ॐ</span>
         </div>
 
         {/* Eyebrow */}

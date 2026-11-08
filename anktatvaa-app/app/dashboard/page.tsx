@@ -189,7 +189,7 @@ export default function DashboardPage() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#B08A57]">
-                ✦ Certified Seeker Profile
+                Certified Seeker Profile
               </span>
               <span className="text-xs text-[#5C5549]">·</span>
               <span className="text-[10px] font-mono text-[#898276]">
@@ -314,7 +314,7 @@ export default function DashboardPage() {
                 <div>
                   <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#1B1915]">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-[#B08A57]">
-                      ✦ {r.type}
+                      {r.type}
                     </span>
                     <span className="font-mono text-[10px] text-[#5C5549]">
                       {r.date}
@@ -348,7 +348,7 @@ export default function DashboardPage() {
           </div>
         ) : (
           <div className="p-12 text-center bg-[#161411]/40 border border-[#B08A57]/15 rounded-sm space-y-3">
-            <span className="text-2xl text-[#B08A57]">✦</span>
+            <span className="text-2xl text-[#B08A57]">ॐ</span>
             <h3 className="font-serif text-lg font-bold text-[#F7F3EB]">
               Your Celestial Archive is Empty
             </h3>

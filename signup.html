@@ -19,7 +19,6 @@
     <nav class="navbar" role="navigation" aria-label="Main Navigation">
       <!-- LEFT: Brand Logo / Typography -->
       <a href="index.html" class="nav-brand" aria-label="AnkTatvaa Home">
-        <span class="nav-brand-symbol">✦</span>
         <div class="nav-brand-group">
           <span class="nav-brand-title">AnkTatvaa</span>
           <span class="nav-brand-tagline">THE LANGUAGE OF NUMBERS</span>
@@ -167,7 +166,7 @@
         <div class="corner corner-bl"></div><div class="corner corner-br"></div>
 
         <div class="auth-header">
-          <div class="auth-icon">✦</div>
+          <div class="auth-icon">ॐ</div>
           <h1 class="auth-title">Begin Your Journey</h1>
           <p class="auth-subtitle">The universe has been expecting you</p>
         </div>
@@ -180,32 +179,32 @@
 
         <div class="field-row">
           <div class="field-group">
-            <label class="field-label" for="sfirst">✦ First Name</label>
+            <label class="field-label" for="sfirst">First Name <span class="label-req">*</span></label>
             <input class="field-input" id="sfirst" type="text" placeholder="First name">
           </div>
           <div class="field-group">
-            <label class="field-label" for="slast">✦ Last Name</label>
+            <label class="field-label" for="slast">Last Name</label>
             <input class="field-input" id="slast" type="text" placeholder="Last name">
           </div>
         </div>
 
         <div class="field-group">
-          <label class="field-label" for="semail">✦ Email Address</label>
+          <label class="field-label" for="semail">Email Address <span class="label-req">*</span></label>
           <input class="field-input" id="semail" type="email" placeholder="your@email.com">
         </div>
 
         <div class="field-group">
-          <label class="field-label" for="sphone">✦ Mobile Number</label>
+          <label class="field-label" for="sphone">Mobile Number</label>
           <input class="field-input" id="sphone" type="tel" placeholder="10-digit number">
         </div>
 
         <div class="field-group">
-          <label class="field-label" for="sdob">✦ Date of Birth</label>
+          <label class="field-label" for="sdob">Date of Birth <span class="label-req">*</span></label>
           <input class="field-input" id="sdob" type="date">
         </div>
 
         <div class="field-group pw-wrap">
-          <label class="field-label" for="spassword">✦ Create Password</label>
+          <label class="field-label" for="spassword">Create Password <span class="label-req">*</span></label>
           <input class="field-input" id="spassword" type="password" placeholder="Min. 8 characters...">
           <button class="toggle-pw" onclick="togglePw('spassword', this)" title="Show/Hide password" style="font-size:10px;font-family:var(--font-num);letter-spacing:1px;">SHOW</button>
         </div>
@@ -219,7 +218,7 @@
         </div>
 
         <div class="field-group pw-wrap">
-          <label class="field-label" for="sconfirm">✦ Confirm Password</label>
+          <label class="field-label" for="sconfirm">Confirm Password <span class="label-req">*</span></label>
           <input class="field-input" id="sconfirm" type="password" placeholder="Repeat your password...">
           <button class="toggle-pw" onclick="togglePw('sconfirm', this)" title="Show/Hide password" style="font-size:10px;font-family:var(--font-num);letter-spacing:1px;">SHOW</button>
         </div>
@@ -327,7 +326,7 @@
       const btn = document.getElementById('signupBtn');
       btn.disabled = true; btn.textContent = '◈ Opening your cosmic portal...';
       setTimeout(() => {
-        btn.disabled = false; btn.textContent = '◈ Awaken My Path ◈';
+        btn.disabled = false; btn.textContent = 'Awaken My Path →';
         try {
           localStorage.setItem('ank_user', JSON.stringify({
             name: `${first} ${last}`.trim(),
@@ -337,7 +336,7 @@
             loggedIn: true
           }));
         } catch (e) {}
-        suc.textContent = `✦ Welcome, ${first}! Your cosmic portal is active. Entering dashboard...`;
+        suc.textContent = `Welcome, ${first}! Your cosmic portal is active. Entering dashboard...`;
         setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
       }, 1500);
     }

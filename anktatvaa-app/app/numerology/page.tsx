@@ -261,7 +261,7 @@ function NumerologyContent() {
               onClick={handleSaveToDashboard}
               className="px-4 py-2 bg-[#1B1915] hover:bg-[#B08A57]/20 border border-[#B08A57]/40 text-[#E8E0D2] font-mono text-xs tracking-wider uppercase rounded-sm transition-colors flex items-center gap-2 cursor-pointer"
             >
-              <span>✦</span>
+              <span>⬡</span>
               <span>Save to Seeker Archive</span>
             </button>
           </div>
@@ -312,7 +312,7 @@ function NumerologyContent() {
             <SpotlightCard className="p-6 bg-[#161411]/60">
               <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#B08A57]/15">
                 <span className="font-mono text-xs uppercase tracking-widest text-[#E8E0D2]">
-                  ✦ Current Personal Transits
+                  Current Personal Transits
                 </span>
                 <span className="font-mono text-[11px] text-[#898276]">
                   Calculated for Today
@@ -393,7 +393,7 @@ function NumerologyContent() {
               <div className="space-y-6">
                 <SpotlightCard className="p-6">
                   <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57] block mb-3">
-                    ✦ Present Planetary Frequencies
+                    Present Planetary Frequencies
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {gridData.presentNums.map((num) => (
@@ -443,7 +443,7 @@ function NumerologyContent() {
             <SpotlightCard className="p-6 sm:p-8 space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-[#B08A57]/20">
                 <span className="font-mono text-xs uppercase tracking-widest text-[#B08A57]">
-                  ✦ Personal Year {transits?.personalYear} Synthesis
+                  Personal Year {transits?.personalYear} Synthesis
                 </span>
                 <span className="font-mono text-xs text-[#E8E0D2]">
                   {pyOutcome.theme}
@@ -546,7 +546,7 @@ function NumerologyContent() {
                               className={isActive ? 'bg-[#B08A57]/15 text-[#F7F3EB] font-bold' : 'text-[#898276]'}
                             >
                               <td className="p-3">
-                                {isActive && <span className="text-[#B08A57] mr-1">✦</span>}
+                                {isActive && <span className="text-[#B08A57] mr-1">▶</span>}
                                 {period.number}
                               </td>
                               <td className="p-3">

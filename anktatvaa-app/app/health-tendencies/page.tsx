@@ -137,7 +137,7 @@ export default function HealthTendenciesPage() {
                 className="p-6 bg-[#161411]/80 border border-[#B08A57]/20 rounded-sm space-y-2 hover:border-[#B08A57]/45 transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-[#B08A57]">✦</span>
+                  <span className="text-xs text-[#B08A57] font-serif">॥</span>
                   <h3 className="font-serif text-base font-bold text-[#F7F3EB]">
                     {item.title}
                   </h3>

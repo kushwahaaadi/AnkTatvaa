@@ -728,7 +728,7 @@ function showToast(message) {
     toast.className = 'report-toast';
     document.body.appendChild(toast);
   }
-  toast.innerHTML = '<span>✦</span><span>' + message + '</span>';
+  toast.innerHTML = '<span style="color:var(--gold-primary)">॥</span><span>' + message + '</span>';
   toast.classList.add('show');
   setTimeout(() => {
     toast.classList.remove('show');
@@ -833,9 +833,9 @@ const NUMBER_ESSENCE = {
   7: { keyword: 'The Mystic', planet: 'Ketu', symbol: '☋', color: '#B08A57', desc: 'The shadow planet Ketu guides your path of spiritual depth and inner wisdom. Number 7 is the seeker of truth — introspective, analytical, and drawn to life\'s deeper mysteries. Solitude is where your power regenerates.' },
   8: { keyword: 'The Powerhouse', planet: 'Saturn', symbol: '♄', color: '#9A7646', desc: 'Saturn shapes you through karma, discipline, and material mastery. Number 8 carries the energy of authority, abundance, and cosmic justice. Your challenges forge you into an unstoppable force of transformation.' },
   9: { keyword: 'The Humanitarian', planet: 'Mars', symbol: '♂', color: '#B08A57', desc: 'Mars empowers you with courage, passion, and universal compassion. Number 9 is the number of completion and selfless service. You are a warrior of light, destined to leave a lasting impact on the world.' },
-  11: { keyword: 'The Illuminator', planet: 'Moon (Master)', symbol: '☽✦', color: '#D4B58A', desc: 'Master Number 11 carries heightened intuition and spiritual illumination. You are a cosmic channel, deeply psychic and sensitive. Your life purpose is to inspire and awaken others through your elevated consciousness.' },
-  22: { keyword: 'The Master Builder', planet: 'Rahu (Master)', symbol: '☊✦', color: '#B08A57', desc: 'Master Number 22 is the most powerful number in numerology — the Master Builder. You have the vision of the 11 combined with the practical ability of the 4. You can literally reshape reality on a grand scale.' },
-  33: { keyword: 'The Master Teacher', planet: 'Jupiter (Master)', symbol: '♃✦', color: '#D4B58A', desc: 'Master Number 33 is the Master Teacher — the rarest and most spiritually evolved number. You embody unconditional love and healing. Your presence alone elevates the consciousness of those around you.' },
+  11: { keyword: 'The Illuminator', planet: 'Moon (Master)', symbol: '☽', color: '#D4B58A', desc: 'Master Number 11 carries heightened intuition and spiritual illumination. You are a cosmic channel, deeply psychic and sensitive. Your life purpose is to inspire and awaken others through your elevated consciousness.' },
+  22: { keyword: 'The Master Builder', planet: 'Rahu (Master)', symbol: '☊', color: '#B08A57', desc: 'Master Number 22 is the most powerful number in numerology — the Master Builder. You have the vision of the 11 combined with the practical ability of the 4. You can literally reshape reality on a grand scale.' },
+  33: { keyword: 'The Master Teacher', planet: 'Jupiter (Master)', symbol: '♃', color: '#D4B58A', desc: 'Master Number 33 is the Master Teacher — the rarest and most spiritually evolved number. You embody unconditional love and healing. Your presence alone elevates the consciousness of those around you.' },
 };
 
 /* ══════════════════════════════════════
@@ -1018,13 +1018,13 @@ function compatScore(lp1, lp2, nn1, nn2) {
 function verdictText(score, lp1, lp2, name1, name2) {
   if (score >= 85) {
     return {
-      label: '✦ Twin Flame Resonance',
+      label: 'Twin Flame Resonance',
       color: '#B08A57',
       text: `${name1} and ${name2} share an extraordinarily rare cosmic bond. Your Life Paths ${lp1} and ${lp2} create a sacred harmonic — the universe deliberately wove your souls together. This connection carries deep karmic completion and mutual spiritual acceleration.`
     };
   } else if (score >= 72) {
     return {
-      label: '✦ Soulmate Alignment',
+      label: 'Soulmate Alignment',
       color: '#D4B58A',
       text: `${name1} and ${name2} hold a powerful soulmate vibration. Your numbers complement each other beautifully, supporting growth, trust and shared dharmic purpose. The stars smile upon this union.`
     };

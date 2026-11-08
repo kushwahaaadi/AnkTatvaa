@@ -91,7 +91,6 @@ export default function Navbar() {
       >
         {/* ── LEFT: Brand Logo & Typography ── */}
         <Link href="/" className="nav-brand flex items-center gap-3.5 group">
-          <span className="text-[#B08A57] text-lg transition-transform duration-300 group-hover:rotate-45">✦</span>
           <div className="flex flex-col">
             <span className="font-serif text-[1.35rem] font-semibold tracking-wider text-[#F7F3EB] leading-none">
               AnkTatvaa
