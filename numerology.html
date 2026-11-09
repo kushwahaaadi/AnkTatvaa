@@ -676,26 +676,596 @@
       }
     }
 
-    /* Print Overrides */
+    /* Screen Hidden Print Elements */
+    .print-folio-header,
+    .print-folio-colophon {
+      display: none;
+    }
+
+    /* ═══════════════════════════════════════
+       HEIRLOOM PRINT & PDF SPECIFICATION
+    ═══════════════════════════════════════ */
     @media print {
-      .dash-nav-sidebar, .dash-insights-sidebar, .form-card:not(.dashboard-block), .report-action-bar, .navbar, .footer, .loading-ritual {
+      @page {
+        size: A4 portrait;
+        margin: 14mm 14mm 16mm 14mm;
+      }
+
+      html, body {
+        background: #FAF7F2 !important;
+        color: #1A1612 !important;
+        font-size: 10.5pt !important;
+        line-height: 1.55 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        overflow: visible !important;
+      }
+
+      /* Hide web chrome & interactive floating UI */
+      .navbar,
+      .footer,
+      #waFab,
+      .numero-hero,
+      .form-card:not(.dashboard-block),
+      .dash-nav-sidebar,
+      .dash-insights-sidebar,
+      .report-action-bar,
+      .loading-ritual,
+      .graha-pill,
+      .ad-timeline-toggle,
+      .modal-backdrop,
+      .graha-modal {
         display: none !important;
       }
-      .dashboard-layout {
-        display: block !important;
-      }
-      .dash-main-content {
+
+      /* Full width folio container */
+      .numero-section {
+        padding: 0 !important;
+        margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
       }
+
+      .dashboard-layout {
+        display: block !important;
+        width: 100% !important;
+        gap: 0 !important;
+      }
+
+      .dash-main-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+      }
+
+      /* Sacred Print Folio Header */
+      .print-folio-header {
+        display: block !important;
+        padding-bottom: 12px;
+        margin-bottom: 22px;
+        border-bottom: 2px solid #8A6732;
+      }
+
+      .print-brand-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 8px;
+      }
+
+      .print-brand-title {
+        font-family: var(--font-heading);
+        font-size: 24pt;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #1A1612 !important;
+      }
+
+      .print-brand-tagline {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 7.5pt;
+        letter-spacing: 3px;
+        color: #8A6732 !important;
+        text-transform: uppercase;
+      }
+
+      .print-seal {
+        text-align: right;
+      }
+
+      .print-sanskrit {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 11pt;
+        color: #8A6732 !important;
+        letter-spacing: 1px;
+      }
+
+      .print-edition {
+        font-family: var(--font-body);
+        font-size: 7.5pt;
+        letter-spacing: 2px;
+        color: #6B5D4D !important;
+        text-transform: uppercase;
+      }
+
+      .print-meta-row {
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-heading);
+        font-size: 9.5pt;
+        color: #4A3E31 !important;
+        letter-spacing: 1px;
+        padding-top: 6px;
+        border-top: 1px dashed #D4C7B5;
+      }
+
+      /* Dashboard Blocks Styling */
       .dashboard-block {
-        break-inside: avoid;
-        page-break-inside: avoid;
-        border: 1px solid #C9BFB5 !important;
+        background: #FFFFFF !important;
+        border: 1px solid #D4C7B5 !important;
         box-shadow: none !important;
-        background: transparent !important;
-        padding: 1.5rem !important;
-        margin-bottom: 2rem !important;
+        padding: 16px 20px !important;
+        margin-bottom: 20px !important;
+        border-radius: 4px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      /* Clean Folio Page Breaks */
+      #sec-overview {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-corenumbers {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-loshugrid {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-transits {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-pyoutcome {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-presentgrid {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-mahadasha {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-antardasha {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      #sec-dashaoutcome {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      /* Ornamental corners in print */
+      .corner {
+        border-color: #8A6732 !important;
+      }
+
+      /* High-contrast ink typography */
+      h1, h2, h3, h4,
+      .report-title,
+      .block-title,
+      .py-outcome-title,
+      .ad-outcome-title {
+        font-family: var(--font-heading) !important;
+        color: #7A5722 !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        -webkit-text-fill-color: initial !important;
+      }
+
+      .hero-eyebrow,
+      .block-eyebrow,
+      .py-outcome-eyebrow,
+      .ad-outcome-eyebrow {
+        color: #8A6732 !important;
+        font-weight: 600 !important;
+      }
+
+      .block-subtitle,
+      .report-dob-display,
+      .grid-section-sub,
+      .py-outcome-theme {
+        color: #6B5D4D !important;
+      }
+
+      .block-prose,
+      p,
+      li {
+        color: #241E17 !important;
+      }
+
+      /* Core Badges */
+      .report-numbers {
+        gap: 1.5rem !important;
+        margin-top: 1rem !important;
+      }
+
+      .report-num-badge {
+        background: #FAF7F2 !important;
+        border: 1px solid #D4C7B5 !important;
+        box-shadow: none !important;
+      }
+
+      .report-num-ring {
+        border-color: #8A6732 !important;
+        background: #FFFFFF !important;
+      }
+
+      .report-num-val {
+        color: #7A5722 !important;
+        -webkit-text-fill-color: initial !important;
+      }
+
+      .report-num-label {
+        color: #1A1612 !important;
+      }
+
+      .report-num-desc {
+        color: #6B5D4D !important;
+      }
+
+      /* Universal Lo Shu 3x3 Grid */
+      .numero-grid {
+        border: 2px solid #8A6732 !important;
+        background: #8A6732 !important;
+        gap: 2px !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+      }
+
+      .grid-cell {
+        background: #FFFFFF !important;
+        border: 1px solid #E2D9CC !important;
+        min-height: 58px !important;
+      }
+
+      .grid-cell.has-digits {
+        background: #F4EFE6 !important;
+      }
+
+      .grid-cell-pos {
+        color: #8A6732 !important;
+        font-weight: bold !important;
+      }
+
+      .grid-cell-digits {
+        color: #1A1612 !important;
+        font-weight: 600 !important;
+      }
+
+      .empty-cell .grid-cell-digits {
+        color: #B5A898 !important;
+      }
+
+      /* Numbers Distribution Analysis */
+      .numbers-analysis {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1rem !important;
+      }
+
+      .numbers-analysis-card {
+        flex: 1 !important;
+        background: #FAF7F2 !important;
+        border: 1px solid #D4C7B5 !important;
+        padding: 1rem !important;
+      }
+
+      .analysis-card-title {
+        color: #1A1612 !important;
+      }
+
+      .chip-present {
+        background: #EFE8DC !important;
+        color: #4A3A22 !important;
+        border: 1px solid #C4B59D !important;
+      }
+
+      .chip-missing {
+        background: #F5F1EA !important;
+        color: #7D7365 !important;
+        border: 1px dashed #D4C7B5 !important;
+      }
+
+      /* Transits Grid */
+      .personal-transits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1rem !important;
+      }
+
+      .transit-badge {
+        background: #FAF7F2 !important;
+        border: 1px solid #D4C7B5 !important;
+      }
+
+      .transit-ring {
+        border-color: #8A6732 !important;
+        background: #FFFFFF !important;
+      }
+
+      .transit-val {
+        color: #7A5722 !important;
+        -webkit-text-fill-color: initial !important;
+      }
+
+      .transit-label {
+        color: #1A1612 !important;
+      }
+
+      .transit-desc {
+        color: #4A3E31 !important;
+      }
+
+      /* Personal Year Outcome */
+      .py-outcome-section {
+        background: #FAF7F2 !important;
+        border: 1px solid #D4C7B5 !important;
+        box-shadow: none !important;
+      }
+
+      .py-outcome-body {
+        color: #241E17 !important;
+      }
+
+      .py-effects-container {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1.2rem !important;
+      }
+
+      .py-effects-column {
+        flex: 1 !important;
+      }
+
+      .py-effects-column.positive {
+        background: #F5FAF5 !important;
+        border: 1px solid #B4D4B4 !important;
+      }
+
+      .py-effects-column.positive .py-effects-title {
+        color: #205020 !important;
+      }
+
+      .py-effects-column.negative {
+        background: #FAF5F5 !important;
+        border: 1px solid #D4B4B4 !important;
+      }
+
+      .py-effects-column.negative .py-effects-title {
+        color: #602020 !important;
+      }
+
+      .py-effect-item {
+        color: #241E17 !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+      }
+
+      /* Present Cosmic Grid */
+      .present-transit-chips {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+
+      .present-chip {
+        background: #FAF7F2 !important;
+        color: #5A472E !important;
+        border: 1px solid #C4B59D !important;
+      }
+
+      /* Mahadasha & Antardasha Panels */
+      .mahadasha-panel,
+      .antardasha-panel {
+        background: #FAF7F2 !important;
+        border: 1px solid #D4C7B5 !important;
+        box-shadow: none !important;
+      }
+
+      .mahadasha-ring,
+      .antardasha-ring {
+        border-color: #8A6732 !important;
+        background: #FFFFFF !important;
+      }
+
+      .mahadasha-num,
+      .antardasha-num {
+        color: #7A5722 !important;
+      }
+
+      .mahadasha-label,
+      .antardasha-label {
+        color: #1A1612 !important;
+      }
+
+      .mahadasha-planet,
+      .antardasha-planet {
+        color: #7A5722 !important;
+      }
+
+      .mahadasha-years,
+      .antardasha-dates {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 1rem !important;
+      }
+
+      .mahadasha-year-badge,
+      .antardasha-date-badge {
+        background: #FFFFFF !important;
+        border: 1px solid #D4C7B5 !important;
+      }
+
+      .mahadasha-year-val,
+      .antardasha-date-val {
+        color: #1A1612 !important;
+      }
+
+      .mahadasha-year-label,
+      .antardasha-date-label {
+        color: #6B5D4D !important;
+      }
+
+      .mahadasha-duration-text,
+      .antardasha-elapsed-text {
+        color: #4A3E31 !important;
+      }
+
+      .mahadasha-duration-text .highlight,
+      .antardasha-elapsed-text .highlight {
+        color: #7A5722 !important;
+        font-weight: bold;
+      }
+
+      /* Timeline Bars */
+      .timeline-bar {
+        background: #E8E0D5 !important;
+        border: 1px solid #D4C7B5 !important;
+      }
+
+      .timeline-progress {
+        background: #8A6732 !important;
+      }
+
+      .timeline-label {
+        color: #6B5D4D !important;
+      }
+
+      .timeline-label.active {
+        color: #7A5722 !important;
+        font-weight: bold;
+      }
+
+      /* Complete 9-Period Antardasha Table: Fully Revealed in Print */
+      .ad-timeline-table-wrap {
+        display: block !important;
+        max-height: none !important;
+        opacity: 1 !important;
+        margin-top: 14px !important;
+      }
+
+      .ad-timeline-table {
+        border: 1px solid #D4C7B5 !important;
+        background: #FFFFFF !important;
+        width: 100% !important;
+      }
+
+      .ad-timeline-table th {
+        background: #F4EFE6 !important;
+        color: #4A3E31 !important;
+        border-bottom: 2px solid #8A6732 !important;
+        font-weight: 600 !important;
+        padding: 7px 10px !important;
+      }
+
+      .ad-timeline-table td {
+        border-bottom: 1px solid #EAE3D7 !important;
+        color: #241E17 !important;
+        padding: 7px 10px !important;
+      }
+
+      .ad-row-active td {
+        background: #FDF9F2 !important;
+        font-weight: bold !important;
+        color: #7A5722 !important;
+      }
+
+      /* Remedial Box */
+      .mahadasha-remedial-box {
+        background: #FAF7F2 !important;
+        border: 1px solid #8A6732 !important;
+        box-shadow: none !important;
+      }
+
+      .remedial-title {
+        color: #7A5722 !important;
+      }
+
+      .remedial-subtitle {
+        color: #6B5D4D !important;
+      }
+
+      .remedial-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem !important;
+      }
+
+      .remedial-cell {
+        background: #FFFFFF !important;
+        border: 1px solid #D4C7B5 !important;
+      }
+
+      .remedial-lbl {
+        color: #6B5D4D !important;
+      }
+
+      .remedial-val {
+        color: #1A1612 !important;
+      }
+
+      .remedial-mantra {
+        background: #F4EFE6 !important;
+        border: 1px dashed #8A6732 !important;
+      }
+
+      .mantra-title {
+        color: #7A5722 !important;
+      }
+
+      .mantra-shloka {
+        color: #1A1612 !important;
+      }
+
+      /* Sacred Print Colophon Footer */
+      .print-folio-colophon {
+        display: block !important;
+        margin-top: 25px !important;
+        padding-top: 15px !important;
+        border-top: 2px solid #8A6732 !important;
+        text-align: center !important;
+        break-inside: avoid !important;
+      }
+
+      .print-colophon-glyph {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 16pt;
+        color: #8A6732 !important;
+        margin-bottom: 4px;
+      }
+
+      .print-colophon-text {
+        font-family: var(--font-heading);
+        font-size: 10pt;
+        color: #4A3E31 !important;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+      }
+
+      .print-colophon-sub {
+        font-family: var(--font-body);
+        font-size: 7.5pt;
+        letter-spacing: 2px;
+        color: #7D7060 !important;
+        text-transform: uppercase;
       }
     }
 
@@ -2536,6 +3106,23 @@
 
           <!-- ── COLUMN 2: CENTER MAIN CONTENT (AUTHENTIC VEDIC FOLIOS) ── -->
           <main class="dash-main-content">
+            <!-- Sacred Print Folio Header (Heirloom Print Only) -->
+            <div class="print-folio-header">
+              <div class="print-brand-row">
+                <div class="print-brand-group">
+                  <span class="print-brand-title">AnkTatvaa</span>
+                  <span class="print-brand-tagline">THE LANGUAGE OF NUMBERS</span>
+                </div>
+                <div class="print-seal">
+                  <span class="print-sanskrit">॥ सत्यं तेजो अनन्तं खगोलम् ॥</span>
+                  <span class="print-edition">SACRED HEIRLOOM FOLIO · VEDIC MATRIX</span>
+                </div>
+              </div>
+              <div class="print-meta-row">
+                <span id="printSeekerMeta">Seeker Coordinates</span>
+                <span id="printDateMeta">Certified Vedic Ephemeris</span>
+              </div>
+            </div>
             <!-- 01. Report Overview -->
             <section class="dashboard-block" id="sec-overview">
               <div class="corner corner-tl"></div>
@@ -2865,6 +3452,13 @@
                 <p class="report-footer-text">— The numbers speak — those who decode them transform —</p>
               </div>
             </section>
+
+            <!-- Sacred Print Colophon (Heirloom Print Only) -->
+            <div class="print-folio-colophon">
+              <span class="print-colophon-glyph">ॐ</span>
+              <p class="print-colophon-text">Certified Vedic Numerology Folio · Calculated via Ancient Solar &amp; Lunar Ephemeris · AnkTatvaa</p>
+              <p class="print-colophon-sub">© AnkTatvaa · All celestial rights reserved · Crafted for seeker illumination</p>
+            </div>
           </main>
 
           <!-- ── COLUMN 3: STICKY RIGHT QUICK INSIGHTS ── -->
@@ -3227,6 +3821,15 @@
       document.getElementById('reportDobDisplay').textContent = `Seeker: ${data.fullName} · Date of Birth: ${data.dob}`;
       const overviewTitle = document.getElementById('overviewReportTitle');
       if (overviewTitle) overviewTitle.textContent = `${data.fullName}'s Cosmic Numbers`;
+
+      // Print Folio Meta
+      const printSeekerEl = document.getElementById('printSeekerMeta');
+      if (printSeekerEl) printSeekerEl.textContent = `Seeker: ${data.fullName} · Date of Birth: ${data.dob}`;
+      const printDateEl = document.getElementById('printDateMeta');
+      if (printDateEl) {
+        const todayDateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        printDateEl.textContent = `Vedic Ephemeris · Certified on: ${todayDateStr}`;
+      }
 
       document.getElementById('reportNumbers').innerHTML = `
         <div class="report-num-badge">
