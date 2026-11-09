@@ -676,284 +676,6 @@
       }
     }
 
-    /* ── SACRED VEDIC MISSING REMEDY DRAWER / MODAL (#4) ── */
-    .remedy-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 8, 6, 0.85);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      animation: fadeIn 0.25s ease;
-    }
-
-    .remedy-modal-backdrop.active {
-      display: flex;
-    }
-
-    .remedy-modal-card {
-      width: 100%;
-      max-width: 540px;
-      max-height: 90vh;
-      overflow-y: auto;
-      background: radial-gradient(ellipse 90% 40% at 50% 0%, rgba(196, 158, 106, 0.09) 0%, transparent 70%), #14100C;
-      border: 1px solid var(--gold-border, rgba(176, 138, 87, 0.4));
-      border-radius: 8px;
-      padding: 2.2rem 2rem;
-      position: relative;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 45px rgba(176, 138, 87, 0.12);
-      animation: fadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(176, 138, 87, 0.3) transparent;
-    }
-
-    .remedy-modal-card::-webkit-scrollbar {
-      width: 5px;
-    }
-    .remedy-modal-card::-webkit-scrollbar-thumb {
-      background: rgba(176, 138, 87, 0.3);
-      border-radius: 3px;
-    }
-
-    .remedy-modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1.2rem;
-      background: none;
-      border: 1px solid rgba(176, 138, 87, 0.25);
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      color: var(--muted, #C9BFB5);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      line-height: 1;
-      transition: all 0.2s ease;
-    }
-
-    .remedy-modal-close:hover {
-      border-color: var(--gold3, #D4B58A);
-      color: #FFFFFF;
-      transform: rotate(90deg);
-    }
-
-    .remedy-modal-header {
-      text-align: center;
-      margin-bottom: 1.3rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(176, 138, 87, 0.18);
-    }
-
-    .remedy-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-heading);
-      font-size: 10px;
-      letter-spacing: 2.5px;
-      color: var(--gold3, #D4B58A);
-      text-transform: uppercase;
-      padding: 3px 12px;
-      background: rgba(176, 138, 87, 0.08);
-      border: 1px solid rgba(176, 138, 87, 0.25);
-      border-radius: 20px;
-      margin-bottom: 0.8rem;
-    }
-
-    .remedy-modal-title {
-      font-family: var(--font-heading);
-      font-size: 1.55rem;
-      font-weight: 500;
-      color: var(--gold3, #D4B58A);
-      letter-spacing: 0.02em;
-      margin-bottom: 0.35rem;
-    }
-
-    .remedy-modal-element {
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      color: var(--muted, #C9BFB5);
-      letter-spacing: 0.5px;
-    }
-
-    .remedy-imbalance-box {
-      background: rgba(176, 138, 87, 0.04);
-      border-left: 3px solid var(--gold, #B08A57);
-      padding: 0.9rem 1.1rem;
-      margin-bottom: 1.4rem;
-      border-radius: 0 4px 4px 0;
-    }
-
-    .remedy-imbalance-lbl {
-      font-family: var(--font-heading);
-      font-size: 10.5px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold, #B08A57);
-      margin-bottom: 0.3rem;
-    }
-
-    .remedy-imbalance-text {
-      font-size: 0.875rem;
-      color: var(--parchment-body, #E5DACB);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .remedy-quad-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-      margin-bottom: 1.4rem;
-    }
-
-    @media (max-width: 580px) {
-      .remedy-quad-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .remedy-quad-cell {
-      background: rgba(22, 17, 13, 0.85);
-      border: 1px solid rgba(176, 138, 87, 0.18);
-      border-radius: 6px;
-      padding: 0.9rem 1rem;
-      transition: border-color 0.25s ease;
-    }
-
-    .remedy-quad-cell:hover {
-      border-color: rgba(176, 138, 87, 0.4);
-    }
-
-    .remedy-cell-icon-row {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .remedy-cell-glyph {
-      font-size: 11px;
-      color: var(--gold3, #D4B58A);
-    }
-
-    .remedy-cell-label {
-      font-family: var(--font-heading);
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--gold3, #D4B58A);
-      font-weight: 500;
-    }
-
-    .remedy-cell-val {
-      font-size: 0.84rem;
-      color: var(--parchment-body, #E5DACB);
-      line-height: 1.55;
-      margin: 0;
-    }
-
-    .remedy-mantra-box {
-      background: linear-gradient(135deg, rgba(176, 138, 87, 0.07) 0%, rgba(212, 181, 138, 0.04) 100%);
-      border: 1px dashed rgba(176, 138, 87, 0.35);
-      border-radius: 6px;
-      padding: 1rem 1.2rem;
-      text-align: center;
-    }
-
-    .remedy-mantra-lbl {
-      font-family: var(--font-heading);
-      font-size: 10.5px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--gold, #B08A57);
-      margin-bottom: 0.4rem;
-    }
-
-    .remedy-mantra-text {
-      font-family: 'Yatra One', 'Noto Serif Devanagari', serif;
-      font-size: 1.15rem;
-      color: var(--gold3, #D4B58A);
-      letter-spacing: 0.05em;
-      margin: 0;
-    }
-
-    /* Interactive Lo Shu and Missing chips */
-    .chip-missing.clickable {
-      cursor: pointer;
-      position: relative;
-      transition: all 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .chip-missing.clickable:hover {
-      border-color: var(--gold, #B08A57);
-      background: rgba(176, 138, 87, 0.14);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .chip-action-pill {
-      font-size: 9.5px;
-      padding: 1px 6px;
-      background: rgba(176, 138, 87, 0.2);
-      border-radius: 10px;
-      color: var(--gold3, #D4B58A);
-      letter-spacing: 0.5px;
-      font-weight: 500;
-    }
-
-    .chip-present.clickable {
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .chip-present.clickable:hover {
-      border-color: var(--gold3, #D4B58A);
-      background: rgba(176, 138, 87, 0.22);
-      transform: translateY(-1px);
-    }
-
-    .grid-cell.clickable {
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .grid-cell.clickable:hover {
-      border-color: var(--gold3, #D4B58A);
-      background: rgba(176, 138, 87, 0.14);
-      transform: scale(1.02);
-      z-index: 2;
-    }
-
-    .grid-cell.empty-cell.clickable:hover .grid-cell-digits {
-      color: var(--gold3, #D4B58A);
-    }
-
-    .remedy-help-hint {
-      font-size: 0.78rem;
-      color: var(--muted, #C9BFB5);
-      margin: 0.75rem 0 0;
-      line-height: 1.5;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .remedy-help-hint .bullet {
-      color: var(--gold, #B08A57);
-      font-size: 9px;
-    }
-
     /* Screen Hidden Print Elements */
     .print-folio-header,
     .print-folio-colophon {
@@ -992,9 +714,7 @@
       .graha-pill,
       .ad-timeline-toggle,
       .modal-backdrop,
-      .graha-modal,
-      .graha-modal-backdrop,
-      .remedy-modal-backdrop {
+      .graha-modal {
         display: none !important;
       }
 
@@ -4141,7 +3861,7 @@
         const count = data.digitCounts[num];
         const hasDigits = count > 0;
         const cell = document.createElement('div');
-        cell.className = `grid-cell ${hasDigits ? 'has-digits' : 'empty-cell'} clickable`;
+        cell.className = `grid-cell ${hasDigits ? 'has-digits' : 'empty-cell'}`;
 
         const posLabel = document.createElement('span');
         posLabel.className = 'grid-cell-pos';
@@ -4151,12 +3871,8 @@
         digitsEl.className = 'grid-cell-digits';
         if (hasDigits) {
           digitsEl.textContent = String(num).repeat(count);
-          cell.title = `Present Number ${num} · Governed by ${PLANET_MAP[num].planet} (Click to explore Graha Archetype)`;
-          cell.onclick = () => openGrahaModal(num);
         } else {
           digitsEl.textContent = '·';
-          cell.title = `Missing Coordinate ${num} · Click to view authentic Vedic & Vastu balancing remedies`;
-          cell.onclick = () => openRemedyDrawer(num);
         }
 
         cell.appendChild(posLabel);
@@ -4173,12 +3889,11 @@
           <div class="analysis-nums">
             ${data.presentNums.length > 0
               ? data.presentNums.map(n =>
-                `<span class="analysis-num-chip chip-present clickable" onclick="openGrahaModal(${n})" title="View ${PLANET_MAP[n].planet} Graha Archetype">${n} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[n] || ''}</span></span>`
+                `<span class="analysis-num-chip chip-present" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[n] || ''}</span></span>`
               ).join('')
               : '<span class="analysis-empty">None present</span>'
             }
           </div>
-          <p class="remedy-help-hint"><span class="bullet">◈</span> Click any present digit to explore its governing Graha archetype.</p>
         </div>
         <div class="numbers-analysis-card">
           <div class="analysis-card-header">
@@ -4188,15 +3903,11 @@
           <div class="analysis-nums">
             ${data.missingNums.length > 0
               ? data.missingNums.map(n =>
-                `<span class="analysis-num-chip chip-missing clickable" onclick="openRemedyDrawer(${n})" title="Click to view authentic Vedic remedies for Number ${n}">${n} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[n] || ''}</span> <span class="chip-action-pill">Remedy ↗</span></span>`
+                `<span class="analysis-num-chip chip-missing" title="${PLANET_MAP[n].planet} ${PLANET_MAP[n].symbol}">${n} <span class="transit-vedic-glyph">${DEVANAGARI_DIGITS[n] || ''}</span></span>`
               ).join('')
               : '<span class="analysis-empty">All numbers present!</span>'
             }
           </div>
-          ${data.missingNums.length > 0
-            ? '<p class="remedy-help-hint"><span class="bullet">◈</span> Click any missing digit or empty grid cell to view classical Vedic &amp; Vastu balancing remedies.</p>'
-            : '<p class="remedy-help-hint" style="color:var(--gold3);"><span class="bullet">◈</span> Complete celestial balance — all nine planetary coordinates are active.</p>'
-          }
         </div>
       `;
 
@@ -4909,159 +4620,6 @@
       }
     };
 
-    /* ══════════════════════════════════════
-       SACRED VEDIC MISSING REMEDIES ARCHIVE (#4)
-     ══════════════════════════════════════ */
-    const VEDIC_MISSING_REMEDIES = {
-      1: {
-        number: 1,
-        planet: "Surya ☉ (सूर्य)",
-        glyph: "☉",
-        element: "Jal (Water Element in Lo Shu) · North (उत्तर दिशा)",
-        archetype: "Solar Will & Individuation",
-        imbalance: "Absence of 1 in the Lo Shu chart can manifest as difficulty voicing personal ambitions, self-doubt in taking independent command, or relying heavily on outside validation.",
-        ritual: "Offer fresh water (Arghya) to the rising morning Sun facing East while reciting Gayatri Mantra. Drink water stored overnight in a pure copper vessel (Tamra Jal).",
-        vastu: "Keep the North zone of your sanctuary pristine and unencumbered. Install a gentle water cascade or clear mirror on the North wall.",
-        gemstoneRudraksha: "Ruby (माणिक्य - Manik) or Sunstone resonance · Wear a 1-Mukhi or 12-Mukhi Rudraksha on Sunday morning.",
-        colorDay: "Sunday · Radiate with Imperial Gold, Saffron, and warm Amber hues.",
-        mantra: "ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः ॥"
-      },
-      2: {
-        number: 2,
-        planet: "Chandra ☽ (चन्द्र)",
-        glyph: "☽",
-        element: "Prithvi (Earth Element in Lo Shu) · South-West (दक्षिण-पश्चिम)",
-        archetype: "Lunar Mind & Intuitive Harmony",
-        imbalance: "Absence of 2 may manifest as emotional impatience, difficulty reading unspoken interpersonal cues, or oscillating between detachment and hypersensitivity.",
-        ritual: "Respect and seek blessings from maternal figures. Fast or observe quiet contemplation on Mondays; drink water or milk from a pure silver tumbler.",
-        vastu: "Fortify the South-West zone with heavy earthen pottery, natural Himalayan salt lamps, or square stone décor to anchor stability.",
-        gemstoneRudraksha: "Natural Pearl (मोती - Moti) or Moonstone · Wear a 2-Mukhi Rudraksha energized in raw milk on Monday.",
-        colorDay: "Monday · Wear luminous Milk White, Pearl Cream, and soft Silver tones.",
-        mantra: "ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः ॥"
-      },
-      3: {
-        number: 3,
-        planet: "Brihaspati ♃ (बृहस्पति / गुरु)",
-        glyph: "♃",
-        element: "Wood (काष्ठ तत्त्व) · East (पूर्व दिशा)",
-        archetype: "Spiritual Wisdom & Creative Intellect",
-        imbalance: "Absence of 3 can lead to scattered focus, difficulty pursuing disciplined higher learning, creative frustration, or skepticism toward spiritual mentorship.",
-        ritual: "Honor gurus, teachers, and elders. Apply a subtle yellow sandalwood or saffron (Kesar) tilak on the Ajna chakra (forehead) each morning.",
-        vastu: "Nurture healthy green plants or a sacred Tulsi plant in the East zone of your living quarters. Keep sacred books and philosophical texts here.",
-        gemstoneRudraksha: "Yellow Sapphire (पुखराज - Pukhraj) or Golden Citrine · Wear a 5-Mukhi Rudraksha sanctified on Thursday.",
-        colorDay: "Thursday · Adorn with Saffron, Haldi Yellow, and warm Mustard silks.",
-        mantra: "ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः ॥"
-      },
-      4: {
-        number: 4,
-        planet: "Rahu ☊ (राहु)",
-        glyph: "☊",
-        element: "Wood (काष्ठ तत्त्व) · South-East (दक्षिण-पूर्व / आग्नेय)",
-        archetype: "Material Foundation & Pragmatic Order",
-        imbalance: "Absence of 4 often brings disorganization, impulsive financial habits, procrastination in administrative affairs, and difficulty completing long cycles.",
-        ritual: "Maintain a written ledger or daily planner. Avoid keeping broken clutter or unused damaged electronics in personal spaces.",
-        vastu: "Position green wooden fixtures, leafy plants, or a healthy money plant in the South-East corner to channel the prosperity flow.",
-        gemstoneRudraksha: "Hessonite Garnet (गोमेद - Gomed) or Green Tourmaline · Wear an 8-Mukhi Rudraksha to anchor focus.",
-        colorDay: "Saturday & Wednesday · Balance with Forest Green, Olive, and grounding Khaki shades.",
-        mantra: "ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः ॥"
-      },
-      5: {
-        number: 5,
-        planet: "Budha ☿ (बुध)",
-        glyph: "☿",
-        element: "Prithvi (Earth / Brahmsthan) · Center (ब्रह्मस्थान)",
-        archetype: "Equilibrium, Communication & Commerce",
-        imbalance: "Absence of the central number 5 indicates emotional turbulence, restless pivots without completion, and difficulty maintaining composure under pressure.",
-        ritual: "Practice daily grounding breathwork (Nadi Shodhana) or Earth Mudra (Prithvi Mudra). Feed green grass or spinach to cows on Wednesdays.",
-        vastu: "Keep the exact geometric center (Brahmsthan) of your home wide open, well-illuminated, and free from heavy pillars or dark furniture.",
-        gemstoneRudraksha: "Emerald (पन्ना - Panna) or Green Jade / Aventurine · Wear a 4-Mukhi or 10-Mukhi Rudraksha.",
-        colorDay: "Wednesday · Wear Emerald Green, Mint, and youthful light pastels.",
-        mantra: "ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः ॥"
-      },
-      6: {
-        number: 6,
-        planet: "Shukra ♀ (शुक्र)",
-        glyph: "♀",
-        element: "Dhatu (Metal Element in Lo Shu) · North-West (उत्तर-पश्चिम / वायव्य)",
-        archetype: "Aesthetic Harmony, Luxury & Support",
-        imbalance: "Absence of 6 can create a feeling of isolation from helpful peers, difficulty attracting financial patronage, or neglecting personal wellbeing and elegance.",
-        ritual: "Cultivate gracious speech, support women in need, and maintain an immaculate, fragrant personal space using natural sandalwood or rose attar.",
-        vastu: "Hang a hollow 6-pipe metallic wind chime or circular brass bell in the North-West zone to stimulate supportive cosmic friendships.",
-        gemstoneRudraksha: "Diamond (हीरा) or White Zircon / Opal · Wear a 6-Mukhi Rudraksha sanctified on Friday morning.",
-        colorDay: "Friday · Adorn with Pure White, Silken Ivory, and delicate Rose pastels.",
-        mantra: "ॐ द्रां द्रीं द्रौं सः शुक्राय नमः ॥"
-      },
-      7: {
-        number: 7,
-        planet: "Ketu ☋ (केतु)",
-        glyph: "☋",
-        element: "Dhatu (Metal Element in Lo Shu) · West (पश्चिम दिशा)",
-        archetype: "Mystical Insight & Discerning Detachment",
-        imbalance: "Absence of 7 may manifest as excessive worldly skepticism, difficulty trusting intuition, or feeling disconnected from spiritual meaning in daily pursuits.",
-        ritual: "Feed stray dogs or community animals on Tuesdays and Saturdays. Reserve 15 minutes of uninterrupted silence or sacred reading daily.",
-        vastu: "Keep white or reflective metallic artifacts, bells, or sacred yantras in the West direction of your sanctum.",
-        gemstoneRudraksha: "Cat's Eye (लहसुनिया - Vaidurya) or Smoky Quartz · Wear a 9-Mukhi Rudraksha to sharpen spiritual intuition.",
-        colorDay: "Tuesday & Thursday · Radiate with Smokey Grey, Off-White, and muted earthy tones.",
-        mantra: "ॐ स्रां स्रीं स्रौं सः केतवे नमः ॥"
-      },
-      8: {
-        number: 8,
-        planet: "Shani ♄ (शनि)",
-        glyph: "♄",
-        element: "Prithvi (Earth Element in Lo Shu) · North-East (उत्तर-पूर्व / ईशान)",
-        archetype: "Karmic Justice, Endurance & Mastery",
-        imbalance: "Absence of 8 can lead to impatience, aversion to rigorous systematic labor, rushing outcomes, and struggling with long-term material mastery.",
-        ritual: "Light an earthen lamp (Diya) filled with mustard or sesame oil near a quiet sacred tree or home altar on Saturday evening. Help manual laborers respectfully.",
-        vastu: "Place crystal clusters, natural terracotta bowls, or quartz geodes in the North-East to foster mental clarity and deep contemplative wisdom.",
-        gemstoneRudraksha: "Blue Sapphire (नीलम - Neelam) or Amethyst / Iolite · Wear a 7-Mukhi or 14-Mukhi Rudraksha.",
-        colorDay: "Saturday · Wear Midnight Navy, Charcoal, and deep Indigo tones.",
-        mantra: "ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः ॥"
-      },
-      9: {
-        number: 9,
-        planet: "Mangal ♂ (मंगल)",
-        glyph: "♂",
-        element: "Agni (Fire Element in Lo Shu) · South (दक्षिण दिशा)",
-        archetype: "Heroic Vitality, Courage & Recognition",
-        imbalance: "Absence of 9 can show up as passive hesitation, low stamina or courage in crises, reluctance to claim righteous recognition, or letting projects fizzle out.",
-        ritual: "Recite the sacred Hanuman Chalisa or Mangal Gayatri. Practice rigorous physical movement and donate red lentils or warm meals on Tuesdays.",
-        vastu: "Keep a warm red night lamp, brass diya, or triangular crimson art in the South zone of the home to fuel the Fire element.",
-        gemstoneRudraksha: "Red Coral (मूँगा - Moonga) or Carnelian · Wear a 3-Mukhi Rudraksha to awaken inner vitality (Tejas).",
-        colorDay: "Tuesday · Adorn with Vermilion Crimson, Bright Coral, and Fiery Copper hues.",
-        mantra: "ॐ क्रां क्रीं क्रौं सः भौमाय नमः ॥"
-      }
-    };
-
-    function openRemedyDrawer(num) {
-      const r = VEDIC_MISSING_REMEDIES[num];
-      if (!r) return;
-      document.getElementById('rmBadge').textContent = `Missing Coordinate ${r.number}`;
-      document.getElementById('rmTitle').textContent = `Balancing Resonance for Missing Number ${r.number}`;
-      document.getElementById('rmElement').textContent = `${r.planet} · ${r.element}`;
-      document.getElementById('rmImbalance').textContent = r.imbalance;
-      document.getElementById('rmRitual').textContent = r.ritual;
-      document.getElementById('rmVastu').textContent = r.vastu;
-      document.getElementById('rmGemstone').textContent = r.gemstoneRudraksha;
-      document.getElementById('rmColorDay').textContent = r.colorDay;
-      document.getElementById('rmMantra').textContent = r.mantra;
-
-      const backdrop = document.getElementById('remedyDrawerBackdrop');
-      backdrop.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeRemedyDrawer() {
-      const backdrop = document.getElementById('remedyDrawerBackdrop');
-      if (backdrop) backdrop.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    function closeRemedyDrawerOnBackdrop(e) {
-      if (e.target.id === 'remedyDrawerBackdrop') {
-        closeRemedyDrawer();
-      }
-    }
-
     function openGrahaModal(num) {
       const g = VEDIC_GRAHA_ARCHIVE[num];
       if (!g) return;
@@ -5093,10 +4651,7 @@
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeGrahaModal();
-        closeRemedyDrawer();
-      }
+      if (e.key === 'Escape') closeGrahaModal();
     });
 
     function toggleAntardashaTimeline() {
@@ -5171,71 +4726,6 @@
       <div class="graha-mantra-box">
         <p class="graha-mantra-label">Sacred Beej Mantra (दशा जाप विधान)</p>
         <p class="graha-mantra-text" id="gmMantra"></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════ SACRED VEDIC MISSING REMEDY DRAWER / MODAL (#4) ═══════ -->
-  <div class="remedy-modal-backdrop" id="remedyDrawerBackdrop" onclick="closeRemedyDrawerOnBackdrop(event)">
-    <div class="remedy-modal-card" id="remedyDrawerCard">
-      <div class="corner corner-tl"></div>
-      <div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div>
-      <div class="corner corner-br"></div>
-      <button class="remedy-modal-close" onclick="closeRemedyDrawer()" aria-label="Close Remedy Drawer">✕</button>
-
-      <div class="remedy-modal-header">
-        <div class="remedy-badge-pill">
-          <span>॥</span>
-          <span id="rmBadge">Missing Coordinate</span>
-          <span>॥</span>
-        </div>
-        <h3 class="remedy-modal-title" id="rmTitle">Balancing Resonance for Missing Number</h3>
-        <p class="remedy-modal-element" id="rmElement"></p>
-      </div>
-
-      <div class="remedy-imbalance-box">
-        <p class="remedy-imbalance-lbl">Karmic Resonance &amp; Subtle Imbalance</p>
-        <p class="remedy-imbalance-text" id="rmImbalance"></p>
-      </div>
-
-      <div class="remedy-quad-grid">
-        <div class="remedy-quad-cell">
-          <div class="remedy-cell-icon-row">
-            <span class="remedy-cell-glyph">◈</span>
-            <span class="remedy-cell-label">Sacred Action &amp; Karma</span>
-          </div>
-          <p class="remedy-cell-val" id="rmRitual"></p>
-        </div>
-
-        <div class="remedy-quad-cell">
-          <div class="remedy-cell-icon-row">
-            <span class="remedy-cell-glyph">◈</span>
-            <span class="remedy-cell-label">Elemental Vastu Alignment</span>
-          </div>
-          <p class="remedy-cell-val" id="rmVastu"></p>
-        </div>
-
-        <div class="remedy-quad-cell">
-          <div class="remedy-cell-icon-row">
-            <span class="remedy-cell-glyph">◈</span>
-            <span class="remedy-cell-label">Gemstone &amp; Rudraksha</span>
-          </div>
-          <p class="remedy-cell-val" id="rmGemstone"></p>
-        </div>
-
-        <div class="remedy-quad-cell">
-          <div class="remedy-cell-icon-row">
-            <span class="remedy-cell-glyph">◈</span>
-            <span class="remedy-cell-label">Auspicious Colors &amp; Day</span>
-          </div>
-          <p class="remedy-cell-val" id="rmColorDay"></p>
-        </div>
-      </div>
-
-      <div class="remedy-mantra-box">
-        <p class="remedy-mantra-lbl">Sacred Beej Mantra for Energetic Balance (दशा-बीज मन्त्र)</p>
-        <p class="remedy-mantra-text" id="rmMantra"></p>
       </div>
     </div>
   </div>
